@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent; /* remove Android highlights taps  */
+    }
+}
+@layer utilities {
+    @variants responsive {
+        /* Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    }
+}
+
+.react-pdf__Page__canvas,
+.react-pdf__Document {
+    @apply rounded;
+}
+
+/* .react-pdf__Page {
+    box-shadow: 0 25px 50px 0 rgba(62, 62, 62, 0.15);
+}
+
+@media (max-width: 1290px) {
+    .react-pdf__Document {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 1050px) {
+    .react-pdf__Document {
+        transform: scale(0.6);
+    }
+}
+
+@media (max-width: 992px) {
+    .react-pdf__Document {
+        transform: scale(1);
+    }
+} */
