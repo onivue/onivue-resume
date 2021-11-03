@@ -7,14 +7,14 @@ import {
   Font,
 } from '@react-pdf/renderer'
 
-export const MyDoc = () => (
+export const MyDoc = ({ text }) => (
   <Document>
     <Page style={styles.body}>
       <Text style={styles.header} fixed>
         ~ Created with react-pdf ~
       </Text>
       <Text style={styles.title}>Don Quijote de la Mancha</Text>
-      <Text style={styles.author}>Miguel de Cervantes</Text>
+      <Text style={styles.author}>{text}</Text>
       {/* <Image style={styles.image} src="/images/quijote1.jpg" /> */}
       <Text style={styles.subtitle}>
         Capítulo I: Que trata de la condición y ejercicio del famoso hidalgo D.

@@ -70,22 +70,9 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
   const { width, height } = useElementSize(docRef)
   // !
 
-  if (loading) {
-    return (
-      <div className="flex justify-center flex-1 w-full h-auto " ref={docRef}>
-        <div
-          style={{
-            width: width * 0.9,
-            height: (width * 0.9 * 99) / 70,
-            backgroundColor: 'white',
-          }}
-          className="rounded"
-        >
-          Rendering PDF...
-        </div>
-      </div>
-    )
-  }
+  // if (loading) {
+  //   return <LoadingA4Page width={width} />
+  // }
 
   return (
     <div style={styles.wrapper}>
@@ -93,19 +80,23 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
         <div style={styles.message}>You are not rendering a valid document</div>
       )}
 
-      <div className="flex justify-center flex-1 w-full h-auto " ref={docRef}>
-        <Document
-          loading={null}
-          className="shadow"
-          file={file}
-          onLoadSuccess={onDocumentLoad}
-        >
-          <Page
-            className="rounded"
-            width={width * 0.9}
-            pageNumber={currentPage}
-          />
-        </Document>
+      <div className="flex justify-center flex-1 w-200" ref={docRef}>
+        {loading ? (
+          <LoadingA4Page refWidth={width} />
+        ) : (
+          <Document
+            loading={<LoadingA4Page refWidth={width} />}
+            className="shadow"
+            file={file}
+            onLoadSuccess={onDocumentLoad}
+          >
+            <Page
+              className="rounded"
+              width={width * 0.9}
+              pageNumber={currentPage}
+            />
+          </Document>
+        )}
       </div>
 
       <PageNavigator
@@ -114,6 +105,21 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
         onNextPage={onNextPage}
         onPreviousPage={onPreviousPage}
       />
+    </div>
+  )
+}
+
+const LoadingA4Page = ({ refWidth }) => {
+  return (
+    <div
+      style={{
+        width: refWidth * 0.9,
+        height: (refWidth * 0.9 * 99) / 70,
+        backgroundColor: 'white',
+      }}
+      className="rounded"
+    >
+      refWidth: {refWidth}
     </div>
   )
 }
@@ -128,21 +134,35 @@ const PageNavigator = ({
 
   return (
     <div>
-      {currentPage !== 1 && (
-        <div onClick={onPreviousPage} style={styles.arrow}>
-          {'<'}
+      <ul className="flex flex-wrap justify-center my-4">
+        <div className="flex justify-center w-full my-2">
+          <div className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-700 hover:text-gray-200 ">
+            <div className="font-bold">{`Page ${currentPage} / ${numPages}`}</div>
+          </div>
         </div>
-      )}
 
-      <div
-        style={{ margin: '0px 12px' }}
-      >{`Page ${currentPage} / ${numPages}`}</div>
+        {currentPage !== 1 && (
+          <li
+            className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
+            onClick={onPreviousPage}
+          >
+            <div className="flex items-center font-bold ">
+              <span className="mx-1">previous</span>
+            </div>
+          </li>
+        )}
 
-      {currentPage < numPages && (
-        <div onClick={onNextPage} style={styles.arrow}>
-          {'>'}
-        </div>
-      )}
+        {currentPage < numPages && (
+          <li
+            className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
+            onClick={onNextPage}
+          >
+            <div className="flex items-center font-bold">
+              <span className="mx-1">next</span>
+            </div>
+          </li>
+        )}
+      </ul>
     </div>
   )
 }

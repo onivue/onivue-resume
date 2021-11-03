@@ -6,7 +6,7 @@ import PDFViewer from '@/components/PDFViewer'
 
 function Home() {
   const [isClient, setIsClient] = useState(false)
-  const [text, setText] = useState('test')
+  const [text, setText] = useState('-')
   useEffect(() => {
     setIsClient(true)
   })
@@ -34,7 +34,7 @@ function Home() {
           <button
             className="px-4 py-2 text-center text-white bg-green-500 rounded hover:bg-green-700"
             onClick={() => {
-              setText((actualState) => actualState + 'TEXT SET')
+              setText((actualState) => actualState + 'Aurora')
             }}
           >
             Add Text
