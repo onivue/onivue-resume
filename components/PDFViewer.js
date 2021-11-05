@@ -80,7 +80,7 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
         <div style={styles.message}>You are not rendering a valid document</div>
       )}
 
-      <div className="flex justify-center flex-1 w-200" ref={docRef}>
+      <div className="flex justify-center " ref={docRef}>
         {loading ? (
           <LoadingA4Page refWidth={width} />
         ) : (
