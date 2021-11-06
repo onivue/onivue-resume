@@ -6,18 +6,6 @@ import { useElementSize } from '@/hooks/useElementSize'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
 const styles = {
-  message: {
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    zIndex: '1000',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-    transition: 'all 1s',
-  },
   wrapper: {
     flex: '1',
     height: '100%',
@@ -70,17 +58,13 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
   const { width, height } = useElementSize(docRef)
   // !
 
-  // if (loading) {
-  //   return <LoadingA4Page width={width} />
-  // }
-
   return (
-    <div style={styles.wrapper}>
+    <div className="flex ">
       {!loading && !file && (
-        <div style={styles.message}>You are not rendering a valid document</div>
+        <div className="bg-red-600">You are not rendering a valid document</div>
       )}
 
-      <div className="flex justify-center " ref={docRef}>
+      <div className="flex justify-center flex-1 " ref={docRef}>
         {loading ? (
           <LoadingA4Page refWidth={width} />
         ) : (

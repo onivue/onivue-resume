@@ -8,16 +8,18 @@ import {
 } from '@react-pdf/renderer'
 
 const styles = StyleSheet.create({
+  wrapper: { display: 'flex', flexDirection: 'row', height: '100%' },
   sectionSide: {
     backgroundColor: 'green',
-    textAlign: 'center',
+    textAlign: 'left',
     height: '100%',
     width: 220,
+    paddingTop: 40,
+    paddingHorizontal: 24,
     backgroundColor: '#f7fafc',
   },
   sectionMain: {
     textAlign: 'center',
-
     height: '100%',
     display: 'flex',
     width: 380,
@@ -27,11 +29,39 @@ const styles = StyleSheet.create({
   },
   sectionMainx: {
     textAlign: 'center',
-
     height: '100%',
   },
-
-  wrapper: { display: 'flex', flexDirection: 'row', height: '100%' },
+  name: {
+    fontSize: 30,
+    marginBottom: 12,
+  },
+  jobTitle: {
+    fontSize: 20,
+  },
+  cvSection: {
+    marginTop: 24,
+  },
+  cvSectionTitle: {
+    fontSize: 18,
+  },
+  cvSectionText: {
+    fontSize: 14,
+  },
+  csvTagWrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+  },
+  csvTag: {
+    fontSize: 8,
+    border: 1,
+    borderRadius: 8,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    paddingTop: 4,
+    marginRight: 4,
+    marginVertical: 2,
+  },
 })
 
 Font.register({
@@ -41,10 +71,28 @@ Font.register({
 
 export const MyDoc = ({ text }) => (
   <Document>
-    <Page size="A4" style={styles.page}>
+    <Page size="A4">
       <View style={styles.wrapper}>
         <View style={styles.sectionSide}>
-          <Text>{text} #1</Text>
+          <Text style={styles.name}>Albin Hoti</Text>
+          <Text style={styles.jobTitle}>Informatiker</Text>
+
+          <View style={styles.cvSection}>
+            <Text style={styles.cvSectionTitle}>Kontakt</Text>
+            <Text style={styles.cvSectionText}>076 801 36 64</Text>
+            <Text style={styles.cvSectionText}>albin.hoti@gmail.com</Text>
+            <Text style={styles.cvSectionText}>9200 Gossau</Text>
+          </View>
+          <View style={styles.cvSection}>
+            <Text style={styles.cvSectionTitle}>Skills</Text>
+            <View style={styles.csvTagWrapper}>
+              <Text style={styles.csvTag}>React</Text>
+              <Text style={styles.csvTag}>Tailiwnd</Text>
+              <Text style={styles.csvTag}>Node.js</Text>
+              <Text style={styles.csvTag}>Firebase</Text>
+              <Text style={styles.csvTag}>Zustand.js</Text>
+            </View>
+          </View>
         </View>
 
         <View style={styles.sectionMain}>
