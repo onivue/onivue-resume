@@ -59,30 +59,33 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
   // !
 
   return (
-    <div className="flex ">
+    <div className="flex flex-col justify-center h-full ring-4 ring-red-600">
+      {width} / {height}
       {!loading && !file && (
         <div className="bg-red-600">You are not rendering a valid document</div>
       )}
-
-      <div className="flex justify-center flex-1 " ref={docRef}>
-        {loading ? (
-          <LoadingA4Page refWidth={width} />
-        ) : (
-          <Document
-            loading={<LoadingA4Page refWidth={width} />}
-            className="shadow"
-            file={file}
-            onLoadSuccess={onDocumentLoad}
-          >
-            <Page
-              className="rounded"
-              width={width * 0.9}
-              pageNumber={currentPage}
-            />
-          </Document>
-        )}
+      <div className="flex justify-center w-4/5 mx-auto lg:w-1/2">
+        <div className="w-full h-full ring-4 ring-red-600" ref={docRef}>
+          {loading ? (
+            <LoadingA4Page refWidth={width} />
+          ) : (
+            <Document
+              loading={<LoadingA4Page refWidth={width} />}
+              className="shadow "
+              file={file}
+              onLoadSuccess={onDocumentLoad}
+            >
+              <Page
+                scale={1.0}
+                className="rounded"
+                // height={height}
+                width={width}
+                pageNumber={currentPage}
+              />
+            </Document>
+          )}
+        </div>
       </div>
-
       <PageNavigator
         currentPage={currentPage}
         numPages={numPages}
