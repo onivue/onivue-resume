@@ -21,23 +21,34 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
     setCurrentPage((prev) => Math.min(prev, d.numPages))
   }
   //  !
-  const docRef = useRef(null)
-  const { width, height } = useElementSize(docRef)
+  const pdfRef = useRef(null)
+  const pdfWrapperRef = useRef(null)
+  const { width: pdfWidth, height: pdfHeight } = useElementSize(pdfRef)
+  const { width: pdfWrapperWidth, height: pdfWrapperHeight } =
+    useElementSize(pdfWrapperRef)
+
+  const allowedWidth = pdfWidth
+
   // !
 
   return (
-    <div className="flex flex-col justify-center h-full ring-4 ring-blue-600">
-      {width} / {height}
+    <div
+      className="flex flex-col justify-center h-full ring-4 ring-blue-600"
+      ref={pdfWrapperRef}
+    >
       {!loading && !file && (
         <div className="bg-red-600">You are not rendering a valid document</div>
       )}
-      <div className="flex justify-center w-4/5 mx-auto lg:w-1/2">
-        <div className="w-full h-full ring-4 ring-red-600" ref={docRef}>
+      <div className="flex justify-center w-4/5 mx-auto ">
+        <div
+          className="w-full h-full max-w-2xl ring-4 ring-red-600"
+          ref={pdfRef}
+        >
           {loading ? (
-            <LoadingA4Page refWidth={width} />
+            <LoadingA4Page refWidth={pdfWidth} />
           ) : (
             <Document
-              loading={<LoadingA4Page refWidth={width} />}
+              loading={<LoadingA4Page refWidth={pdfWidth} />}
               className="shadow "
               file={file}
               onLoadSuccess={onDocumentLoad}
@@ -46,12 +57,18 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
                 scale={1.0}
                 className="rounded"
                 // height={height}
-                width={width}
+                width={pdfWidth}
                 pageNumber={currentPage}
               />
             </Document>
           )}
         </div>
+      </div>
+      <div className="text-blue-600">
+        {pdfWrapperWidth} / {pdfWrapperHeight}
+      </div>
+      <div className="text-red-600">
+        {pdfWidth} / {pdfHeight}
       </div>
       <PageNavigator
         currentPage={currentPage}
