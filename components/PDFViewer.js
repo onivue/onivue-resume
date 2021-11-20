@@ -1,45 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { pdf } from '@react-pdf/renderer'
+import React, { useState, useRef } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
-import { useAsync } from 'react-use'
 import { useElementSize } from '@/hooks/useElementSize'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
-
-const styles = {
-  wrapper: {
-    flex: '1',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  documentWrapper: {
-    flex: '1',
-    padding: '1em',
-    display: 'flex',
-    zIndex: '500',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  arrow: { fontSize: '17px', cursor: 'pointer', transition: 'opacity 0.3s' },
-}
 
 const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
   const [numPages, setNumPages] = useState(null)
 
   const [currentPage, setCurrentPage] = useState(1)
-
-  const render = useAsync(async () => {
-    if (!value) return null
-
-    const blob = await pdf(value).toBlob()
-    const url = URL.createObjectURL(blob)
-
-    return url
-  }, [value])
-
-  // useEffect(() => onUrlChange(render.value), [render.value])
-
-  // useEffect(() => onRenderError(render.error), [render.error])
 
   const onPreviousPage = () => {
     setCurrentPage((prev) => prev - 1)
@@ -59,7 +26,7 @@ const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
   // !
 
   return (
-    <div className="flex flex-col justify-center h-full ring-4 ring-red-600">
+    <div className="flex flex-col justify-center h-full ring-4 ring-blue-600">
       {width} / {height}
       {!loading && !file && (
         <div className="bg-red-600">You are not rendering a valid document</div>
