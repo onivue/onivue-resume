@@ -3,7 +3,7 @@ import { Document, Page, pdfjs } from 'react-pdf'
 import { useElementSize } from '@/hooks/useElementSize'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
-const PDFViewer = ({ file, value, onUrlChange, onRenderError, loading }) => {
+const PDFViewer = ({ file, loading }) => {
   const [numPages, setNumPages] = useState(null)
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -84,8 +84,8 @@ const LoadingA4Page = ({ refWidth }) => {
   return (
     <div
       style={{
-        width: refWidth * 0.9,
-        height: (refWidth * 0.9 * 99) / 70,
+        width: refWidth,
+        height: (refWidth * 99) / 70,
         backgroundColor: 'white',
       }}
       className="rounded"

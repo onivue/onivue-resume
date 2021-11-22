@@ -12,12 +12,15 @@ const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
-    // height: '100%'
+    left: '0',
+    right: '0',
+    top: '0',
+    // height: '100%',
   },
   sectionSide: {
     backgroundColor: 'green',
     textAlign: 'left',
-    // height: '100%',
+    height: '297mm',
     width: 220,
     paddingTop: 40,
     paddingHorizontal: 24,
@@ -33,10 +36,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     fontSize: 10,
   },
-  sectionMainx: {
+  sectionMainBox: {
     textAlign: 'center',
     // height: '100%',
-    flex: 1,
   },
   name: {
     fontSize: 30,
@@ -121,10 +123,10 @@ export const ListItem = ({ children }) => (
 
 export const MyDoc = ({ text }) => (
   <Document>
-    <Page size="A4" wrap>
+    <Page size="A4">
       <View style={styles.wrapper}>
-        <View style={styles.sectionSide}>
-          <Text style={styles.name}>Albin Hoti</Text>
+        <View style={styles.sectionSide} fixed>
+          <Text style={styles.name}>Albin Hoti {text}</Text>
           <Text style={styles.jobTitle}>Informatiker</Text>
 
           <View style={styles.cvSection}>
@@ -176,7 +178,7 @@ export const MyDoc = ({ text }) => (
         </View>
 
         <View style={styles.sectionMain}>
-          <View style={styles.sectionMainx}>
+          <View style={styles.sectionMainBox}>
             <Text>
               En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no
               ha mucho tiempo que vivía un hidalgo de los de lanza en astillero,
@@ -199,7 +201,7 @@ export const MyDoc = ({ text }) => (
               no se salga un punto de la verdad
             </Text>
           </View>
-          <View style={styles.sectionMainx}>
+          <View style={styles.sectionMainBox}>
             <Text>
               En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no
               ha mucho tiempo que vivía un hidalgo de los de lanza en astillero,
@@ -222,7 +224,7 @@ export const MyDoc = ({ text }) => (
               no se salga un punto de la verdad
             </Text>
           </View>
-          <View style={styles.sectionMainx}>
+          <View style={styles.sectionMainBox}>
             <Text>
               En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no
               ha mucho tiempo que vivía un hidalgo de los de lanza en astillero,
@@ -245,7 +247,7 @@ export const MyDoc = ({ text }) => (
               no se salga un punto de la verdad
             </Text>
           </View>
-          <View style={styles.sectionMainx}>
+          <View style={styles.sectionMainBox}>
             <Text>
               En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no
               ha mucho tiempo que vivía un hidalgo de los de lanza en astillero,
@@ -268,7 +270,7 @@ export const MyDoc = ({ text }) => (
               no se salga un punto de la verdad
             </Text>
           </View>
-          <View style={styles.sectionMainx}>
+          <View style={styles.sectionMainBox}>
             <Text>
               En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no
               ha mucho tiempo que vivía un hidalgo de los de lanza en astillero,
@@ -291,7 +293,7 @@ export const MyDoc = ({ text }) => (
               no se salga un punto de la verdad
             </Text>
           </View>
-          <View style={styles.sectionMainx}>
+          <View style={styles.sectionMainBox}>
             <Text>
               En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no
               ha mucho tiempo que vivía un hidalgo de los de lanza en astillero,
@@ -316,6 +318,20 @@ export const MyDoc = ({ text }) => (
           </View>
         </View>
       </View>
+
+      <Text
+        style={{
+          position: 'absolute',
+          fontSize: 12,
+          bottom: 5,
+          left: 5,
+          right: 0,
+          textAlign: 'left',
+          color: 'grey',
+        }}
+        render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`}
+        fixed
+      />
     </Page>
   </Document>
 )

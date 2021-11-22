@@ -15,7 +15,7 @@ function Home() {
   return (
     <div className="flex h-screen">
       <div className="flex flex-row items-stretch flex-1 h-full">
-        <div className="w-64 bg-green-200"></div>
+        <div className="w-24 bg-green-200"></div>
         <div className="flex flex-col justify-center flex-1 mx-auto">
           {isClient && (
             <>
