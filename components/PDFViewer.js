@@ -56,7 +56,6 @@ const PDFViewer = ({ file, loading }) => {
               <Page
                 scale={1.0}
                 className="rounded"
-                // height={height}
                 width={pdfWidth}
                 pageNumber={currentPage}
               />
