@@ -28,6 +28,7 @@ function Home() {
               <div className="flex justify-between">
                 <PDFDownloadLink
                   document={<MyDoc />}
+                  fileName="resume.pdf"
                   className="px-4 py-2 text-center text-white bg-green-500 rounded hover:bg-green-700"
                 >
                   {({ loading }) =>
