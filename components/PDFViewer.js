@@ -33,7 +33,7 @@ const PDFViewer = ({ file, loading }) => {
 
   return (
     <div
-      className="flex flex-col justify-center h-full ring-4 ring-blue-600"
+      className="flex flex-col justify-center h-full overflow-auto ring-4 ring-blue-600"
       ref={pdfWrapperRef}
     >
       {!loading && !file && (
@@ -41,7 +41,7 @@ const PDFViewer = ({ file, loading }) => {
       )}
       <div className="flex justify-center w-4/5 mx-auto ">
         <div
-          className="w-full h-full max-w-2xl ring-4 ring-red-600"
+          className="w-full h-full max-w-xl lg:max-w-2xl ring-4 ring-red-600"
           ref={pdfRef}
         >
           {loading ? (
@@ -55,7 +55,7 @@ const PDFViewer = ({ file, loading }) => {
             >
               <Page
                 scale={1.0}
-                className="rounded"
+                className="overflow-y-auto rounded"
                 width={pdfWidth}
                 pageNumber={currentPage}
               />
@@ -63,12 +63,14 @@ const PDFViewer = ({ file, loading }) => {
           )}
         </div>
       </div>
-      <div className="text-blue-600">
+      {/* <div className="text-blue-600">
         {pdfWrapperWidth} / {pdfWrapperHeight}
       </div>
       <div className="text-red-600">
         {pdfWidth} / {pdfHeight}
-      </div>
+      </div> */}
+
+      <div className="text-red-600">{window.innerHeight}</div>
       <PageNavigator
         currentPage={currentPage}
         numPages={numPages}
