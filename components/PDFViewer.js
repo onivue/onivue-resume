@@ -33,29 +33,26 @@ const PDFViewer = ({ file, loading }) => {
 
   return (
     <div
-      className="flex flex-col justify-center h-full overflow-auto ring-4 ring-blue-600"
+      className="flex flex-col justify-center h-full p-4 overflow-auto border-4 border-blue-600 md:p-20"
       ref={pdfWrapperRef}
     >
       {!loading && !file && (
         <div className="bg-red-600">You are not rendering a valid document</div>
       )}
       <div className="flex justify-center w-4/5 mx-auto ">
-        <div
-          className="w-full h-full max-w-xl lg:max-w-2xl ring-4 ring-red-600"
-          ref={pdfRef}
-        >
+        <div className="w-full h-full max-w-xl lg:max-w-2xl " ref={pdfRef}>
           {loading ? (
             <LoadingA4Page refWidth={pdfWidth} />
           ) : (
             <Document
               loading={<LoadingA4Page refWidth={pdfWidth} />}
-              className="shadow "
+              className="shadow-xl "
               file={file}
               onLoadSuccess={onDocumentLoad}
             >
               <Page
                 scale={1.0}
-                className="overflow-y-auto rounded"
+                className="rounded "
                 width={pdfWidth}
                 pageNumber={currentPage}
               />
@@ -89,10 +86,8 @@ const LoadingA4Page = ({ refWidth }) => {
         height: (refWidth * 99) / 70,
         backgroundColor: 'white',
       }}
-      className="rounded"
-    >
-      refWidth: {refWidth}
-    </div>
+      className="rounded shadow-xl animate-pulse"
+    ></div>
   )
 }
 
@@ -106,35 +101,32 @@ const PageNavigator = ({
 
   return (
     <div>
-      <ul className="flex flex-wrap justify-center my-4">
+      <div className="flex flex-col justify-center my-4">
         <div className="flex justify-center w-full my-2">
-          <div className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-700 hover:text-gray-200 ">
-            <div className="font-bold">{`Page ${currentPage} / ${numPages}`}</div>
-          </div>
-        </div>
-
-        {currentPage !== 1 && (
-          <li
+          {currentPage !== 1 && ''}
+          <div
             className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
             onClick={onPreviousPage}
           >
             <div className="flex items-center font-bold ">
-              <span className="mx-1">previous</span>
+              <span className="mx-1">{'<'}</span>
             </div>
-          </li>
-        )}
+          </div>
 
-        {currentPage < numPages && (
-          <li
+          <div className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg ">
+            <div className="font-bold">{`Page ${currentPage} / ${numPages}`}</div>
+          </div>
+          {currentPage < numPages && ''}
+          <div
             className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
             onClick={onNextPage}
           >
             <div className="flex items-center font-bold">
-              <span className="mx-1">next</span>
+              <span className="mx-1">{'>'}</span>
             </div>
-          </li>
-        )}
-      </ul>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

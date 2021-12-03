@@ -13,24 +13,17 @@ function Home() {
 
   return (
     <div className="flex h-screen">
-      <div className="flex flex-row items-stretch flex-1 h-full">
-        <div className="w-24 bg-green-200"></div>
-        <div className="flex flex-col justify-center flex-1 mx-auto">
-          {isClient && (
-            <BlobProvider document={<MyDoc text={text} />}>
-              {({ blob, url, loading, error }) => {
-                return (
-                  <>
-                    <PDFViewer file={url} loading={loading}></PDFViewer>
-                    <div className="flex justify-between">
-                      <a
-                        href={url}
-                        download="resume.pdf"
-                        className="px-4 py-2 text-center text-white bg-green-500 rounded hover:bg-green-700"
-                      >
-                        {loading ? 'Loading document...' : 'Download File'}
-                      </a>
-
+      {isClient && (
+        <BlobProvider document={<MyDoc text={text} />}>
+          {({ blob, url, loading, error }) => {
+            return (
+              <div className="flex flex-col items-stretch flex-1 h-full md:flex-row">
+                <div className="w-full md:w-1/3 bg-gradient-to-b from-purple-500 to-indigo-500">
+                  <div>
+                    <h2 class="text-2xl pt-8 px-6 pb-6 tracking-wide uppercase">
+                      CV settings
+                    </h2>
+                    <div className="flex justify-around">
                       <button
                         className="px-4 py-2 text-center text-white bg-green-500 rounded hover:bg-green-700"
                         onClick={() => {
@@ -39,14 +32,24 @@ function Home() {
                       >
                         Add Text
                       </button>
+                      <a
+                        href={url}
+                        download="resume.pdf"
+                        className="px-4 py-2 text-center text-white bg-green-500 rounded hover:bg-green-700"
+                      >
+                        {loading ? 'Loading document...' : 'Download File'}
+                      </a>
                     </div>
-                  </>
-                )
-              }}
-            </BlobProvider>
-          )}
-        </div>
-      </div>
+                  </div>
+                </div>
+                <div className="flex flex-col justify-center w-full h-full mx-auto">
+                  <PDFViewer file={url} loading={loading}></PDFViewer>
+                </div>
+              </div>
+            )
+          }}
+        </BlobProvider>
+      )}
     </div>
   )
 }
