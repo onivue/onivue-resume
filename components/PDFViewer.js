@@ -58,16 +58,15 @@ const PDFViewer = ({ file, loading }) => {
           )}
         </div>
       </div>
-      <div>
+      {/* <div>
         <div className="text-blue-600">
           {pdfWrapperWidth} / {pdfWrapperHeight}
         </div>
         <div className="text-red-600">
           {pdfWidth} / {pdfHeight}
         </div>
-
         <div className="text-red-600">{window.innerHeight}</div>
-      </div>
+      </div> */}
       <PageNavigator
         currentPage={currentPage}
         numPages={numPages}

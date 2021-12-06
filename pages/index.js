@@ -4,6 +4,7 @@ import { MyDoc } from '@/components/pdfResume'
 import { BlobProvider } from '@react-pdf/renderer'
 import PDFViewer from '@/components/PDFViewer'
 import BottomNavbar from '@/components/BottomNavbar'
+import Form from '@/components/Form'
 
 function Home() {
   const [isClient, setIsClient] = useState(false)
@@ -14,7 +15,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen mx-auto max-w-[1900px]">
       {isClient && (
         <BlobProvider document={<MyDoc text={text} />}>
           {({ blob, url, loading, error }) => {
@@ -27,36 +28,20 @@ function Home() {
                   loading={loading}
                 />
                 <div
-                  className={`absolute z-10  w-full h-full lg:p-2 p-2 pb-28 lg:static lg:block lg:w-1/3 ${
+                  className={`fixed z-10 w-full lg:w-3/5 h-full lg:p-4 p-4 pb-28 lg:static lg:block  ${
                     !showForm && 'hidden'
                   }`}
                 >
                   <div className="w-full h-full rounded-md bg-gradient-to-b from-purple-500 to-indigo-500">
                     <div>
-                      <h2 className="px-6 pt-8 pb-6 text-2xl tracking-wide uppercase">
+                      <h2 className="px-6 pt-8 pb-6 text-2xl tracking-wide text-white uppercase">
                         CV settings
                       </h2>
-                      {/* <div className="flex justify-around">
-                        <button
-                          className="px-4 py-2 text-center text-white bg-green-500 rounded hover:bg-green-700"
-                          onClick={() => {
-                            setText((actualState) => actualState + 'Aurora')
-                          }}
-                        >
-                          Add Text
-                        </button>
-                        <a
-                          href={url}
-                          download="resume.pdf"
-                          className="px-4 py-2 text-center text-white bg-green-500 rounded hover:bg-green-700"
-                        >
-                          {loading ? 'Loading document...' : 'Download File'}
-                        </a>
-                      </div>*/}
                     </div>
+                    <Form />
                   </div>
                 </div>
-                <div className="flex flex-col justify-center w-full h-full mx-auto">
+                <div className="flex flex-col justify-center w-full h-full mx-auto ">
                   <PDFViewer file={url} loading={loading}></PDFViewer>
                 </div>
               </div>

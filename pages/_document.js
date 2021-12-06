@@ -34,7 +34,7 @@ class MyDocument extends Document {
                     />
                     <link rel="shortcut icon" href="/icons/favicon.ico" /> */}
         </Head>
-        <body className="min-h-screen antialiased text-gray-900 bg-gray-100 selection:bg-primary-200">
+        <body className="min-h-screen antialiased text-gray-900 bg-indigo-50 selection:bg-primary-200 ">
           <Main />
           <NextScript />
         </body>
