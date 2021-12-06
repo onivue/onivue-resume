@@ -33,7 +33,7 @@ const PDFViewer = ({ file, loading }) => {
 
   return (
     <div
-      className="flex flex-col justify-center h-full p-4 overflow-auto border-4 border-blue-600 md:p-20"
+      className="flex flex-col justify-center h-full p-4 overflow-auto "
       ref={pdfWrapperRef}
     >
       {!loading && !file && (
@@ -60,14 +60,16 @@ const PDFViewer = ({ file, loading }) => {
           )}
         </div>
       </div>
-      {/* <div className="text-blue-600">
-        {pdfWrapperWidth} / {pdfWrapperHeight}
-      </div>
-      <div className="text-red-600">
-        {pdfWidth} / {pdfHeight}
-      </div> */}
+      <div>
+        <div className="text-blue-600">
+          {pdfWrapperWidth} / {pdfWrapperHeight}
+        </div>
+        <div className="text-red-600">
+          {pdfWidth} / {pdfHeight}
+        </div>
 
-      <div className="text-red-600">{window.innerHeight}</div>
+        <div className="text-red-600">{window.innerHeight}</div>
+      </div>
       <PageNavigator
         currentPage={currentPage}
         numPages={numPages}
