@@ -9,8 +9,8 @@ const Form = () => {
 
   return (
     <>
-      <h1 className="mt-10 text-4xl font-semibold text-center text-white ">
-        Post a job
+      <h1 className="text-4xl font-semibold text-center text-white ">
+        CSV Settings
       </h1>
       <FormProvider {...methods}>
         <form
@@ -18,10 +18,13 @@ const Form = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <Input
-            id="input2"
-            label="Label"
+            label="Name"
+            id="name"
+            type="text"
             helperText="Helper text"
             validation={{ required: 'Custom error message' }}
+            // readOnly
+            defaultValue="Default Value"
           />
           <button
             className="w-full px-6 py-3 mt-4 font-semibold text-green-100 bg-green-400 border rounded hover:bg-green-600 text-md"

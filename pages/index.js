@@ -33,11 +33,6 @@ function Home() {
                   }`}
                 >
                   <div className="w-full h-full rounded-md bg-gradient-to-b from-purple-500 to-indigo-500">
-                    <div>
-                      <h2 className="px-6 pt-8 pb-6 text-2xl tracking-wide text-white uppercase">
-                        CV settings
-                      </h2>
-                    </div>
                     <Form />
                   </div>
                 </div>
