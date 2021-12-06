@@ -24,6 +24,7 @@ function Home() {
                   isShowForm={showForm}
                   toggleForm={SetShowForm}
                   downloadFileUrl={url}
+                  loading={loading}
                 />
                 <div
                   className={`absolute z-10  w-full h-full lg:p-2 p-2 pb-28 lg:static lg:block lg:w-1/3 ${
@@ -35,7 +36,7 @@ function Home() {
                       <h2 className="px-6 pt-8 pb-6 text-2xl tracking-wide uppercase">
                         CV settings
                       </h2>
-                      <div className="flex justify-around">
+                      {/* <div className="flex justify-around">
                         <button
                           className="px-4 py-2 text-center text-white bg-green-500 rounded hover:bg-green-700"
                           onClick={() => {
@@ -51,7 +52,7 @@ function Home() {
                         >
                           {loading ? 'Loading document...' : 'Download File'}
                         </a>
-                      </div>
+                      </div>*/}
                     </div>
                   </div>
                 </div>

@@ -27,19 +27,17 @@ const PDFViewer = ({ file, loading }) => {
   const { width: pdfWrapperWidth, height: pdfWrapperHeight } =
     useElementSize(pdfWrapperRef)
 
-  const allowedWidth = pdfWidth
-
   // !
 
   return (
     <div
-      className="flex flex-col justify-center h-full p-4 overflow-auto "
+      className="relative flex flex-col justify-center h-full p-4 overflow-auto"
       ref={pdfWrapperRef}
     >
       {!loading && !file && (
         <div className="bg-red-600">You are not rendering a valid document</div>
       )}
-      <div className="flex justify-center w-4/5 mx-auto ">
+      <div className="flex justify-center w-11/12 mx-auto ">
         <div className="w-full h-full max-w-xl lg:max-w-2xl " ref={pdfRef}>
           {loading ? (
             <LoadingA4Page refWidth={pdfWidth} />
@@ -102,30 +100,28 @@ const PageNavigator = ({
   if (numPages <= 1) return null
 
   return (
-    <div>
-      <div className="flex flex-col justify-center my-4">
-        <div className="flex justify-center w-full my-2">
-          {currentPage !== 1 && ''}
-          <div
-            className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
-            onClick={onPreviousPage}
-          >
-            <div className="flex items-center font-bold ">
-              <span className="mx-1">{'<'}</span>
-            </div>
+    <div className="absolute flex flex-col justify-center my-4 transform -translate-x-1/2 -translate-y-1/2 top-5 left-1/2">
+      <div className="flex justify-center w-full my-2">
+        {currentPage !== 1 && ''}
+        <div
+          className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
+          onClick={onPreviousPage}
+        >
+          <div className="flex items-center font-bold ">
+            <span className="mx-1">{'<'}</span>
           </div>
+        </div>
 
-          <div className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg ">
-            <div className="font-bold">{`Page ${currentPage} / ${numPages}`}</div>
-          </div>
-          {currentPage < numPages && ''}
-          <div
-            className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
-            onClick={onNextPage}
-          >
-            <div className="flex items-center font-bold">
-              <span className="mx-1">{'>'}</span>
-            </div>
+        <div className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg ">
+          <div className="font-bold">{`Page ${currentPage} / ${numPages}`}</div>
+        </div>
+        {currentPage < numPages && ''}
+        <div
+          className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
+          onClick={onNextPage}
+        >
+          <div className="flex items-center font-bold">
+            <span className="mx-1">{'>'}</span>
           </div>
         </div>
       </div>
