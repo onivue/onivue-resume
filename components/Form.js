@@ -1,39 +1,72 @@
-import { FormProvider, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import Input from '@/components/Form/Input'
 const Form = () => {
-  const methods = useForm()
-  const { handleSubmit } = methods
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
   const onSubmit = (data) => {
     console.log(data)
   }
 
   return (
     <>
-      <h1 className="text-4xl font-semibold text-center text-white ">
-        CSV Settings
-      </h1>
-      <FormProvider {...methods}>
-        <form
-          className="px-12 py-10 m-2 mt-10 bg-white rounded"
-          onSubmit={handleSubmit(onSubmit)}
+      <div className="pt-8 text-4xl font-semibold text-center text-white">
+        CV Settings
+      </div>
+      <form
+        className="px-4 py-10 m-2 mt-10 bg-white rounded"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex flex-wrap sm:-mx-3">
+          <div className="w-full sm:px-3 xl:w-1/2">
+            <Input
+              label="Vorname"
+              id="vorname"
+              {...register('vorname', { required: 'Vorname is required' })}
+              type="text"
+              helperText="Helper text"
+              defaultValue=""
+              errors={errors}
+              dot={true}
+            />
+          </div>
+          <div className="w-full sm:px-3 xl:w-1/2">
+            <Input
+              label="Name"
+              id="name"
+              {...register('name', { required: 'Name is required' })}
+              type="text"
+              helperText="Helper text"
+              defaultValue="Default Value"
+              errors={errors}
+              dot={true}
+            />
+          </div>
+          <div className="w-full sm:px-3">
+            <Input
+              label="Description"
+              id="description"
+              {...register('description', {
+                required: 'Description is required',
+              })}
+              type="text"
+              helperText="Helper text"
+              defaultValue="Default Value"
+              errors={errors}
+              dot={true}
+            />
+          </div>
+        </div>
+        <button
+          className="px-4 py-1 mt-8 text-white bg-black rounded shadow active:bg-gray-900 focus:outline-none"
+          type="submit"
         >
-          <Input
-            label="Name"
-            id="name"
-            type="text"
-            helperText="Helper text"
-            validation={{ required: 'Custom error message' }}
-            // readOnly
-            defaultValue="Default Value"
-          />
-          <button
-            className="w-full px-6 py-3 mt-4 font-semibold text-green-100 bg-green-400 border rounded hover:bg-green-600 text-md"
-            type="submit"
-          >
-            Submit
-          </button>
-        </form>
-      </FormProvider>
+          Submit
+        </button>
+      </form>
     </>
   )
 }
