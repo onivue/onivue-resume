@@ -15,7 +15,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="flex h-screen mx-auto max-w-[1900px]">
+    <div className="flex flex-1 mx-auto max-w-[1900px] relative">
       {isClient && (
         <BlobProvider document={<MyDoc text={text} />}>
           {({ blob, url, loading, error }) => {
@@ -27,12 +27,16 @@ function Home() {
                   downloadFileUrl={url}
                   loading={loading}
                 />
+
                 <div
-                  className={`fixed z-10 w-full lg:w-3/5 h-full lg:p-4 p-4 pb-28 lg:static lg:block  ${
+                  className={`z-10 absolute lg:max-h-screen  w-full  lg:w-3/5  lg:p-4 p-4 pb-28 lg:static lg:block justify-center   ${
                     !showForm && 'hidden'
-                  }`}
+                  } `}
                 >
-                  <div className="w-full h-full rounded-md bg-gradient-to-b from-purple-500 to-indigo-500">
+                  <div className="w-full h-full overflow-auto rounded-md bg-gradient-to-b from-purple-500 to-indigo-500 no-scrollbar ">
+                    <Form />
+                    <Form />
+                    <Form />
                     <Form />
                   </div>
                 </div>

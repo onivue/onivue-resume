@@ -24,8 +24,8 @@ const Form = () => {
           <div className="w-full sm:px-3 xl:w-1/2">
             <Input
               label="Vorname"
-              id="vorname"
-              {...register('vorname', { required: 'Vorname is required' })}
+              id="vornamex"
+              {...register('vornamex', { required: 'Vorname is required' })}
               type="text"
               helperText="Helper text"
               defaultValue=""
@@ -36,8 +36,8 @@ const Form = () => {
           <div className="w-full sm:px-3 xl:w-1/2">
             <Input
               label="Name"
-              id="name"
-              {...register('name', { required: 'Name is required' })}
+              id="namex"
+              {...register('namex', { required: 'Name is required' })}
               type="text"
               helperText="Helper text"
               defaultValue="Default Value"
