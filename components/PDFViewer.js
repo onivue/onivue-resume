@@ -31,7 +31,7 @@ const PDFViewer = ({ file, loading }) => {
 
   return (
     <div
-      className="relative flex flex-col justify-center h-full p-4 overflow-auto"
+      className="relative flex flex-col justify-center h-full p-4 pt-20 overflow-auto"
       ref={pdfWrapperRef}
     >
       {!loading && !file && (
@@ -40,10 +40,20 @@ const PDFViewer = ({ file, loading }) => {
       <div className="flex justify-center w-11/12 mx-auto ">
         <div className="w-full h-full max-w-xl lg:max-w-2xl " ref={pdfRef}>
           {loading ? (
-            <LoadingA4Page refWidth={pdfWidth} />
+            <LoadingA4Page
+              refWidth={
+                pdfRef.current?.getBoundingClientRect().width || undefined
+              }
+            />
           ) : (
             <Document
-              loading={<LoadingA4Page refWidth={pdfWidth} />}
+              loading={
+                <LoadingA4Page
+                  refWidth={
+                    pdfRef.current?.getBoundingClientRect().width || undefined
+                  }
+                />
+              }
               className="shadow-xl "
               file={file}
               onLoadSuccess={onDocumentLoad}
@@ -51,7 +61,10 @@ const PDFViewer = ({ file, loading }) => {
               <Page
                 scale={1.0}
                 className="rounded "
-                width={pdfWidth}
+                // width={pdfWidth}
+                width={
+                  pdfRef.current?.getBoundingClientRect().width || undefined
+                }
                 pageNumber={currentPage}
               />
             </Document>
