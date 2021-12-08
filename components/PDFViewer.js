@@ -26,33 +26,21 @@ const PDFViewer = ({ file, loading }) => {
   const { width: pdfWidth, height: pdfHeight } = useElementSize(pdfRef)
   const { width: pdfWrapperWidth, height: pdfWrapperHeight } =
     useElementSize(pdfWrapperRef)
-
   // !
 
   return (
-    <div
-      className="relative flex flex-col justify-center h-full p-2 overflow-auto"
-      ref={pdfWrapperRef}
-    >
-      {!loading && !file && (
-        <div className="bg-red-600">You are not rendering a valid document</div>
-      )}
-      <div className="flex justify-center w-11/12 mx-auto ">
+    <>
+      <div className="grid w-11/12 grid-cols-1 mx-auto ">
         <div
-          className="relative w-full h-full max-w-xl lg:max-w-2xl"
+          className="relative w-full h-full max-w-xl col-span-1 mx-auto lg:max-w-2xl"
           ref={pdfRef}
+          id="WRAPPER"
         >
           {loading ? (
-            <LoadingA4Page
-              refWidth={pdfRef.current?.getBoundingClientRect().width || 0}
-            />
+            <LoadingA4Page refWidth={pdfWidth} />
           ) : (
             <Document
-              loading={
-                <LoadingA4Page
-                  refWidth={pdfRef.current?.getBoundingClientRect().width || 0}
-                />
-              }
+              loading={<LoadingA4Page refWidth={pdfWidth} />}
               className="shadow-xl "
               file={file}
               onLoadSuccess={onDocumentLoad}
@@ -60,8 +48,7 @@ const PDFViewer = ({ file, loading }) => {
               <Page
                 scale={1.0}
                 className="rounded "
-                // width={pdfWidth}
-                width={pdfRef.current?.getBoundingClientRect().width || 0}
+                width={pdfWidth}
                 pageNumber={currentPage}
               />
             </Document>
@@ -74,16 +61,10 @@ const PDFViewer = ({ file, loading }) => {
           />
         </div>
       </div>
-      {/* <div>
-        <div className="text-blue-600">
-          {pdfWrapperWidth} / {pdfWrapperHeight}
-        </div>
-        <div className="text-red-600">
-          {pdfWidth} / {pdfHeight}
-        </div>
-        <div className="text-red-600">{window.innerHeight}</div>
-      </div> */}
-    </div>
+      <div>
+        <div className="text-red-600">{pdfWidth}</div>
+      </div>
+    </>
   )
 }
 
