@@ -31,27 +31,26 @@ const PDFViewer = ({ file, loading }) => {
 
   return (
     <div
-      className="relative flex flex-col justify-center h-full p-4 pt-20 overflow-auto"
+      className="relative flex flex-col justify-center h-full p-2 overflow-auto"
       ref={pdfWrapperRef}
     >
       {!loading && !file && (
         <div className="bg-red-600">You are not rendering a valid document</div>
       )}
       <div className="flex justify-center w-11/12 mx-auto ">
-        <div className="w-full h-full max-w-xl lg:max-w-2xl " ref={pdfRef}>
+        <div
+          className="relative w-full h-full max-w-xl lg:max-w-2xl"
+          ref={pdfRef}
+        >
           {loading ? (
             <LoadingA4Page
-              refWidth={
-                pdfRef.current?.getBoundingClientRect().width || undefined
-              }
+              refWidth={pdfRef.current?.getBoundingClientRect().width || 0}
             />
           ) : (
             <Document
               loading={
                 <LoadingA4Page
-                  refWidth={
-                    pdfRef.current?.getBoundingClientRect().width || undefined
-                  }
+                  refWidth={pdfRef.current?.getBoundingClientRect().width || 0}
                 />
               }
               className="shadow-xl "
@@ -62,13 +61,17 @@ const PDFViewer = ({ file, loading }) => {
                 scale={1.0}
                 className="rounded "
                 // width={pdfWidth}
-                width={
-                  pdfRef.current?.getBoundingClientRect().width || undefined
-                }
+                width={pdfRef.current?.getBoundingClientRect().width || 0}
                 pageNumber={currentPage}
               />
             </Document>
           )}
+          <PageNavigator
+            currentPage={currentPage}
+            numPages={numPages}
+            onNextPage={onNextPage}
+            onPreviousPage={onPreviousPage}
+          />
         </div>
       </div>
       {/* <div>
@@ -80,12 +83,6 @@ const PDFViewer = ({ file, loading }) => {
         </div>
         <div className="text-red-600">{window.innerHeight}</div>
       </div> */}
-      <PageNavigator
-        currentPage={currentPage}
-        numPages={numPages}
-        onNextPage={onNextPage}
-        onPreviousPage={onPreviousPage}
-      />
     </div>
   )
 }
@@ -112,8 +109,8 @@ const PageNavigator = ({
   if (numPages <= 1) return null
 
   return (
-    <div className="absolute flex flex-col justify-center my-4 transform -translate-x-1/2 -translate-y-1/2 top-5 left-1/2">
-      <div className="flex justify-center w-full my-2">
+    <div className="absolute bottom-0 flex flex-col justify-center w-full my-2 transform -translate-x-1/2 opacity-25 hover:opacity-80 left-1/2">
+      <div className="flex justify-center w-full my-2 text-sm">
         {currentPage !== 1 && ''}
         <div
           className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
