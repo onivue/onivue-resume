@@ -13,7 +13,7 @@ const Form = () => {
 
   return (
     <>
-      <div className="pt-8 text-4xl font-semibold text-center text-white">
+      <div className="z-50 pt-8 text-4xl font-semibold text-center text-white">
         CV Settings
       </div>
       <form

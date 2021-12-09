@@ -5,34 +5,26 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const PDFViewer = ({ file, loading }) => {
   const [numPages, setNumPages] = useState(null)
-
   const [currentPage, setCurrentPage] = useState(1)
+  const pdfRef = useRef(null)
+  const { width: pdfWidth, height: pdfHeight } = useElementSize(pdfRef)
 
   const onPreviousPage = () => {
     setCurrentPage((prev) => prev - 1)
   }
-
   const onNextPage = () => {
     setCurrentPage((prev) => prev + 1)
   }
-
   const onDocumentLoad = (d) => {
     setNumPages(d.numPages)
     setCurrentPage((prev) => Math.min(prev, d.numPages))
   }
-  //  !
-  const pdfRef = useRef(null)
-  const pdfWrapperRef = useRef(null)
-  const { width: pdfWidth, height: pdfHeight } = useElementSize(pdfRef)
-  const { width: pdfWrapperWidth, height: pdfWrapperHeight } =
-    useElementSize(pdfWrapperRef)
-  // !
 
   return (
     <>
       <div className="grid w-11/12 grid-cols-1 mx-auto ">
         <div
-          className="relative w-full h-full max-w-xl col-span-1 mx-auto lg:max-w-2xl"
+          className="relative w-full h-full max-w-xl col-span-1 mx-auto lg:max-w-2xl "
           ref={pdfRef}
           id="WRAPPER"
         >
@@ -47,7 +39,8 @@ const PDFViewer = ({ file, loading }) => {
             >
               <Page
                 scale={1.0}
-                className="rounded "
+                renderMode="svg"
+                className="rounded-xl"
                 width={pdfWidth}
                 pageNumber={currentPage}
               />
@@ -60,9 +53,7 @@ const PDFViewer = ({ file, loading }) => {
             onPreviousPage={onPreviousPage}
           />
         </div>
-      </div>
-      <div>
-        <div className="text-red-600">{pdfWidth}</div>
+        {/* <div className="text-red-600">{pdfWidth}</div> */}
       </div>
     </>
   )
@@ -74,9 +65,8 @@ const LoadingA4Page = ({ refWidth }) => {
       style={{
         width: refWidth,
         height: (refWidth * 99) / 70,
-        backgroundColor: 'white',
       }}
-      className="rounded shadow-xl animate-pulse"
+      className="bg-white rounded shadow-xl "
     ></div>
   )
 }
