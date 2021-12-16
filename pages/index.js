@@ -46,7 +46,7 @@ function Home() {
                     toggleForm={() => SetShowForm(!showForm)}
                     downloadFileUrl={url}
                   />
-                  <div className="flex flex-col justify-center w-full h-full mx-auto animate-fade-in-down ">
+                  <div className="flex flex-col justify-center w-full h-full max-h-screen mx-auto overflow-auto animate-fade-in-down">
                     <PDFViewer file={url} loading={loading}></PDFViewer>
                   </div>
                 </>
