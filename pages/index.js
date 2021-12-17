@@ -28,9 +28,9 @@ function Home() {
   }, [])
 
   return (
-    <div className="flex flex-1 mx-auto max-w-[1900px] relative">
+    <div className="flex flex-1 mx-auto max-w-[1900px] relative ">
       {isClient && (
-        <div className="flex flex-col items-stretch flex-1 h-full lg:flex-row">
+        <div className="flex flex-col items-stretch flex-1 h-full lg:flex-row ">
           <Backdrop show={showForm && !isDesktop} />
 
           <SettingsContainer show={showForm || isDesktop}>
@@ -46,7 +46,7 @@ function Home() {
                     toggleForm={() => SetShowForm(!showForm)}
                     downloadFileUrl={url}
                   />
-                  <div className="flex flex-col justify-center w-full h-full max-h-screen mx-auto overflow-auto animate-fade-in-down">
+                  <div className="grid w-full h-full max-h-screen grid-cols-1 p-12 mx-auto overflow-auto animate-fade-in-down">
                     <PDFViewer file={url} loading={loading}></PDFViewer>
                   </div>
                 </>

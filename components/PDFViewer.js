@@ -22,39 +22,36 @@ const PDFViewer = ({ file, loading }) => {
 
   return (
     <>
-      <div className="grid w-11/12 grid-cols-1 mx-auto ">
-        <div
-          className="relative w-full h-full max-w-xl col-span-1 mx-auto lg:max-w-2xl "
-          ref={pdfRef}
-          id="WRAPPER"
-        >
-          {loading ? (
-            <LoadingA4Page refWidth={pdfWidth} />
-          ) : (
-            <Document
-              loading={<LoadingA4Page refWidth={pdfWidth} />}
-              className="shadow-xl "
-              file={file}
-              onLoadSuccess={onDocumentLoad}
-            >
-              <Page
-                scale={1.0}
-                renderMode="svg"
-                className="rounded-xl"
-                width={pdfWidth}
-                pageNumber={currentPage}
-              />
-            </Document>
-          )}
-          <PageNavigator
-            currentPage={currentPage}
-            numPages={numPages}
-            onNextPage={onNextPage}
-            onPreviousPage={onPreviousPage}
-          />
-        </div>
-        {/* <div className="text-red-600">{pdfWidth}</div> */}
+      <div
+        className="relative grid items-center justify-center w-full h-full max-w-xl grid-cols-1 mx-auto lg:max-w-2xl"
+        ref={pdfRef}
+        id="WRAPPER"
+      >
+        {loading ? (
+          <LoadingA4Page refWidth={pdfWidth} />
+        ) : (
+          <Document
+            loading={<LoadingA4Page refWidth={pdfWidth} />}
+            className="relative"
+            file={file}
+            onLoadSuccess={onDocumentLoad}
+          >
+            <Page
+              scale={1.0}
+              renderMode="svg"
+              width={pdfWidth}
+              pageNumber={currentPage}
+            />
+            <PageNavigator
+              currentPage={currentPage}
+              numPages={numPages}
+              onNextPage={onNextPage}
+              onPreviousPage={onPreviousPage}
+            />
+          </Document>
+        )}
       </div>
+      {/* <div className="text-red-600">{pdfWidth}</div> */}
     </>
   )
 }
@@ -66,7 +63,7 @@ const LoadingA4Page = ({ refWidth }) => {
         width: refWidth,
         height: (refWidth * 99) / 70,
       }}
-      className="bg-white rounded shadow-xl "
+      className="bg-white rounded-lg shadow-xl"
     ></div>
   )
 }
