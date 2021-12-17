@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no ,height=device-height"
         />
       </Head>
-      <div className="flex min-h-screen">
+      <div className="flex justify-center flex-1 max-w-screen-xl min-h-screen mx-auto">
         <Component {...pageProps} />
       </div>
     </>

@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { useElementSize } from '@/hooks/useElementSize'
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
-const PDFViewer = ({ file, loading }) => {
+const PDFViewer = ({ file, loading, className }) => {
   const [numPages, setNumPages] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
   const pdfRef = useRef(null)
@@ -21,7 +22,7 @@ const PDFViewer = ({ file, loading }) => {
   }
 
   return (
-    <>
+    <div className={className}>
       <div
         className="relative grid items-center justify-center w-full h-full max-w-xl grid-cols-1 mx-auto lg:max-w-2xl"
         ref={pdfRef}
@@ -52,7 +53,7 @@ const PDFViewer = ({ file, loading }) => {
         )}
       </div>
       {/* <div className="text-red-600">{pdfWidth}</div> */}
-    </>
+    </div>
   )
 }
 
@@ -80,26 +81,22 @@ const PageNavigator = ({
     <div className="absolute bottom-0 flex flex-col justify-center w-full my-2 transform -translate-x-1/2 opacity-25 hover:opacity-80 left-1/2">
       <div className="flex justify-center w-full my-2 text-sm">
         {currentPage !== 1 && ''}
-        <div
-          className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
+        <button
+          className="flex items-center justify-center px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
           onClick={onPreviousPage}
         >
-          <div className="flex items-center font-bold ">
-            <span className="mx-1">{'<'}</span>
-          </div>
-        </div>
+          <HiChevronLeft />
+        </button>
 
         <div className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg ">
-          <div className="font-bold">{`Page ${currentPage} / ${numPages}`}</div>
+          <div className="font-bold">{` ${currentPage} / ${numPages}`}</div>
         </div>
         {currentPage < numPages && ''}
         <div
-          className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
+          className="flex items-center justify-center px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
           onClick={onNextPage}
         >
-          <div className="flex items-center font-bold">
-            <span className="mx-1">{'>'}</span>
-          </div>
+          <HiChevronRight />
         </div>
       </div>
     </div>
