@@ -27,11 +27,14 @@ function Home() {
   }, [])
 
   return (
-    <div className="relative flex flex-1 mx-auto overflow-hidden">
+    <>
       {isClient && (
-        <div className="flex flex-col items-stretch flex-1 h-full lg:flex-row ">
+        <div className="flex flex-col flex-1 lg:flex-row lg:max-h-[calc(100vh-75px)] justify-center">
           <Backdrop show={showForm && !isDesktop} />
-          <SettingsContainer show={showForm || isDesktop}>
+          <SettingsContainer
+            show={showForm || isDesktop}
+            className="fixed inset-0 top-0 z-10 p-4 m-4 overflow-auto rounded-md lg:w-1/2 lg:p-4 pb-28 lg:static lg:block bg-gradient-to-b from-purple-500 to-indigo-500 no-scrollbar"
+          >
             <Form />
           </SettingsContainer>
           <BlobProvider document={<MyDoc text={text} />}>
@@ -41,7 +44,7 @@ function Home() {
                   <PDFViewer
                     file={url}
                     loading={loading}
-                    className="grid w-full h-full max-h-screen grid-cols-1 p-12 overflow-auto lg:w-1/2 animate-fade-in-down"
+                    className="grid self-center w-full h-full max-h-screen grid-cols-1 p-12 overflow-auto lg:w-1/2 animate-fade-in-dow"
                   ></PDFViewer>
                   <BottomNavbar
                     isShowForm={showForm}
@@ -54,7 +57,7 @@ function Home() {
           </BlobProvider>
         </div>
       )}
-    </div>
+    </>
   )
 }
 

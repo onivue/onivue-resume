@@ -1,6 +1,6 @@
 import { Transition } from '@headlessui/react'
 
-const SettingsContainer = ({ show, children }) => {
+const SettingsContainer = ({ show, children, className }) => {
   return (
     <Transition
       appear={true}
@@ -12,11 +12,9 @@ const SettingsContainer = ({ show, children }) => {
       leave="transition-all ease-in duration-500 transform"
       leaveFrom="opacity-100 "
       leaveTo="opacity-0 "
-      className="absolute z-10 justify-center w-full p-4 lg:max-h-screen lg:w-1/2 lg:p-4 pb-28 lg:static lg:block"
+      className={className}
     >
-      <div className="w-full h-full overflow-auto rounded-md bg-gradient-to-b from-purple-500 to-indigo-500 no-scrollbar ">
-        {children}
-      </div>
+      {children}
     </Transition>
   )
 }
