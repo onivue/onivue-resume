@@ -29,7 +29,7 @@ function Home() {
   return (
     <>
       {isClient && (
-        <div className="flex flex-col justify-center flex-1 lg:flex-row">
+        <div className="flex flex-col flex-1 lg:flex-row min-h-[calc(100vh-75px)] max-h-[calc(100vh-75px)] justify-center">
           <Backdrop show={showForm && !isDesktop} />
           <SettingsContainer
             show={showForm || isDesktop}
