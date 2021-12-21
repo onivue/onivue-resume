@@ -29,12 +29,15 @@ function Home() {
   return (
     <>
       {isClient && (
-        <div className="flex flex-col flex-1 lg:flex-row lg:max-h-[calc(100vh-75px)] justify-center">
+        <div className="flex flex-col justify-center flex-1 lg:flex-row">
           <Backdrop show={showForm && !isDesktop} />
           <SettingsContainer
             show={showForm || isDesktop}
             className="fixed inset-0 top-0 z-10 p-4 m-4 overflow-auto rounded-md lg:w-1/2 lg:p-4 pb-28 lg:static lg:block bg-gradient-to-b from-purple-500 to-indigo-500 no-scrollbar"
           >
+            <Form />
+            <Form />
+            <Form />
             <Form />
           </SettingsContainer>
           <BlobProvider document={<MyDoc text={text} />}>
