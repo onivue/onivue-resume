@@ -63,7 +63,7 @@ export const MyDoc = ({ text }) => {
     <Document>
       <Page size="A4" style={styles.body}>
         <View style={styles.sectionSide}>
-          <Text style={styles.name}>Albin Hoti {text}</Text>
+          <Text style={styles.name}>Albin Hoti</Text>
           <Text style={styles.jobTitle}>Informatiker</Text>
 
           <View style={styles.cvSection} wrap={false}>
@@ -121,15 +121,7 @@ export const MyDoc = ({ text }) => {
             <Text style={styles.sectionH1} wrap={false}>
               Über mich
             </Text>
-            <Text>
-              My name is Leslie Knope. I am a passionate, over-achieving
-              government employee who believes the government's #1 job is
-              serving the people. By pairing the right people with the right
-              messaging at the right time, the parks department and your local
-              government can make the world a better place for everyone! I have
-              met Joe Biden, and one day I will become the first female
-              President of the United States.
-            </Text>
+            <Text>{text}</Text>
           </View>
           <View style={styles.sectionSeparator}></View>
           <View style={styles.section}>

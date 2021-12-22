@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 import Input from '@/components/Form/Input'
+import TextArea from './Form/TextArea'
 const Form = () => {
   const {
     register,
@@ -28,6 +29,7 @@ const Form = () => {
               {...register('vornamex', { required: 'Vorname is required' })}
               type="text"
               helperText="Helper text"
+              placeholder="..."
               defaultValue=""
               errors={errors}
               dot={true}
@@ -41,8 +43,35 @@ const Form = () => {
               type="text"
               helperText="Helper text"
               defaultValue="Default Value"
+              placeholder="..."
               errors={errors}
               dot={true}
+            />
+          </div>
+          <div className="w-full sm:px-3">
+            <Input
+              label="Radio"
+              id="radio"
+              {...register('radio')}
+              type="radio"
+              helperText="Helper text"
+              defaultValue="Default Value"
+              placeholder="..."
+              errors={errors}
+              dot={false}
+            />
+          </div>
+          <div className="w-full sm:px-3">
+            <Input
+              label="Checkbox"
+              id="checkbox"
+              {...register('checkbox')}
+              type="checkbox"
+              helperText="Helper text"
+              defaultValue="Default Value"
+              placeholder="..."
+              errors={errors}
+              dot={false}
             />
           </div>
           <div className="w-full sm:px-3">
@@ -55,8 +84,25 @@ const Form = () => {
               type="text"
               helperText="Helper text"
               defaultValue="Default Value"
+              placeholder="..."
               errors={errors}
               dot={true}
+            />
+          </div>
+          <div className="w-full sm:px-3">
+            <TextArea
+              label="TextArea"
+              id="textarea"
+              {...register('textarea', {
+                required: 'TextArea is required',
+              })}
+              type="number"
+              helperText="Helper text"
+              defaultValue="Default Value"
+              placeholder="..."
+              errors={errors}
+              dot={true}
+              rows={3}
             />
           </div>
         </div>

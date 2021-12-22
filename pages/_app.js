@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
 
-      <Navigation className="bg-indigo-500 h-[75px] fixed inset-0 z-20" />
+      <Navigation className="bg-indigo-500 h-[75px] fixed inset-0 z-10" />
       <div className="flex flex-col  min-h-screen pt-[75px]">
         <main className="flex flex-col flex-1 lg:flex-row min-h-[calc(100vh-75px)] max-h-[calc(100vh-75px)] justify-center self-center max-w-screen-xl w-full">
           <Component {...pageProps} />

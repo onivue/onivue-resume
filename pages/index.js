@@ -20,7 +20,7 @@ const screens = {
 function Home() {
   const [isClient, setIsClient] = useState(false)
   const [showForm, SetShowForm] = useState(false)
-  const [text, setText] = useState('-')
+  const [text, setText] = useState('')
   const isDesktop = useMediaQuery(`(min-width: ${screens.lg})`)
   useEffect(() => {
     setIsClient(true)
@@ -35,9 +35,20 @@ function Home() {
             show={showForm || isDesktop}
             className="fixed inset-0 top-0 z-10 p-4 m-4 overflow-auto rounded-md lg:z-0 lg:w-1/2 lg:p-4 pb-28 lg:static lg:block bg-gradient-to-b from-purple-500 to-indigo-500 no-scrollbar"
           >
-            <Form />
-            <Form />
-            <Form />
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="message"
+                className="inline-block mb-2 text-sm text-gray-800 sm:text-base"
+              >
+                Message*
+              </label>
+              <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                className="w-full h-64 px-3 py-2 text-gray-800 transition duration-100 border rounded outline-none bg-gray-50 focus:ring ring-indigo-300"
+              />
+            </div>
+
             <Form />
           </SettingsContainer>
           <BlobProvider document={<MyDoc text={text} />}>
