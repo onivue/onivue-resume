@@ -24,7 +24,7 @@ const PDFViewer = ({ file, loading, className }) => {
   return (
     <div className={className}>
       <div
-        className="relative grid items-center justify-center w-full h-full max-w-xl grid-cols-1 mx-auto lg:max-w-2xl"
+        className="relative grid items-center justify-center w-full h-full max-w-2xl grid-cols-1 mx-auto lg:max-w-2xl"
         ref={pdfRef}
         id="WRAPPER"
       >

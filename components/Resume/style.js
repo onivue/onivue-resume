@@ -2,7 +2,7 @@ export const resumeStyle = {
   body: {
     paddingTop: 35,
     paddingBottom: 35,
-    fontFamily: 'Oswald',
+    fontFamily: 'Open Sans',
   },
   wrapper: {
     display: 'flex',

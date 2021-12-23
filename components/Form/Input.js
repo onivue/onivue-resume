@@ -25,10 +25,9 @@ const Input = forwardRef(
         case 'checkbox':
           return 'text-purple-600 focus:border-purple-400 focus:outline-none focus:ring focus:ring-purple-300 focus:ring-offset-0 rounded dark:focus:ring-gray-300'
         default:
-          return 'w-full rounded-md'
+          return 'w-full rounded-md text-black'
       }
     }
-
     return (
       <div>
         {type === 'text' && (
@@ -52,8 +51,7 @@ const Input = forwardRef(
                 ? 'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300  text-opacity-40'
                 : errors[id]
                 ? 'focus:ring-red-500 border-red-500 focus:border-red-500'
-                : 'focus:ring-primary-500 border-gray-300 focus:border-primary-500',
-              'shadow-sm text-black ',
+                : 'focus:ring-primary-500 border-gray-300 focus:border-primary-500 shadow-sm',
             )}
             placeholder={placeholder}
             aria-describedby={id}

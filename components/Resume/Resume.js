@@ -8,7 +8,7 @@ import {
   Image,
 } from '@react-pdf/renderer'
 
-import { resumeStyle } from '@/components/pdfResume/style'
+import { resumeStyle } from '@/components/Resume/style'
 
 Font.register({
   family: 'Open Sans',
@@ -28,43 +28,13 @@ Font.register({
 })
 const styles = StyleSheet.create(resumeStyle)
 
-const ProgressBar = ({ language, progress }) => (
-  <>
-    <Text style={{ fontSize: 10, marginBottom: 3 }}>{language}</Text>
-    <View
-      style={{
-        backgroundColor: '#e2e8f0',
-        height: '5px',
-        borderRadius: '50%',
-        marginBottom: 3,
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: '#5b21b6',
-          height: '5px',
-          width: progress,
-          borderRadius: '50%',
-        }}
-      ></View>
-    </View>
-  </>
-)
-
-export const ListItem = ({ children }) => (
-  <View style={styles.item}>
-    <Text style={styles.bulletPoint}>•</Text>
-    <Text style={styles.itemContent}>{children}</Text>
-  </View>
-)
-
-export const MyDoc = ({ text }) => {
+export const MyDoc = ({ resumeData }) => {
   return (
     <Document>
       <Page size="A4" style={styles.body}>
         <View style={styles.sectionSide}>
-          <Text style={styles.name}>Albin Hoti</Text>
-          <Text style={styles.jobTitle}>Informatiker</Text>
+          <Text style={styles.name}>{resumeData?.name}</Text>
+          <Text style={styles.jobTitle}>{resumeData?.jobTitle}</Text>
 
           <View style={styles.cvSection} wrap={false}>
             <Text style={styles.cvSectionTitle}>Kontakt</Text>
@@ -89,13 +59,11 @@ export const MyDoc = ({ text }) => {
           </View>
           <View style={styles.cvSection} wrap={false}>
             <Text style={styles.cvSectionTitle}>List</Text>
-            {['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'].map(
-              (number, i) => (
-                <ListItem key={i} style={{ flexDirection: 'row' }}>
-                  {number}
-                </ListItem>
-              ),
-            )}
+            {['1', '2', '3', '4', '5', '6'].map((number, i) => (
+              <ListItem key={i} style={{ flexDirection: 'row' }}>
+                {number}
+              </ListItem>
+            ))}
           </View>
           {/* <Image
             source="https://source.unsplash.com/random/800x600"
@@ -121,7 +89,7 @@ export const MyDoc = ({ text }) => {
             <Text style={styles.sectionH1} wrap={false}>
               Über mich
             </Text>
-            <Text>{text}</Text>
+            <Text>{resumeData?.aboutMe}</Text>
           </View>
           <View style={styles.sectionSeparator}></View>
           <View style={styles.section}>
@@ -174,3 +142,33 @@ export const MyDoc = ({ text }) => {
     </Document>
   )
 }
+
+const ProgressBar = ({ language, progress }) => (
+  <>
+    <Text style={{ fontSize: 10, marginBottom: 3 }}>{language}</Text>
+    <View
+      style={{
+        backgroundColor: '#e2e8f0',
+        height: '5px',
+        borderRadius: '50%',
+        marginBottom: 3,
+      }}
+    >
+      <View
+        style={{
+          backgroundColor: '#5b21b6',
+          height: '5px',
+          width: progress,
+          borderRadius: '50%',
+        }}
+      ></View>
+    </View>
+  </>
+)
+
+export const ListItem = ({ children }) => (
+  <View style={styles.item}>
+    <Text style={styles.bulletPoint}>•</Text>
+    <Text style={styles.itemContent}>{children}</Text>
+  </View>
+)

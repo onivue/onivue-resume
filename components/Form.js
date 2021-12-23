@@ -1,17 +1,21 @@
 import { useForm } from 'react-hook-form'
 import Input from '@/components/Form/Input'
 import TextArea from './Form/TextArea'
+import useFormStore from '@/stores/useFormStore'
+import { useEffect } from 'react'
 const Form = () => {
+  const setFormState = useFormStore((state) => state.setFormState)
+  const formState = useFormStore((state) => state.formState)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
-
+  } = useForm({ defaultValues: formState })
   const onSubmit = (data) => {
     console.log(data)
+    setFormState(data)
   }
-
   return (
     <>
       <div className="z-50 pt-8 text-4xl font-semibold text-center text-white">
@@ -22,30 +26,49 @@ const Form = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-wrap sm:-mx-3">
-          <div className="w-full sm:px-3 xl:w-1/2">
+          <div className="w-full sm:p-3 ">
             <Input
-              label="Vorname"
-              id="vornamex"
-              {...register('vornamex', { required: 'Vorname is required' })}
-              type="text"
-              helperText="Helper text"
-              placeholder="..."
-              defaultValue=""
-              errors={errors}
-              dot={true}
-            />
-          </div>
-          <div className="w-full sm:px-3 xl:w-1/2">
-            <Input
+              {...register('name', { required: true })}
               label="Name"
-              id="namex"
-              {...register('namex', { required: 'Name is required' })}
+              id="name"
               type="text"
-              helperText="Helper text"
+              helperText=""
               defaultValue="Default Value"
               placeholder="..."
               errors={errors}
               dot={true}
+            />
+          </div>
+
+          <div className="w-full sm:p-3">
+            <Input
+              {...register('jobTitle', {
+                required: true,
+              })}
+              label="Job Titel"
+              id="jobTitle"
+              type="text"
+              helperText=""
+              defaultValue=""
+              placeholder=""
+              errors={errors}
+              dot={true}
+            />
+          </div>
+          <div className="w-full sm:p-3">
+            <TextArea
+              label="Über mich"
+              id="aboutMe"
+              {...register('aboutMe', {
+                required: true,
+              })}
+              type="number"
+              helperText="Helper text"
+              defaultValue=""
+              placeholder=""
+              errors={errors}
+              dot={true}
+              rows={3}
             />
           </div>
           <div className="w-full sm:px-3">
@@ -55,7 +78,7 @@ const Form = () => {
               {...register('radio')}
               type="radio"
               helperText="Helper text"
-              defaultValue="Default Value"
+              defaultValue=""
               placeholder="..."
               errors={errors}
               dot={false}
@@ -69,40 +92,9 @@ const Form = () => {
               type="checkbox"
               helperText="Helper text"
               defaultValue="Default Value"
-              placeholder="..."
+              placeholder=""
               errors={errors}
               dot={false}
-            />
-          </div>
-          <div className="w-full sm:px-3">
-            <Input
-              label="Description"
-              id="description"
-              {...register('description', {
-                required: 'Description is required',
-              })}
-              type="text"
-              helperText="Helper text"
-              defaultValue="Default Value"
-              placeholder="..."
-              errors={errors}
-              dot={true}
-            />
-          </div>
-          <div className="w-full sm:px-3">
-            <TextArea
-              label="TextArea"
-              id="textarea"
-              {...register('textarea', {
-                required: 'TextArea is required',
-              })}
-              type="number"
-              helperText="Helper text"
-              defaultValue="Default Value"
-              placeholder="..."
-              errors={errors}
-              dot={true}
-              rows={3}
             />
           </div>
         </div>
