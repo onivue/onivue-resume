@@ -24,6 +24,7 @@ const defaultFormValues = {
       summary: 'My Summary',
     },
   ],
+  skills: ['zustand', 'react'],
 }
 const useFormStore = create((set, get) => ({
   formState: defaultFormValues,

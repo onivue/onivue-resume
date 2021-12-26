@@ -45,6 +45,13 @@ export const MyDoc = ({ resumeData }) => {
           <View style={styles.cvSection} wrap={false}>
             <Text style={styles.cvSectionTitle}>Skills</Text>
             <View style={styles.csvTagWrapper}>
+              {resumeData?.skills?.map((tag, index) => {
+                return (
+                  <Text key={index} style={styles.csvTag}>
+                    {tag}
+                  </Text>
+                )
+              })}
               <Text style={styles.csvTag}>React</Text>
               <Text style={styles.csvTag}>Tailiwnd</Text>
               <Text style={styles.csvTag}>Node.js</Text>

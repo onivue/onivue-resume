@@ -1,5 +1,6 @@
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import Input from '@/components/Form/Input'
+import InputTag from '@/components/Form/InputTag'
 import TextArea from './Form/TextArea'
 import useFormStore from '@/stores/useFormStore'
 import { useEffect } from 'react'
@@ -10,6 +11,7 @@ const Form = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm({ defaultValues: formState })
   const onSubmit = (data) => {
@@ -84,6 +86,7 @@ const Form = () => {
               dot={false}
             />
           </div>
+
           <div className="w-full sm:px-3">
             <Input
               label="Checkbox"
@@ -95,6 +98,15 @@ const Form = () => {
               placeholder=""
               errors={errors}
               dot={false}
+            />
+          </div>
+          <div className="w-full sm:px-3">
+            <Controller
+              control={control}
+              name="skills"
+              render={({ field: { value, onChange } }) => (
+                <InputTag id="skills" value={value} setValue={onChange} />
+              )}
             />
           </div>
         </div>
