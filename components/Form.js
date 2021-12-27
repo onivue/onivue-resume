@@ -4,6 +4,7 @@ import InputTag from '@/components/Form/InputTag'
 import TextArea from './Form/TextArea'
 import useFormStore from '@/stores/useFormStore'
 import { useEffect } from 'react'
+import Button from '@/components/Button/Button'
 const Form = () => {
   const setFormState = useFormStore((state) => state.setFormState)
   const formState = useFormStore((state) => state.formState)
@@ -110,12 +111,12 @@ const Form = () => {
             />
           </div>
         </div>
-        <button
-          className="px-4 py-1 mt-8 text-white bg-black rounded shadow active:bg-gray-900 focus:outline-none"
-          type="submit"
-        >
+        <Button className="mt-2" type="secondary">
           Submit
-        </button>
+        </Button>
+        <Button className="mt-2" type="primary">
+          Submit
+        </Button>
       </form>
     </>
   )
