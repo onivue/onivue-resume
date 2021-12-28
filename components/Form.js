@@ -21,13 +21,7 @@ const Form = () => {
   }
   return (
     <>
-      <div className="z-50 pt-8 text-4xl font-semibold text-center text-white">
-        CV Settings
-      </div>
-      <form
-        className="px-4 py-10 m-2 mt-10 bg-white rounded"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="px-4 py-4 m-2 " onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-wrap sm:-mx-3">
           <div className="w-full sm:p-3 ">
             <Input

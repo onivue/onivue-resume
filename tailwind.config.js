@@ -1,5 +1,4 @@
 module.exports = {
-  mode: 'jit',
   purge: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -56,6 +55,10 @@ module.exports = {
         'fade-out-down': 'fade-out-down 0.5s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-out',
         'fade-out-up': 'fade-out-up 0.5s ease-out',
+      },
+      boxShadow: {
+        bold: '4px 4px 0px',
+        bolder: '8px 8px 0px',
       },
     },
   },

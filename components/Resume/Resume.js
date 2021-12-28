@@ -52,11 +52,6 @@ export const MyDoc = ({ resumeData }) => {
                   </Text>
                 )
               })}
-              <Text style={styles.csvTag}>React</Text>
-              <Text style={styles.csvTag}>Tailiwnd</Text>
-              <Text style={styles.csvTag}>Node.js</Text>
-              <Text style={styles.csvTag}>Firebase</Text>
-              <Text style={styles.csvTag}>Zustand.js</Text>
             </View>
           </View>
           <View style={styles.cvSection} wrap={false}>

@@ -64,7 +64,7 @@ const LoadingA4Page = ({ refWidth }) => {
         width: refWidth,
         height: (refWidth * 99) / 70,
       }}
-      className="bg-white rounded-lg shadow-xl"
+      className="bg-white border rounded-lg"
     ></div>
   )
 }
