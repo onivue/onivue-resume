@@ -5,7 +5,7 @@ import { MyDoc } from '@/components/Resume/Resume'
 import PDFViewer from '@/components/PDFViewer/PDFViewer'
 import BottomNavbar from '@/components/BottomNavbar'
 import Form from '@/components/Form'
-import Backdrop from '@/components/Backdrop'
+import Backdrop from '@/components/Backdrop/Backdrop'
 import SettingsContainer from '@/components/SettingsContainer/SettingsContainer'
 import useFormStore from '@/stores/useFormStore'
 import { classNames } from '@/lib/helper'
@@ -58,7 +58,7 @@ function Home() {
                   <PDFViewer
                     file={url}
                     loading={loading}
-                    className="grid self-center w-full h-full max-h-screen grid-cols-1 p-8 overflow-auto lg:w-1/2 animate-fade-in-down"
+                    className="grid self-center w-full h-full max-h-screen grid-cols-1 p-1 overflow-auto lg:p-8 lg:w-1/2 animate-fade-in-down"
                   ></PDFViewer>
                   <BottomNavbar
                     isShowForm={showForm}

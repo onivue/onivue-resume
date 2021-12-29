@@ -21,8 +21,12 @@
   }
 }
 
+.loadingA4Page {
+  @apply rounded-lg ring-black ring-1;
+}
+
 .react-pdf__Page__canvas,
 .react-pdf__Page__svg,
 .react-pdf__Document {
-  @apply border rounded-lg;
+  @apply rounded-lg;
 }

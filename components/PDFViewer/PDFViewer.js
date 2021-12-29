@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { useElementSize } from '@/hooks/useElementSize'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
+import { Transition } from '@headlessui/react'
+import { motion, AnimatePresence } from 'framer-motion'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
 const PDFViewer = ({ file, loading, className }) => {
@@ -28,44 +30,48 @@ const PDFViewer = ({ file, loading, className }) => {
         ref={pdfRef}
         id="WRAPPER"
       >
-        {loading ? (
-          <LoadingA4Page refWidth={pdfWidth} />
-        ) : (
-          <Document
-            loading={<LoadingA4Page refWidth={pdfWidth} />}
-            className="relative"
-            file={file}
-            onLoadSuccess={onDocumentLoad}
-          >
-            <Page
-              scale={1.0}
-              renderMode="svg"
-              width={pdfWidth}
-              pageNumber={currentPage}
-            />
-            <PageNavigator
-              currentPage={currentPage}
-              numPages={numPages}
-              onNextPage={onNextPage}
-              onPreviousPage={onPreviousPage}
-            />
-          </Document>
-        )}
+        <LoadingA4Page refWidth={pdfWidth}>
+          {!loading && (
+            <Document
+              loading={''}
+              className="relative"
+              file={file}
+              onLoadSuccess={onDocumentLoad}
+              className="animate-fade-in"
+            >
+              <Page
+                scale={1.0}
+                renderMode="svg"
+                width={pdfWidth}
+                pageNumber={currentPage}
+                loading={''}
+              />
+              <PageNavigator
+                currentPage={currentPage}
+                numPages={numPages}
+                onNextPage={onNextPage}
+                onPreviousPage={onPreviousPage}
+              />
+            </Document>
+          )}
+        </LoadingA4Page>
       </div>
       {/* <div className="text-red-600">{pdfWidth}</div> */}
     </div>
   )
 }
 
-const LoadingA4Page = ({ refWidth }) => {
+const LoadingA4Page = ({ refWidth, children }) => {
   return (
     <div
       style={{
         width: refWidth,
         height: (refWidth * 99) / 70,
       }}
-      className="bg-white border rounded-lg"
-    ></div>
+      className="bg-white loadingA4Page"
+    >
+      {children}
+    </div>
   )
 }
 

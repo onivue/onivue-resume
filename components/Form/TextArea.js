@@ -61,7 +61,7 @@ const TextArea = forwardRef(
             </div>
           )}
         </div>
-        <div className="p-2">
+        <div className="pl-2">
           {helperText !== '' && (
             <div className="mb-2 text-xs text-gray-500">{helperText}</div>
           )}

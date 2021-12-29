@@ -6,7 +6,7 @@ const Backdrop = ({ show }) => {
       // appear={true}
       // as={Fragment}
       show={show}
-      enter=" transition ease-out duration-300 transform "
+      enter=" transition ease-out duration-150 transform "
       enterFrom="opacity-0 "
       enterTo="opacity-100"
       leave="transition-all ease-in duration-300 transform"

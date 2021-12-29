@@ -58,7 +58,7 @@ const Input = forwardRef(
           </label>
         )}
 
-        <div className="mt-1 ">
+        <div className="relative mt-1">
           <input
             {...rest}
             type={type}

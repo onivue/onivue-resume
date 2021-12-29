@@ -11,19 +11,21 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: colors.green[50],
-          100: colors.green[100],
-          200: colors.green[200],
-          300: colors.green[300],
-          400: colors.green[400],
-          500: colors.green[500],
-          600: colors.green[600],
-          700: colors.green[700],
-          800: colors.green[800],
-          900: colors.green[900],
+          ...colors.green,
         },
       },
       keyframes: {
+        'fade-in': {
+          '0%': {
+            opacity: '0',
+          },
+          '20%': {
+            opacity: '0',
+          },
+          '100%': {
+            opacity: '1',
+          },
+        },
         'fade-in-down': {
           '0%': {
             opacity: '0',
@@ -67,6 +69,7 @@ module.exports = {
         },
       },
       animation: {
+        'fade-in': 'fade-in 1s ease-in',
         'fade-in-down': 'fade-in-down 0.5s ease-out',
         'fade-out-down': 'fade-out-down 0.5s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-out',
