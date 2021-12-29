@@ -21,9 +21,9 @@ const Form = () => {
   }
   return (
     <>
-      <form className="px-4 py-4 m-2 " onSubmit={handleSubmit(onSubmit)}>
+      <form className="p-4" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-wrap sm:-mx-3">
-          <div className="w-full sm:p-3 ">
+          <div className="w-full sm:p-2 ">
             <Input
               {...register('name', { required: true })}
               label="Name"
@@ -37,7 +37,7 @@ const Form = () => {
             />
           </div>
 
-          <div className="w-full sm:p-3">
+          <div className="w-full sm:p-2">
             <Input
               {...register('jobTitle', {
                 required: true,
@@ -50,16 +50,16 @@ const Form = () => {
               placeholder=""
               errors={errors}
               dot={true}
+              helperText="mit Enter bestätigen"
             />
           </div>
-          <div className="w-full sm:p-3">
+          <div className="w-full sm:p-2">
             <TextArea
               label="Über mich"
               id="aboutMe"
               {...register('aboutMe', {
                 required: true,
               })}
-              type="number"
               helperText="Helper text"
               defaultValue=""
               placeholder=""
@@ -68,47 +68,47 @@ const Form = () => {
               rows={3}
             />
           </div>
-          <div className="w-full sm:px-3">
+          <div className="w-full sm:p-2">
             <Input
               label="Radio"
               id="radio"
               {...register('radio')}
               type="radio"
               helperText="Helper text"
-              defaultValue=""
-              placeholder="..."
               errors={errors}
               dot={false}
             />
           </div>
 
-          <div className="w-full sm:px-3">
+          <div className="w-full sm:p-2">
             <Input
               label="Checkbox"
               id="checkbox"
               {...register('checkbox')}
               type="checkbox"
               helperText="Helper text"
-              defaultValue="Default Value"
-              placeholder=""
               errors={errors}
               dot={false}
             />
           </div>
-          <div className="w-full sm:px-3">
+          <div className="w-full sm:p-2">
             <Controller
               control={control}
               name="skills"
               render={({ field: { value, onChange } }) => (
-                <InputTag id="skills" value={value} setValue={onChange} />
+                <InputTag
+                  label="Skills"
+                  id="skills"
+                  value={value}
+                  setValue={onChange}
+                  placeholder="..."
+                  helperText="mit Enter bestätigen"
+                />
               )}
             />
           </div>
         </div>
         <Button className="mt-2" type="secondary">
-          Submit
-        </Button>
-        <Button className="mt-2" type="primary">
           Submit
         </Button>
       </form>

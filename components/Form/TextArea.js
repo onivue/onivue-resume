@@ -17,9 +17,19 @@ const TextArea = forwardRef(
     },
     ref,
   ) => {
+    const baseStyle = 'transition ease-in duration-150 ease-in'
+    const styles = {
+      base: 'w-full rounded-md text-black shadow-bold',
+      active:
+        'focus:ring-primary-300 focus:border-primary-200 focus:shadow-primary-200',
+      disabled:
+        'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300  text-opacity-40',
+      error:
+        'focus:ring-red-500 border-red-500 focus:border-red-500 shadow-red-300',
+    }
     return (
       <div>
-        <label htmlFor={id} className="block text-sm font-normal ">
+        <label htmlFor={id} className="block text-sm font-semibold ">
           {label}
           {dot && <span className="text-red-500 pl-0.5">*</span>}
         </label>
@@ -32,12 +42,13 @@ const TextArea = forwardRef(
             aria-required={dot}
             aria-invalid={!!errors[id]}
             className={classNames(
+              baseStyle,
+              styles.base,
               readOnly
-                ? 'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300  text-opacity-40'
+                ? styles.disabled
                 : errors[id]
-                ? 'focus:ring-red-500 border-red-500 focus:border-red-500'
-                : 'focus:ring-primary-500 border-gray-300 focus:border-primary-500',
-              'block w-full rounded-md shadow-sm text-black ',
+                ? styles.error
+                : styles.active,
             )}
             placeholder={placeholder}
             aria-describedby={id}
@@ -50,7 +61,7 @@ const TextArea = forwardRef(
             </div>
           )}
         </div>
-        <div className="mt-1">
+        <div className="p-2">
           {helperText !== '' && (
             <div className="mb-2 text-xs text-gray-500">{helperText}</div>
           )}

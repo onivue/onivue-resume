@@ -26,30 +26,22 @@ const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {
   }
 
   return (
-    <div className="p-1 border-2 rounded">
+    <div>
       <Input
         value={input}
-        placeholder="Enter a tag"
         onKeyDown={onKeyDown}
         onChange={onChange}
-        className="p-2 mx-2 bg-indigo-100 rounded"
         name={id}
         id={id}
         ref={ref}
+        {...rest}
       />
-
-      <button
-        className="p-2 text-white bg-blue-400 rounded shadow"
-        onClick={onKeyDown}
-      >
-        ADD
-      </button>
 
       <div className="flex flex-wrap gap-2">
         {value.map((tag, i) => (
           <div
             key={i}
-            className="px-3 py-1 my-1 text-sm bg-indigo-200 rounded-full min-w-[50px] text-center"
+            className="px-3 py-1 my-1 text-sm bg-primary-200 rounded-full min-w-[50px] text-center "
           >
             {tag}
           </div>
