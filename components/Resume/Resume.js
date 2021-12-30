@@ -148,22 +148,8 @@ export const MyDoc = ({ resumeData }) => {
 const ProgressBar = ({ language, progress }) => (
   <>
     <Text style={{ fontSize: 10, marginBottom: 3 }}>{language}</Text>
-    <View
-      style={{
-        backgroundColor: '#e2e8f0',
-        height: '5px',
-        borderRadius: '50%',
-        marginBottom: 3,
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: '#5b21b6',
-          height: '5px',
-          width: progress,
-          borderRadius: '50%',
-        }}
-      ></View>
+    <View style={styles.progressBarLine}>
+      <View style={{ width: progress, ...styles.progressBarValue }}></View>
     </View>
   </>
 )

@@ -1,3 +1,8 @@
+const colors = {
+  primary: 'rgba(46,204,113)',
+  secondary: 'rgba(46,204,113,0.1)',
+}
+
 export const resumeStyle = {
   body: {
     paddingTop: 35,
@@ -20,7 +25,7 @@ export const resumeStyle = {
     width: 220,
     paddingTop: 40,
     paddingHorizontal: 24,
-    backgroundColor: '#f7fafc',
+    backgroundColor: 'white',
   },
   sectionSideOverlay: {
     position: 'absolute',
@@ -28,7 +33,7 @@ export const resumeStyle = {
     zIndex: '20',
     top: '0',
     width: 220,
-    backgroundColor: '#f7fafc',
+    backgroundColor: 'white',
   },
   sectionWrapper: {
     display: 'flex',
@@ -42,7 +47,7 @@ export const resumeStyle = {
     // height: '100%',
   },
   sectionH1: {
-    color: '#5b21b6',
+    color: colors.primary,
     fontWeight: '600',
     fontSize: 18,
     paddingBottom: '10px',
@@ -50,7 +55,7 @@ export const resumeStyle = {
   sectionSeparator: {
     height: '3px',
     width: '100%',
-    backgroundColor: '#f7fafc',
+    backgroundColor: colors.secondary,
     marginVertical: '15px',
   },
   sectionH2: {
@@ -88,8 +93,8 @@ export const resumeStyle = {
   csvTag: {
     fontSize: 8,
     borderRadius: '50%',
-    color: 'white',
-    backgroundColor: '#5b21b6',
+    color: colors.primary,
+    backgroundColor: colors.secondary,
     paddingHorizontal: 6,
     paddingVertical: 2,
     marginRight: 4,
@@ -102,10 +107,21 @@ export const resumeStyle = {
   bulletPoint: {
     width: 10,
     fontSize: 10,
-    color: '#5b21b6',
+    color: colors.primary,
   },
   itemContent: {
     flex: 1,
     fontSize: 10,
+  },
+  progressBarLine: {
+    backgroundColor: colors.secondary,
+    height: '5px',
+    borderRadius: '50%',
+    marginBottom: 3,
+  },
+  progressBarValue: {
+    backgroundColor: colors.primary,
+    height: '5px',
+    borderRadius: '50%',
   },
 }
