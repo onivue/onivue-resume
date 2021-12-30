@@ -4,6 +4,10 @@ import create from 'zustand'
 const defaultFormValues = {
   name: 'Bruce Wayne',
   jobTitle: 'Batman',
+  address: 'Street XY1',
+  plz: '9000',
+  phone: '071 000 00 00',
+  mail: 'bruce.wayne@batman.com',
   aboutMe:
     'My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice.',
   experience: [
@@ -27,9 +31,9 @@ const defaultFormValues = {
   skills: ['zustand', 'react'],
 }
 const useFormStore = create((set, get) => ({
-  formState: defaultFormValues,
-  setFormState: (payload) => {
-    set({ formState: payload })
+  formValues: defaultFormValues,
+  setFormValues: (payload) => {
+    set({ formValues: payload })
   },
   StateDebug: ({ className }) => {
     const [state, setState] = useState('X')

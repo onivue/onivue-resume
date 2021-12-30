@@ -6,7 +6,6 @@ const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {
 
   const onKeyDown = (e) => {
     const val = e.target.value
-    console.log(e.key)
     if (e.key === 'Enter') {
       e.preventDefault()
       if (val) {

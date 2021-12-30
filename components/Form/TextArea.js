@@ -11,7 +11,8 @@ const TextArea = forwardRef(
       helperText = '',
       id,
       readOnly = false,
-      errors,
+      errors = {},
+      dirtyFields = {},
       dot,
       ...rest
     },
@@ -32,6 +33,7 @@ const TextArea = forwardRef(
         <label htmlFor={id} className="block text-sm font-semibold ">
           {label}
           {dot && <span className="text-red-500 pl-0.5">*</span>}
+          {dirtyFields[id] && <span className="text-blue-500 pl-0.5">*</span>}
         </label>
         <div className="relative mt-1">
           <textarea
@@ -61,7 +63,7 @@ const TextArea = forwardRef(
             </div>
           )}
         </div>
-        <div className="pl-2">
+        <div className="p-1 pl-2">
           {helperText !== '' && (
             <div className="mb-2 text-xs text-gray-500">{helperText}</div>
           )}

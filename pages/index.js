@@ -27,8 +27,8 @@ function Home() {
     setIsClient(true)
   }, [])
 
-  const formState = useFormStore((state) => state.formState)
-  const StateDebug = useFormStore((state) => state.StateDebug)
+  const formValues = useFormStore((state) => state.formValues)
+  // const StateDebug = useFormStore((state) => state.StateDebug)
 
   return (
     <>
@@ -43,22 +43,22 @@ function Home() {
             className={classNames(
               'transition-all duration-75 ease-in',
               'fixed inset-0 top-0 z-10 p-4 mx-4 my-4 overflow-auto',
-              'bg-white border rounded-md lg:mx-0 lg:z-0 lg:w-1/2 lg:p-4 pb-28 lg:static lg:blockno-scrollbar',
+              'bg-white border rounded-md lg:mx-0 lg:z-0 lg:w-1/2 lg:p-4 pb-28 lg:static',
             )}
           >
-            <div className="pt-8 font-mono text-4xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg h-28 shadow-bold hover:shadow-bolder hover:shadow-green-200 shadow-green-200">
+            <div className="pt-8 font-mono text-4xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg h-28 shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
               Settings
             </div>
             <Form />
           </SettingsContainer>
-          <BlobProvider document={<MyDoc resumeData={formState} />}>
+          <BlobProvider document={<MyDoc resumeData={formValues} />}>
             {({ blob, url, loading, error }) => {
               return (
                 <>
                   <PDFViewer
                     file={url}
                     loading={loading}
-                    className="grid self-center w-full h-full max-h-screen grid-cols-1 p-1 overflow-auto lg:p-8 lg:w-1/2 animate-fade-in-down"
+                    className="grid self-center w-full h-full max-h-screen grid-cols-1 p-1 lg:p-8 lg:w-1/2 animate-fade-in-down"
                   ></PDFViewer>
                   <BottomNavbar
                     isShowForm={showForm}

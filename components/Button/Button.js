@@ -35,18 +35,18 @@ const sizes = {
 export const Button = forwardRef(
   (
     {
-      type = 'primary',
+      style = 'primary',
       rounded,
       size,
       disabled,
       className = '',
       children,
-      ...props
+      ...rest
     },
     ref,
   ) => (
     <button
-      {...props}
+      {...rest}
       disabled={disabled}
       ref={ref}
       className={classNames(
@@ -54,8 +54,8 @@ export const Button = forwardRef(
         baseStyle,
         rounded ? 'rounded-full' : 'rounded-md',
         sizes[size] || sizes.md,
-        styles[type].base || styles.primary,
-        disabled ? styles[type].disabled : styles[type].active,
+        styles[style].base || styles.primary,
+        disabled ? styles[style].disabled : styles[style].active,
       )}
     >
       {children}

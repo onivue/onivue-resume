@@ -65,10 +65,10 @@ const LoadingA4Page = ({ refWidth, children }) => {
   return (
     <div
       style={{
-        width: refWidth,
         height: (refWidth * 99) / 70,
+        width: refWidth,
       }}
-      className="bg-white loadingA4Page"
+      className="w-full bg-white loadingA4Page"
     >
       {children}
     </div>

@@ -12,7 +12,8 @@ const Input = forwardRef(
       id,
       type = 'text',
       readOnly = false,
-      errors = [],
+      errors = {},
+      dirtyFields = {},
       dot,
       ...rest
     },
@@ -55,6 +56,7 @@ const Input = forwardRef(
           <label htmlFor={id} className="block text-sm font-semibold">
             {label}
             {dot && <span className="text-red-500 pl-0.5">*</span>}
+            {dirtyFields[id] && <span className="text-blue-500 pl-0.5">*</span>}
           </label>
         )}
 
@@ -83,15 +85,16 @@ const Input = forwardRef(
           />
 
           {type !== 'text' && (
-            <>
-              <label
-                htmlFor={id}
-                className="ml-2 text-sm font-semibold align-middle"
-              >
-                {label}
-                {dot && <span className="text-red-500 pl-0.5">*</span>}
-              </label>
-            </>
+            <label
+              htmlFor={id}
+              className="ml-2 text-sm font-semibold align-middle"
+            >
+              {label}
+              {dot && <span className="text-red-500 pl-0.5">*</span>}
+              {dirtyFields[id] && (
+                <span className="text-blue-500 pl-0.5">*</span>
+              )}
+            </label>
           )}
           {errors[id] && (
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
