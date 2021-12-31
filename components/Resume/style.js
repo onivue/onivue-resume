@@ -24,7 +24,8 @@ export const resumeStyle = {
     top: '0',
     width: 220,
     paddingTop: 40,
-    paddingHorizontal: 24,
+    paddingLeft: 20,
+    paddingRight: 12,
     backgroundColor: 'white',
   },
   sectionSideOverlay: {

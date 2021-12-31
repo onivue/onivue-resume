@@ -5,7 +5,7 @@ const defaultFormValues = {
   name: 'Bruce Wayne',
   jobTitle: 'Batman',
   address: 'Street XY1',
-  plz: '9000',
+  plz: '9000 Gotham',
   phone: '071 000 00 00',
   mail: 'bruce.wayne@batman.com',
   aboutMe:
@@ -13,7 +13,7 @@ const defaultFormValues = {
   experience: [
     {
       title: 'SharePoint Application Engineer',
-      location: 'St. Gallen',
+      location: 'Gotham',
       from: '01.01.2010',
       to: '01.01.2020',
       summary: 'My Summary',
@@ -28,7 +28,7 @@ const defaultFormValues = {
       summary: 'My Summary',
     },
   ],
-  skills: ['zustand', 'react'],
+  skills: ['react', 'tailwind'],
 }
 const useFormStore = create((set, get) => ({
   formValues: defaultFormValues,

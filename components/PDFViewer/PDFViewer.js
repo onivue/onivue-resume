@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { useElementSize } from '@/hooks/useElementSize'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-import { Transition } from '@headlessui/react'
-import { motion, AnimatePresence } from 'framer-motion'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
 const PDFViewer = ({ file, loading, className }) => {
