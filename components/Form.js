@@ -3,40 +3,31 @@ import Input from '@/components/Form/Input'
 import InputTag from '@/components/Form/InputTag'
 import TextArea from './Form/TextArea'
 import useFormStore from '@/stores/useFormStore'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Button from '@/components/Button/Button'
 
 const Form = () => {
   const setFormValues = useFormStore((state) => state.setFormValues)
   const formValues = useFormStore((state) => state.formValues)
+  const timeout = useRef(null)
 
   const {
     register,
-    handleSubmit,
     control,
     watch,
-    reset,
-    formState,
-    formState: { errors, isDirty, dirtyFields },
-  } = useForm({ defaultValues: formValues })
+    formState: { errors },
+  } = useForm({ defaultValues: formValues, mode: 'onChange' })
 
-  const onSubmit = (data) => {
-    console.log(data)
-    reset({}, { keepValues: true })
-    setFormValues(data)
-  }
   useEffect(() => {
-    console.log(dirtyFields, isDirty)
-  }, [formState])
-
-  // const watchAllFields = watch()
-  // useEffect(() => {
-  //   const subscription = watch((value, { name, type }) => {
-  //     console.log(value, name, type)
-  //     setFormState(value)
-  //   })
-  //   return () => subscription.unsubscribe()
-  // }, [watchAllFields])
+    const subscription = watch((value, { name, type }) => {
+      clearTimeout(timeout.current)
+      timeout.current = setTimeout(() => {
+        console.log(value, name, type)
+        setFormValues(value)
+      }, 600)
+    })
+    return () => subscription.unsubscribe()
+  }, [watch])
 
   const fields = [
     {
@@ -93,7 +84,7 @@ const Form = () => {
 
   return (
     <>
-      <form className="py-4 lg:p-4" onSubmit={handleSubmit(onSubmit)}>
+      <form className="py-4 lg:p-4">
         {fields.map((field) => {
           if (
             field.type === 'text' ||
@@ -111,7 +102,6 @@ const Form = () => {
                   helperText={field.helperText}
                   dot={field.required}
                   errors={errors}
-                  dirtyFields={dirtyFields}
                 />
               </div>
             )
@@ -131,7 +121,6 @@ const Form = () => {
                   dot={field.required}
                   rows={field.rows || 3}
                   errors={errors}
-                  dirtyFields={dirtyFields}
                 />
               </div>
             )
@@ -152,7 +141,6 @@ const Form = () => {
                       dot={field.required}
                       setValue={onChange}
                       value={value}
-                      dirtyFields={dirtyFields}
                     />
                   )}
                 />
@@ -160,12 +148,6 @@ const Form = () => {
             )
           }
         })}
-
-        {isDirty && dirtyFields && (
-          <Button className="w-full mt-6" type="submit" style="secondary">
-            Änderungen Übernehmen
-          </Button>
-        )}
       </form>
     </>
   )

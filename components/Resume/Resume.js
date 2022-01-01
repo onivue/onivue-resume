@@ -42,15 +42,17 @@ export const MyDoc = ({ resumeData }) => {
               objectFit: 'cover',
             }}
           />
-          <Text style={styles.name}>{resumeData?.name}</Text>
+          <Text style={styles.name}>
+            {resumeData?.name.replace(/\s+/g, '\n')}
+          </Text>
           <Text style={styles.jobTitle}>{resumeData?.jobTitle}</Text>
 
           <View style={styles.cvSection} wrap={false}>
             {[
-              resumeData?.address,
-              resumeData?.plz,
-              resumeData?.phone,
-              resumeData?.mail,
+              resumeData.address,
+              resumeData.plz,
+              resumeData.phone,
+              resumeData.mail,
             ].map((d, i) => {
               if (d) {
                 return (

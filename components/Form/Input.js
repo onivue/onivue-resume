@@ -92,7 +92,7 @@ const Input = forwardRef(
               {label}
               {dot && <span className="text-red-500 pl-0.5">*</span>}
               {dirtyFields[id] && (
-                <span className="text-blue-500 pl-0.5">*</span>
+                <span className="text-blue-500 pl-0.5">has changes</span>
               )}
             </label>
           )}
