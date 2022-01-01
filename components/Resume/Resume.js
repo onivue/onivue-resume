@@ -113,32 +113,38 @@ export const MyDoc = ({ resumeData }) => {
           <View style={styles.sectionSeparator}></View>
           <View style={styles.section}>
             <Text style={styles.sectionH1}>Erfahrung</Text>
-            <View wrap={false}>
-              <Text style={styles.sectionH2}>JOB TITLE</Text>
-              <Text style={styles.sectionH3}>
-                St. Gallen | April 2019 - Aktuell
-              </Text>
-              {['1', '2', '3', '4', '5'].map((number, i) => (
-                <ListItem key={i} style={{ flexDirection: 'row' }}>
-                  {number}
-                </ListItem>
-              ))}
-            </View>
+
+            {resumeData?.experience.map((item, i) => {
+              return (
+                <View wrap={false} key={i}>
+                  <Text style={styles.sectionH2}>{item.title}</Text>
+                  <Text style={styles.sectionH3}>
+                    {item.location} | {item.from} - {item.to}
+                  </Text>
+                  {['1', '2', '3', '4', '5'].map((number, i) => (
+                    <ListItem key={i} style={{ flexDirection: 'row' }}>
+                      {number}
+                    </ListItem>
+                  ))}
+                </View>
+              )
+            })}
           </View>
 
           <View style={styles.sectionSeparator}></View>
+
           <View style={styles.section}>
             <Text style={styles.sectionH1}>Ausbildung</Text>
-            <View wrap={false}>
-              <Text style={styles.sectionH2}>Informatiker EFZ</Text>
-              <Text style={styles.sectionH3}>
-                WISS St. Gallen | 2017 - 2019
-              </Text>
-            </View>
-            <View wrap={false}>
-              <Text style={styles.sectionH2}>Detailhandelsfachmann EFZ</Text>
-              <Text style={styles.sectionH3}>KBZ St. Gallen | 2012 - 2014</Text>
-            </View>
+            {resumeData?.education.map((item, i) => {
+              return (
+                <View wrap={false} key={i}>
+                  <Text style={styles.sectionH2}>{item.title}</Text>
+                  <Text style={styles.sectionH3}>
+                    {item.location} | {item.from} - {item.to}
+                  </Text>
+                </View>
+              )
+            })}
           </View>
         </View>
 

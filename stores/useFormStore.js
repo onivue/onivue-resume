@@ -12,7 +12,7 @@ const defaultFormValues = {
     'My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice.',
   experience: [
     {
-      title: 'SharePoint Application Engineer',
+      title: 'Application Engineer',
       location: 'Gotham',
       from: '01.01.2010',
       to: '01.01.2020',
@@ -22,7 +22,7 @@ const defaultFormValues = {
   education: [
     {
       title: 'Technology School',
-      location: 'St. Gallen',
+      location: 'Gotham',
       from: '01.01.2013',
       to: '01.01.2018',
       summary: 'My Summary',
