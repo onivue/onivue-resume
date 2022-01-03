@@ -245,7 +245,7 @@ const Form = () => {
 
   return (
     <>
-      <form className="py-4 lg:p-4 ">
+      <div className="py-4 lg:p-4 ">
         {fieldGroups.map((fieldGroup, i) => {
           return (
             <Accordion
@@ -335,7 +335,7 @@ const Form = () => {
             </Accordion>
           )
         })}
-      </form>
+      </div>
     </>
   )
 }
