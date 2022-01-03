@@ -39,8 +39,8 @@ const useFormStore = create((set, get) => ({
     const [state, setState] = useState('X')
     return (
       <div className={className}>
-        <p className="text-xs text-center">DEBUG FORM STATE</p>
-        {JSON.stringify(get().formState, null, 4)}
+        <p className="text-xs text-center">DEBUG FORM VALUES</p>
+        {JSON.stringify(get().formValues, null, 4)}
       </div>
     )
   },

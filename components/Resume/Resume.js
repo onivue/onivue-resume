@@ -114,7 +114,7 @@ export const MyDoc = ({ resumeData }) => {
           <View style={styles.section}>
             <Text style={styles.sectionH1}>Erfahrung</Text>
 
-            {resumeData?.experience.map((item, i) => {
+            {resumeData?.experience?.map((item, i) => {
               return (
                 <View wrap={false} key={i}>
                   <Text style={styles.sectionH2}>{item.title}</Text>
@@ -135,7 +135,7 @@ export const MyDoc = ({ resumeData }) => {
 
           <View style={styles.section}>
             <Text style={styles.sectionH1}>Ausbildung</Text>
-            {resumeData?.education.map((item, i) => {
+            {resumeData?.education?.map((item, i) => {
               return (
                 <View wrap={false} key={i}>
                   <Text style={styles.sectionH2}>{item.title}</Text>

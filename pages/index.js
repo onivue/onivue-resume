@@ -4,11 +4,12 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MyDoc } from '@/components/Resume/Resume'
 import PDFViewer from '@/components/PDFViewer/PDFViewer'
 import BottomNavbar from '@/components/BottomNavbar'
-import Form from '@/components/Form'
+import Form from '@/components/ResumeForm/ResumeForm'
 import Backdrop from '@/components/Backdrop/Backdrop'
 import SettingsContainer from '@/components/SettingsContainer/SettingsContainer'
 import useFormStore from '@/stores/useFormStore'
 import { classNames } from '@/lib/helper'
+import shallow from 'zustand/shallow'
 
 // HELPER FOR MEDIA QUERY
 const screens = {
@@ -28,6 +29,7 @@ function Home() {
   }, [])
 
   const formValues = useFormStore((state) => state.formValues)
+
   // const StateDebug = useFormStore((state) => state.StateDebug)
 
   return (
