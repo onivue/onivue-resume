@@ -1,7 +1,6 @@
 import { classNames } from '@/lib/helper'
 import { Disclosure, Transition } from '@headlessui/react'
 import { HiChevronUp } from 'react-icons/hi'
-import colors from 'tailwindcss/colors'
 
 export default function Accordion({
   title,
@@ -12,9 +11,9 @@ export default function Accordion({
 }) {
   const styles = {
     primary:
-      'focus-visible:ring-primary-500 text-primary-900 bg-primary-200 hover:bg-primary-300 font-bold text-lg',
+      'focus-visible:ring-primary-500 text-primary-900 bg-primary-200 hover:bg-primary-300 text-lg',
     secondary:
-      'focus-visible:ring-primary-500 text-primary-900 bg-primary-100 hover:bg-primary-200 ',
+      'focus-visible:ring-primary-500 text-primary-900 bg-primary-100 hover:bg-primary-200 font-medium text-sm',
   }
   return (
     <Disclosure as="div" className={className} defaultOpen={defaultOpen}>
@@ -23,7 +22,7 @@ export default function Accordion({
           <Disclosure.Button
             className={classNames(
               styles[style],
-              'flex justify-between w-full px-4 py-2 text-sm font-medium text-left rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-opacity-75',
+              'flex justify-between w-full px-4 py-2  text-left rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-opacity-75',
             )}
           >
             <span>{title}</span>
