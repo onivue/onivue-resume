@@ -45,7 +45,7 @@ function Home() {
             className={classNames(
               'transition-all duration-75 ease-in',
               'fixed inset-0 top-0 z-10 p-4 mx-4 my-4 overflow-auto',
-              'bg-white border rounded-md lg:mx-0 lg:z-0 lg:w-1/2 lg:p-4 pb-28 lg:static',
+              'bg-white border rounded-md lg:mx-0 lg:z-0 lg:w-1/2 lg:p-4 pb-28 lg:static lg:no-scrollbar',
             )}
           >
             <div className="pt-8 font-mono text-4xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg h-28 shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
