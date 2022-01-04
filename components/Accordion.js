@@ -35,7 +35,7 @@ export default function Accordion({
 
           <Disclosure.Panel
             className={`transition-all duration-300  ${
-              open ? 'max-h-screen opacity-100 ' : 'max-h-0 opacity-0'
+              open ? 'max-h-[10000px] opacity-100 ' : 'max-h-0 opacity-0'
             } `}
             static
           >
