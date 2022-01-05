@@ -42,12 +42,12 @@ const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {
         {value.map((tag, i) => (
           <div
             key={i}
-            className="px-3 py-1 my-1 text-sm bg-primary-200 rounded-full min-w-[50px] text-center flex justify-between"
+            className="px-3 py-1 my-1 text-sm bg-primary-50 rounded-full min-w-[50px] text-center flex justify-between ring-2 ring-primary-200"
           >
             {tag}
 
             <HiOutlineX
-              className="self-center ml-1 text-gray-600 align-middle cursor-pointer hover:text-red-600"
+              className="self-center ml-1 text-gray-600 align-middle cursor-pointer dureation-1000 "
               onClick={() => {
                 setValue(value.filter((v) => v != tag))
               }}

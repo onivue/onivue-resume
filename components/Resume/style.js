@@ -9,15 +9,7 @@ export const resumeStyle = {
     paddingBottom: 35,
     fontFamily: 'Open Sans',
   },
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    left: '0',
-    right: '0',
-    top: '0',
-    // height: '100%',
-  },
-  sectionSide: {
+  sectionSecondary: {
     position: 'absolute',
     textAlign: 'left',
     zIndex: '10',
@@ -28,7 +20,7 @@ export const resumeStyle = {
     paddingRight: 12,
     backgroundColor: 'white',
   },
-  sectionSideOverlay: {
+  sectionSecondaryOverlay: {
     position: 'absolute',
     height: '297mm',
     zIndex: '20',
@@ -36,6 +28,11 @@ export const resumeStyle = {
     width: 220,
     backgroundColor: 'white',
   },
+  imageSecondary: {
+    borderRadius: '10px',
+    objectFit: 'cover',
+  },
+
   sectionWrapper: {
     display: 'flex',
     flexDirection: 'column',

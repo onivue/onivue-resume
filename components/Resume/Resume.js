@@ -34,13 +34,10 @@ export const MyDoc = ({ resumeData }) => {
   return (
     <Document>
       <Page size="A4" style={styles.body}>
-        <View style={styles.sectionSide}>
+        <View style={styles.sectionSecondary}>
           <Image
             source="https://source.unsplash.com/random/"
-            style={{
-              borderRadius: '10px',
-              objectFit: 'cover',
-            }}
+            style={styles.imageSecondary}
           />
           <Text style={styles.name}>
             {resumeData?.name.replace(/\s+/g, '\n')}
@@ -98,18 +95,13 @@ export const MyDoc = ({ resumeData }) => {
 
           <View style={styles.cvSection} wrap={false}>
             <Text style={styles.cvSectionTitle}>Social</Text>
-
             <Text style={styles.cvSectionText}>www.onivue.ch</Text>
           </View>
         </View>
-        <View style={styles.sectionSideOverlay} fixed></View>
+        <View style={styles.sectionSecondaryOverlay} fixed></View>
         <View style={styles.sectionWrapper}>
-          <View style={styles.section} wrap={false}>
-            <Text style={styles.sectionH1} wrap={false}>
-              Über mich
-            </Text>
-            <Text>{resumeData?.aboutMe}</Text>
-          </View>
+          <Text style={styles.sectionH1}>Über mich</Text>
+          <MultLineText text={resumeData?.aboutMe} />
           <View style={styles.sectionSeparator}></View>
           <View style={styles.section}>
             <Text style={styles.sectionH1}>Erfahrung</Text>
@@ -121,11 +113,7 @@ export const MyDoc = ({ resumeData }) => {
                   <Text style={styles.sectionH3}>
                     {item.location} | {item.from} - {item.to}
                   </Text>
-                  {['1', '2', '3', '4', '5'].map((number, i) => (
-                    <ListItem key={i} style={{ flexDirection: 'row' }}>
-                      {number}
-                    </ListItem>
-                  ))}
+                  <MultLineText text={item.summary} />
                 </View>
               )
             })}
@@ -145,13 +133,14 @@ export const MyDoc = ({ resumeData }) => {
                 </View>
               )
             })}
+            <MultLineText text={resumeData?.education} />
           </View>
         </View>
 
         <Text
           style={{
             position: 'absolute',
-            fontSize: 12,
+            fontSize: 10,
             bottom: 5,
             left: 5,
             right: 0,
@@ -183,3 +172,22 @@ export const ListItem = ({ children }) => (
     <Text style={styles.itemContent}>{children}</Text>
   </View>
 )
+
+export const MultLineText = ({ text }) => {
+  console.log(typeof text)
+  if (typeof text === 'string') {
+    return (
+      <>
+        {text.split('\n').map((item, i) => {
+          if (item.match(/^-\s/)) {
+            return <ListItem key={i}>{item.replace(/^-\s/, '')}</ListItem>
+          } else {
+            return <Text key={i}>{item}</Text>
+          }
+        })}
+      </>
+    )
+  } else {
+    return <></>
+  }
+}

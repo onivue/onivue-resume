@@ -8,15 +8,14 @@ const defaultFormValues = {
   plz: '9000 Gotham',
   phone: '071 000 00 00',
   mail: 'bruce.wayne@batman.com',
-  aboutMe:
-    'My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice.',
+  aboutMe: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice \n- batman!`,
   experience: [
     {
       title: 'Application Engineer',
       location: 'Gotham',
       from: '01.01.2010',
       to: '01.01.2020',
-      summary: 'My Summary',
+      summary: 'My Summary \n- batman!',
     },
   ],
   education: [
