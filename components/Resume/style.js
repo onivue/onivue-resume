@@ -3,12 +3,23 @@ const colors = {
   secondary: 'rgba(46,204,113,0.1)',
 }
 
+const textSizes = {
+  h1: '26px',
+  h2: '18px',
+  h3: '14px',
+  h4: '11px',
+  p: '11px',
+}
+
 export const resumeStyle = {
   body: {
     paddingTop: 35,
     paddingBottom: 35,
     fontFamily: 'Open Sans',
   },
+  //
+  //
+  //
   sectionSecondary: {
     position: 'absolute',
     textAlign: 'left',
@@ -28,67 +39,46 @@ export const resumeStyle = {
     width: 220,
     backgroundColor: 'white',
   },
+  wrapperSecondary: {
+    marginTop: 10,
+  },
   imageSecondary: {
     borderRadius: '10px',
     objectFit: 'cover',
   },
-
-  sectionWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginLeft: 220,
-    paddingHorizontal: 30,
-    fontSize: 10,
-  },
-  section: {
-    // textAlign: 'center',
-    // height: '100%',
-  },
-  sectionH1: {
-    color: colors.primary,
+  //
+  //
+  //
+  h1Secondary: {
+    fontSize: textSizes.h1,
+    marginBottom: 0,
     fontWeight: '600',
-    fontSize: 18,
-    paddingBottom: '10px',
   },
-  sectionSeparator: {
-    height: '3px',
-    width: '100%',
-    backgroundColor: colors.secondary,
-    marginVertical: '15px',
+  h2Secondary: {
+    fontSize: textSizes.h2,
+    marginBottom: 6,
   },
-  sectionH2: {
-    fontSize: 12,
+  h3Secondary: {
+    fontSize: textSizes.h3,
+    marginBottom: 2,
     fontWeight: '600',
-    marginBottom: '4px',
   },
-  sectionH3: {
-    fontSize: 10,
-    fontWeight: '600',
-    marginBottom: '8px',
+  h4Secondary: {
+    fontSize: textSizes.h4,
+    marginBottom: 6,
   },
-  name: {
-    fontSize: 30,
-    marginBottom: 12,
+  pSecondary: {
+    fontSize: textSizes.p,
   },
-  jobTitle: {
-    fontSize: 20,
-  },
-  cvSection: {
-    marginTop: 24,
-  },
-  cvSectionTitle: {
-    fontSize: 18,
-    marginBottom: 5,
-  },
-  cvSectionText: {
-    fontSize: 14,
-  },
-  csvTagWrapper: {
+  //
+  //
+  //
+  tagWrapper: {
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
   },
-  csvTag: {
+  tag: {
     fontSize: 8,
     borderRadius: '50%',
     color: colors.primary,
@@ -98,19 +88,73 @@ export const resumeStyle = {
     marginRight: 4,
     marginVertical: 2,
   },
-  item: {
+  //
+  //
+  //
+
+  sectionMain: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: 220,
+    paddingHorizontal: 30,
+    fontSize: 10,
+  },
+  separator: {
+    height: '3px',
+    width: '100%',
+    backgroundColor: colors.secondary,
+    marginVertical: '15px',
+  },
+  //
+  //
+  //
+  h1: {
+    fontSize: textSizes.h1,
+    color: colors.primary,
+    fontWeight: '600',
+    paddingBottom: '10px',
+  },
+
+  h2: {
+    fontSize: textSizes.h2,
+    color: colors.primary,
+    fontWeight: '600',
+    marginBottom: '4px',
+  },
+  h3: {
+    fontSize: textSizes.h3,
+    fontWeight: '600',
+    marginBottom: '8px',
+  },
+  h4: {
+    fontSize: textSizes.h4,
+    fontWeight: '400',
+    marginBottom: '8px',
+  },
+  p: {
+    fontSize: textSizes.p,
+    fontWeight: '400',
+    marginBottom: '8px',
+  },
+  //
+  //
+  //
+  listItem: {
     flexDirection: 'row',
     marginBottom: 5,
   },
-  bulletPoint: {
+  listItemContent: {
+    flex: 1,
+    fontSize: 10,
+  },
+  listBulletPoint: {
     width: 10,
     fontSize: 10,
     color: colors.primary,
   },
-  itemContent: {
-    flex: 1,
-    fontSize: 10,
-  },
+  //
+  //
+  //
   progressBarLine: {
     backgroundColor: colors.secondary,
     height: '5px',

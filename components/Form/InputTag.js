@@ -47,7 +47,7 @@ const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {
             {tag}
 
             <HiOutlineX
-              className="self-center ml-1 text-gray-600 align-middle cursor-pointer dureation-1000 "
+              className="self-center ml-1 text-gray-600 align-middle cursor-pointer dureation-1000 hover:text-red-500"
               onClick={() => {
                 setValue(value.filter((v) => v != tag))
               }}

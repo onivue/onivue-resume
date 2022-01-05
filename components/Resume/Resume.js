@@ -39,12 +39,15 @@ export const MyDoc = ({ resumeData }) => {
             source="https://source.unsplash.com/random/"
             style={styles.imageSecondary}
           />
-          <Text style={styles.name}>
-            {resumeData?.name.replace(/\s+/g, '\n')}
+          <Text style={styles.h1Secondary}>
+            {resumeData?.name.length > 15
+              ? resumeData?.name.replace(/\s+/g, '\n')
+              : resumeData?.name}
           </Text>
-          <Text style={styles.jobTitle}>{resumeData?.jobTitle}</Text>
+          <Text style={styles.h2Secondary}>{resumeData?.jobTitle}</Text>
 
-          <View style={styles.cvSection} wrap={false}>
+          <View style={styles.wrapperSecondary} wrap={false}>
+            <Text style={styles.h3Secondary}>Kontakt</Text>
             {[
               resumeData.address,
               resumeData.plz,
@@ -58,7 +61,7 @@ export const MyDoc = ({ resumeData }) => {
                     key={i}
                   >
                     {Array.from(d).map((char, i) => (
-                      <Text style={styles.cvSectionText} key={i}>
+                      <Text style={styles.pSecondary} key={i}>
                         {char}
                       </Text>
                     ))}
@@ -67,50 +70,48 @@ export const MyDoc = ({ resumeData }) => {
               }
             })}
           </View>
-          <View style={styles.cvSection} wrap={false}>
-            <Text style={styles.cvSectionTitle}>Skills</Text>
-            <View style={styles.csvTagWrapper}>
+          <View style={styles.wrapperSecondary} wrap={false}>
+            <Text style={styles.h3Secondary}>Skills</Text>
+            <View style={styles.tagWrapper}>
               {resumeData?.skills?.map((tag, index) => {
                 return (
-                  <Text key={index} style={styles.csvTag}>
+                  <Text key={index} style={styles.tag}>
                     {tag}
                   </Text>
                 )
               })}
             </View>
           </View>
-          <View style={styles.cvSection} wrap={false}>
-            <Text style={styles.cvSectionTitle}>Sprachen</Text>
+          <View style={styles.wrapperSecondary} wrap={false}>
+            <Text style={styles.h3Secondary}>Sprachen</Text>
             <ProgressBar language={'English'} progress="75%" />
             <ProgressBar language={'Deutsch'} progress="100%" />
           </View>
-          <View style={styles.cvSection} wrap={false}>
-            <Text style={styles.cvSectionTitle}>List</Text>
-            {['1', '2', '3', '4', '5', '6'].map((number, i) => (
-              <ListItem key={i} style={{ flexDirection: 'row' }}>
-                {number}
-              </ListItem>
+          <View style={styles.wrapperSecondary} wrap={false}>
+            <Text style={styles.h3Secondary}>List</Text>
+            {['1', '2', '3'].map((number, i) => (
+              <ListItem key={i}>{number}</ListItem>
             ))}
           </View>
 
-          <View style={styles.cvSection} wrap={false}>
-            <Text style={styles.cvSectionTitle}>Social</Text>
-            <Text style={styles.cvSectionText}>www.onivue.ch</Text>
+          <View style={styles.wrapperSecondary} wrap={false}>
+            <Text style={styles.h3Secondary}>Social</Text>
+            <Text style={styles.pSecondary}>www.onivue.ch</Text>
           </View>
         </View>
         <View style={styles.sectionSecondaryOverlay} fixed></View>
-        <View style={styles.sectionWrapper}>
-          <Text style={styles.sectionH1}>Über mich</Text>
+        <View style={styles.sectionMain}>
+          <Text style={styles.h2}>Über mich</Text>
           <MultLineText text={resumeData?.aboutMe} />
-          <View style={styles.sectionSeparator}></View>
-          <View style={styles.section}>
-            <Text style={styles.sectionH1}>Erfahrung</Text>
+          <View style={styles.separator}></View>
+          <View>
+            <Text style={styles.h2}>Erfahrung</Text>
 
             {resumeData?.experience?.map((item, i) => {
               return (
                 <View wrap={false} key={i}>
-                  <Text style={styles.sectionH2}>{item.title}</Text>
-                  <Text style={styles.sectionH3}>
+                  <Text style={styles.h3}>{item.title}</Text>
+                  <Text style={styles.h4}>
                     {item.location} | {item.from} - {item.to}
                   </Text>
                   <MultLineText text={item.summary} />
@@ -119,15 +120,15 @@ export const MyDoc = ({ resumeData }) => {
             })}
           </View>
 
-          <View style={styles.sectionSeparator}></View>
+          <View style={styles.separator}></View>
 
-          <View style={styles.section}>
-            <Text style={styles.sectionH1}>Ausbildung</Text>
+          <View>
+            <Text style={styles.h2}>Ausbildung</Text>
             {resumeData?.education?.map((item, i) => {
               return (
                 <View wrap={false} key={i}>
-                  <Text style={styles.sectionH2}>{item.title}</Text>
-                  <Text style={styles.sectionH3}>
+                  <Text style={styles.h3}>{item.title}</Text>
+                  <Text style={styles.h4}>
                     {item.location} | {item.from} - {item.to}
                   </Text>
                 </View>
@@ -167,9 +168,9 @@ const ProgressBar = ({ language, progress }) => (
 )
 
 export const ListItem = ({ children }) => (
-  <View style={styles.item}>
-    <Text style={styles.bulletPoint}>•</Text>
-    <Text style={styles.itemContent}>{children}</Text>
+  <View style={styles.listItem}>
+    <Text style={styles.listBulletPoint}>•</Text>
+    <Text style={styles.listItemContent}>{children}</Text>
   </View>
 )
 
@@ -182,7 +183,11 @@ export const MultLineText = ({ text }) => {
           if (item.match(/^-\s/)) {
             return <ListItem key={i}>{item.replace(/^-\s/, '')}</ListItem>
           } else {
-            return <Text key={i}>{item}</Text>
+            return (
+              <Text key={i} style={styles.p}>
+                {item}
+              </Text>
+            )
           }
         })}
       </>
