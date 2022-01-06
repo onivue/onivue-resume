@@ -194,6 +194,12 @@ const Form = () => {
   return (
     <>
       <div className="py-4 lg:p-4 ">
+        <input
+          type="range"
+          max="100"
+          className=""
+          {...register('slider', { required: false })}
+        />
         {fieldGroups.map((fieldGroup, i) => {
           return (
             <Accordion
@@ -302,6 +308,10 @@ const Form = () => {
       </div>
     </>
   )
+}
+
+const Field = ({ field, register, errors }) => {
+  return <></>
 }
 
 export default Form

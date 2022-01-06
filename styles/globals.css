@@ -27,3 +27,42 @@
 .react-pdf__Document {
   @apply rounded-lg;
 }
+
+/* 
+RANGE INPUT
+*/
+.rangeiput-track {
+  @apply w-full h-2 rounded-full bg-primary-200;
+}
+.rangeiput-focus {
+  @apply ring-2 ring-primary-400;
+}
+.rangeiput-thumb {
+  @apply relative w-8 h-5 transition-all duration-150 ease-in-out border-none rounded-full top-[50%] bg-primary-300;
+}
+input[type='range'] {
+  @apply w-full bg-transparent focus:outline-none;
+  -webkit-appearance: none;
+}
+input[type='range']:focus-visible::-webkit-slider-thumb,
+input[type='range']:active::-webkit-slider-thumb {
+  @apply rangeiput-focus;
+}
+input[type='range']:focus-visible::-moz-range-thumb,
+input[type='range']:active::-webkit-slider-thumb {
+  @apply rangeiput-focus;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  @apply rangeiput-track;
+}
+input[type='range']::-moz-range-track {
+  @apply rangeiput-track;
+}
+input[type='range']::-webkit-slider-thumb {
+  @apply rangeiput-thumb;
+  -webkit-appearance: none;
+  transform: translateY(-50%);
+}
+input[type='range']::-moz-range-thumb {
+  @apply rangeiput-thumb;
+}

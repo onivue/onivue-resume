@@ -9,6 +9,7 @@ const defaultFormValues = {
   phone: '071 000 00 00',
   mail: 'bruce.wayne@batman.com',
   aboutMe: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice \n- batman!`,
+  languages: [{ lang: 'English', level: 100 }],
   experience: [
     {
       title: 'Application Engineer',
