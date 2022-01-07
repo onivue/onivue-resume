@@ -33,6 +33,7 @@ const defaultFormValues = {
 const useFormStore = create((set, get) => ({
   formValues: defaultFormValues,
   setFormValues: (payload) => {
+    // console.log('setFormValues - STORE')
     set({ formValues: payload })
   },
   StateDebug: ({ className }) => {
