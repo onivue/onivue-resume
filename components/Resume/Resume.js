@@ -11,14 +11,36 @@ import {
 import { resumeStyle } from '@/components/Resume/style'
 
 Font.register({
-  family: 'Open Sans',
+  family: 'Montserrat',
   fonts: [
     {
-      src: '/fonts/open-sans-regular.ttf',
+      src: '/fonts/montserrat-v18-latin-regular.ttf',
     },
     {
-      src: '/fonts/open-sans-600.ttf',
+      src: '/fonts/montserrat-v18-latin-700.ttf',
+      fontWeight: 700,
+    },
+    {
+      src: '/fonts/montserrat-v18-latin-600.ttf',
       fontWeight: 600,
+    },
+  ],
+})
+
+Font.register({
+  family: 'Work Sans',
+  fonts: [
+    {
+      src: '/fonts/work-sans-v13-latin-regular.ttf',
+    },
+    {
+      src: '/fonts/work-sans-v13-latin-500.ttf',
+      fontWeight: 500,
+    },
+    {
+      src: '/fonts/work-sans-v13-latin-300italic.ttf',
+      fontWeight: 300,
+      fontStyle: 'italic',
     },
   ],
 })
@@ -34,18 +56,31 @@ export const MyDoc = ({ resumeData }) => {
   return (
     <Document>
       <Page size="A4" style={styles.body}>
+        {/* 
+          // !  --------------------------------
+          // !  SIDECONTENT
+          // !  -------------------------------- 
+        */}
         <View style={styles.sectionSecondary}>
+          {/* 
+            // !  IMAGE
+          */}
           <Image
             source="https://source.unsplash.com/random/"
             style={styles.imageSecondary}
           />
+          {/* 
+            // !  NAME
+          */}
           <Text style={styles.h1Secondary}>
             {resumeData?.name.length > 15
               ? resumeData?.name.replace(/\s+/g, '\n')
               : resumeData?.name}
           </Text>
           <Text style={styles.h2Secondary}>{resumeData?.jobTitle}</Text>
-
+          {/* 
+            // !  CONTACT
+          */}
           <View style={styles.wrapperSecondary} wrap={false}>
             <Text style={styles.h3Secondary}>Kontakt</Text>
             {[
@@ -70,6 +105,9 @@ export const MyDoc = ({ resumeData }) => {
               }
             })}
           </View>
+          {/* 
+            // !  SKILLS
+          */}
           <View style={styles.wrapperSecondary} wrap={false}>
             <Text style={styles.h3Secondary}>Skills</Text>
             <View style={styles.tagWrapper}>
@@ -82,63 +120,62 @@ export const MyDoc = ({ resumeData }) => {
               })}
             </View>
           </View>
+          {/* 
+            // !  LANGUAGES
+          */}
           <View style={styles.wrapperSecondary} wrap={false}>
             <Text style={styles.h3Secondary}>Sprachen</Text>
             <ProgressBar language={'English'} progress="75%" />
             <ProgressBar language={'Deutsch'} progress="100%" />
           </View>
-          <View style={styles.wrapperSecondary} wrap={false}>
-            <Text style={styles.h3Secondary}>List</Text>
-            {['1', '2', '3'].map((number, i) => (
-              <ListItem key={i}>{number}</ListItem>
-            ))}
-          </View>
-
+          {/* 
+            // !  SOCIAL
+          */}
           <View style={styles.wrapperSecondary} wrap={false}>
             <Text style={styles.h3Secondary}>Social</Text>
             <Text style={styles.pSecondary}>www.onivue.ch</Text>
           </View>
         </View>
         <View style={styles.sectionSecondaryOverlay} fixed></View>
+        {/* 
+          // !  --------------------------------
+          // !  MAIN
+          // !  --------------------------------
+        */}
         <View style={styles.sectionMain}>
+          {/* 
+            // !  ABOUTME
+          */}
           <Text style={styles.h2}>Über mich</Text>
           <MultLineText text={resumeData?.aboutMe} />
           <View style={styles.separator}></View>
+          {/* 
+            // !  EXPERIENCE 
+          */}
           <View>
             <Text style={styles.h2}>Erfahrung</Text>
-
             {resumeData?.experience?.map((item, i) => {
-              return (
-                <View wrap={false} key={i}>
-                  <Text style={styles.h3}>{item.title}</Text>
-                  <Text style={styles.h4}>
-                    {item.location} | {item.from} - {item.to}
-                  </Text>
-                  <MultLineText text={item.summary} />
-                </View>
-              )
+              return <TextBlock item={item} key={i} />
             })}
           </View>
-
           <View style={styles.separator}></View>
-
+          {/* 
+            // !  EDUCATION
+          */}
           <View>
             <Text style={styles.h2}>Ausbildung</Text>
             {resumeData?.education?.map((item, i) => {
-              return (
-                <View wrap={false} key={i}>
-                  <Text style={styles.h3}>{item.title}</Text>
-                  <Text style={styles.h4}>
-                    {item.location} | {item.from} - {item.to}
-                  </Text>
-                </View>
-              )
+              return <TextBlock item={item} key={i} />
             })}
             <MultLineText text={resumeData?.education} />
           </View>
         </View>
-
-        <Text
+        {/* 
+          // !  --------------------------------
+          // !  PAGENUMBER
+          // !  --------------------------------
+        */}
+        {/* <Text
           style={{
             position: 'absolute',
             fontSize: 10,
@@ -152,7 +189,7 @@ export const MyDoc = ({ resumeData }) => {
             `${pageNumber} / ${totalPages}`
           }
           fixed
-        />
+        /> */}
       </Page>
     </Document>
   )
@@ -170,12 +207,11 @@ const ProgressBar = ({ language, progress }) => (
 export const ListItem = ({ children }) => (
   <View style={styles.listItem}>
     <Text style={styles.listBulletPoint}>•</Text>
-    <Text style={styles.listItemContent}>{children}</Text>
+    <Text style={{ ...styles.listItemContent, ...styles.p }}>{children}</Text>
   </View>
 )
 
 export const MultLineText = ({ text }) => {
-  console.log(typeof text)
   if (typeof text === 'string') {
     return (
       <>
@@ -195,4 +231,16 @@ export const MultLineText = ({ text }) => {
   } else {
     return <></>
   }
+}
+
+export const TextBlock = ({ item }) => {
+  return (
+    <View wrap={false}>
+      <Text style={styles.h3}>{item.title}</Text>
+      <Text style={styles.em}>
+        {item.location} | {item.from} - {item.to}
+      </Text>
+      <MultLineText text={item.summary} />
+    </View>
+  )
 }

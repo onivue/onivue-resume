@@ -5,17 +5,17 @@ const colors = {
 
 const textSizes = {
   h1: '26px',
-  h2: '18px',
-  h3: '14px',
+  h2: '16px',
+  h3: '12px',
   h4: '11px',
-  p: '11px',
+  p: '10px',
 }
 
 export const resumeStyle = {
   body: {
     paddingTop: 35,
     paddingBottom: 35,
-    fontFamily: 'Open Sans',
+    fontFamily: 'Work Sans',
   },
   //
   //
@@ -49,27 +49,7 @@ export const resumeStyle = {
   //
   //
   //
-  h1Secondary: {
-    fontSize: textSizes.h1,
-    marginBottom: 0,
-    fontWeight: '600',
-  },
-  h2Secondary: {
-    fontSize: textSizes.h2,
-    marginBottom: 6,
-  },
-  h3Secondary: {
-    fontSize: textSizes.h3,
-    marginBottom: 2,
-    fontWeight: '600',
-  },
-  h4Secondary: {
-    fontSize: textSizes.h4,
-    marginBottom: 6,
-  },
-  pSecondary: {
-    fontSize: textSizes.p,
-  },
+
   //
   //
   //
@@ -108,33 +88,72 @@ export const resumeStyle = {
   //
   //
   //
+  h1Secondary: {
+    fontFamily: 'Montserrat',
+    fontSize: textSizes.h1,
+    marginBottom: 0,
+    fontWeight: '600',
+  },
+  h2Secondary: {
+    fontFamily: 'Montserrat',
+    fontSize: textSizes.h2,
+    marginBottom: 6,
+  },
+  h3Secondary: {
+    fontFamily: 'Montserrat',
+    fontSize: textSizes.h3,
+    marginBottom: 2,
+    fontWeight: '600',
+  },
+  h4Secondary: {
+    fontFamily: 'Work Sans',
+    fontSize: textSizes.h4,
+    marginBottom: 6,
+  },
+  pSecondary: {
+    fontFamily: 'Work Sans',
+    fontSize: textSizes.p,
+  },
+  //
+  //
+  //
   h1: {
+    fontFamily: 'Montserrat',
     fontSize: textSizes.h1,
     color: colors.primary,
     fontWeight: '600',
-    paddingBottom: '10px',
+    marginBottom: '4px',
   },
 
   h2: {
+    fontFamily: 'Montserrat',
     fontSize: textSizes.h2,
     color: colors.primary,
     fontWeight: '600',
     marginBottom: '4px',
   },
   h3: {
+    fontFamily: 'Montserrat',
     fontSize: textSizes.h3,
     fontWeight: '600',
-    marginBottom: '8px',
+    marginBottom: '4px',
   },
   h4: {
+    fontFamily: 'Work Sans',
     fontSize: textSizes.h4,
     fontWeight: '400',
-    marginBottom: '8px',
+    marginBottom: '4px',
   },
   p: {
+    fontFamily: 'Work Sans',
     fontSize: textSizes.p,
-    fontWeight: '400',
-    marginBottom: '8px',
+    marginBottom: '4px',
+  },
+  em: {
+    fontFamily: 'Work Sans',
+    fontStyle: 'italic',
+    fontSize: textSizes.p,
+    marginBottom: '4px',
   },
   //
   //
@@ -145,7 +164,6 @@ export const resumeStyle = {
   },
   listItemContent: {
     flex: 1,
-    fontSize: 10,
   },
   listBulletPoint: {
     width: 10,
