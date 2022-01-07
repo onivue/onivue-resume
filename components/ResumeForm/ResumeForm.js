@@ -22,7 +22,6 @@ const FieldArrray = ({
     control,
     name: name,
   })
-
   return (
     <>
       {fields.map((item, index) => {
@@ -34,20 +33,31 @@ const FieldArrray = ({
               className={'pt-4 pl-2'}
             >
               <div className="py-2">
-                {fieldsArray.map((f, i) => {
+                {fieldsArray.map((field, i) => {
                   return (
-                    <Input
-                      {...register(`${name}.${index}.${f.id}`)}
-                      label={f.label}
-                      id={`${name}.${index}.${f.id}`}
-                      type={'text'}
-                      placeholder={'...'}
-                      helperText={''}
-                      dot={''}
+                    <Field
+                      field={field}
+                      register={register}
                       errors={errors}
+                      getValues={getValues}
+                      control={control}
                       key={i}
+                      fieldArrayData={`${name}.${index}`}
                     />
                   )
+                  // return (
+                  //   <Input
+                  //     {...register(`${name}.${index}.${field.id}`)}
+                  //     label={field.label}
+                  //     id={`${name}.${index}.${field.id}`}
+                  //     type={'text'}
+                  //     placeholder={'...'}
+                  //     helperText={''}
+                  //     dot={''}
+                  //     errors={errors}
+                  //     key={i}
+                  //   />
+                  // )
                 })}
                 <Button
                   type="button"
@@ -67,7 +77,7 @@ const FieldArrray = ({
           style="secondary"
           rounded
           onClick={() => {
-            append({ title: 'X' })
+            append({})
           }}
         >
           <HiPlus />
@@ -104,124 +114,136 @@ const Form = () => {
   return (
     <>
       <div className="py-4 lg:p-4 ">
-        <input
-          type="range"
-          max="100"
-          className=""
-          {...register('slider', { required: false })}
-        />
         {fieldGroups.map((fieldGroup, i) => {
           return (
             <Accordion
               title={fieldGroup.groupName}
               style={'primary'}
-              className={'pt-2'}
+              className={'pt-2 mb-4'}
               key={i}
               defaultOpen={fieldGroup.defaultOpen}
             >
               <div className="py-2">
                 {fieldGroup.fields.map((field, i) => {
-                  if (field.type === 'fieldarray') {
-                    return (
-                      <FieldArrray
-                        name={field.name}
-                        fieldsArray={field.fieldsArray}
-                        control={control}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        key={i}
-                      />
-                    )
-                  }
-
-                  if (
-                    field.type === 'text' ||
-                    field.type === 'checkbox' ||
-                    field.type === 'radio'
-                  ) {
-                    return (
-                      <div className="w-full" key={field.id}>
-                        <Input
-                          {...register(field.id, { required: field.required })}
-                          label={field.label}
-                          id={field.id}
-                          type={field.type}
-                          placeholder={field.placeholder || '...'}
-                          helperText={field.helperText}
-                          dot={field.required}
-                          errors={errors}
-                        />
-                      </div>
-                    )
-                  }
-
-                  if (field.type === 'textarea') {
-                    return (
-                      <div className="w-full " key={field.id}>
-                        <TextArea
-                          label={field.label}
-                          id={field.id}
-                          {...register('aboutMe', {
-                            required: true,
-                          })}
-                          placeholder={field.placeholder || '...'}
-                          helperText={field.helperText}
-                          dot={field.required}
-                          rows={field.rows || 3}
-                          errors={errors}
-                        />
-                      </div>
-                    )
-                  }
-
-                  if (field.type === 'taginput') {
-                    return (
-                      <div className="w-full" key={field.id}>
-                        <Controller
-                          control={control}
-                          name={field.id}
-                          render={({ field: { value, onChange } }) => (
-                            <InputTag
-                              label={field.label}
-                              id={field.id}
-                              placeholder={field.placeholder || '...'}
-                              helperText={field.helperText}
-                              dot={field.required}
-                              setValue={onChange}
-                              value={value}
-                            />
-                          )}
-                        />
-                      </div>
-                    )
-                  }
+                  return (
+                    <Field
+                      field={field}
+                      key={i}
+                      register={register}
+                      errors={errors}
+                      getValues={getValues}
+                      control={control}
+                    />
+                  )
                 })}
               </div>
             </Accordion>
           )
         })}
-        {/* <div className="w-full">
-          <Input
-            {...register('NUMERUS', { required: true })}
-            label={'NUMERUS'}
-            id={'NUMERUS'}
-            type={'text'}
-            placeholder={'...'}
-            helperText={''}
-            dot={true}
-            errors={errors}
-            defaultValue={'Test'}
-            readOnly
-          />
-        </div> */}
       </div>
     </>
   )
 }
 
-const Field = ({ field, register, errors }) => {
-  return <></>
+const Field = ({
+  field,
+  register,
+  errors,
+  getValues,
+  control,
+  fieldArrayData,
+}) => {
+  let fieldID
+  if (fieldArrayData) {
+    fieldID = `${fieldArrayData}.${field.id}`
+  } else {
+    fieldID = field.id
+  }
+
+  if (field.type === 'fieldarray') {
+    return (
+      <FieldArrray
+        name={field.name}
+        fieldsArray={field.fieldsArray}
+        control={control}
+        register={register}
+        errors={errors}
+        getValues={getValues}
+      />
+    )
+  }
+
+  if (
+    field.type === 'text' ||
+    field.type === 'checkbox' ||
+    field.type === 'radio'
+  ) {
+    return (
+      <div className="w-full">
+        <Input
+          {...register(fieldID, { required: field.required })}
+          label={field.label}
+          id={fieldID}
+          type={field.type}
+          placeholder={field.placeholder || '...'}
+          helperText={field.helperText}
+          dot={field.required}
+          errors={errors}
+        />
+      </div>
+    )
+  }
+
+  if (field.type === 'rangeinput') {
+    return (
+      <input
+        {...register(fieldID, { required: field.required })}
+        type="range"
+        max="100"
+      />
+    )
+  }
+
+  if (field.type === 'textarea') {
+    return (
+      <div className="w-full ">
+        <TextArea
+          label={field.label}
+          id={fieldID}
+          {...register(fieldID, {
+            required: true,
+          })}
+          placeholder={field.placeholder || '...'}
+          helperText={field.helperText}
+          dot={field.required}
+          rows={field.rows || 3}
+          errors={errors}
+        />
+      </div>
+    )
+  }
+
+  if (field.type === 'taginput') {
+    return (
+      <div className="w-full">
+        <Controller
+          control={control}
+          name={fieldID}
+          render={({ field: { value, onChange } }) => (
+            <InputTag
+              label={field.label}
+              id={fieldID}
+              placeholder={field.placeholder || '...'}
+              helperText={field.helperText}
+              dot={field.required}
+              setValue={onChange}
+              value={value}
+            />
+          )}
+        />
+      </div>
+    )
+  }
 }
 
 export default Form

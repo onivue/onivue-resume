@@ -56,6 +56,30 @@ export const fieldGroups = [
     ],
   },
   {
+    groupName: 'Sprachen',
+    defaultOpen: false,
+    fields: [
+      {
+        name: 'languages',
+        type: 'fieldarray',
+        fieldsArray: [
+          {
+            label: 'Sprache',
+            id: 'title',
+            type: 'text',
+            required: true,
+          },
+          {
+            label: 'Level',
+            id: 'level',
+            type: 'rangeinput',
+            required: true,
+          },
+        ],
+      },
+    ],
+  },
+  {
     groupName: 'Berufserfahrung',
     defaultOpen: false,
     fields: [
@@ -76,9 +100,63 @@ export const fieldGroups = [
             required: true,
           },
           {
+            label: 'Von',
+            id: 'from',
+            type: 'text',
+            required: true,
+          },
+          {
+            label: 'Bis',
+            id: 'to',
+            type: 'text',
+            required: true,
+          },
+          {
             label: 'Summary',
             id: 'summary',
+            type: 'textarea',
+            required: true,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    groupName: 'Ausbildung',
+    defaultOpen: false,
+    fields: [
+      {
+        name: 'education',
+        type: 'fieldarray',
+        fieldsArray: [
+          {
+            label: 'Title',
+            id: 'title',
             type: 'text',
+            required: true,
+          },
+          {
+            label: 'Location',
+            id: 'location',
+            type: 'text',
+            required: true,
+          },
+          {
+            label: 'Von',
+            id: 'from',
+            type: 'text',
+            required: true,
+          },
+          {
+            label: 'Bis',
+            id: 'to',
+            type: 'text',
+            required: true,
+          },
+          {
+            label: 'Summary',
+            id: 'summary',
+            type: 'textarea',
             required: true,
           },
         ],

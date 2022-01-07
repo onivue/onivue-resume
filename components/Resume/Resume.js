@@ -125,8 +125,15 @@ export const MyDoc = ({ resumeData }) => {
           */}
           <View style={styles.wrapperSecondary} wrap={false}>
             <Text style={styles.h3Secondary}>Sprachen</Text>
-            <ProgressBar language={'English'} progress="75%" />
-            <ProgressBar language={'Deutsch'} progress="100%" />
+            {resumeData?.languages?.map((item, i) => {
+              return (
+                <ProgressBar
+                  language={item.title}
+                  progress={`${item.level}%`}
+                  key={i}
+                />
+              )
+            })}
           </View>
           {/* 
             // !  SOCIAL

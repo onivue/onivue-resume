@@ -30,7 +30,7 @@ function Home() {
 
   const formValues = useFormStore((state) => state.formValues)
 
-  const StateDebug = useFormStore((state) => state.StateDebug)
+  // const StateDebug = useFormStore((state) => state.StateDebug)
 
   return (
     <>
@@ -38,7 +38,7 @@ function Home() {
         <>
           <Backdrop show={showForm && !isDesktop} />
 
-          <StateDebug className="fixed right-0 z-20 w-2/5 p-4 font-mono text-white bg-gray-500 rounded top-20 opacity-80" />
+          {/* <StateDebug className="fixed right-0 z-20 w-2/5 p-4 font-mono text-white bg-gray-500 rounded top-20 opacity-80" /> */}
 
           <SettingsContainer
             show={showForm || isDesktop}
