@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { useElementSize } from '@/hooks/useElementSize'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
+import useFormStore from '@/stores/useFormStore'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
 const PDFViewer = ({ file, loading, className }) => {
@@ -19,12 +20,15 @@ const PDFViewer = ({ file, loading, className }) => {
   const onDocumentLoad = (d) => {
     setNumPages(d.numPages)
     setCurrentPage((prev) => Math.min(prev, d.numPages))
+    setFileDownloadURL(file)
   }
+
+  const setFileDownloadURL = useFormStore((state) => state.setFileDownloadURL)
 
   return (
     <div className={className}>
       <div
-        className="relative grid items-center justify-center w-full h-full max-w-2xl grid-cols-1 mx-auto lg:max-w-2xl"
+        className="relative grid items-center justify-center w-full h-full max-w-3xl grid-cols-1 mx-auto lg:max-w-3xl"
         ref={pdfRef}
         id="WRAPPER"
       >
@@ -52,7 +56,9 @@ const PDFViewer = ({ file, loading, className }) => {
               />
             </Document>
           )}
+          <div className="h-1"></div>
         </LoadingA4Page>
+        {/* TRICK FOR OVERFLOW */}
       </div>
       {/* <div className="text-red-600">{pdfWidth}</div> */}
     </div>

@@ -37,12 +37,18 @@ const useFormStore = create((set, get) => ({
     // console.log('setFormValues - STORE')
     set({ formValues: payload })
   },
+  fileDownloadURL: null,
+  setFileDownloadURL: (payload) => {
+    console.log('setFileDownloadURL - STORE', payload)
+    set({ fileDownloadURL: payload })
+  },
   StateDebug: ({ className }) => {
     const [state, setState] = useState('X')
     return (
       <div className={className}>
         <p className="text-xs text-center">DEBUG FORM VALUES</p>
         {JSON.stringify(get().formValues, null, 4)}
+        <div>URL:{get().fileDownloadURL}</div>
       </div>
     )
   },

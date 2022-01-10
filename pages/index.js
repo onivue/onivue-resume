@@ -9,7 +9,7 @@ import Backdrop from '@/components/Backdrop/Backdrop'
 import SettingsContainer from '@/components/SettingsContainer/SettingsContainer'
 import useFormStore from '@/stores/useFormStore'
 import { classNames } from '@/lib/helper'
-import shallow from 'zustand/shallow'
+import ActionZone from '@/components/ActionZone/ActionZone'
 
 // HELPER FOR MEDIA QUERY
 const screens = {
@@ -30,7 +30,7 @@ function Home() {
 
   const formValues = useFormStore((state) => state.formValues)
 
-  // const StateDebug = useFormStore((state) => state.StateDebug)
+  const StateDebug = useFormStore((state) => state.StateDebug)
 
   return (
     <>
@@ -44,7 +44,7 @@ function Home() {
             show={showForm || isDesktop}
             className={classNames(
               'transition-all duration-75 ease-in',
-              'fixed inset-0 top-0 z-10 p-4 mx-4 my-4 overflow-auto',
+              'fixed inset-0 top-0 z-10 p-4  overflow-auto',
               'bg-white border rounded-md lg:mx-0 lg:z-0 lg:w-1/2 lg:p-4 pb-28 lg:static lg:no-scrollbar',
             )}
           >
@@ -53,24 +53,28 @@ function Home() {
             </div>
             <Form />
           </SettingsContainer>
-          <BlobProvider document={<MyDoc resumeData={formValues} />}>
-            {({ blob, url, loading, error }) => {
-              return (
-                <>
-                  <PDFViewer
-                    file={url}
-                    loading={loading}
-                    className="grid self-center w-full h-full max-h-screen grid-cols-1 p-1 lg:p-8 lg:w-1/2 animate-fade-in-down"
-                  ></PDFViewer>
-                  <BottomNavbar
-                    isShowForm={showForm}
-                    toggleForm={() => SetShowForm(!showForm)}
-                    downloadFileUrl={url}
-                  />
-                </>
-              )
-            }}
-          </BlobProvider>
+
+          <div className="flex flex-col justify-center w-full lg:w-1/2">
+            <BlobProvider document={<MyDoc resumeData={formValues} />}>
+              {({ blob, url, loading, error }) => {
+                return (
+                  <>
+                    <PDFViewer
+                      file={url}
+                      loading={loading}
+                      className="w-full max-h-screen px-4 py-1 overflow-auto animate-fade-in-down no-scrollbar"
+                    />
+                    <BottomNavbar
+                      isShowForm={showForm}
+                      toggleForm={() => SetShowForm(!showForm)}
+                      downloadFileUrl={url}
+                    />
+                  </>
+                )
+              }}
+            </BlobProvider>
+            <ActionZone />
+          </div>
         </>
       )}
     </>

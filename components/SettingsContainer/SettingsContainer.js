@@ -13,6 +13,7 @@ const SettingsContainer = ({ show, children, className }) => {
       leaveFrom="opacity-100 "
       leaveTo="opacity-0 "
       className={className}
+      static
     >
       {children}
     </Transition>
