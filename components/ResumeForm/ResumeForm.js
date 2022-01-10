@@ -9,83 +9,7 @@ import Accordion from '@/components/Accordion'
 import { objectCompare } from '@/lib/helper'
 import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
 import { fieldGroups } from '@/components/ResumeForm/data'
-
-const FieldArrray = ({
-  fieldsArray,
-  control,
-  register,
-  errors,
-  name,
-  getValues,
-}) => {
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: name,
-  })
-  return (
-    <>
-      {fields.map((item, index) => {
-        return (
-          <div key={item.id}>
-            <Accordion
-              title={getValues(`${name}.${index}.title`) || '...'}
-              style={'secondary'}
-              className={'pt-4 pl-2'}
-            >
-              <div className="py-2">
-                {fieldsArray.map((field, i) => {
-                  return (
-                    <Field
-                      field={field}
-                      register={register}
-                      errors={errors}
-                      getValues={getValues}
-                      control={control}
-                      key={i}
-                      fieldArrayData={`${name}.${index}`}
-                    />
-                  )
-                  // return (
-                  //   <Input
-                  //     {...register(`${name}.${index}.${field.id}`)}
-                  //     label={field.label}
-                  //     id={`${name}.${index}.${field.id}`}
-                  //     type={'text'}
-                  //     placeholder={'...'}
-                  //     helperText={''}
-                  //     dot={''}
-                  //     errors={errors}
-                  //     key={i}
-                  //   />
-                  // )
-                })}
-                <Button
-                  type="button"
-                  onClick={() => remove(index)}
-                  className="bg-red-300"
-                >
-                  <HiOutlineTrash className="w-5 h-5" />
-                </Button>
-              </div>
-            </Accordion>
-          </div>
-        )
-      })}
-      <div className="flex items-center justify-center w-full">
-        <Button
-          className="mt-4 ml-2"
-          style="secondary"
-          rounded
-          onClick={() => {
-            append({})
-          }}
-        >
-          <HiPlus />
-        </Button>
-      </div>
-    </>
-  )
-}
+import FileUpload from '@/components/Form/FileUpload'
 
 const Form = () => {
   const formValues = useFormStore((state) => state.formValues)
@@ -114,6 +38,13 @@ const Form = () => {
   return (
     <>
       <div className="py-4 lg:p-4 ">
+        {/* 
+          // !  --------------------------------
+        */}
+
+        {/* 
+          // !  --------------------------------
+        */}
         {fieldGroups.map((fieldGroup, i) => {
           return (
             <Accordion
@@ -244,6 +175,91 @@ const Field = ({
       </div>
     )
   }
+  if (field.type === 'file') {
+    return (
+      <div className="w-full">
+        <Controller
+          control={control}
+          name={fieldID}
+          render={({ field: { value, onChange } }) => (
+            <FileUpload
+              label={field.label}
+              id={fieldID}
+              placeholder={field.placeholder || '...'}
+              helperText={field.helperText}
+              dot={field.required}
+              setValue={onChange}
+              value={value}
+            />
+          )}
+        />
+      </div>
+    )
+  }
+}
+
+const FieldArrray = ({
+  fieldsArray,
+  control,
+  register,
+  errors,
+  name,
+  getValues,
+}) => {
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: name,
+  })
+  return (
+    <>
+      {fields.map((item, index) => {
+        return (
+          <div key={item.id}>
+            <Accordion
+              title={getValues(`${name}.${index}.title`) || '...'}
+              style={'secondary'}
+              className={'pt-4 pl-2'}
+            >
+              <div className="py-2">
+                {fieldsArray.map((field, i) => {
+                  return (
+                    <Field
+                      field={field}
+                      register={register}
+                      errors={errors}
+                      getValues={getValues}
+                      control={control}
+                      key={i}
+                      fieldArrayData={`${name}.${index}`}
+                    />
+                  )
+                })}
+                <Button
+                  type="button"
+                  onClick={() => remove(index)}
+                  className="bg-red-300"
+                >
+                  <HiOutlineTrash className="w-5 h-5" />
+                </Button>
+              </div>
+            </Accordion>
+          </div>
+        )
+      })}
+      <div className="flex items-center justify-center w-full">
+        <Button
+          className="mt-4 ml-2"
+          style="secondary"
+          rounded
+          onClick={() => {
+            append({})
+          }}
+        >
+          <HiPlus />
+        </Button>
+      </div>
+    </>
+  )
 }
 
 export default Form

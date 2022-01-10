@@ -25,10 +25,11 @@ const defaultFormValues = {
       location: 'Gotham',
       from: '01.01.2013',
       to: '01.01.2018',
-      summary: 'My Summary',
+      summary: '',
     },
   ],
   skills: ['react', 'tailwind'],
+  image: null,
 }
 const useFormStore = create((set, get) => ({
   formValues: defaultFormValues,

@@ -65,10 +65,14 @@ export const MyDoc = ({ resumeData }) => {
           {/* 
             // !  IMAGE
           */}
-          <Image
-            source="https://source.unsplash.com/random/"
-            style={styles.imageSecondary}
-          />
+          {resumeData.image && (
+            <Image
+              // source="https://source.unsplash.com/random/"
+              source={resumeData.image}
+              style={styles.imageSecondary}
+            />
+          )}
+
           {/* 
             // !  NAME
           */}

@@ -4,6 +4,12 @@ export const fieldGroups = [
     defaultOpen: true,
     fields: [
       {
+        label: 'Bild',
+        id: 'image',
+        type: 'file',
+        required: false,
+      },
+      {
         label: 'Name',
         id: 'name',
         type: 'text',

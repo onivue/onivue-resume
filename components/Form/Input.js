@@ -15,11 +15,13 @@ const Input = forwardRef(
       errors = {},
       dirtyFields = {},
       dot,
+      iconRight,
+      iconLeft,
       ...rest
     },
     ref,
   ) => {
-    const baseStyle = 'transition duration-150 ease-in'
+    const baseStyle = 'transition duration-150 ease-in focus:outline-none'
     const styles = {
       text: {
         base: 'w-full rounded-md text-black shadow-bold',
@@ -30,8 +32,17 @@ const Input = forwardRef(
         error:
           'focus:ring-red-500 border-red-500 focus:border-red-500 shadow-red-300',
       },
+      file: {
+        base: 'block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100',
+        active:
+          'file:focus:ring-primary-300 file:focus:ring-2 file:focus:border-primary-200 file:focus:shadow-primary-200 rounded p-1',
+        disabled:
+          'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300 text-opacity-40',
+        error:
+          'focus:ring-red-500 border-red-500 focus:border-red-500 shadow-red-300',
+      },
       radio: {
-        base: 'text-primary-400 focus:border-primary-300 focus:outline-none focus:ring focus:ring-primary-300 focus:ring-offset-0',
+        base: 'text-primary-400 focus:border-primary-300 ',
         active:
           'focus:ring-primary-300 focus:border-primary-200 focus:shadow-primary-200',
         disabled:
@@ -40,7 +51,7 @@ const Input = forwardRef(
           'focus:ring-red-500 border-red-500 focus:border-red-500 shadow-red-300',
       },
       checkbox: {
-        base: 'text-primary-400 focus:border-primary-300 focus:outline-none focus:ring focus:ring-primary-300 focus:ring-offset-0 rounded',
+        base: 'text-primary-400 focus:border-primary-300  rounded',
         active:
           'focus:ring-primary-300 focus:border-primary-200 focus:shadow-primary-200',
         disabled:
@@ -52,7 +63,7 @@ const Input = forwardRef(
 
     return (
       <div>
-        {type === 'text' && (
+        {(type === 'text' || type === 'file') && (
           <label htmlFor={id} className="block text-sm font-semibold">
             {label}
             {dot && <span className="text-red-500 pl-0.5">*</span>}
@@ -76,6 +87,8 @@ const Input = forwardRef(
                 : errors[id]
                 ? styles[type].error
                 : styles[type].active,
+              iconLeft && 'pl-12',
+              iconRight && 'pr-12',
             )}
             placeholder={placeholder}
             aria-describedby={id}
@@ -83,8 +96,17 @@ const Input = forwardRef(
             readOnly={readOnly}
             disabled={readOnly}
           />
+          {/* {!dot && (
+            <div
+              htmlFor={id}
+              className="absolute right-0 self-center w-12 mr-4 text-sm font-semibold text-center"
+            >
+              {label}
+              <HiExclamationCircle className="text-xl text-red-500" />
+            </div>
+          )} */}
 
-          {type !== 'text' && (
+          {type !== 'text' && type !== 'file' && (
             <label
               htmlFor={id}
               className="ml-2 text-sm font-semibold align-middle"
@@ -96,9 +118,18 @@ const Input = forwardRef(
               )}
             </label>
           )}
-          {errors[id] && (
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <HiExclamationCircle className="text-xl text-red-500" />
+
+          {iconLeft && (
+            <div className="absolute inset-y-0 left-0 flex items-center justify-center w-12 ">
+              {iconLeft}
+            </div>
+          )}
+          {(errors[id] || iconRight) && (
+            <div className="absolute inset-y-0 right-0 flex items-center justify-center w-12 ">
+              {errors[id] && (
+                <HiExclamationCircle className="text-xl text-red-500" />
+              )}
+              {iconRight && iconRight}
             </div>
           )}
         </div>

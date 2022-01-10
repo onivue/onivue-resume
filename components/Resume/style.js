@@ -26,7 +26,7 @@ export const resumeStyle = {
     zIndex: '10',
     top: '0',
     width: 220,
-    paddingTop: 40,
+    paddingTop: 35,
     paddingLeft: 20,
     paddingRight: 12,
     backgroundColor: 'white',
@@ -76,7 +76,7 @@ export const resumeStyle = {
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 220,
-    paddingHorizontal: 30,
+    paddingHorizontal: 25,
     fontSize: 10,
   },
   separator: {
