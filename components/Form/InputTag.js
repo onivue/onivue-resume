@@ -1,7 +1,6 @@
 import { forwardRef, useState } from 'react'
 import Input from '@/components/Form/Input'
-import Button from '@/components/Button/Button'
-import { HiOutlineX } from 'react-icons/hi'
+import { HiOutlineX, HiPlus } from 'react-icons/hi'
 
 const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {
   const [input, setInput] = useState('')
@@ -11,15 +10,21 @@ const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {
     if (e.key === 'Enter') {
       e.preventDefault()
       if (val) {
-        if (value.find((tag) => tag.toLowerCase() === val.toLowerCase())) {
-          return
-        }
-        setValue([...value, val])
-
-        setInput('')
-      } else if (e.key === 'Backspace' && !val) {
-        removeTag(value.length - 1)
+        addTagValue(val)
       }
+    }
+    if (e.key === 'Backspace' && !val) {
+      // TODO REMOVE OPTION
+    }
+  }
+
+  const addTagValue = (val) => {
+    if (val) {
+      if (value.find((tag) => tag.toLowerCase() === val.toLowerCase())) {
+        return
+      }
+      setValue([...value, val])
+      setInput('')
     }
   }
   const onChange = (e) => {
@@ -35,6 +40,12 @@ const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {
         name={id}
         id={id}
         ref={ref}
+        iconRight={
+          <HiPlus
+            className="cursor-pointer hover:text-primary-500"
+            onClick={(e) => addTagValue(input)}
+          />
+        }
         {...rest}
       />
 

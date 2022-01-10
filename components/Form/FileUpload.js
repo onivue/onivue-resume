@@ -13,6 +13,8 @@ const FileUpload = forwardRef(({ id, setValue, value, ...rest }, ref) => {
     const file = files[0]
     if (file) {
       getBase64(file)
+    } else {
+      setValue(null)
     }
   }
   useEffect(() => {

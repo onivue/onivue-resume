@@ -49,7 +49,10 @@ Font.register({
   src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf',
 })
 // Font.registerHyphenationCallback((word) => [word])
-
+Font.registerEmojiSource({
+  format: 'png',
+  url: 'https://twemoji.maxcdn.com/2/72x72/',
+})
 const styles = StyleSheet.create(resumeStyle)
 
 export const MyDoc = ({ resumeData }) => {

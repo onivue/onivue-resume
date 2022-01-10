@@ -52,6 +52,12 @@ export const fieldGroups = [
         required: true,
         rows: 3,
       },
+    ],
+  },
+  {
+    groupName: 'Skills',
+    defaultOpen: false,
+    fields: [
       {
         label: 'Skills',
         id: 'skills',
