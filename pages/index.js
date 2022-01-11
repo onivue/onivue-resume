@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import { BlobProvider } from '@react-pdf/renderer'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
+import useMediaQuery from '@/hooks/useMediaQuery'
 import { MyDoc } from '@/components/Resume/Resume'
 import PDFViewer from '@/components/PDFViewer/PDFViewer'
 import BottomNavbar from '@/components/BottomNavbar'
 import Form from '@/components/ResumeForm/ResumeForm'
 import Backdrop from '@/components/Backdrop/Backdrop'
-import SettingsContainer from '@/components/SettingsContainer/SettingsContainer'
 import useFormStore from '@/stores/useFormStore'
 import { classNames } from '@/lib/helper'
 import ActionZone from '@/components/ActionZone/ActionZone'
+import { HiOutlinePencilAlt } from 'react-icons/hi'
 
 // HELPER FOR MEDIA QUERY
 const screens = {
@@ -34,25 +34,34 @@ function Home() {
 
   return (
     <>
+      <div className="fixed z-50 flex items-center space-x-4 bottom-5 right-5 lg:hidden">
+        <button
+          onClick={() => SetShowForm(!showForm)}
+          className="z-50 p-1 transition-colors duration-200 rounded-md text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 focus:outline-none focus:ring"
+        >
+          <HiOutlinePencilAlt className="w-8 h-8" />
+        </button>
+      </div>
       {isClient && (
         <>
-          <Backdrop show={showForm && !isDesktop} />
-
           {/* <StateDebug className="fixed right-0 z-20 w-2/5 p-4 font-mono text-white bg-gray-500 rounded top-20 opacity-80" /> */}
-
-          <SettingsContainer
-            show={showForm || isDesktop}
+          <Backdrop show={showForm} className="lg:hidden" />
+          <aside
             className={classNames(
-              'transition-all duration-75 ease-in',
-              'fixed inset-0 top-0 z-10 p-4  overflow-auto',
-              'bg-white border rounded-md lg:mx-0 lg:z-0 lg:w-1/2 lg:p-4 pb-28 lg:static lg:no-scrollbar',
+              'flex-1 fixed lg:static',
+              'z-10 lg:z-0 p-2',
+              'lg:w-1/2  lg:translate-y-0 duration-500 transition  ease-in-out  lg:animate-fade-in-up',
+              'inset-0 inset-y-0 top-0',
+              showForm ? 'translate-y-0 ' : 'translate-y-full  lg:opacity-100',
             )}
           >
-            <div className="pt-8 font-mono text-4xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg h-28 shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
-              Settings
+            <div className="h-full p-4 overflow-auto bg-white border rounded-md lg:no-scrollbar ">
+              <div className="pt-8 font-mono text-4xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg h-28 shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
+                Settings
+              </div>
+              <Form />
             </div>
-            <Form />
-          </SettingsContainer>
+          </aside>
 
           <div className="flex flex-col justify-center w-full lg:w-1/2">
             <BlobProvider document={<MyDoc resumeData={formValues} />}>
@@ -63,11 +72,6 @@ function Home() {
                       file={url}
                       loading={loading}
                       className="w-full max-h-screen px-4 py-1 overflow-auto animate-fade-in-down no-scrollbar"
-                    />
-                    <BottomNavbar
-                      isShowForm={showForm}
-                      toggleForm={() => SetShowForm(!showForm)}
-                      downloadFileUrl={url}
                     />
                   </>
                 )

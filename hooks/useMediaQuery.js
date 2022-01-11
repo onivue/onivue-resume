@@ -8,21 +8,21 @@ import { useState, useEffect } from 'react'
  *  const isMobileSidenav = useMediaQuery('(min-width: 800px)')
  */
 const useMediaQuery = (query) => {
-    if (!query) throw new Error('Invalid or missing MediaQuery!')
-    const [matches, setMatches] = useState(false)
-    useEffect(() => {
-        const media = window.matchMedia(query)
-        if (media.matches !== matches) {
-            setMatches(media.matches)
-        }
-        const listener = () => {
-            setMatches(media.matches)
-        }
-        media.addEventListener('change', listener)
-        return () => media.removeEventListener('change', listener)
-    }, [matches, query])
+  if (!query) throw new Error('Invalid or missing MediaQuery!')
+  const [matches, setMatches] = useState(false)
+  useEffect(() => {
+    const media = window.matchMedia(query)
+    if (media.matches !== matches) {
+      setMatches(media.matches)
+    }
+    const listener = () => {
+      setMatches(media.matches)
+    }
+    media.addEventListener('change', listener)
+    return () => media.removeEventListener('change', listener)
+  }, [matches, query])
 
-    return matches
+  return matches
 }
 
-export { useMediaQuery }
+export default useMediaQuery

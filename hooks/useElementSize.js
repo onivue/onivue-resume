@@ -3,7 +3,7 @@ import { useCallback, useLayoutEffect, useState } from 'react'
 
 import { useEventListener } from '@/hooks/useEventListener'
 
-export const useElementSize = (elementRef) => {
+const useElementSize = (elementRef) => {
   const [size, setSize] = useState({
     width: 0,
     height: 0,
@@ -31,3 +31,5 @@ export const useElementSize = (elementRef) => {
 
   return size
 }
+
+export default useElementSize

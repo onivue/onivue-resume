@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
-import { useElementSize } from '@/hooks/useElementSize'
+import useElementSize from '@/hooks/useElementSize'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import useFormStore from '@/stores/useFormStore'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`

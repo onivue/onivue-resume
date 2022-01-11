@@ -13,7 +13,7 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
   }
   return (
     <div className="p-4 ">
-      <div className="bg-white border px-7 rounded-2xl">
+      <div className="bg-white border rounded-lg px-7">
         <div className="flex">
           <div className="flex-1 group" onClick={() => toggleForm()}>
             <div className="flex items-end justify-center w-full px-4 py-2 mx-auto text-center text-gray-400 cursor-pointer group-hover:text-primary-400">
