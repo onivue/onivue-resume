@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BlobProvider } from '@react-pdf/renderer'
-import useMediaQuery from '@/hooks/useMediaQuery'
 import { MyDoc } from '@/components/Resume/Resume'
 import PDFViewer from '@/components/PDFViewer/PDFViewer'
-import BottomNavbar from '@/components/BottomNavbar'
 import Form from '@/components/ResumeForm/ResumeForm'
 import Backdrop from '@/components/Backdrop/Backdrop'
 import useFormStore from '@/stores/useFormStore'
@@ -11,19 +9,9 @@ import { classNames } from '@/lib/helper'
 import ActionZone from '@/components/ActionZone/ActionZone'
 import { HiOutlinePencilAlt } from 'react-icons/hi'
 
-// HELPER FOR MEDIA QUERY
-const screens = {
-  sm: '640px',
-  md: '768px',
-  lg: '1023px',
-  xl: '1280px',
-  '2xl': '1536px',
-}
-
 function Home() {
   const [isClient, setIsClient] = useState(false)
   const [showForm, SetShowForm] = useState(false)
-  const isDesktop = useMediaQuery(`(min-width: ${screens.lg})`)
   useEffect(() => {
     setIsClient(true)
   }, [])

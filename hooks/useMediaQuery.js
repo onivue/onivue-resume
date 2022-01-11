@@ -7,6 +7,16 @@ import { useState, useEffect } from 'react'
  * @example
  *  const isMobileSidenav = useMediaQuery('(min-width: 800px)')
  */
+
+// HELPER FOR MEDIA QUERY
+const screens = {
+  sm: '640px',
+  md: '768px',
+  lg: '1023px',
+  xl: '1280px',
+  '2xl': '1536px',
+}
+
 const useMediaQuery = (query) => {
   if (!query) throw new Error('Invalid or missing MediaQuery!')
   const [matches, setMatches] = useState(false)

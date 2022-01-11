@@ -2,6 +2,7 @@ import {
   HiOutlinePencilAlt,
   HiOutlineDownload,
   HiOutlineCog,
+  HiOutlineColorSwatch,
 } from 'react-icons/hi'
 import useFormStore from '@/stores/useFormStore'
 import { saveAs } from 'file-saver'
@@ -13,29 +14,31 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
   }
   return (
     <div className="p-4 ">
-      <div className="bg-white border rounded-lg px-7">
-        <div className="flex">
-          <div className="flex-1 group" onClick={() => toggleForm()}>
-            <div className="flex items-end justify-center w-full px-4 py-2 mx-auto text-center text-gray-400 cursor-pointer group-hover:text-primary-400">
-              <div className="block px-1 pt-1 pb-1">
-                <div className="block w-5 h-1 "></div>
-                <HiOutlineCog className="block pt-1 mx-auto mb-1 text-2xl" />
+      <div className="px-7">
+        <div className="flex justify-around">
+          <Item>
+            <HiOutlineCog className="block pt-1 mx-auto mb-1 text-3xl" />
+          </Item>
+          <Item>
+            <HiOutlineColorSwatch className="block pt-1 mx-auto mb-1 text-3xl" />
+          </Item>
+          <Item onClick={() => saveFile()}>
+            <HiOutlineDownload className="block pt-1 mx-auto mb-1 text-3xl" />
+          </Item>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-                <div className="block w-5 h-1 mx-auto rounded-full group-hover:bg-primary-300"></div>
-              </div>
-            </div>
-          </div>
-          <div className="flex-1 group" onClick={() => saveFile()}>
-            <div className="flex items-end justify-center w-full px-4 py-2 mx-auto text-center text-gray-400 cursor-pointer group-hover:text-primary-400">
-              <div className="block px-1 pt-1 pb-1 ">
-                <div className="block w-5 h-1 "></div>
-
-                <HiOutlineDownload className="block pt-1 mx-auto mb-1 text-2xl " />
-
-                <div className="block w-5 h-1 mx-auto rounded-full group-hover:bg-primary-300"></div>
-              </div>
-            </div>
-          </div>
+const Item = ({ children, onClick }) => {
+  return (
+    <div className="text-3xl group" onClick={onClick}>
+      <div className="flex items-end justify-center w-full px-6 py-2 mx-auto text-center text-gray-300 transition-all duration-150 cursor-pointer hover:scale-110 group-hover:text-primary-400">
+        <div className="block px-1 pt-1 pb-1">
+          <div className="block w-5 h-1 "></div>
+          {children}
+          <div className="block w-5 h-1 mx-auto transition-all duration-150 rounded-full group-hover:bg-primary-300"></div>
         </div>
       </div>
     </div>
