@@ -4,7 +4,7 @@ import { MyDoc } from '@/components/Resume/Resume'
 import PDFViewer from '@/components/PDFViewer/PDFViewer'
 import Form from '@/components/ResumeForm/ResumeForm'
 import Backdrop from '@/components/Backdrop/Backdrop'
-import useFormStore from '@/stores/useFormStore'
+import useResumeStore from '@/stores/useResumeStore'
 import { classNames } from '@/lib/helper'
 import ActionZone from '@/components/ActionZone/ActionZone'
 import { HiOutlinePencilAlt } from 'react-icons/hi'
@@ -16,9 +16,9 @@ function Home() {
     setIsClient(true)
   }, [])
 
-  const formValues = useFormStore((state) => state.formValues)
+  const formValues = useResumeStore((state) => state.formValues)
 
-  const StateDebug = useFormStore((state) => state.StateDebug)
+  const StateDebug = useResumeStore((state) => state.StateDebug)
 
   return (
     <>

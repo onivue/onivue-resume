@@ -4,11 +4,14 @@ import {
   HiOutlineCog,
   HiOutlineColorSwatch,
 } from 'react-icons/hi'
-import useFormStore from '@/stores/useFormStore'
+import useResumeStore from '@/stores/useResumeStore'
 import { saveAs } from 'file-saver'
+import Modal from '@/components/Modal/Modal'
+import { useState } from 'react'
 
 export default function ActionZone({ toggleForm, downloadFileUrl }) {
-  const fileDownloadURL = useFormStore((state) => state.fileDownloadURL)
+  const [modalOpen, setModalOpen] = useState(false)
+  const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
   const saveFile = () => {
     saveAs(fileDownloadURL, 'example.pdf')
   }
@@ -16,9 +19,13 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
     <div className="p-4 ">
       <div className="px-7">
         <div className="flex justify-around">
-          <Item>
+          <Item onClick={() => setModalOpen((s) => !s)}>
             <HiOutlineCog className="block pt-1 mx-auto mb-1 text-3xl" />
           </Item>
+          <Modal show={modalOpen} onClose={setModalOpen} title="ONE">
+            This is the Description
+            <p className="text-sm text-gray-500">This is the Description</p>
+          </Modal>
           <Item>
             <HiOutlineColorSwatch className="block pt-1 mx-auto mb-1 text-3xl" />
           </Item>

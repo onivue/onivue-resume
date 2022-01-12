@@ -52,6 +52,17 @@ module.exports = {
         transform: 'translateY(10px)',
       },
     },
+    tilt: {
+      '0%, 50%, 100%': {
+        transform: 'rotate(0deg)',
+      },
+      '25%': {
+        transform: 'rotate(2deg)',
+      },
+      '75%': {
+        transform: 'rotate(-2deg)',
+      },
+    },
   },
   animation: {
     'fade-in': 'fade-in 1s ease-in',
@@ -59,5 +70,6 @@ module.exports = {
     'fade-out-down': 'fade-out-down 0.5s ease-out',
     'fade-in-up': 'fade-in-up 0.5s ease-out',
     'fade-out-up': 'fade-out-up 0.5s ease-out',
+    tilt: 'tilt 10s infinite linear',
   },
 }

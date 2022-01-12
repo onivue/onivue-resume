@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import useElementSize from '@/hooks/useElementSize'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-import useFormStore from '@/stores/useFormStore'
+import useResumeStore from '@/stores/useResumeStore'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
 const PDFViewer = ({ file, loading, className }) => {
@@ -23,7 +23,7 @@ const PDFViewer = ({ file, loading, className }) => {
     setFileDownloadURL(file)
   }
 
-  const setFileDownloadURL = useFormStore((state) => state.setFileDownloadURL)
+  const setFileDownloadURL = useResumeStore((state) => state.setFileDownloadURL)
 
   return (
     <div className={className}>
@@ -32,7 +32,7 @@ const PDFViewer = ({ file, loading, className }) => {
         ref={pdfRef}
         id="WRAPPER"
       >
-        <LoadingA4Page refWidth={pdfWidth}>
+        <A4Page refWidth={pdfWidth}>
           {!loading && (
             <Document
               loading={''}
@@ -57,7 +57,7 @@ const PDFViewer = ({ file, loading, className }) => {
             </Document>
           )}
           <div className="h-1"></div>
-        </LoadingA4Page>
+        </A4Page>
         {/* TRICK FOR OVERFLOW */}
       </div>
       {/* <div className="text-red-600">{pdfWidth}</div> */}
@@ -65,14 +65,14 @@ const PDFViewer = ({ file, loading, className }) => {
   )
 }
 
-const LoadingA4Page = ({ refWidth, children }) => {
+const A4Page = ({ refWidth, children }) => {
   return (
     <div
       style={{
         height: (refWidth * 99) / 70,
         width: refWidth,
       }}
-      className="w-full bg-white loadingA4Page"
+      className="w-full bg-white rounded-lg ring-black ring-1"
     >
       {children}
     </div>
@@ -86,28 +86,29 @@ const PageNavigator = ({
   onNextPage,
 }) => {
   if (numPages <= 1) return null
-
   return (
     <div className="absolute bottom-0 flex flex-col justify-center w-full my-2 transform -translate-x-1/2 opacity-25 hover:opacity-80 left-1/2">
       <div className="flex justify-center w-full my-2 text-sm">
-        {currentPage !== 1 && ''}
-        <button
-          className="flex items-center justify-center px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
-          onClick={onPreviousPage}
-        >
-          <HiChevronLeft />
-        </button>
+        {currentPage !== 1 && (
+          <button
+            className="flex items-center justify-center px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-primary-400 hover:text-white"
+            onClick={onPreviousPage}
+          >
+            <HiChevronLeft />
+          </button>
+        )}
 
         <div className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg ">
           <div className="font-bold">{` ${currentPage} / ${numPages}`}</div>
         </div>
-        {currentPage < numPages && ''}
-        <div
-          className="flex items-center justify-center px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-gray-200"
-          onClick={onNextPage}
-        >
-          <HiChevronRight />
-        </div>
+        {currentPage < numPages && (
+          <div
+            className="flex items-center justify-center px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-primary-400 hover:text-white"
+            onClick={onNextPage}
+          >
+            <HiChevronRight />
+          </div>
+        )}
       </div>
     </div>
   )

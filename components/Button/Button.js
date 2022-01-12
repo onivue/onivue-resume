@@ -4,7 +4,7 @@ import { forwardRef } from 'react'
 const baseStyle = classNames(
   'align-bottom inline-flex items-center justify-center',
   'cursor-pointer leading-5',
-  'transition ease-in duration-150 font-medium',
+  'transition ease-in duration-150 font-medium focus:outline-none',
 )
 
 const styles = {

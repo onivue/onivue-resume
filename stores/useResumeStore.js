@@ -1,8 +1,8 @@
-import { useState } from 'react'
 import create from 'zustand'
 
 const defaultFormValues = {
-  name: 'Bruce Wayne',
+  firstName: 'Bruce',
+  lastName: 'Wayne',
   jobTitle: 'Batman',
   address: 'Street XY1',
   plz: '9000 Gotham',
@@ -31,27 +31,34 @@ const defaultFormValues = {
   skills: ['react', 'tailwind'],
   image: null,
 }
-const useFormStore = create((set, get) => ({
+const useResumeStore = create((set, get) => ({
   formValues: defaultFormValues,
   setFormValues: (payload) => {
     // console.log('setFormValues - STORE')
     set({ formValues: payload })
   },
+  // ! --------------------------------------
   fileDownloadURL: null,
   setFileDownloadURL: (payload) => {
-    console.log('setFileDownloadURL - STORE', payload)
     set({ fileDownloadURL: payload })
   },
+  // ! --------------------------------------
+  resumeSettings: null,
+  setResumeSettings: (payload) => {
+    set({ resumeSettings: payload })
+  },
+  // ! --------------------------------------
   StateDebug: ({ className }) => {
-    const [state, setState] = useState('X')
+    const formValues = useResumeStore((state) => state.formValues)
+    const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
     return (
       <div className={className}>
         <p className="text-xs text-center">DEBUG FORM VALUES</p>
-        {JSON.stringify(get().formValues, null, 4)}
-        <div>URL:{get().fileDownloadURL}</div>
+        {JSON.stringify(formValues, null, 4)}
+        <div>URL:{fileDownloadURL}</div>
       </div>
     )
   },
 }))
 
-export default useFormStore
+export default useResumeStore

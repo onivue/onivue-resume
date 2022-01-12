@@ -79,11 +79,17 @@ export const MyDoc = ({ resumeData }) => {
           {/* 
             // !  NAME
           */}
-          <Text style={styles.h1Secondary}>
+          {/* <Text style={styles.h1Secondary}>
             {resumeData?.name.length > 15
               ? resumeData?.name.replace(/\s+/g, '\n')
               : resumeData?.name}
-          </Text>
+          </Text> */}
+          <View
+            style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}
+          >
+            <Text style={styles.h1Secondary}>{resumeData?.firstName} </Text>
+            <Text style={styles.h1Secondary}>{resumeData?.lastName}</Text>
+          </View>
           <Text style={styles.h2Secondary}>{resumeData?.jobTitle}</Text>
           {/* 
             // !  CONTACT

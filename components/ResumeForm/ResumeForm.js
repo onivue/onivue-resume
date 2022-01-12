@@ -1,18 +1,19 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useForm, Controller, useFieldArray } from 'react-hook-form'
 import Input from '@/components/Form/Input'
 import InputTag from '@/components/Form/InputTag'
 import TextArea from '@/components/Form/TextArea'
-import useFormStore from '@/stores/useFormStore'
+import useResumeStore from '@/stores/useResumeStore'
 import Button from '@/components/Button/Button'
 import Accordion from '@/components/Accordion/Accordion'
 import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
 import { fieldGroups } from '@/components/ResumeForm/data'
 import FileUpload from '@/components/Form/FileUpload'
+import Modal from '../Modal/Modal'
 
 const Form = () => {
-  const formValues = useFormStore((state) => state.formValues)
-  const setFormValues = useFormStore((state) => state.setFormValues)
+  const formValues = useResumeStore((state) => state.formValues)
+  const setFormValues = useResumeStore((state) => state.setFormValues)
   const timeout = useRef(null)
 
   const {
