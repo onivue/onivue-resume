@@ -1,5 +1,5 @@
 import { forwardRef, useState, useEffect } from 'react'
-import Input from '@/components/Form/Input'
+import Input from '@/components/Fields/Input'
 import Button from '@/components/Button/Button'
 import { HiOutlineX } from 'react-icons/hi'
 import { HiOutlineTrash, HiPlus } from 'react-icons/hi'

@@ -33,7 +33,7 @@ const Footer = () => {
           </li>
         </ul>
         <p className="block mt-4 text-xs font-light text-center text-gray-gray5 lg:hidden">
-          © 2021 • Peerlist
+          © 2021 • onivue
         </p>
       </div>
     </footer>

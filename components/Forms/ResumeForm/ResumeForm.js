@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { useForm, Controller, useFieldArray } from 'react-hook-form'
-import Input from '@/components/Form/Input'
-import InputTag from '@/components/Form/InputTag'
-import TextArea from '@/components/Form/TextArea'
+import Input from '@/components/Fields/Input'
+import InputTag from '@/components/Fields/InputTag'
+import TextArea from '@/components/Fields/TextArea'
 import useResumeStore from '@/stores/useResumeStore'
 import Button from '@/components/Button/Button'
 import Accordion from '@/components/Accordion/Accordion'
 import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
-import { fieldGroups } from '@/components/ResumeForm/data'
-import FileUpload from '@/components/Form/FileUpload'
-import Modal from '../Modal/Modal'
+import { fieldGroups } from '@/components/Forms/ResumeForm/data'
+import FileUpload from '@/components/Fields/FileUpload'
 
 const Form = () => {
   const formValues = useResumeStore((state) => state.formValues)
@@ -57,7 +56,7 @@ const Form = () => {
               <div className="py-2">
                 {fieldGroup.fields.map((field, i) => {
                   return (
-                    <Field
+                    <FieldGenerator
                       field={field}
                       key={i}
                       register={register}
@@ -76,7 +75,7 @@ const Form = () => {
   )
 }
 
-const Field = ({
+const FieldGenerator = ({
   field,
   register,
   errors,
@@ -223,7 +222,7 @@ const FieldArrray = ({
               <div className="py-2">
                 {fieldsArray.map((field, i) => {
                   return (
-                    <Field
+                    <FieldGenerator
                       field={field}
                       register={register}
                       errors={errors}

@@ -22,7 +22,12 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
           <Item onClick={() => setModalOpen((s) => !s)}>
             <HiOutlineCog className="block pt-1 mx-auto mb-1 text-3xl" />
           </Item>
-          <Modal show={modalOpen} onClose={setModalOpen} title="ONE">
+          <Modal
+            show={modalOpen}
+            onClose={() => setModalOpen((s) => !s)}
+            title="Settings"
+            type="edit"
+          >
             This is the Description
             <p className="text-sm text-gray-500">This is the Description</p>
           </Modal>

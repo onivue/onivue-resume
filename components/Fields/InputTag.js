@@ -1,5 +1,5 @@
 import { forwardRef, useState } from 'react'
-import Input from '@/components/Form/Input'
+import Input from '@/components/Fields/Input'
 import { HiOutlineX, HiPlus } from 'react-icons/hi'
 
 const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {

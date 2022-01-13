@@ -31,6 +31,25 @@ const defaultFormValues = {
   skills: ['react', 'tailwind'],
   image: null,
 }
+// ? --------------------------------------
+const defaultMetadata = {
+  docTitle: 'resume',
+  author: '',
+  creator: '',
+  producer: '',
+  subject: '',
+  keywords: '',
+  language: '',
+}
+// ? --------------------------------------
+const defaultDesign = {
+  color: '',
+  backgroundColor: '',
+}
+
+// ! --------------------------------------
+// ! STORE
+// ! --------------------------------------
 const useResumeStore = create((set, get) => ({
   formValues: defaultFormValues,
   setFormValues: (payload) => {
@@ -38,14 +57,19 @@ const useResumeStore = create((set, get) => ({
     set({ formValues: payload })
   },
   // ! --------------------------------------
-  fileDownloadURL: null,
+  fileDownloadURL: '',
   setFileDownloadURL: (payload) => {
     set({ fileDownloadURL: payload })
   },
   // ! --------------------------------------
-  resumeSettings: null,
-  setResumeSettings: (payload) => {
-    set({ resumeSettings: payload })
+  resumeMetadata: defaultMetadata,
+  setResumeMetadata: (payload) => {
+    set({ resumeMetadata: payload })
+  },
+  // ! --------------------------------------
+  resumeDesign: defaultMetadata,
+  setResumeDesign: (payload) => {
+    set({ resumeDesign: payload })
   },
   // ! --------------------------------------
   StateDebug: ({ className }) => {
