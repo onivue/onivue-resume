@@ -141,8 +141,8 @@ export const MyDoc = ({ resumeData }) => {
             {resumeData?.languages?.map((item, i) => {
               return (
                 <ProgressBar
-                  language={item.title}
-                  progress={`${item.level}%`}
+                  title={item.title}
+                  progress={`${item.level || 0}%`}
                   key={i}
                 />
               )
@@ -215,9 +215,9 @@ export const MyDoc = ({ resumeData }) => {
   )
 }
 
-const ProgressBar = ({ language, progress }) => (
+const ProgressBar = ({ title, progress }) => (
   <>
-    <Text style={{ fontSize: 10, marginBottom: 3 }}>{language}</Text>
+    <Text style={{ fontSize: 10, marginBottom: 3 }}>{title || '...'}</Text>
     <View style={styles.progressBarLine}>
       <View style={{ width: progress, ...styles.progressBarValue }}></View>
     </View>

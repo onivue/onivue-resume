@@ -61,6 +61,18 @@ const Input = forwardRef(
       },
     }
 
+    const resolveObjectPath = (object, path) => {
+      return path
+        .replace(/\[/g, '.')
+        .replace(/\]/g, '')
+        .split('.')
+        .reduce((o, k) => (o || {})[k], object)
+    }
+
+    var obj = { a: [{ b: 1 }] }
+    console.log(resolveObjectPath(obj, 'a.0.b'))
+    console.log(resolveObjectPath(obj, 'a[0].b'))
+
     return (
       <div>
         {(type === 'text' || type === 'file') && (
@@ -78,13 +90,15 @@ const Input = forwardRef(
             name={id}
             id={id}
             aria-required={dot}
-            aria-invalid={!!errors[id]}
+            // aria-invalid={!!errors[id]}
+            aria-invalid={!!resolveObjectPath(errors, id)}
             className={classNames(
               baseStyle,
               styles[type].base,
               readOnly
                 ? styles[type].disabled
-                : errors[id]
+                : // : errors[id]
+                resolveObjectPath(errors, id)
                 ? styles[type].error
                 : styles[type].active,
               iconLeft && 'pl-12',

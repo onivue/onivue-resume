@@ -30,6 +30,54 @@ const defaultFormValues = {
   ],
   skills: ['react', 'tailwind'],
   image: null,
+  // ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  sections: [
+    {
+      sectionTitle: 'primary',
+      blocks: [
+        {
+          blockType: 'history',
+          blockName: 'Education',
+          blockId: '003',
+          values: [
+            {
+              history: [
+                {
+                  title: 'Technology School 2',
+                  location: 'LA',
+                  from: '01.01.2020',
+                  to: '01.01.2021',
+                  summary: '',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'secondary',
+      blocks: [
+        {
+          blockType: 'personalInformation',
+          blockName: 'Persönliche Informationen',
+          blockId: '002',
+          values: [
+            {
+              firstName: 'Obi',
+              lastName: 'Wan',
+              jobTitle: 'Batman',
+              address: 'Street XY1',
+              plz: '9000 Gotham',
+              phone: '071 000 00 00',
+              mail: 'bruce.wayne@batman.com',
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  // ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }
 // ? --------------------------------------
 const defaultMetadata = {
@@ -45,6 +93,7 @@ const defaultMetadata = {
 const defaultDesign = {
   color: '',
   backgroundColor: '',
+  accentColor: '',
 }
 
 // ! --------------------------------------

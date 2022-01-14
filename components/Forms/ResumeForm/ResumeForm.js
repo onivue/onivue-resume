@@ -9,6 +9,7 @@ import Accordion from '@/components/Accordion/Accordion'
 import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
 import { fieldGroups } from '@/components/Forms/ResumeForm/data'
 import FileUpload from '@/components/Fields/FileUpload'
+import { blocksObject, personalInformation } from './Blocks'
 
 const Form = () => {
   const formValues = useResumeStore((state) => state.formValues)
@@ -34,13 +35,45 @@ const Form = () => {
     return () => subscription.unsubscribe()
   }, [watch, formValues])
 
+  useEffect(() => {
+    console.log(errors)
+  })
+
   return (
     <>
       <div className="py-4 lg:p-4 ">
         {/* 
           // !  --------------------------------
         */}
-
+        {formValues.sections.map((section, sectionIndex) => {
+          return section.blocks.map((block, blockIndex) => {
+            return (
+              <div className="rounded ring-2 ring-slate-400" key={blockIndex}>
+                <Accordion
+                  title={block.blockName}
+                  style={'primary'}
+                  className={'pt-2 mb-4'}
+                  key={blockIndex}
+                  defaultOpen={block.defaultOpen || false}
+                >
+                  {blocksObject[block.blockType].map((field, i) => {
+                    return (
+                      <FieldGenerator
+                        field={field}
+                        key={i}
+                        register={register}
+                        errors={errors}
+                        getValues={getValues}
+                        control={control}
+                        fieldArrayData={`sections.${sectionIndex}.blocks.${blockIndex}.values.0`}
+                      />
+                    )
+                  })}
+                </Accordion>
+              </div>
+            )
+          })
+        })}
         {/* 
           // !  --------------------------------
         */}
@@ -89,11 +122,12 @@ const FieldGenerator = ({
   } else {
     fieldID = field.id
   }
+  // console.log(fieldArrayData, field.id)
 
   if (field.type === 'fieldarray') {
     return (
       <FieldArrray
-        name={field.name}
+        name={fieldArrayData ? `${fieldArrayData}.${field.name}` : field.name}
         fieldsArray={field.fieldsArray}
         control={control}
         register={register}
@@ -209,6 +243,7 @@ const FieldArrray = ({
     control,
     name: name,
   })
+
   return (
     <>
       {fields.map((item, index) => {
@@ -221,6 +256,7 @@ const FieldArrray = ({
             >
               <div className="py-2">
                 {fieldsArray.map((field, i) => {
+                  // console.log(field.id)
                   return (
                     <FieldGenerator
                       field={field}
