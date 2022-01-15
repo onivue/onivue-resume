@@ -1,0 +1,88 @@
+{
+  "firstName": "Bruce",
+  "lastName": "Wayne",
+  "jobTitle": "Batman",
+  "address": "Street XY1",
+  "plz": "9000 Gotham",
+  "phone": "071 000 00 00",
+  "mail": "bruce.wayne@batman.com",
+  "aboutMe": "My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!",
+  "languages": [
+    {
+      "title": "English",
+      "level": "80"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Application Engineer",
+      "location": "Gotham",
+      "from": "01.01.2010",
+      "to": "01.01.2020",
+      "summary": "My Summary \n- batman!"
+    }
+  ],
+  "education": [
+    {
+      "title": "Technology School",
+      "location": "Gotham",
+      "from": "01.01.2013",
+      "to": "01.01.2018",
+      "summary": ""
+    }
+  ],
+  "skills": ["react", "tailwind"],
+  "image": null,
+  "details": [],
+  "sections": [
+    {
+      "sectionTitle": "primary",
+      "blocks": [
+        {
+          "blockType": "history",
+          "blockName": "Education",
+          "blockId": "003",
+          "values": [
+            {
+              "history": [
+                {
+                  "title": "Technology School 2",
+                  "location": "LA",
+                  "from": "01.01.2020",
+                  "to": "01.01.2021",
+                  "summary": ""
+                }
+              ],
+              "title": "asd",
+              "location": "",
+              "from": "",
+              "to": "",
+              "summary": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "secondary",
+      "blocks": [
+        {
+          "blockType": "personalInformation",
+          "blockName": "Persönliche Informationen",
+          "blockId": "002",
+          "values": [
+            {
+              "firstName": "Obi",
+              "lastName": "Wan",
+              "jobTitle": "Batman",
+              "address": "Street XY1",
+              "plz": "9000 Gotham",
+              "phone": "071 000 00 00",
+              "mail": "bruce.wayne@batman.com"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

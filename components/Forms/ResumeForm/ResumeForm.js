@@ -35,10 +35,6 @@ const Form = () => {
     return () => subscription.unsubscribe()
   }, [watch, formValues])
 
-  useEffect(() => {
-    console.log(errors)
-  })
-
   return (
     <>
       <div className="py-4 lg:p-4 ">
@@ -46,33 +42,54 @@ const Form = () => {
           // !  --------------------------------
         */}
         {formValues.sections.map((section, sectionIndex) => {
-          return section.blocks.map((block, blockIndex) => {
-            return (
-              <div className="rounded ring-2 ring-slate-400" key={blockIndex}>
-                <Accordion
-                  title={block.blockName}
-                  style={'primary'}
-                  className={'pt-2 mb-4'}
-                  key={blockIndex}
-                  defaultOpen={block.defaultOpen || false}
-                >
-                  {blocksObject[block.blockType].map((field, i) => {
-                    return (
-                      <FieldGenerator
-                        field={field}
-                        key={i}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        control={control}
-                        fieldArrayData={`sections.${sectionIndex}.blocks.${blockIndex}.values.0`}
-                      />
-                    )
-                  })}
-                </Accordion>
-              </div>
-            )
-          })
+          return (
+            <div
+              className="bg-red-100 rounded ring-2 ring-slate-400"
+              key={sectionIndex}
+            >
+              {section.blocks.map((block, blockIndex) => {
+                return (
+                  <div
+                    className="rounded ring-2 ring-slate-400"
+                    key={blockIndex}
+                  >
+                    <Accordion
+                      title={block.blockName}
+                      style={'primary'}
+                      className={'pt-2 mb-4'}
+                      key={blockIndex}
+                      defaultOpen={block.defaultOpen || false}
+                    >
+                      {blocksObject[block.blockType].type === 'fieldarray' ? (
+                        <FieldArrray
+                          name={`sections.${sectionIndex}.blocks.${blockIndex}.values`}
+                          fieldsArray={blocksObject[block.blockType].fields}
+                          control={control}
+                          register={register}
+                          errors={errors}
+                          getValues={getValues}
+                        />
+                      ) : (
+                        blocksObject[block.blockType].fields.map((field, i) => {
+                          return (
+                            <FieldGenerator
+                              field={field}
+                              key={i}
+                              register={register}
+                              errors={errors}
+                              getValues={getValues}
+                              control={control}
+                              fieldArrayData={`sections.${sectionIndex}.blocks.${blockIndex}.values.0`}
+                            />
+                          )
+                        })
+                      )}
+                    </Accordion>
+                  </div>
+                )
+              })}
+            </div>
+          )
         })}
         {/* 
           // !  --------------------------------
@@ -278,6 +295,66 @@ const FieldArrray = ({
                 </Button>
               </div>
             </Accordion>
+          </div>
+        )
+      })}
+      <div className="flex items-center justify-center w-full">
+        <Button
+          className="mt-4 ml-2"
+          style="secondary"
+          rounded
+          onClick={() => {
+            append({})
+          }}
+        >
+          <HiPlus />
+        </Button>
+      </div>
+    </>
+  )
+}
+
+const FieldArrraySolo = ({
+  fieldsArray,
+  control,
+  register,
+  errors,
+  name,
+  getValues,
+}) => {
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: name,
+  })
+
+  return (
+    <>
+      {fields.map((item, index) => {
+        return (
+          <div key={item.id}>
+            <div className="py-2">
+              {fieldsArray.map((field, i) => {
+                // console.log(field.id)
+                return (
+                  <FieldGenerator
+                    field={field}
+                    register={register}
+                    errors={errors}
+                    getValues={getValues}
+                    control={control}
+                    key={i}
+                    fieldArrayData={`${name}.${index}`}
+                  />
+                )
+              })}
+              <Button
+                type="button"
+                onClick={() => remove(index)}
+                className="bg-red-300"
+              >
+                <HiOutlineTrash className="w-5 h-5" />
+              </Button>
+            </div>
           </div>
         )
       })}

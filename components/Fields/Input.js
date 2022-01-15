@@ -69,10 +69,6 @@ const Input = forwardRef(
         .reduce((o, k) => (o || {})[k], object)
     }
 
-    var obj = { a: [{ b: 1 }] }
-    console.log(resolveObjectPath(obj, 'a.0.b'))
-    console.log(resolveObjectPath(obj, 'a[0].b'))
-
     return (
       <div>
         {(type === 'text' || type === 'file') && (

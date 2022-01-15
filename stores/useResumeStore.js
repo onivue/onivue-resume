@@ -31,6 +31,7 @@ const defaultFormValues = {
   skills: ['react', 'tailwind'],
   image: null,
   // ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  details: [],
   sections: [
     {
       sectionTitle: 'primary',
@@ -41,17 +42,19 @@ const defaultFormValues = {
           blockId: '003',
           values: [
             {
-              history: [
-                {
-                  title: 'Technology School 2',
-                  location: 'LA',
-                  from: '01.01.2020',
-                  to: '01.01.2021',
-                  summary: '',
-                },
-              ],
+              title: 'Technology School 2',
+              location: 'LA',
+              from: '01.01.2020',
+              to: '01.01.2021',
+              summary: '',
             },
           ],
+        },
+        {
+          blockType: 'tag',
+          blockName: 'Tags',
+          blockId: '004',
+          values: [{ tags: ['react', 'tailwind'] }],
         },
       ],
     },

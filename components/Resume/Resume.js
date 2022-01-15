@@ -142,7 +142,7 @@ export const MyDoc = ({ resumeData }) => {
               return (
                 <ProgressBar
                   title={item.title}
-                  progress={`${item.level || 0}%`}
+                  progress={`${item.level || 50}%`}
                   key={i}
                 />
               )
