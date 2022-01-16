@@ -32,7 +32,7 @@ function Home() {
       </div>
       {isClient && (
         <>
-          {/* <StateDebug className="fixed right-0 z-20 w-2/5 p-4 font-mono text-white bg-gray-500 rounded top-20 opacity-80" /> */}
+          {/* <StateDebug className="fixed right-0 z-20 w-2/5 p-4 overflow-auto font-mono text-white bg-gray-500 rounded h-[1200px] top-20 opacity-80" /> */}
           <Backdrop show={showForm} className="lg:hidden" />
           <aside
             className={classNames(

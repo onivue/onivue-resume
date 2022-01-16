@@ -38,59 +38,67 @@ const Form = () => {
   return (
     <>
       <div className="py-4 lg:p-4 ">
-        {/* 
-          // !  --------------------------------
-        */}
-        {formValues.sections.map((section, sectionIndex) => {
+        {/* // !  --------DETAILS-------- */}
+        <Accordion
+          title={'Persönliche Informationen'}
+          style={'primary'}
+          className={'pt-2 mb-4'}
+          defaultOpen={true}
+        >
+          {blocksObject.details.fields.map((field, i) => {
+            return (
+              <FieldGenerator
+                field={field}
+                key={i}
+                register={register}
+                errors={errors}
+                getValues={getValues}
+                control={control}
+                fieldArrayData={`details`}
+              />
+            )
+          })}
+        </Accordion>
+        {/* // !  --------BLOCKS-------- */}
+        {formValues.blocks.map((block, blockIndex) => {
           return (
-            <div
-              className="bg-red-100 rounded ring-2 ring-slate-400"
-              key={sectionIndex}
-            >
-              {section.blocks.map((block, blockIndex) => {
-                return (
-                  <div
-                    className="rounded ring-2 ring-slate-400"
-                    key={blockIndex}
-                  >
-                    <Accordion
-                      title={block.blockName}
-                      style={'primary'}
-                      className={'pt-2 mb-4'}
-                      key={blockIndex}
-                      defaultOpen={block.defaultOpen || false}
-                    >
-                      {blocksObject[block.blockType].type === 'fieldarray' ? (
-                        <FieldArrray
-                          name={`sections.${sectionIndex}.blocks.${blockIndex}.values`}
-                          fieldsArray={blocksObject[block.blockType].fields}
-                          control={control}
-                          register={register}
-                          errors={errors}
-                          getValues={getValues}
-                        />
-                      ) : (
-                        blocksObject[block.blockType].fields.map((field, i) => {
-                          return (
-                            <FieldGenerator
-                              field={field}
-                              key={i}
-                              register={register}
-                              errors={errors}
-                              getValues={getValues}
-                              control={control}
-                              fieldArrayData={`sections.${sectionIndex}.blocks.${blockIndex}.values.0`}
-                            />
-                          )
-                        })
-                      )}
-                    </Accordion>
-                  </div>
-                )
-              })}
+            <div className="" key={blockIndex}>
+              <Accordion
+                title={`🛠 ${block.title}`}
+                style={'primary'}
+                className={'pt-2 mb-4'}
+                key={blockIndex}
+                defaultOpen={block.defaultOpen || false}
+              >
+                {blocksObject[block.type].type === 'fieldarray' ? (
+                  <FieldArrray
+                    name={`blocks.${blockIndex}.values`}
+                    fieldsArray={blocksObject[block.type].fields}
+                    control={control}
+                    register={register}
+                    errors={errors}
+                    getValues={getValues}
+                  />
+                ) : (
+                  blocksObject[block.type].fields.map((field, i) => {
+                    return (
+                      <FieldGenerator
+                        field={field}
+                        key={i}
+                        register={register}
+                        errors={errors}
+                        getValues={getValues}
+                        control={control}
+                        fieldArrayData={`blocks.${blockIndex}.values.0`}
+                      />
+                    )
+                  })
+                )}
+              </Accordion>
             </div>
           )
         })}
+
         {/* 
           // !  --------------------------------
         */}

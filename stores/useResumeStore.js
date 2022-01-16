@@ -1,14 +1,6 @@
 import create from 'zustand'
 
 const defaultFormValues = {
-  firstName: 'Bruce',
-  lastName: 'Wayne',
-  jobTitle: 'Batman',
-  address: 'Street XY1',
-  plz: '9000 Gotham',
-  phone: '071 000 00 00',
-  mail: 'bruce.wayne@batman.com',
-  aboutMe: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!`,
   languages: [{ title: 'English', level: '80' }],
   experience: [
     {
@@ -29,55 +21,63 @@ const defaultFormValues = {
     },
   ],
   skills: ['react', 'tailwind'],
-  image: null,
+
   // ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  details: [],
-  sections: [
+  details: {
+    firstName: 'Bruce',
+    lastName: 'Wayne',
+    jobTitle: 'Batman',
+    address: 'Street XY1',
+    plz: '9000 Gotham',
+    phone: '071 000 00 00',
+    mail: 'bruce.wayne@batman.com',
+    image: null,
+  },
+  // ! *****************************
+  blocks: [
+    // ! ----------------------------------------------------------------
     {
-      sectionTitle: 'primary',
-      blocks: [
+      title: 'Education',
+      type: 'history',
+      order: 1,
+      position: 1,
+      values: [
         {
-          blockType: 'history',
-          blockName: 'Education',
-          blockId: '003',
-          values: [
-            {
-              title: 'Technology School 2',
-              location: 'LA',
-              from: '01.01.2020',
-              to: '01.01.2021',
-              summary: '',
-            },
-          ],
-        },
-        {
-          blockType: 'tag',
-          blockName: 'Tags',
-          blockId: '004',
-          values: [{ tags: ['react', 'tailwind'] }],
+          title: 'Technology School 2',
+          location: 'LA',
+          from: '01.01.2020',
+          to: '01.01.2021',
+          summary: '',
         },
       ],
     },
+    // ! ----------------------------------------------------------------
     {
-      title: 'secondary',
-      blocks: [
+      title: 'Tags',
+      type: 'tag',
+      order: 0,
+      position: 1,
+      values: [{ tags: ['react', 'tailwind'] }],
+    },
+    // ! ----------------------------------------------------------------
+    {
+      title: 'Text',
+      type: 'text',
+      order: 2,
+      position: 1,
+      values: [
         {
-          blockType: 'personalInformation',
-          blockName: 'Persönliche Informationen',
-          blockId: '002',
-          values: [
-            {
-              firstName: 'Obi',
-              lastName: 'Wan',
-              jobTitle: 'Batman',
-              address: 'Street XY1',
-              plz: '9000 Gotham',
-              phone: '071 000 00 00',
-              mail: 'bruce.wayne@batman.com',
-            },
-          ],
+          text: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!`,
         },
       ],
+    },
+    // ! ----------------------------------------------------------------
+    {
+      title: 'Level',
+      type: 'level',
+      order: 3,
+      position: 1,
+      values: [{ title: 'German', level: '100' }],
     },
   ],
   // ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,14 +99,17 @@ const defaultDesign = {
   accentColor: '',
 }
 
+const sortFormValues = (obj) => {
+  obj.blocks.sort((a, b) => (a.order > b.order ? 1 : -1))
+  return obj
+}
 // ! --------------------------------------
 // ! STORE
 // ! --------------------------------------
 const useResumeStore = create((set, get) => ({
-  formValues: defaultFormValues,
+  formValues: sortFormValues(defaultFormValues),
   setFormValues: (payload) => {
-    // console.log('setFormValues - STORE')
-    set({ formValues: payload })
+    set({ formValues: sortFormValues(payload) })
   },
   // ! --------------------------------------
   fileDownloadURL: '',
@@ -119,7 +122,7 @@ const useResumeStore = create((set, get) => ({
     set({ resumeMetadata: payload })
   },
   // ! --------------------------------------
-  resumeDesign: defaultMetadata,
+  resumeDesign: defaultDesign,
   setResumeDesign: (payload) => {
     set({ resumeDesign: payload })
   },
@@ -129,8 +132,8 @@ const useResumeStore = create((set, get) => ({
     const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
     return (
       <div className={className}>
-        <p className="text-xs text-center">DEBUG FORM VALUES</p>
-        {JSON.stringify(formValues, null, 4)}
+        <p className="text-center">DEBUG FORM VALUES</p>
+        <pre className="text-xs">{JSON.stringify(formValues, null, 2)}</pre>
         <div>URL:{fileDownloadURL}</div>
       </div>
     )

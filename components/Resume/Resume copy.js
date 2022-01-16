@@ -68,10 +68,10 @@ export const MyDoc = ({ resumeData }) => {
           {/* 
             // !  IMAGE
           */}
-          {resumeData.details.image && (
+          {resumeData.image && (
             <Image
               // source="https://source.unsplash.com/random/"
-              source={resumeData.details.image}
+              source={resumeData.image}
               style={styles.imageSecondary}
             />
           )}
@@ -79,27 +79,28 @@ export const MyDoc = ({ resumeData }) => {
           {/* 
             // !  NAME
           */}
+          {/* <Text style={styles.h1Secondary}>
+            {resumeData?.name.length > 15
+              ? resumeData?.name.replace(/\s+/g, '\n')
+              : resumeData?.name}
+          </Text> */}
           <View
             style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}
           >
-            <Text style={styles.h1Secondary}>
-              {resumeData.details.firstName}{' '}
-            </Text>
-            <Text style={styles.h1Secondary}>
-              {resumeData.details.lastName}
-            </Text>
+            <Text style={styles.h1Secondary}>{resumeData?.firstName} </Text>
+            <Text style={styles.h1Secondary}>{resumeData?.lastName}</Text>
           </View>
-          <Text style={styles.h2Secondary}>{resumeData.details.jobTitle}</Text>
+          <Text style={styles.h2Secondary}>{resumeData?.jobTitle}</Text>
           {/* 
             // !  CONTACT
           */}
           <View style={styles.wrapperSecondary} wrap={false}>
             <Text style={styles.h3Secondary}>Kontakt</Text>
             {[
-              resumeData.details.address,
-              resumeData.details.plz,
-              resumeData.details.phone,
-              resumeData.details.mail,
+              resumeData.address,
+              resumeData.plz,
+              resumeData.phone,
+              resumeData.mail,
             ].map((d, i) => {
               if (d) {
                 return (

@@ -7,12 +7,7 @@
   "phone": "071 000 00 00",
   "mail": "bruce.wayne@batman.com",
   "aboutMe": "My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!",
-  "languages": [
-    {
-      "title": "English",
-      "level": "80"
-    }
-  ],
+  "languages": [{ "title": "English", "level": "80" }],
   "experience": [
     {
       "title": "Application Engineer",
@@ -34,6 +29,32 @@
   "skills": ["react", "tailwind"],
   "image": null,
   "details": [],
+  "blocks": [
+    {
+      "title": "Tags",
+      "type": "tag",
+      "id": "002",
+      "order": 0,
+      "position": 1,
+      "values": [{ "tags": ["react", "tailwind"] }]
+    },
+    {
+      "title": "Education",
+      "type": "history",
+      "id": "001",
+      "order": 1,
+      "position": 1,
+      "values": [
+        {
+          "title": "Technology School 2",
+          "location": "LA",
+          "from": "01.01.2020",
+          "to": "01.01.2021",
+          "summary": ""
+        }
+      ]
+    }
+  ],
   "sections": [
     {
       "sectionTitle": "primary",
@@ -42,24 +63,13 @@
           "blockType": "history",
           "blockName": "Education",
           "blockId": "003",
-          "values": [
-            {
-              "history": [
-                {
-                  "title": "Technology School 2",
-                  "location": "LA",
-                  "from": "01.01.2020",
-                  "to": "01.01.2021",
-                  "summary": ""
-                }
-              ],
-              "title": "asd",
-              "location": "",
-              "from": "",
-              "to": "",
-              "summary": ""
-            }
-          ]
+          "values": []
+        },
+        {
+          "blockType": "tag",
+          "blockName": "Tags",
+          "blockId": "004",
+          "values": [{ "tags": ["react", "tailwind"] }]
         }
       ]
     },

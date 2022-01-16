@@ -1,5 +1,5 @@
 export const blocksObject = {
-  personalInformation: {
+  details: {
     type: 'fields',
     fields: [
       {
@@ -50,16 +50,9 @@ export const blocksObject = {
         type: 'text',
         required: false,
       },
-      {
-        label: 'Über mich',
-        id: 'aboutMe',
-        type: 'textarea',
-        required: true,
-        rows: 5,
-      },
-      // ! -----------------------
     ],
   },
+  // ! -----------------------
   history: {
     type: 'fieldarray',
     fields: [
@@ -97,7 +90,7 @@ export const blocksObject = {
       // },
     ],
   },
-
+  // ! -----------------------
   tag: {
     type: 'fields',
     fields: [
@@ -110,4 +103,37 @@ export const blocksObject = {
       },
     ],
   },
+  // ! -----------------------
+  text: {
+    type: 'fields',
+    fields: [
+      {
+        label: 'Text',
+        id: 'text',
+        type: 'textarea',
+        required: true,
+        rows: 5,
+      },
+    ],
+  },
+  // ! -----------------------
+  level: {
+    type: 'fieldarray',
+    fields: [
+      {
+        label: 'Title',
+        id: 'title',
+        type: 'text',
+        required: true,
+      },
+      {
+        label: 'Level',
+        id: 'level',
+        type: 'rangeinput',
+        required: true,
+      },
+    ],
+  },
+  // ! -----------------------
+  links: { type: 'fieldarray', fields: [] },
 }
