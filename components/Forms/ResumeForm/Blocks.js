@@ -135,5 +135,21 @@ export const blocksObject = {
     ],
   },
   // ! -----------------------
-  links: { type: 'fieldarray', fields: [] },
+  links: {
+    type: 'fieldarray',
+    fields: [
+      {
+        label: 'Title',
+        id: 'title',
+        type: 'text',
+        required: true,
+      },
+      {
+        label: 'URL',
+        id: 'url',
+        type: 'text',
+        required: true,
+      },
+    ],
+  },
 }

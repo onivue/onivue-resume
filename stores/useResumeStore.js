@@ -34,13 +34,54 @@ const defaultFormValues = {
     image: null,
   },
   // ! *****************************
+  sections: [
+    {
+      blocks: [
+        {
+          title: 'Education',
+          type: 'history',
+          values: [
+            {
+              title: 'Technology School 2',
+              location: 'LA',
+              from: '01.01.2020',
+              to: '01.01.2021',
+              summary: '',
+            },
+          ],
+        },
+        {
+          title: 'Text',
+          type: 'text',
+          values: [
+            {
+              text: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!`,
+            },
+          ],
+        },
+      ],
+    },
+    // ! ----------------------------------------------------------------
+    {
+      blocks: [
+        {
+          title: 'Tags',
+          type: 'tag',
+          values: [{ tags: ['react', 'tailwind'] }],
+        },
+        {
+          title: 'Level',
+          type: 'level',
+          values: [{ title: 'German', level: '100' }],
+        },
+      ],
+    },
+  ],
   blocks: [
     // ! ----------------------------------------------------------------
     {
       title: 'Education',
       type: 'history',
-      order: 1,
-      position: 1,
       values: [
         {
           title: 'Technology School 2',
@@ -55,16 +96,12 @@ const defaultFormValues = {
     {
       title: 'Tags',
       type: 'tag',
-      order: 0,
-      position: 1,
       values: [{ tags: ['react', 'tailwind'] }],
     },
     // ! ----------------------------------------------------------------
     {
       title: 'Text',
       type: 'text',
-      order: 2,
-      position: 1,
       values: [
         {
           text: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!`,
@@ -75,8 +112,6 @@ const defaultFormValues = {
     {
       title: 'Level',
       type: 'level',
-      order: 3,
-      position: 1,
       values: [{ title: 'German', level: '100' }],
     },
   ],
@@ -100,7 +135,26 @@ const defaultDesign = {
 }
 
 const sortFormValues = (obj) => {
-  obj.blocks.sort((a, b) => (a.order > b.order ? 1 : -1))
+  // obj.blocks.sort((a, b) =>
+  //   a.order > b.order
+  //     ? 1
+  //     : a.order === b.order
+  //     ? a.section > b.section
+  //       ? 1
+  //       : -1
+  //     : -1,
+  // )
+  // obj.blocks.sort((a, b) => (a.section > b.section ? 1 : -1))
+  obj.blocks.sort((a, b) => {
+    if (a.section < b.section) {
+      return -1
+    }
+    if (a.section > b.section) {
+      return 1
+    }
+    // a muss gleich b sein
+    return 0
+  })
   return obj
 }
 // ! --------------------------------------

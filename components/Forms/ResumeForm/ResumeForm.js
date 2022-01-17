@@ -9,7 +9,7 @@ import Accordion from '@/components/Accordion/Accordion'
 import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
 import { fieldGroups } from '@/components/Forms/ResumeForm/data'
 import FileUpload from '@/components/Fields/FileUpload'
-import { blocksObject, personalInformation } from './Blocks'
+import { blocksObject } from './Blocks'
 
 const Form = () => {
   const formValues = useResumeStore((state) => state.formValues)
@@ -21,6 +21,7 @@ const Form = () => {
     control,
     watch,
     getValues,
+    setValue,
     formState: { errors },
   } = useForm({ defaultValues: formValues, mode: 'onBlur' })
 
@@ -60,42 +61,21 @@ const Form = () => {
           })}
         </Accordion>
         {/* // !  --------BLOCKS-------- */}
-        {formValues.blocks.map((block, blockIndex) => {
+
+        {formValues.sections.map((section, sectionIndex) => {
           return (
-            <div className="" key={blockIndex}>
-              <Accordion
-                title={`🛠 ${block.title}`}
-                style={'primary'}
-                className={'pt-2 mb-4'}
-                key={blockIndex}
-                defaultOpen={block.defaultOpen || false}
-              >
-                {blocksObject[block.type].type === 'fieldarray' ? (
-                  <FieldArrray
-                    name={`blocks.${blockIndex}.values`}
-                    fieldsArray={blocksObject[block.type].fields}
-                    control={control}
-                    register={register}
-                    errors={errors}
-                    getValues={getValues}
-                  />
-                ) : (
-                  blocksObject[block.type].fields.map((field, i) => {
-                    return (
-                      <FieldGenerator
-                        field={field}
-                        key={i}
-                        register={register}
-                        errors={errors}
-                        getValues={getValues}
-                        control={control}
-                        fieldArrayData={`blocks.${blockIndex}.values.0`}
-                      />
-                    )
-                  })
-                )}
-              </Accordion>
-            </div>
+            <FieldArrraySection
+              name={`sections.${sectionIndex}.blocks`}
+              control={control}
+              register={register}
+              errors={errors}
+              key={sectionIndex}
+              getValues={getValues}
+              setValue={setValue}
+              section={section}
+              sectionIndex={sectionIndex}
+              formValues={formValues}
+            />
           )
         })}
 
@@ -322,63 +302,103 @@ const FieldArrray = ({
   )
 }
 
-const FieldArrraySolo = ({
-  fieldsArray,
+const FieldArrraySection = ({
   control,
   register,
   errors,
   name,
   getValues,
+  setValue,
+  section,
+  sectionIndex,
+  formValues,
 }) => {
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove, move } = useFieldArray({
     control,
     name: name,
   })
 
   return (
-    <>
-      {fields.map((item, index) => {
+    <div className="bg-lime-100" key={sectionIndex}>
+      {section.blocks.map((block, blockIndex) => {
         return (
-          <div key={item.id}>
-            <div className="py-2">
-              {fieldsArray.map((field, i) => {
-                // console.log(field.id)
-                return (
-                  <FieldGenerator
-                    field={field}
-                    register={register}
-                    errors={errors}
-                    getValues={getValues}
-                    control={control}
-                    key={i}
-                    fieldArrayData={`${name}.${index}`}
-                  />
-                )
-              })}
-              <Button
+          <div className="" key={blockIndex}>
+            <Accordion
+              title={`🛠 ${block.title}`}
+              style={'primary'}
+              className={'pt-2 mb-4'}
+              key={blockIndex}
+              defaultOpen={block.defaultOpen || false}
+            >
+              <button
                 type="button"
-                onClick={() => remove(index)}
-                className="bg-red-300"
+                className="block"
+                onClick={() => move(blockIndex, blockIndex - 1)}
               >
-                <HiOutlineTrash className="w-5 h-5" />
-              </Button>
-            </div>
+                move up {blockIndex === 0 && '-disabled-'}
+              </button>
+              <button
+                type="button"
+                className="block"
+                onClick={() => move(blockIndex, blockIndex + 1)}
+              >
+                move down
+                {blockIndex === section.blocks.length - 1 && '-disabled-'}
+              </button>
+
+              <button
+                type="button"
+                className="block"
+                onClick={() => {
+                  remove(blockIndex)
+                }}
+              >
+                REMOVE
+              </button>
+
+              <button
+                type="button"
+                className="block"
+                onClick={() => {
+                  setValue(`sections.${sectionIndex + 1}.blocks`, [
+                    ...formValues.sections[sectionIndex + 1].blocks,
+                    formValues.sections[sectionIndex].blocks[blockIndex],
+                  ])
+                  remove(blockIndex)
+                }}
+              >
+                switch Section
+              </button>
+
+              {blocksObject[block.type].type === 'fieldarray' ? (
+                <FieldArrray
+                  name={`sections.${sectionIndex}.blocks.${blockIndex}.values`}
+                  fieldsArray={blocksObject[block.type].fields}
+                  control={control}
+                  register={register}
+                  errors={errors}
+                  getValues={getValues}
+                />
+              ) : (
+                blocksObject[block.type].fields.map((field, i) => {
+                  return (
+                    <FieldGenerator
+                      field={field}
+                      key={i}
+                      register={register}
+                      errors={errors}
+                      getValues={getValues}
+                      control={control}
+                      fieldArrayData={`sections.${sectionIndex}.blocks.${blockIndex}.values.0`}
+                    />
+                  )
+                })
+              )}
+            </Accordion>
           </div>
         )
       })}
-      <div className="flex items-center justify-center w-full">
-        <Button
-          className="mt-4 ml-2"
-          style="secondary"
-          rounded
-          onClick={() => {
-            append({})
-          }}
-        >
-          <HiPlus />
-        </Button>
-      </div>
-    </>
+    </div>
   )
 }
 
