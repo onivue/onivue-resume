@@ -47,11 +47,29 @@ const defaultFormValues = {
           type: 'level',
           values: [{ title: 'German', level: '100' }],
         },
+        {
+          title: 'Links',
+          type: 'links',
+          values: [{ title: 'www.onivue.ch', url: 'https://onivue.ch' }],
+        },
       ],
     },
     // ! ----------------------------------------------------------------
     {
       blocks: [
+        {
+          title: 'Experience',
+          type: 'history',
+          values: [
+            {
+              title: 'Application Engineer',
+              location: 'LA',
+              from: '01.01.2020',
+              to: '01.01.2021',
+              summary: 'My Summary \n- batman!',
+            },
+          ],
+        },
         {
           title: 'Education',
           type: 'history',

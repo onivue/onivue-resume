@@ -8,6 +8,7 @@ export default function Accordion({
   style = 'primary',
   defaultOpen,
   className,
+  menu,
 }) {
   const styles = {
     primary:
@@ -33,7 +34,7 @@ export default function Accordion({
                 />
               </div>
             </Disclosure.Button>
-            <HiDotsVertical className={` w-5 h-5 self-center`} />
+            {menu}
           </div>
 
           <Disclosure.Panel

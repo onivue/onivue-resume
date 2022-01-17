@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Font,
   Image,
+  Link,
 } from '@react-pdf/renderer'
 
 import { resumeStyle } from '@/components/Resume/style'
@@ -120,40 +121,71 @@ export const MyDoc = ({ resumeData }) => {
           {/* 
             // !  SKILLS
           */}
-          <View style={styles.wrapperSecondary} wrap={false}>
-            <Text style={styles.h3Secondary}>Skills</Text>
-            <View style={styles.tagWrapper}>
-              {resumeData?.skills?.map((tag, index) => {
-                return (
-                  <Text key={index} style={styles.tag}>
-                    {tag}
-                  </Text>
-                )
-              })}
-            </View>
-          </View>
+
+          {resumeData.sections[0].blocks.map((block, index) => {
+            if (block.type === 'tag') {
+              return (
+                <View style={styles.wrapperSecondary} wrap={false} key={index}>
+                  <Text style={styles.h3Secondary}>{block.title}</Text>
+                  <View style={styles.tagWrapper}>
+                    {block.values.map((value, index) => {
+                      return value.tags.map((tag, index) => {
+                        return (
+                          <Text key={index} style={styles.tag}>
+                            {tag}
+                          </Text>
+                        )
+                      })
+                    })}
+                  </View>
+                </View>
+              )
+            }
+          })}
           {/* 
             // !  LANGUAGES
           */}
-          <View style={styles.wrapperSecondary} wrap={false}>
-            <Text style={styles.h3Secondary}>Sprachen</Text>
-            {resumeData?.languages?.map((item, i) => {
+          {resumeData.sections[0].blocks.map((block, index) => {
+            if (block.type === 'level') {
               return (
-                <ProgressBar
-                  title={item.title}
-                  progress={`${item.level || 50}%`}
-                  key={i}
-                />
+                <View style={styles.wrapperSecondary} wrap={false} key={index}>
+                  <Text style={styles.h3Secondary}>{block.title}</Text>
+                  {block.values.map((value, index) => {
+                    return (
+                      <ProgressBar
+                        title={value.title}
+                        progress={`${value.level || 50}%`}
+                        key={index}
+                      />
+                    )
+                  })}
+                </View>
               )
-            })}
-          </View>
+            }
+          })}
           {/* 
             // !  SOCIAL
           */}
-          <View style={styles.wrapperSecondary} wrap={false}>
-            <Text style={styles.h3Secondary}>Social</Text>
-            <Text style={styles.pSecondary}>www.onivue.ch</Text>
-          </View>
+          {resumeData.sections[0].blocks.map((block, index) => {
+            if (block.type === 'links') {
+              return (
+                <View style={styles.wrapperSecondary} wrap={false} key={index}>
+                  <Text style={styles.h3Secondary}>{block.title}</Text>
+                  {block.values.map((value, index) => {
+                    return (
+                      <Link
+                        src={value.url}
+                        style={styles.pSecondary}
+                        key={index}
+                      >
+                        {value.title}
+                      </Link>
+                    )
+                  })}
+                </View>
+              )
+            }
+          })}
         </View>
         <View style={styles.sectionSecondaryOverlay} fixed></View>
         {/* 
@@ -165,29 +197,35 @@ export const MyDoc = ({ resumeData }) => {
           {/* 
             // !  ABOUTME
           */}
-          <Text style={styles.h2}>Über mich</Text>
-          <MultLineText text={resumeData?.aboutMe} />
+          {resumeData.sections[1].blocks.map((block, index) => {
+            if (block.type === 'text') {
+              return (
+                <View style={styles.wrapperSecondary} wrap={false} key={index}>
+                  <Text style={styles.h2}>{block.title}</Text>
+                  {block.values.map((value, index) => {
+                    return <MultLineText text={value.text} key={index} />
+                  })}
+                </View>
+              )
+            }
+          })}
           <View style={styles.separator}></View>
           {/* 
             // !  EXPERIENCE 
           */}
-          <View>
-            <Text style={styles.h2}>Erfahrung</Text>
-            {resumeData?.experience?.map((item, i) => {
-              return <TextBlock item={item} key={i} />
-            })}
-          </View>
+          {resumeData.sections[1].blocks.map((block, index) => {
+            if (block.type === 'history') {
+              return (
+                <View style={styles.wrapperSecondary} wrap={false} key={index}>
+                  <Text style={styles.h2}>{block.title}</Text>
+                  {block.values.map((value, index) => {
+                    return <TextBlock item={value} key={index} />
+                  })}
+                </View>
+              )
+            }
+          })}
           <View style={styles.separator}></View>
-          {/* 
-            // !  EDUCATION
-          */}
-          <View>
-            <Text style={styles.h2}>Ausbildung</Text>
-            {resumeData?.education?.map((item, i) => {
-              return <TextBlock item={item} key={i} />
-            })}
-            <MultLineText text={resumeData?.education} />
-          </View>
         </View>
         {/* 
           // !  --------------------------------

@@ -43,7 +43,9 @@ const PDFViewer = ({ file, loading, className }) => {
             >
               <Page
                 scale={1.0}
-                renderMode="svg"
+                // renderMode="svg"
+                renderAnnotationLayer={false}
+                renderTextLayer={false}
                 width={pdfWidth}
                 pageNumber={currentPage}
                 loading={''}
