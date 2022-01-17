@@ -1,6 +1,6 @@
 import { classNames } from '@/lib/helper'
 import { Disclosure, Transition } from '@headlessui/react'
-import { HiChevronUp } from 'react-icons/hi'
+import { HiChevronUp, HiDotsVertical, HiPencil } from 'react-icons/hi'
 
 export default function Accordion({
   title,
@@ -19,19 +19,22 @@ export default function Accordion({
     <Disclosure as="div" className={className} defaultOpen={defaultOpen}>
       {({ open }) => (
         <>
-          <Disclosure.Button
-            className={classNames(
-              styles[style],
-              'flex justify-between w-full px-4 py-2  text-left rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-opacity-75',
-            )}
-          >
-            <span>{title}</span>
-            <HiChevronUp
-              className={`${
-                open ? 'transform rotate-180' : ''
-              } w-5 h-5 self-center`}
-            />
-          </Disclosure.Button>
+          <div className="flex">
+            <Disclosure.Button
+              className={classNames(
+                styles[style],
+                'flex justify-between w-full px-4 py-2  text-left rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-opacity-75',
+              )}
+            >
+              <span>{title}</span>
+              <div className="self-center">
+                <HiChevronUp
+                  className={`${open ? 'transform rotate-180' : ''} w-5 h-5 `}
+                />
+              </div>
+            </Disclosure.Button>
+            <HiDotsVertical className={` w-5 h-5 self-center`} />
+          </div>
 
           <Disclosure.Panel
             className={`transition-all duration-300  ${

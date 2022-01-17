@@ -38,6 +38,21 @@ const defaultFormValues = {
     {
       blocks: [
         {
+          title: 'Tags',
+          type: 'tag',
+          values: [{ tags: ['react', 'tailwind'] }],
+        },
+        {
+          title: 'Level',
+          type: 'level',
+          values: [{ title: 'German', level: '100' }],
+        },
+      ],
+    },
+    // ! ----------------------------------------------------------------
+    {
+      blocks: [
+        {
           title: 'Education',
           type: 'history',
           values: [
@@ -58,21 +73,6 @@ const defaultFormValues = {
               text: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!`,
             },
           ],
-        },
-      ],
-    },
-    // ! ----------------------------------------------------------------
-    {
-      blocks: [
-        {
-          title: 'Tags',
-          type: 'tag',
-          values: [{ tags: ['react', 'tailwind'] }],
-        },
-        {
-          title: 'Level',
-          type: 'level',
-          values: [{ title: 'German', level: '100' }],
         },
       ],
     },

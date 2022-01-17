@@ -38,7 +38,7 @@ const Form = () => {
 
   return (
     <>
-      <div className="py-4 lg:p-4 ">
+      <div className="py-4 ">
         {/* // !  --------DETAILS-------- */}
         <Accordion
           title={'Persönliche Informationen'}
@@ -324,7 +324,24 @@ const FieldArrraySection = ({
         return (
           <div className="" key={blockIndex}>
             <Accordion
-              title={`🛠 ${block.title}`}
+              // title={`🛠 ${block.title}`}
+              title={
+                <div className="w-full">
+                  <input
+                    {...register(
+                      `sections.${sectionIndex}.blocks.${blockIndex}.title`,
+                      {
+                        required: false,
+                      },
+                    )}
+                    className="w-full p-0 bg-transparent border-0 rounded outline-none "
+                    type={'text'}
+                    name={'test'}
+                    id={'test'}
+                    onClick={() => console.log('test')}
+                  />
+                </div>
+              }
               style={'primary'}
               className={'pt-2 mb-4'}
               key={blockIndex}
@@ -360,8 +377,15 @@ const FieldArrraySection = ({
                 type="button"
                 className="block"
                 onClick={() => {
-                  setValue(`sections.${sectionIndex + 1}.blocks`, [
-                    ...formValues.sections[sectionIndex + 1].blocks,
+                  let indexnewSection
+                  if (sectionIndex === 0) {
+                    indexnewSection = 1
+                  }
+                  if (sectionIndex === 1) {
+                    indexnewSection = 0
+                  }
+                  setValue(`sections.${indexnewSection}.blocks`, [
+                    ...formValues.sections[indexnewSection].blocks,
                     formValues.sections[sectionIndex].blocks[blockIndex],
                   ])
                   remove(blockIndex)
