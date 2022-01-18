@@ -25,7 +25,7 @@ export default function BlockMenu({
       className="relative flex self-center justify-center text-left"
     >
       <Menu.Button>
-        <HiDotsVertical className={`text-primary-400 w-5 h-5 self-center`} />
+        <HiDotsVertical className={`w-5 h-5 self-center`} />
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -36,7 +36,7 @@ export default function BlockMenu({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-bold shadow-gray-300 ring-2 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute left-0 z-10 w-56 mt-2 origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-bold shadow-gray-300 ring-2 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
             {editFunction && (
               <MenuItem

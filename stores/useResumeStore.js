@@ -1,7 +1,12 @@
 import create from 'zustand'
 
 const defaultFormValues = {
-  languages: [{ title: 'English', level: '80' }],
+  languages: [
+    {
+      title: 'English',
+      level: '80',
+    },
+  ],
   experience: [
     {
       title: 'Application Engineer',
@@ -21,40 +26,50 @@ const defaultFormValues = {
     },
   ],
   skills: ['react', 'tailwind'],
-
-  // ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   details: {
     firstName: 'Bruce',
     lastName: 'Wayne',
     jobTitle: 'Batman',
-    address: 'Street XY1',
+    address: 'Street XY',
     plz: '9000 Gotham',
     phone: '071 000 00 00',
     mail: 'bruce.wayne@batman.com',
     image: null,
   },
-  // ! *****************************
   sections: [
     {
       blocks: [
         {
           title: 'Tags',
           type: 'tag',
-          values: [{ tags: ['react', 'tailwind'] }],
+          values: [
+            {
+              tags: ['react', 'tailwind'],
+            },
+          ],
         },
         {
           title: 'Level',
           type: 'level',
-          values: [{ title: 'German', level: '100' }],
+          values: [
+            {
+              title: 'German',
+              level: '100',
+            },
+          ],
         },
         {
           title: 'Links',
           type: 'links',
-          values: [{ title: 'www.onivue.ch', url: 'https://onivue.ch' }],
+          values: [
+            {
+              title: 'www.onivue.ch',
+              url: 'https://onivue.ch',
+            },
+          ],
         },
       ],
     },
-    // ! ----------------------------------------------------------------
     {
       blocks: [
         {
@@ -88,53 +103,16 @@ const defaultFormValues = {
           type: 'text',
           values: [
             {
-              text: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!`,
+              text: 'My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!',
             },
           ],
         },
       ],
     },
   ],
-  blocks: [
-    // ! ----------------------------------------------------------------
-    {
-      title: 'Education',
-      type: 'history',
-      values: [
-        {
-          title: 'Technology School 2',
-          location: 'LA',
-          from: '01.01.2020',
-          to: '01.01.2021',
-          summary: '',
-        },
-      ],
-    },
-    // ! ----------------------------------------------------------------
-    {
-      title: 'Tags',
-      type: 'tag',
-      values: [{ tags: ['react', 'tailwind'] }],
-    },
-    // ! ----------------------------------------------------------------
-    {
-      title: 'Text',
-      type: 'text',
-      values: [
-        {
-          text: `My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!`,
-        },
-      ],
-    },
-    // ! ----------------------------------------------------------------
-    {
-      title: 'Level',
-      type: 'level',
-      values: [{ title: 'German', level: '100' }],
-    },
-  ],
-  // ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }
+// ! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 // ? --------------------------------------
 const defaultMetadata = {
   docTitle: 'resume',
@@ -152,36 +130,13 @@ const defaultDesign = {
   accentColor: '',
 }
 
-const sortFormValues = (obj) => {
-  // obj.blocks.sort((a, b) =>
-  //   a.order > b.order
-  //     ? 1
-  //     : a.order === b.order
-  //     ? a.section > b.section
-  //       ? 1
-  //       : -1
-  //     : -1,
-  // )
-  // obj.blocks.sort((a, b) => (a.section > b.section ? 1 : -1))
-  obj.blocks.sort((a, b) => {
-    if (a.section < b.section) {
-      return -1
-    }
-    if (a.section > b.section) {
-      return 1
-    }
-    // a muss gleich b sein
-    return 0
-  })
-  return obj
-}
 // ! --------------------------------------
 // ! STORE
 // ! --------------------------------------
 const useResumeStore = create((set, get) => ({
-  formValues: sortFormValues(defaultFormValues),
+  formValues: defaultFormValues,
   setFormValues: (payload) => {
-    set({ formValues: sortFormValues(payload) })
+    set({ formValues: payload })
   },
   // ! --------------------------------------
   fileDownloadURL: '',

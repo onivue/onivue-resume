@@ -134,9 +134,9 @@ const Input = forwardRef(
               {iconLeft}
             </div>
           )}
-          {(errors[id] || iconRight) && (
+          {(resolveObjectPath(errors, id) || iconRight) && (
             <div className="absolute inset-y-0 right-0 flex items-center justify-center w-12 ">
-              {errors[id] && (
+              {resolveObjectPath(errors, id) && (
                 <HiExclamationCircle className="text-xl text-red-500" />
               )}
               {iconRight && iconRight}
