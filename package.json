@@ -6,27 +6,28 @@
     "start": "next start"
   },
   "dependencies": {
-    "@headlessui/react": "^1.4.2",
-    "@react-pdf/renderer": "^2.0.21",
+    "@headlessui/react": "^1.4.3",
+    "@react-pdf/renderer": "^2.1.0",
     "@tailwindcss/forms": "^0.4.0",
     "file-saver": "^2.0.5",
-    "framer-motion": "^5.5.6",
-    "next": "^12.0.7",
+    "framer-motion": "^5.6.0",
+    "iconv-lite": "^0.6.3",
+    "next": "^12.0.8",
     "qr-code-styling": "^1.6.0-rc.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.22.5",
+    "react-hook-form": "^7.24.0",
     "react-icons": "^4.3.1",
     "react-pdf": "^5.6.0",
     "react-to-print": "^2.14.3",
     "react-use": "^17.3.2",
     "react-window": "^1.8.6",
-    "zustand": "^3.6.8"
+    "zustand": "^3.6.9"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.12"
+    "tailwindcss": "^3.0.15"
   },
   "name": "onivue-resume",
   "description": "This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).",
