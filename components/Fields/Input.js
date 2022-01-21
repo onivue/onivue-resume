@@ -33,9 +33,9 @@ const Input = forwardRef(
           'focus:ring-red-500 border-red-500 focus:border-red-500 shadow-red-300',
       },
       file: {
-        base: 'block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100',
+        base: 'block w-full text-sm text-gray-500 cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 hover:file:ring-2 hover:file:ring-primary-300 ',
         active:
-          'file:focus:ring-primary-300 file:focus:ring-2 file:focus:border-primary-200 file:focus:shadow-primary-200 rounded p-1',
+          'file:focus:ring-primary-300 file:focus:ring-2 file:focus:border-primary-200 file:focus:shadow-primary-200 rounded p-1 ',
         disabled:
           'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300 text-opacity-40',
         error:

@@ -18,15 +18,25 @@
   }
 }
 
+/*  SCROLLBAR */
+::-webkit-scrollbar {
+  @apply w-1 rounded lg:w-2;
+}
+::-webkit-scrollbar-track {
+  /* background: #f1f1f1; */
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-lg bg-neutral-300 hover:bg-neutral-400;
+}
+
+/* REACT-PDF */
 .react-pdf__Page__canvas,
 .react-pdf__Page__svg,
 .react-pdf__Document {
   @apply rounded-lg;
 }
 
-/* 
-RANGE INPUT
-*/
+/* RANGE INPUT */
 .rangeiput-track {
   @apply w-full h-2 rounded-full bg-primary-200;
 }

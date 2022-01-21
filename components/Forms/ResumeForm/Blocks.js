@@ -1,13 +1,27 @@
+import {
+  HiLink,
+  HiMenu,
+  HiMenuAlt1,
+  HiOutlineAdjustments,
+  HiOutlineMenuAlt1,
+  HiOutlineTag,
+  HiOutlineUser,
+} from 'react-icons/hi'
+
+const iconStyle = 'h-5 w-5'
+
 export const blocksObject = {
   details: {
     type: 'fields',
+    icon: <HiOutlineUser className={iconStyle} />,
+    displayname: '',
     fields: [
-      {
-        label: 'Bild',
-        id: 'image',
-        type: 'file',
-        required: false,
-      },
+      // {
+      //   label: 'Bild',
+      //   id: 'image',
+      //   type: 'file',
+      //   required: false,
+      // },
       {
         label: 'Vorname',
         id: 'firstName',
@@ -53,8 +67,10 @@ export const blocksObject = {
     ],
   },
   // ! -----------------------
-  history: {
+  career: {
     type: 'fieldarray',
+    icon: <HiMenuAlt1 className={iconStyle} />,
+    displayName: 'Werdegang',
     fields: [
       {
         label: 'Title',
@@ -93,6 +109,8 @@ export const blocksObject = {
   // ! -----------------------
   tag: {
     type: 'fields',
+    icon: <HiOutlineTag className={iconStyle} />,
+    displayName: 'Tags',
     fields: [
       {
         label: 'Tag',
@@ -106,6 +124,8 @@ export const blocksObject = {
   // ! -----------------------
   text: {
     type: 'fields',
+    icon: <HiMenu className={iconStyle} />,
+    displayName: 'Textfeld',
     fields: [
       {
         label: 'Text',
@@ -119,6 +139,8 @@ export const blocksObject = {
   // ! -----------------------
   level: {
     type: 'fieldarray',
+    icon: <HiOutlineAdjustments className={iconStyle} />,
+    displayName: 'Level',
     fields: [
       {
         label: 'Title',
@@ -137,6 +159,8 @@ export const blocksObject = {
   // ! -----------------------
   links: {
     type: 'fieldarray',
+    icon: <HiLink className={iconStyle} />,
+    displayName: 'Hyperlinks',
     fields: [
       {
         label: 'Title',

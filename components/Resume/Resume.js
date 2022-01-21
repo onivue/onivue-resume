@@ -10,6 +10,7 @@ import {
 } from '@react-pdf/renderer'
 
 import { resumeStyle } from '@/components/Resume/style'
+import useResumeStore from '@/stores/useResumeStore'
 
 Font.register({
   family: 'Montserrat',
@@ -45,10 +46,6 @@ Font.register({
     },
   ],
 })
-Font.register({
-  family: 'Oswald',
-  src: 'https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf',
-})
 // Font.registerHyphenationCallback((word) => [word])
 Font.registerEmojiSource({
   format: 'png',
@@ -56,7 +53,8 @@ Font.registerEmojiSource({
 })
 const styles = StyleSheet.create(resumeStyle)
 
-export const MyDoc = ({ resumeData }) => {
+export const MyDoc = ({}) => {
+  const resumeData = useResumeStore((state) => state.formValues)
   return (
     <Document>
       <Page size="A4" style={styles.body}>
@@ -214,7 +212,7 @@ export const MyDoc = ({ resumeData }) => {
             // !  EXPERIENCE 
           */}
           {resumeData.sections[1].blocks.map((block, index) => {
-            if (block.type === 'history') {
+            if (block.type === 'career') {
               return (
                 <View style={styles.wrapperSecondary} wrap={false} key={index}>
                   <Text style={styles.h2}>{block.title}</Text>

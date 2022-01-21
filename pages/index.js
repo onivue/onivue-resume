@@ -7,7 +7,7 @@ import Backdrop from '@/components/Backdrop/Backdrop'
 import useResumeStore from '@/stores/useResumeStore'
 import { classNames } from '@/lib/helper'
 import ActionZone from '@/components/ActionZone/ActionZone'
-import { HiOutlinePencilAlt } from 'react-icons/hi'
+import { HiX } from 'react-icons/hi'
 
 function Home() {
   const [isClient, setIsClient] = useState(false)
@@ -16,20 +16,25 @@ function Home() {
     setIsClient(true)
   }, [])
 
-  const formValues = useResumeStore((state) => state.formValues)
+  const toggleForm = () => {
+    SetShowForm(!showForm)
+  }
 
-  const StateDebug = useResumeStore((state) => state.StateDebug)
+  // const StateDebug = useResumeStore((state) => state.StateDebug)
 
   return (
     <>
-      <div className="fixed z-50 flex items-center space-x-4 bottom-5 right-5 lg:hidden">
-        <button
-          onClick={() => SetShowForm(!showForm)}
-          className="z-50 p-1 transition-colors duration-200 rounded-md text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 focus:outline-none focus:ring"
-        >
-          <HiOutlinePencilAlt className="w-8 h-8" />
-        </button>
-      </div>
+      {showForm && (
+        <div className="fixed z-50 flex items-center space-x-4 bottom-5 right-5 lg:hidden">
+          <button
+            onClick={toggleForm}
+            className="z-50 p-1 transition-colors duration-200 rounded-md text-primary-lighter ring-primary-300 bg-primary-50 hover:text-primary hover:bg-primary-100 focus:outline-none focus:ring"
+          >
+            <HiX className="w-8 h-8" />
+          </button>
+        </div>
+      )}
+
       {isClient && (
         <>
           {/* <StateDebug className="fixed right-0 z-20 w-2/5 p-4 overflow-auto font-mono text-white bg-gray-500 rounded h-[1200px] top-20 opacity-80" /> */}
@@ -43,7 +48,7 @@ function Home() {
               showForm ? 'translate-y-0 ' : 'translate-y-full  lg:opacity-100',
             )}
           >
-            <div className="h-full p-4 overflow-auto bg-white border rounded-md lg:no-scrollbar ">
+            <div className="h-full p-4 overflow-auto bg-white border rounded-md ">
               <div className="pt-8 font-mono text-4xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg h-28 shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
                 Settings
               </div>
@@ -52,7 +57,7 @@ function Home() {
           </aside>
 
           <div className="flex flex-col justify-center w-full lg:w-1/2">
-            <BlobProvider document={<MyDoc resumeData={formValues} />}>
+            <BlobProvider document={<MyDoc />}>
               {({ blob, url, loading, error }) => {
                 return (
                   <>
@@ -65,7 +70,7 @@ function Home() {
                 )
               }}
             </BlobProvider>
-            <ActionZone />
+            <ActionZone toggleForm={toggleForm} />
           </div>
         </>
       )}

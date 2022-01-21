@@ -4,8 +4,9 @@ import { blocksObject } from './Blocks'
 import FieldArrray from './FieldArray'
 import FieldGenerator from './FieldGenerator'
 import BlockMenu from '@/components/BlockMenu/BlockMenu'
-import { HiCheck, HiWifi } from 'react-icons/hi'
+import { HiCheck } from 'react-icons/hi'
 import { useState } from 'react'
+import BlockSelector from './BlockSelector'
 
 const FieldArrraySection = ({
   control,
@@ -17,23 +18,32 @@ const FieldArrraySection = ({
   section,
   sectionIndex,
   formValues,
+  blockTypes,
 }) => {
-  const { fields, remove, move } = useFieldArray({
+  const { fields, remove, move, append } = useFieldArray({
     control,
     name: name,
-    // shouldUnregister: true,
   })
 
   const [showRename, setShowRename] = useState(false)
   return (
     <div className="border-t-2" key={sectionIndex}>
+      <h3 className="mx-2 my-4 text-xl font-bold">{section.name}</h3>
       {fields.map((block, blockIndex) => {
         return (
-          <div className="" key={block.id}>
+          <div key={block.id}>
             <Accordion
-              title={getValues(
-                `sections.${sectionIndex}.blocks.${blockIndex}.title`,
-              )}
+              title={
+                <div className="flex">
+                  <div className="self-center mx-2">
+                    {blocksObject[block.type]?.icon}
+                  </div>
+
+                  {getValues(
+                    `sections.${sectionIndex}.blocks.${blockIndex}.title`,
+                  )}
+                </div>
+              }
               showRename={showRename}
               renameInput={
                 <div className="relative w-full px-2">
@@ -94,7 +104,7 @@ const FieldArrraySection = ({
                 />
               }
               style={'primary'}
-              className={'pt-2 mb-4'}
+              className={'mb-4'}
               key={blockIndex}
               defaultOpen={block.defaultOpen || false}
             >
@@ -126,6 +136,12 @@ const FieldArrraySection = ({
           </div>
         )
       })}
+      <BlockSelector
+        blockTypes={blockTypes}
+        setValue={setValue}
+        getValues={getValues}
+        append={append}
+      />
     </div>
   )
 }

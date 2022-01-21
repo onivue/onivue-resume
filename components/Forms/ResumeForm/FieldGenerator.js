@@ -120,6 +120,7 @@ const FieldGenerator = ({
               dot={field.required}
               setValue={onChange}
               value={value}
+              accept="image/png, image/jpeg"
             />
           )}
         />

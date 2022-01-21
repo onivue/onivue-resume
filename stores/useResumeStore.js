@@ -1,31 +1,6 @@
 import create from 'zustand'
 
 const defaultFormValues = {
-  languages: [
-    {
-      title: 'English',
-      level: '80',
-    },
-  ],
-  experience: [
-    {
-      title: 'Application Engineer',
-      location: 'Gotham',
-      from: '01.01.2010',
-      to: '01.01.2020',
-      summary: 'My Summary \n- batman!',
-    },
-  ],
-  education: [
-    {
-      title: 'Technology School',
-      location: 'Gotham',
-      from: '01.01.2013',
-      to: '01.01.2018',
-      summary: '',
-    },
-  ],
-  skills: ['react', 'tailwind'],
   details: {
     firstName: 'Bruce',
     lastName: 'Wayne',
@@ -38,6 +13,7 @@ const defaultFormValues = {
   },
   sections: [
     {
+      name: 'Section 0',
       blocks: [
         {
           title: 'Tags',
@@ -71,10 +47,11 @@ const defaultFormValues = {
       ],
     },
     {
+      name: 'Section 1',
       blocks: [
         {
           title: 'Experience',
-          type: 'history',
+          type: 'career',
           values: [
             {
               title: 'Application Engineer',
@@ -87,7 +64,7 @@ const defaultFormValues = {
         },
         {
           title: 'Education',
-          type: 'history',
+          type: 'career',
           values: [
             {
               title: 'Technology School 2',

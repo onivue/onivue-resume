@@ -3,10 +3,12 @@ import { useForm, useFieldArray } from 'react-hook-form'
 import useResumeStore from '@/stores/useResumeStore'
 import Accordion from '@/components/Accordion/Accordion'
 import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
-import { fieldGroups } from '@/components/Forms/ResumeForm/data'
 import { blocksObject } from './Blocks'
 import FieldGenerator from './FieldGenerator'
 import FieldArrraySection from './FieldArraySection'
+import BlockSelector from './BlockSelector'
+
+const blockTypes = ['career', 'tag', 'text', 'level', 'links']
 
 const Form = () => {
   const formValues = useResumeStore((state) => state.formValues)
@@ -38,24 +40,47 @@ const Form = () => {
       <div className="py-4 ">
         {/* // !  --------DETAILS-------- */}
         <Accordion
-          title={'Persönliche Informationen'}
+          title={
+            <div className="flex">
+              <div className="self-center mr-2">
+                {blocksObject['details']?.icon}
+              </div>
+              Persönliche Informationen
+            </div>
+          }
           style={'primary'}
-          className={'pt-2 mb-4'}
+          className={'mb-4'}
           defaultOpen={true}
         >
-          {blocksObject.details.fields.map((field, i) => {
-            return (
-              <FieldGenerator
-                field={field}
-                key={i}
-                register={register}
-                errors={errors}
-                getValues={getValues}
-                control={control}
-                fieldArrayData={`details`}
-              />
-            )
-          })}
+          <div className="flex flex-wrap w-full">
+            {blocksObject['details'].fields.map((field, i) => {
+              return (
+                <div className="w-1/2 p-2" key={i}>
+                  <FieldGenerator
+                    field={field}
+                    register={register}
+                    errors={errors}
+                    getValues={getValues}
+                    control={control}
+                    fieldArrayData={`details`}
+                  />
+                </div>
+              )
+            })}
+            <FieldGenerator
+              field={{
+                label: 'Bild',
+                id: 'image',
+                type: 'file',
+                required: false,
+              }}
+              register={register}
+              errors={errors}
+              getValues={getValues}
+              control={control}
+              fieldArrayData={`details`}
+            />
+          </div>
         </Accordion>
         {/* // !  --------BLOCKS-------- */}
 
@@ -72,14 +97,17 @@ const Form = () => {
               section={section}
               sectionIndex={sectionIndex}
               formValues={formValues}
+              blockTypes={blockTypes}
             />
           )
         })}
-
-        {/* 
-          // !  --------------------------------
-        */}
       </div>
+      {/* // !  --------ADD BLOCKS-------- */}
+      {/* <BlockSelector
+        blockTypes={blockTypes}
+        setValue={setValue}
+        getValues={getValues}
+      /> */}
     </>
   )
 }

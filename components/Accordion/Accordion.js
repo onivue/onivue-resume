@@ -64,7 +64,7 @@ export default function Accordion({
               leaveFrom="transform scale-95 opacity-100"
               leaveTo="transform scale-100 opacity-0"
             >
-              {children}
+              <div className="py-4">{children}</div>
             </Transition>
           </Disclosure.Panel>
         </>

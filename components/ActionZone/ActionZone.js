@@ -37,15 +37,19 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
           <Item onClick={() => saveFile()}>
             <HiOutlineDownload className="block pt-1 mx-auto mb-1 text-3xl" />
           </Item>
+
+          <Item onClick={() => toggleForm()} className="lg:hidden">
+            <HiOutlinePencilAlt className="block pt-1 mx-auto mb-1 text-3xl" />
+          </Item>
         </div>
       </div>
     </div>
   )
 }
 
-const Item = ({ children, onClick }) => {
+const Item = ({ children, onClick, className }) => {
   return (
-    <div className="text-3xl group" onClick={onClick}>
+    <div className={`text-3xl group ${className}`} onClick={onClick}>
       <div className="flex items-end justify-center w-full px-6 py-2 mx-auto text-center text-gray-300 transition-all duration-150 cursor-pointer hover:scale-110 group-hover:text-primary-400">
         <div className="block px-1 pt-1 pb-1">
           <div className="block w-5 h-1 "></div>
