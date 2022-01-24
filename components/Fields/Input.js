@@ -70,7 +70,7 @@ const Input = forwardRef(
     }
 
     return (
-      <div>
+      <div className="py-2 pr-2 ">
         {(type === 'text' || type === 'file') && (
           <label htmlFor={id} className="block text-sm font-semibold">
             {label}
@@ -143,14 +143,16 @@ const Input = forwardRef(
             </div>
           )}
         </div>
-        <div className="p-2">
-          {helperText !== '' && (
-            <div className="text-xs text-gray-500">{helperText}</div>
-          )}
-          {errors[id] && (
-            <span className="text-sm text-red-500">{errors[id].message}</span>
-          )}
-        </div>
+        {(helperText !== '' || errors[id]) && (
+          <div className="p-2">
+            {helperText !== '' && (
+              <div className="text-xs text-gray-500">{helperText}</div>
+            )}
+            {errors[id] && (
+              <span className="text-sm text-red-500">{errors[id].message}</span>
+            )}
+          </div>
+        )}
       </div>
     )
   },

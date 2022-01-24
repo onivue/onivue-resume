@@ -52,19 +52,18 @@ const Form = () => {
           className={'mb-4'}
           defaultOpen={true}
         >
-          <div className="flex flex-wrap w-full">
+          <div className="grid w-full grid-cols-1 gap-x-4 lg:grid-cols-2">
             {blocksObject['details'].fields.map((field, i) => {
               return (
-                <div className="w-1/2 p-2" key={i}>
-                  <FieldGenerator
-                    field={field}
-                    register={register}
-                    errors={errors}
-                    getValues={getValues}
-                    control={control}
-                    fieldArrayData={`details`}
-                  />
-                </div>
+                <FieldGenerator
+                  field={field}
+                  register={register}
+                  errors={errors}
+                  getValues={getValues}
+                  control={control}
+                  fieldArrayData={`details`}
+                  key={i}
+                />
               )
             })}
             <FieldGenerator

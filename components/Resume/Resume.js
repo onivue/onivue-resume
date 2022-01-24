@@ -51,6 +51,7 @@ Font.registerEmojiSource({
   format: 'png',
   url: 'https://twemoji.maxcdn.com/2/72x72/',
 })
+
 const styles = StyleSheet.create(resumeStyle)
 
 export const MyDoc = ({}) => {
@@ -63,37 +64,28 @@ export const MyDoc = ({}) => {
           // !  SIDECONTENT
           // !  -------------------------------- 
         */}
-        <View style={styles.sectionSecondary}>
-          {/* 
-            // !  IMAGE
-          */}
+        <View style={styles.section0}>
+          {/* // !  DETAILS */}
           {resumeData.details.image && (
             <Image
               // source="https://source.unsplash.com/random/"
               source={resumeData.details.image}
-              style={styles.imageSecondary}
+              style={styles.detailsImage}
             />
           )}
-
-          {/* 
-            // !  NAME
-          */}
           <View
             style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}
           >
-            <Text style={styles.h1Secondary}>
+            <Text style={styles.detailsName}>
               {resumeData.details.firstName}{' '}
             </Text>
-            <Text style={styles.h1Secondary}>
+            <Text style={styles.detailsName}>
               {resumeData.details.lastName}
             </Text>
           </View>
-          <Text style={styles.h2Secondary}>{resumeData.details.jobTitle}</Text>
-          {/* 
-            // !  CONTACT
-          */}
-          <View style={styles.wrapperSecondary} wrap={false}>
-            <Text style={styles.h3Secondary}>Kontakt</Text>
+          <Text style={styles.detailsTitle}>{resumeData.details.jobTitle}</Text>
+          <View style={styles.blockWrapper} wrap={false}>
+            <Text style={styles.h3}>Kontakt</Text>
             {[
               resumeData.details.address,
               resumeData.details.plz,
@@ -107,7 +99,7 @@ export const MyDoc = ({}) => {
                     key={i}
                   >
                     {Array.from(d).map((char, i) => (
-                      <Text style={styles.pSecondary} key={i}>
+                      <Text style={styles.p} key={i}>
                         {char}
                       </Text>
                     ))}
@@ -116,114 +108,157 @@ export const MyDoc = ({}) => {
               }
             })}
           </View>
-          {/* 
-            // !  SKILLS
-          */}
+          {/*  // !  SECTION 0 */}
 
           {resumeData.sections[0].blocks.map((block, index) => {
-            if (block.type === 'tag') {
-              return (
-                <View style={styles.wrapperSecondary} wrap={false} key={index}>
-                  <Text style={styles.h3Secondary}>{block.title}</Text>
-                  <View style={styles.tagWrapper}>
+            return (
+              <View wrap={false} key={index}>
+                {block.type === 'text' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h2}>{block.title}</Text>
                     {block.values.map((value, index) => {
-                      return value.tags.map((tag, index) => {
-                        return (
-                          <Text key={index} style={styles.tag}>
-                            {tag}
-                          </Text>
-                        )
-                      })
+                      return <MultLineText text={value.text} key={index} />
                     })}
                   </View>
-                </View>
-              )
-            }
-          })}
-          {/* 
-            // !  LANGUAGES
-          */}
-          {resumeData.sections[0].blocks.map((block, index) => {
-            if (block.type === 'level') {
-              return (
-                <View style={styles.wrapperSecondary} wrap={false} key={index}>
-                  <Text style={styles.h3Secondary}>{block.title}</Text>
-                  {block.values.map((value, index) => {
-                    return (
-                      <ProgressBar
-                        title={value.title}
-                        progress={`${value.level || 50}%`}
-                        key={index}
-                      />
-                    )
-                  })}
-                </View>
-              )
-            }
-          })}
-          {/* 
-            // !  SOCIAL
-          */}
-          {resumeData.sections[0].blocks.map((block, index) => {
-            if (block.type === 'links') {
-              return (
-                <View style={styles.wrapperSecondary} wrap={false} key={index}>
-                  <Text style={styles.h3Secondary}>{block.title}</Text>
-                  {block.values.map((value, index) => {
-                    return (
-                      <Link
-                        src={value.url}
-                        style={styles.pSecondary}
-                        key={index}
-                      >
-                        {value.title}
-                      </Link>
-                    )
-                  })}
-                </View>
-              )
-            }
+                )}
+
+                {block.type === 'career' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h2}>{block.title}</Text>
+                    {block.values.map((value, index) => {
+                      return <TextBlock item={value} key={index} />
+                    })}
+                  </View>
+                )}
+
+                {block.type === 'tag' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h3}>{block.title}</Text>
+                    <View style={styles.tagWrapper}>
+                      {block.values.map((value, index) => {
+                        return value.tags.map((tag, index) => {
+                          return (
+                            <Text key={index} style={styles.tag}>
+                              {tag}
+                            </Text>
+                          )
+                        })
+                      })}
+                    </View>
+                  </View>
+                )}
+                {block.type === 'level' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h3}>{block.title}</Text>
+                    {block.values.map((value, index) => {
+                      return (
+                        <ProgressBar
+                          title={value.title}
+                          progress={`${value.level || 50}%`}
+                          key={index}
+                        />
+                      )
+                    })}
+                  </View>
+                )}
+                {block.type === 'links' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h3}>{block.title}</Text>
+                    {block.values.map((value, index) => {
+                      return (
+                        <Link src={value.url} style={styles.p} key={index}>
+                          {value.title}
+                        </Link>
+                      )
+                    })}
+                  </View>
+                )}
+
+                {index !== resumeData.sections[1].blocks.length - 1 && (
+                  <View style={styles.separator} />
+                )}
+              </View>
+            )
           })}
         </View>
-        <View style={styles.sectionSecondaryOverlay} fixed></View>
+        <View style={styles.section0Overlay} fixed />
         {/* 
           // !  --------------------------------
           // !  MAIN
           // !  --------------------------------
         */}
-        <View style={styles.sectionMain}>
-          {/* 
-            // !  ABOUTME
-          */}
+        <View style={styles.section1}>
+          {/* // !  SECTION 1 */}
           {resumeData.sections[1].blocks.map((block, index) => {
-            if (block.type === 'text') {
-              return (
-                <View style={styles.wrapperSecondary} wrap={false} key={index}>
-                  <Text style={styles.h2}>{block.title}</Text>
-                  {block.values.map((value, index) => {
-                    return <MultLineText text={value.text} key={index} />
-                  })}
-                </View>
-              )
-            }
+            return (
+              <View wrap={false} key={index}>
+                {block.type === 'text' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h2}>{block.title}</Text>
+                    {block.values.map((value, index) => {
+                      return <MultLineText text={value.text} key={index} />
+                    })}
+                  </View>
+                )}
+
+                {block.type === 'career' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h2}>{block.title}</Text>
+                    {block.values.map((value, index) => {
+                      return <TextBlock item={value} key={index} />
+                    })}
+                  </View>
+                )}
+
+                {block.type === 'tag' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h3}>{block.title}</Text>
+                    <View style={styles.tagWrapper}>
+                      {block.values.map((value, index) => {
+                        return value.tags.map((tag, index) => {
+                          return (
+                            <Text key={index} style={styles.tag}>
+                              {tag}
+                            </Text>
+                          )
+                        })
+                      })}
+                    </View>
+                  </View>
+                )}
+                {block.type === 'level' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h3}>{block.title}</Text>
+                    {block.values.map((value, index) => {
+                      return (
+                        <ProgressBar
+                          title={value.title}
+                          progress={`${value.level || 50}%`}
+                          key={index}
+                        />
+                      )
+                    })}
+                  </View>
+                )}
+                {block.type === 'links' && (
+                  <View style={styles.blockWrapper} wrap={false}>
+                    <Text style={styles.h3}>{block.title}</Text>
+                    {block.values.map((value, index) => {
+                      return (
+                        <Link src={value.url} style={styles.p} key={index}>
+                          {value.title}
+                        </Link>
+                      )
+                    })}
+                  </View>
+                )}
+
+                {index !== resumeData.sections[1].blocks.length - 1 && (
+                  <View style={styles.separator} />
+                )}
+              </View>
+            )
           })}
-          <View style={styles.separator}></View>
-          {/* 
-            // !  EXPERIENCE 
-          */}
-          {resumeData.sections[1].blocks.map((block, index) => {
-            if (block.type === 'career') {
-              return (
-                <View style={styles.wrapperSecondary} wrap={false} key={index}>
-                  <Text style={styles.h2}>{block.title}</Text>
-                  {block.values.map((value, index) => {
-                    return <TextBlock item={value} key={index} />
-                  })}
-                </View>
-              )
-            }
-          })}
-          <View style={styles.separator}></View>
         </View>
         {/* 
           // !  --------------------------------

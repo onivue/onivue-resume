@@ -58,7 +58,7 @@ const defaultFormValues = {
               location: 'LA',
               from: '01.01.2020',
               to: '01.01.2021',
-              summary: 'My Summary \n- batman!',
+              summary: 'My Summary \n- batman!\n- batman!',
             },
           ],
         },

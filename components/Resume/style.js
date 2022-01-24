@@ -13,14 +13,13 @@ const textSizes = {
 
 export const resumeStyle = {
   body: {
-    paddingTop: 35,
-    paddingBottom: 35,
+    paddingVertical: 35,
     fontFamily: 'Work Sans',
   },
   //
+  // !SECTION LAYOUT
   //
-  //
-  sectionSecondary: {
+  section0: {
     position: 'absolute',
     textAlign: 'left',
     zIndex: '10',
@@ -31,7 +30,7 @@ export const resumeStyle = {
     paddingRight: 12,
     backgroundColor: 'white',
   },
-  sectionSecondaryOverlay: {
+  section0Overlay: {
     position: 'absolute',
     height: '297mm',
     zIndex: '20',
@@ -39,83 +38,46 @@ export const resumeStyle = {
     width: 220,
     backgroundColor: 'white',
   },
-  wrapperSecondary: {
-    marginTop: 10,
-  },
-  imageSecondary: {
-    borderRadius: '10px',
-    objectFit: 'cover',
-  },
-  //
-  //
-  //
-
-  //
-  //
-  //
-  tagWrapper: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-  },
-  tag: {
-    fontSize: 8,
-    borderRadius: '50%',
-    color: colors.primary,
-    backgroundColor: colors.secondary,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    marginRight: 4,
-    marginVertical: 2,
-  },
-  //
-  //
-  //
-
-  sectionMain: {
+  section1: {
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 220,
     paddingHorizontal: 25,
     fontSize: 10,
   },
-  separator: {
-    height: '3px',
-    width: '100%',
-    backgroundColor: colors.secondary,
-    marginVertical: '15px',
+
+  //
+  // ! DETAILS BLOCKS
+  //
+  detailsImage: {
+    borderRadius: '10px',
+    objectFit: 'cover',
   },
-  //
-  //
-  //
-  h1Secondary: {
+  detailsName: {
     fontFamily: 'Montserrat',
     fontSize: textSizes.h1,
     marginBottom: 0,
     fontWeight: '600',
   },
-  h2Secondary: {
+  detailsTitle: {
     fontFamily: 'Montserrat',
     fontSize: textSizes.h2,
     marginBottom: 6,
   },
-  h3Secondary: {
-    fontFamily: 'Montserrat',
-    fontSize: textSizes.h3,
-    marginBottom: 2,
-    fontWeight: '600',
+  //
+  // ! VARIA COMPONENTS
+  //
+  blockWrapper: {
+    marginTop: 10,
   },
-  h4Secondary: {
-    fontFamily: 'Work Sans',
-    fontSize: textSizes.h4,
-    marginBottom: 6,
-  },
-  pSecondary: {
-    fontFamily: 'Work Sans',
-    fontSize: textSizes.p,
+  separator: {
+    height: '3px',
+    width: '100%',
+    backgroundColor: colors.secondary,
+    marginVertical: '6px',
   },
   //
-  //
+  // ! TYPOGRAPHY
   //
   h1: {
     fontFamily: 'Montserrat',
@@ -156,11 +118,10 @@ export const resumeStyle = {
     marginBottom: '4px',
   },
   //
-  //
+  // ! LIST
   //
   listItem: {
     flexDirection: 'row',
-    marginBottom: 5,
   },
   listItemContent: {
     flex: 1,
@@ -171,7 +132,7 @@ export const resumeStyle = {
     color: colors.primary,
   },
   //
-  //
+  // ! PROGRESS BAR
   //
   progressBarLine: {
     backgroundColor: colors.secondary,
@@ -183,5 +144,23 @@ export const resumeStyle = {
     backgroundColor: colors.primary,
     height: '5px',
     borderRadius: '50%',
+  },
+  //
+  // ! TAG
+  //
+  tagWrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+  },
+  tag: {
+    fontSize: 8,
+    borderRadius: '50%',
+    color: colors.primary,
+    backgroundColor: colors.secondary,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    marginRight: 4,
+    marginVertical: 2,
   },
 }
