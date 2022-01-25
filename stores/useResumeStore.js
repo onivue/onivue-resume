@@ -104,7 +104,7 @@ const defaultMetadata = {
 const defaultDesign = {
   color: '',
   backgroundColor: '',
-  accentColor: '',
+  accentColor: 'rgba(255,193,7,1)',
 }
 
 // ! --------------------------------------

@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          ...colors.green,
+          ...colors.amber,
         },
       },
       ...animations,

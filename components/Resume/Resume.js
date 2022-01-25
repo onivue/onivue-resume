@@ -53,13 +53,11 @@ Font.registerEmojiSource({
 })
 
 // const styles = StyleSheet.create(resumeStyle)
-const defaultColors = {
-  primary: 'rgba(255,193,7)',
-  secondary: 'rgba(255,193,7,0.1)',
-}
+
 export const MyDoc = ({}) => {
-  const styles = resumeStyle(defaultColors)
-  // console.log(styles)
+  const resumeDesign = useResumeStore((state) => state.resumeDesign)
+  const styles = resumeStyle(resumeDesign.accentColor)
+  console.log('LOG', resumeDesign.accentColor)
   const resumeData = useResumeStore((state) => state.formValues)
   return (
     <Document>
@@ -188,9 +186,9 @@ export const MyDoc = ({}) => {
                   </View>
                 )}
 
-                {index !== resumeData.sections[0].blocks.length - 1 && (
+                {/* {index !== resumeData.sections[0].blocks.length - 1 && (
                   <View style={styles.separator} />
-                )}
+                )} */}
               </View>
             )
           })}

@@ -12,9 +12,13 @@ const defaultTextSizes = {
 }
 
 export const resumeStyle = (
-  colors = defaultColors,
+  accentColor = 'rgba(255,193,7)',
   textSizes = defaultTextSizes,
 ) => {
+  const colors = {
+    primary: accentColor,
+    secondary: accentColor.replace(/[^,]+(?=\))/, '0.1'),
+  }
   return {
     body: {
       paddingVertical: 35,

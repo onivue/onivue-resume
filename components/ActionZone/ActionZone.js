@@ -8,6 +8,7 @@ import useResumeStore from '@/stores/useResumeStore'
 import { saveAs } from 'file-saver'
 import Modal from '@/components/Modal/Modal'
 import { useState } from 'react'
+import ColorPicker from '../ColorPicker/ColorPicker'
 
 export default function ActionZone({ toggleForm, downloadFileUrl }) {
   const [modalOpen, setModalOpen] = useState(false)
@@ -20,7 +21,7 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
       <div className="px-7">
         <div className="flex justify-around">
           <Item onClick={() => setModalOpen((s) => !s)}>
-            <HiOutlineCog className="block pt-1 mx-auto mb-1 text-3xl" />
+            <HiOutlineCog className="w-8 h-8 mx-auto" />
           </Item>
           <Modal
             show={modalOpen}
@@ -31,15 +32,21 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
             This is the Description
             <p className="text-sm text-gray-500">This is the Description</p>
           </Modal>
+
           <Item>
-            <HiOutlineColorSwatch className="block pt-1 mx-auto mb-1 text-3xl" />
+            <ColorPicker
+              icon={
+                <HiOutlineColorSwatch className="w-8 h-8 mx-auto center-self" />
+              }
+            />
           </Item>
+
           <Item onClick={() => saveFile()}>
-            <HiOutlineDownload className="block pt-1 mx-auto mb-1 text-3xl" />
+            <HiOutlineDownload className="w-8 h-8 mx-auto" />
           </Item>
 
           <Item onClick={() => toggleForm()} className="lg:hidden">
-            <HiOutlinePencilAlt className="block pt-1 mx-auto mb-1 text-3xl" />
+            <HiOutlinePencilAlt className="w-8 h-8 mx-auto" />
           </Item>
         </div>
       </div>
@@ -49,14 +56,11 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
 
 const Item = ({ children, onClick, className }) => {
   return (
-    <div className={`text-3xl group ${className}`} onClick={onClick}>
-      <div className="flex items-end justify-center w-full px-6 py-2 mx-auto text-center text-gray-300 transition-all duration-150 cursor-pointer hover:scale-110 group-hover:text-primary-400">
-        <div className="block px-1 pt-1 pb-1">
-          <div className="block w-5 h-1 "></div>
-          {children}
-          <div className="block w-5 h-1 mx-auto transition-all duration-150 rounded-full group-hover:bg-primary-300"></div>
-        </div>
+    <div className={`relative text-3xl group ${className}`} onClick={onClick}>
+      <div className="relative flex flex-col items-end justify-between w-full px-6 py-2 mx-auto text-center text-gray-300 transition-all duration-150 cursor-pointer group-hover:text-primary-400">
+        {children}
       </div>
+      <div className="absolute bottom-0 w-full h-1 mx-auto transition-all duration-150 rounded-full group-hover:bg-primary-300"></div>
     </div>
   )
 }
