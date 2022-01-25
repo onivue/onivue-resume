@@ -52,9 +52,14 @@ Font.registerEmojiSource({
   url: 'https://twemoji.maxcdn.com/2/72x72/',
 })
 
-const styles = StyleSheet.create(resumeStyle)
-
+// const styles = StyleSheet.create(resumeStyle)
+const defaultColors = {
+  primary: 'rgba(255,193,7)',
+  secondary: 'rgba(255,193,7,0.1)',
+}
 export const MyDoc = ({}) => {
+  const styles = resumeStyle(defaultColors)
+  // console.log(styles)
   const resumeData = useResumeStore((state) => state.formValues)
   return (
     <Document>
@@ -115,18 +120,26 @@ export const MyDoc = ({}) => {
               <View wrap={false} key={index}>
                 {block.type === 'text' && (
                   <View style={styles.blockWrapper} wrap={false}>
-                    <Text style={styles.h2}>{block.title}</Text>
+                    <Text style={styles.h3}>{block.title}</Text>
                     {block.values.map((value, index) => {
-                      return <MultLineText text={value.text} key={index} />
+                      return (
+                        <MultiLineText
+                          text={value.text}
+                          styles={styles}
+                          key={index}
+                        />
+                      )
                     })}
                   </View>
                 )}
 
                 {block.type === 'career' && (
                   <View style={styles.blockWrapper} wrap={false}>
-                    <Text style={styles.h2}>{block.title}</Text>
+                    <Text style={styles.h3}>{block.title}</Text>
                     {block.values.map((value, index) => {
-                      return <TextBlock item={value} key={index} />
+                      return (
+                        <TextBlock item={value} styles={styles} key={index} />
+                      )
                     })}
                   </View>
                 )}
@@ -155,6 +168,7 @@ export const MyDoc = ({}) => {
                         <ProgressBar
                           title={value.title}
                           progress={`${value.level || 50}%`}
+                          styles={styles}
                           key={index}
                         />
                       )
@@ -166,7 +180,7 @@ export const MyDoc = ({}) => {
                     <Text style={styles.h3}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
-                        <Link src={value.url} style={styles.p} key={index}>
+                        <Link src={value.url} style={styles.link} key={index}>
                           {value.title}
                         </Link>
                       )
@@ -174,7 +188,7 @@ export const MyDoc = ({}) => {
                   </View>
                 )}
 
-                {index !== resumeData.sections[1].blocks.length - 1 && (
+                {index !== resumeData.sections[0].blocks.length - 1 && (
                   <View style={styles.separator} />
                 )}
               </View>
@@ -196,7 +210,13 @@ export const MyDoc = ({}) => {
                   <View style={styles.blockWrapper} wrap={false}>
                     <Text style={styles.h2}>{block.title}</Text>
                     {block.values.map((value, index) => {
-                      return <MultLineText text={value.text} key={index} />
+                      return (
+                        <MultiLineText
+                          text={value.text}
+                          styles={styles}
+                          key={index}
+                        />
+                      )
                     })}
                   </View>
                 )}
@@ -205,14 +225,16 @@ export const MyDoc = ({}) => {
                   <View style={styles.blockWrapper} wrap={false}>
                     <Text style={styles.h2}>{block.title}</Text>
                     {block.values.map((value, index) => {
-                      return <TextBlock item={value} key={index} />
+                      return (
+                        <TextBlock item={value} styles={styles} key={index} />
+                      )
                     })}
                   </View>
                 )}
 
                 {block.type === 'tag' && (
                   <View style={styles.blockWrapper} wrap={false}>
-                    <Text style={styles.h3}>{block.title}</Text>
+                    <Text style={styles.h2}>{block.title}</Text>
                     <View style={styles.tagWrapper}>
                       {block.values.map((value, index) => {
                         return value.tags.map((tag, index) => {
@@ -228,12 +250,13 @@ export const MyDoc = ({}) => {
                 )}
                 {block.type === 'level' && (
                   <View style={styles.blockWrapper} wrap={false}>
-                    <Text style={styles.h3}>{block.title}</Text>
+                    <Text style={styles.h2}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
                         <ProgressBar
                           title={value.title}
                           progress={`${value.level || 50}%`}
+                          styles={styles}
                           key={index}
                         />
                       )
@@ -242,10 +265,10 @@ export const MyDoc = ({}) => {
                 )}
                 {block.type === 'links' && (
                   <View style={styles.blockWrapper} wrap={false}>
-                    <Text style={styles.h3}>{block.title}</Text>
+                    <Text style={styles.h2}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
-                        <Link src={value.url} style={styles.p} key={index}>
+                        <Link src={value.url} style={styles.link} key={index}>
                           {value.title}
                         </Link>
                       )
@@ -285,7 +308,7 @@ export const MyDoc = ({}) => {
   )
 }
 
-const ProgressBar = ({ title, progress }) => (
+const ProgressBar = ({ title, progress, styles }) => (
   <>
     <Text style={{ fontSize: 10, marginBottom: 3 }}>{title || '...'}</Text>
     <View style={styles.progressBarLine}>
@@ -294,20 +317,24 @@ const ProgressBar = ({ title, progress }) => (
   </>
 )
 
-export const ListItem = ({ children }) => (
+export const ListItem = ({ children, styles }) => (
   <View style={styles.listItem}>
     <Text style={styles.listBulletPoint}>•</Text>
     <Text style={{ ...styles.listItemContent, ...styles.p }}>{children}</Text>
   </View>
 )
 
-export const MultLineText = ({ text }) => {
+export const MultiLineText = ({ text, styles }) => {
   if (typeof text === 'string') {
     return (
       <>
         {text.split('\n').map((item, i) => {
           if (item.match(/^-\s/)) {
-            return <ListItem key={i}>{item.replace(/^-\s/, '')}</ListItem>
+            return (
+              <ListItem key={i} styles={styles}>
+                {item.replace(/^-\s/, '')}
+              </ListItem>
+            )
           } else {
             return (
               <Text key={i} style={styles.p}>
@@ -323,14 +350,14 @@ export const MultLineText = ({ text }) => {
   }
 }
 
-export const TextBlock = ({ item }) => {
+export const TextBlock = ({ item, styles }) => {
   return (
     <View wrap={false}>
-      <Text style={styles.h3}>{item.title}</Text>
+      <Text style={styles.h4}>{item.title}</Text>
       <Text style={styles.em}>
         {item.location} | {item.from} - {item.to}
       </Text>
-      <MultLineText text={item.summary} />
+      <MultiLineText styles={styles} text={item.summary} />
     </View>
   )
 }
