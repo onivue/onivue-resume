@@ -16,39 +16,39 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
   const saveFile = () => {
     saveAs(fileDownloadURL, 'example.pdf')
   }
+
+  const iconStyle = 'w-8 h-8 mx-auto center-self'
   return (
-    <div className="p-4 ">
-      <div className="px-7">
-        <div className="flex justify-around">
-          <Item onClick={() => setModalOpen((s) => !s)}>
-            <HiOutlineCog className="w-8 h-8 mx-auto" />
-          </Item>
-          <Modal
-            show={modalOpen}
-            onClose={() => setModalOpen((s) => !s)}
-            title="Settings"
-            type="edit"
-          >
-            This is the Description
-            <p className="text-sm text-gray-500">This is the Description</p>
-          </Modal>
+    <div className="self-center w-full max-w-3xl p-4">
+      <div className="flex justify-between">
+        <Item onClick={() => setModalOpen((s) => !s)}>
+          <HiOutlineCog className={iconStyle} />
+        </Item>
+        <Modal
+          show={modalOpen}
+          onClose={() => setModalOpen((s) => !s)}
+          title="Settings"
+          type="edit"
+        >
+          This is the Description
+          <p className="text-sm text-gray-500">This is the Description</p>
+        </Modal>
 
-          <Item>
-            <ColorPicker
-              icon={
-                <HiOutlineColorSwatch className="w-8 h-8 mx-auto center-self" />
-              }
-            />
-          </Item>
+        <ColorPicker
+          icon={
+            <Item>
+              <HiOutlineColorSwatch className={iconStyle} />
+            </Item>
+          }
+        />
 
-          <Item onClick={() => saveFile()}>
-            <HiOutlineDownload className="w-8 h-8 mx-auto" />
-          </Item>
+        <Item onClick={() => saveFile()}>
+          <HiOutlineDownload className={iconStyle} />
+        </Item>
 
-          <Item onClick={() => toggleForm()} className="lg:hidden">
-            <HiOutlinePencilAlt className="w-8 h-8 mx-auto" />
-          </Item>
-        </div>
+        <Item onClick={() => toggleForm()} className="lg:hidden">
+          <HiOutlinePencilAlt className={iconStyle} />
+        </Item>
       </div>
     </div>
   )

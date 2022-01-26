@@ -2,13 +2,13 @@ import { blocksObject } from './Blocks'
 
 const BlockSelector = ({ blockTypes, setValue, append, getValues }) => {
   return (
-    <div className="flex flex-wrap mb-4">
+    <div className="grid flex-wrap grid-cols-2 gap-4 mb-10 lg:grid-cols-2">
       {blockTypes.map((blockType, index) => {
         const block = blocksObject[blockType]
         return (
-          <div className="w-1/2 text-sm" key={index}>
+          <div className="text-sm" key={index}>
             <div
-              className="flex p-2 mx-4 my-2 border-2 rounded-lg cursor-pointer hover:bg-primary-300"
+              className="flex p-2 border-2 rounded-lg cursor-pointer hover:bg-primary-200"
               onClick={() => {
                 // setValue('sections.1.blocks', [
                 //   ...getValues('sections.1.blocks'),

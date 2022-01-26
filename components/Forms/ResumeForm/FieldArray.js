@@ -18,14 +18,20 @@ const FieldArrray = ({
   })
 
   return (
-    <>
+    <div className="pl-2">
       {fields.map((item, index) => {
         return (
           <div key={item.id}>
             <Accordion
               title={getValues(`${name}.${index}.title`) || '...'}
               style={'secondary'}
-              className={'pt-4 pl-2'}
+              className={'pt-2 relative'}
+              menu={
+                <HiOutlineTrash
+                  className="w-5 h-5 mr-4 cursor-pointer hover:text-red-500"
+                  onClick={() => remove(index)}
+                />
+              }
             >
               <div className="py-2">
                 {fieldsArray.map((field, i) => {
@@ -42,31 +48,23 @@ const FieldArrray = ({
                     />
                   )
                 })}
-                <Button
-                  type="button"
-                  onClick={() => remove(index)}
-                  className="bg-red-300"
-                >
-                  <HiOutlineTrash className="w-5 h-5" />
-                </Button>
               </div>
             </Accordion>
           </div>
         )
       })}
-      <div className="flex items-center justify-center w-full">
+      <div className="flex items-center justify-center w-full pt-2">
         <Button
-          className="mt-4 ml-2"
+          className="bg-opacity-0"
           style="secondary"
-          rounded
           onClick={() => {
             append({})
           }}
         >
-          <HiPlus />
+          <HiPlus className="w-4 h-4 " />
         </Button>
       </div>
-    </>
+    </div>
   )
 }
 

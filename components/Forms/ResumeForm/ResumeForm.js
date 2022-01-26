@@ -49,7 +49,7 @@ const Form = () => {
             </div>
           }
           style={'primary'}
-          className={'mb-4'}
+          className={'mb-10'}
           defaultOpen={true}
         >
           <div className="grid w-full grid-cols-1 gap-x-4 lg:grid-cols-2">

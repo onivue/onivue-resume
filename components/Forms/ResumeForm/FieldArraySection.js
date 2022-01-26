@@ -104,7 +104,7 @@ const FieldArrraySection = ({
                 />
               }
               style={'primary'}
-              className={'mb-4'}
+              className={'mb-10'}
               key={blockIndex}
               defaultOpen={block.defaultOpen || false}
             >

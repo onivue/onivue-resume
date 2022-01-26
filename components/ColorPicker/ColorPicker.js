@@ -3,6 +3,8 @@ import { Popover, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { RgbaStringColorPicker } from 'react-colorful'
 
+//TODO https://codesandbox.io/s/react-colorful-sketch-picker-ouz5t
+
 export default function ColorPicker({ icon }) {
   const resumeDesign = useResumeStore((state) => state.resumeDesign)
   const setResumeDesign = useResumeStore((state) => state.setResumeDesign)
@@ -35,16 +37,25 @@ export default function ColorPicker({ icon }) {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute z-10 mb-4 transform -translate-x-1/2 rounded-lg ring-2 ring-black left-1/2 bottom-full">
-              <div className="flex justify-center overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+            <Popover.Panel className="absolute z-10 mb-4 transform -translate-x-1/2 bg-white rounded-lg left-1/2 bottom-full">
+              <div className="flex flex-col justify-center overflow-hidden rounded-lg shadow-lg ">
                 <RgbaStringColorPicker
                   color={resumeDesign.accentColor}
                   onChange={(data) => {
-                    console.log(data)
+                    // console.log(data)
                     // setResumeDesign({ ...resumeDesign, accentColor: data })
                     setColor(data)
                   }}
                 />
+                <div className="text-base">
+                  {/* {color} */}
+                  <input
+                    value={color}
+                    onChange={(e) => {
+                      setColor(e.target.value)
+                    }}
+                  />
+                </div>
               </div>
             </Popover.Panel>
           </Transition>

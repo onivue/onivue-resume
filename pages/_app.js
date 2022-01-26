@@ -13,9 +13,9 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
 
-      <Navigation className="backdrop-filter backdrop-blur-sm bg-white bg-opacity-80 h-[70px] fixed inset-0 z-10 shadow-lg shadow-primary-400/20 " />
-      <div className="flex flex-col  min-h-screen pt-[70px]">
-        <main className="lg:px-4 py-4 flex flex-1 lg:flex-row min-h-[calc(100vh-70px)] max-h-[calc(100vh-70px)] justify-center self-center max-w-[1900px] w-full ">
+      <Navigation className="" />
+      <div className="flex flex-col  min-h-screen pt-[60px]">
+        <main className="flex flex-1 lg:flex-row min-h-[calc(100vh-70px)] max-h-[calc(100vh-60px)] justify-center self-center max-w-[1900px] w-full ">
           <Component {...pageProps} />
         </main>
         <Footer />
