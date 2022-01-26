@@ -24,7 +24,7 @@ export default function ColorPicker({ icon }) {
   }, [color])
 
   return (
-    <Popover className="cursor-default lg:relative">
+    <Popover className="relative cursor-default">
       {({ open }) => (
         <>
           <Popover.Button>{icon}</Popover.Button>
@@ -48,13 +48,13 @@ export default function ColorPicker({ icon }) {
                   }}
                 />
                 <div className="text-base">
-                  {/* {color} */}
-                  <input
+                  {color}
+                  {/* <input
                     value={color}
                     onChange={(e) => {
                       setColor(e.target.value)
                     }}
-                  />
+                  /> */}
                 </div>
               </div>
             </Popover.Panel>
