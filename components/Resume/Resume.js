@@ -56,11 +56,20 @@ Font.registerEmojiSource({
 
 export const MyDoc = ({}) => {
   const resumeDesign = useResumeStore((state) => state.resumeDesign)
+  const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
   const styles = resumeStyle(resumeDesign.accentColor)
   console.log('LOG', resumeDesign.accentColor)
   const resumeData = useResumeStore((state) => state.formValues)
   return (
-    <Document>
+    <Document
+      title={resumeMetadata.title}
+      author={resumeMetadata.author}
+      subject={resumeMetadata.subject}
+      keywords={resumeMetadata.keywords}
+      creator={resumeMetadata.creator}
+      producer={resumeMetadata.producer}
+      language={resumeMetadata.language}
+    >
       <Page size="A4" style={styles.body}>
         {/* 
           // !  --------------------------------

@@ -24,7 +24,7 @@ export default function Modal({
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={onClose}
-          initialFocus={cancelButtonRef}
+          // initialFocus={cancelButtonRef}
         >
           <div className="items-end justify-center block min-h-screen text-center">
             <Transition.Child
@@ -93,13 +93,11 @@ export default function Modal({
                     </Dialog.Title>
                   </div>
                   {/* //! -----------------------CONTENT--------------------------------- */}
-                  <div className="mt-3 text-center sm:text-left">
-                    {children}
-                  </div>
+                  <div className="mt-3 ">{children}</div>
                 </div>
                 {/* //! -----------------------FOOTER--------------------------------- */}
                 {(onSubmit || onCancel) && (
-                  <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
+                  <div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     {onSubmit && (
                       <button
                         type="button"
@@ -113,7 +111,7 @@ export default function Modal({
                     {onCancel && (
                       <button
                         type="button"
-                        className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                        className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                         onClick={onCancel}
                         ref={cancelButtonRef}
                       >

@@ -92,13 +92,13 @@ const defaultFormValues = {
 
 // ? --------------------------------------
 const defaultMetadata = {
-  docTitle: 'resume',
-  author: '',
-  creator: '',
-  producer: '',
-  subject: '',
-  keywords: '',
-  language: '',
+  title: 'resume',
+  author: 'https://resume.onivue.ch',
+  creator: 'https://resume.onivue.ch',
+  producer: 'https://resume.onivue.ch',
+  subject: 'https://resume.onivue.ch',
+  keywords: 'resume;Test',
+  language: 'Deutsch',
 }
 // ? --------------------------------------
 const defaultDesign = {

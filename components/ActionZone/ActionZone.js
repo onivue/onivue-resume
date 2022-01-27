@@ -8,13 +8,15 @@ import useResumeStore from '@/stores/useResumeStore'
 import { saveAs } from 'file-saver'
 import Modal from '@/components/Modal/Modal'
 import { useState } from 'react'
-import ColorPicker from '../ColorPicker/ColorPicker'
+import ColorPicker from '@/components/ColorPicker/ColorPicker'
+import SettingsForm from '@/components/Forms/SettingsForm/SettingsForm'
 
 export default function ActionZone({ toggleForm, downloadFileUrl }) {
   const [modalOpen, setModalOpen] = useState(false)
   const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
+  const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
   const saveFile = () => {
-    saveAs(fileDownloadURL, 'example.pdf')
+    saveAs(fileDownloadURL, resumeMetadata.title)
   }
 
   const iconStyle = 'w-8 h-8 mx-auto center-self'
@@ -30,8 +32,11 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
           title="Settings"
           type="edit"
         >
-          This is the Description
-          <p className="text-sm text-gray-500">This is the Description</p>
+          <p className="my-4 text-center text-gray-500">
+            Hier können Sie die Dokumenteneigenschaften der PDF Datei
+            konfigurieren.
+          </p>
+          <SettingsForm />
         </Modal>
 
         <ColorPicker

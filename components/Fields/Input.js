@@ -24,7 +24,7 @@ const Input = forwardRef(
     const baseStyle = 'transition duration-150 ease-in focus:outline-none'
     const styles = {
       text: {
-        base: 'w-full rounded-md text-black shadow-bold',
+        base: 'w-full rounded-md text-black shadow-md',
         active:
           'focus:ring-primary-300 focus:border-primary-200 focus:shadow-primary-200',
         disabled:
@@ -33,7 +33,7 @@ const Input = forwardRef(
           'focus:ring-red-500 border-red-500 focus:border-red-500 shadow-red-300',
       },
       file: {
-        base: 'block w-full text-sm text-gray-500 cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 hover:file:ring-2 hover:file:ring-primary-300 ',
+        base: 'block w-full text-sm text-gray-500 file:cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 hover:file:ring-2 hover:file:ring-primary-300 ',
         active:
           'file:focus:ring-primary-300 file:focus:ring-2 file:focus:border-primary-200 file:focus:shadow-primary-200 rounded p-1 ',
         disabled:
@@ -70,7 +70,7 @@ const Input = forwardRef(
     }
 
     return (
-      <div className="py-2 pr-2 ">
+      <div className="py-2 ">
         {(type === 'text' || type === 'file') && (
           <label htmlFor={id} className="block text-sm font-semibold">
             {label}
@@ -143,7 +143,7 @@ const Input = forwardRef(
             </div>
           )}
         </div>
-        {(helperText !== '' || errors[id]) && (
+        {(helperText !== '' || errors[id]?.message) && (
           <div className="p-2">
             {helperText !== '' && (
               <div className="text-xs text-gray-500">{helperText}</div>

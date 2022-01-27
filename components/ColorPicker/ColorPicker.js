@@ -47,7 +47,7 @@ export default function ColorPicker({ icon }) {
                     setColor(data)
                   }}
                 />
-                <div className="text-base">
+                <div className="py-2 text-sm text-center">
                   {color}
                   {/* <input
                     value={color}
