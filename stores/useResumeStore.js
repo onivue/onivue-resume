@@ -2,13 +2,13 @@ import create from 'zustand'
 
 const defaultFormValues = {
   details: {
-    firstName: 'Bruce',
-    lastName: 'Wayne',
-    jobTitle: 'Batman',
-    address: 'Street XY',
-    plz: '9000 Gotham',
-    phone: '071 000 00 00',
-    mail: 'bruce.wayne@batman.com',
+    firstName: 'Leslie',
+    lastName: 'Knope',
+    jobTitle: 'Deputy Director Parks Department',
+    address: '',
+    plz: 'Pawnee, Indiana',
+    phone: '317-660-2160',
+    mail: 'lknope@parksdept.com',
     image: null,
   },
   sections: [
@@ -16,21 +16,34 @@ const defaultFormValues = {
       name: 'Section 0',
       blocks: [
         {
-          title: 'Tags',
+          title: 'Skills',
           type: 'tag',
           values: [
             {
-              tags: ['react', 'tailwind'],
+              tags: ['Microsoft', 'Word', 'Excel', 'PerfectMind'],
             },
           ],
         },
         {
-          title: 'Level',
+          title: 'Sprachen',
           type: 'level',
           values: [
             {
-              title: 'German',
+              title: 'Deutsch',
               level: '100',
+            },
+            {
+              title: 'Englisch',
+              level: '89',
+            },
+          ],
+        },
+        {
+          title: 'Soft Skills',
+          type: 'text',
+          values: [
+            {
+              text: '- Positivity\n- Leadership\n- Public Speaking',
             },
           ],
         },
@@ -50,37 +63,46 @@ const defaultFormValues = {
       name: 'Section 1',
       blocks: [
         {
-          title: 'Experience',
-          type: 'career',
-          values: [
-            {
-              title: 'Application Engineer',
-              location: 'LA',
-              from: '01.01.2020',
-              to: '01.01.2021',
-              summary: 'My Summary \n- batman!\n- batman!',
-            },
-          ],
-        },
-        {
-          title: 'Education',
-          type: 'career',
-          values: [
-            {
-              title: 'Technology School 2',
-              location: 'LA',
-              from: '01.01.2020',
-              to: '01.01.2021',
-              summary: '',
-            },
-          ],
-        },
-        {
-          title: 'Text',
+          title: 'Über mich',
           type: 'text',
           values: [
             {
-              text: 'My name is Bruce Wayne. I am a passionate, over-achieving employee who believes in justice\nEmoij Support: \n😜 💯 \n- batman!',
+              text: "My name is Leslie Knope. I am a passionate, over-achieving government employee who believes the government's #1 job is serving the people. By pairing the right people with the right messaging at the right time, the parks department and your local government can make the world a better place for everyone! I have met Joe Biden, and one day I will become the first female President of the United States.",
+            },
+          ],
+        },
+        {
+          title: 'Berufserfahrung',
+          type: 'career',
+          values: [
+            {
+              title: 'City Councilor',
+              location: 'City of Pawnee, Indiana',
+              from: 'Feb 2012',
+              to: 'aktuell',
+              summary:
+                '- In placerat nisi pellentesque felis blandit, vel varius justo eleifend.\n- Etiam porttitor tortor vel lobortis ultricies.\n- Nam non libero accumsan, sagittis nibh vitae, auctor ligula.\n- Sed hendrerit dui a ante porttitor, vitae tristique ipsum laoreet.\n- Suspendisse interdum mauris a lectus dignissim, vitae aliquet ante tempor.',
+            },
+            {
+              title: 'Deputy Director Parks Department',
+              location: 'City of Pawnee, Indiana',
+              from: 'Feb 2009',
+              to: 'Jan 2012',
+              summary:
+                '- Sed ut lorem viverra urna malesuada interdum in ut risus.\n- Duis at sem non justo aliquam iaculis.\n- Quisque lobortis nibh non turpis interdum ornare.\n- Sed et diam nec arcu tempor suscipit sit amet at tellus.\n- Duis quis diam imperdiet, pharetra lacus eget, fringilla odio.',
+            },
+          ],
+        },
+        {
+          title: 'Ausbildung',
+          type: 'career',
+          values: [
+            {
+              title: 'A Environmental and Public Affairs',
+              location: 'Indiana University, Bloomington, Indiana',
+              from: 'Oct 1993',
+              to: 'May 1993',
+              summary: '',
             },
           ],
         },

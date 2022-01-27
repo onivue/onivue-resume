@@ -129,7 +129,7 @@ export const MyDoc = ({}) => {
                     <Text style={styles.h3}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
-                        <MultiLineText
+                        <TextBlock
                           text={value.text}
                           styles={styles}
                           key={index}
@@ -217,7 +217,7 @@ export const MyDoc = ({}) => {
                     <Text style={styles.h2}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
-                        <MultiLineText
+                        <TextBlock
                           text={value.text}
                           styles={styles}
                           key={index}
@@ -330,7 +330,7 @@ export const ListItem = ({ children, styles }) => (
   </View>
 )
 
-export const MultiLineText = ({ text, styles }) => {
+export const TextBlock = ({ text, styles }) => {
   if (typeof text === 'string') {
     return (
       <>
@@ -363,7 +363,7 @@ export const CareerBlock = ({ item, styles }) => {
       <Text style={styles.em}>
         {item.location} | {item.from} - {item.to}
       </Text>
-      <MultiLineText styles={styles} text={item.summary} />
+      <TextBlock styles={styles} text={item.summary} />
     </View>
   )
 }

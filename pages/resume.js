@@ -23,7 +23,7 @@ function Home() {
   // const StateDebug = useResumeStore((state) => state.StateDebug)
 
   return (
-    <div className="flex w-full max-h-[calc(100vh-60px)]">
+    <div className="flex w-full max-h-[calc(100vh-60px)] min-h-[calc(100vh-60px)]">
       {showForm && (
         <div className="fixed z-50 flex items-center space-x-4 bottom-5 right-5 lg:hidden">
           <button
