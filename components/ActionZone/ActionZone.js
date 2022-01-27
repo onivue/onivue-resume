@@ -32,11 +32,13 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
           title="Settings"
           type="edit"
         >
-          <p className="my-4 text-center text-gray-500">
-            Hier können Sie die Dokumenteneigenschaften der PDF Datei
-            konfigurieren.
-          </p>
-          <SettingsForm />
+          <div className="grid grid-cols-1 gap-4 ">
+            <p className="text-center text-gray-500">
+              Hier können Sie die Dokumenteneigenschaften der PDF Datei
+              konfigurieren.
+            </p>
+            <SettingsForm />
+          </div>
         </Modal>
 
         <ColorPicker

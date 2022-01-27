@@ -72,6 +72,11 @@ export const resumeStyle = (
       fontSize: textSizes.h2,
       marginBottom: 6,
     },
+    detailsContact: {
+      fontFamily: 'Work Sans',
+      fontSize: textSizes.p,
+      marginBottom: '2px',
+    },
     //
     // ! VARIA COMPONENTS
     //

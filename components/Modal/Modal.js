@@ -16,7 +16,7 @@ export default function Modal({
   children,
   type,
 }) {
-  const cancelButtonRef = useRef(null)
+  const closeButtonRef = useRef(null)
   return (
     <>
       <Transition.Root show={show} as={Fragment}>
@@ -24,7 +24,7 @@ export default function Modal({
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={onClose}
-          // initialFocus={cancelButtonRef}
+          initialFocus={closeButtonRef}
         >
           <div className="items-end justify-center block min-h-screen text-center">
             <Transition.Child
@@ -58,12 +58,13 @@ export default function Modal({
               {/* //! -----------------------CONTENT--------------------------------- */}
               <div className="inline-block w-11/12 overflow-hidden text-left align-middle transition-all transform bg-white rounded-lg shadow-xl lg:my-8 lg:max-w-2xl lg:w-full">
                 {/* //! -----------------------CLOSE X BUTTON--------------------------------- */}
-                <div
-                  className="absolute right-0 flex items-center justify-center p-2 cursor-pointer"
+                <button
+                  className="absolute right-0 flex items-center justify-center p-2 cursor-pointer focus:outline-none"
                   onClick={onClose}
+                  ref={closeButtonRef}
                 >
                   <HiX className="w-5 h-5 text-gray-600" aria-hidden="true" />
-                </div>
+                </button>
                 {/* //! -----------------------HEADER--------------------------------- */}
                 <div className="p-6 bg-white">
                   <div className="items-center sm:flex">
@@ -102,7 +103,6 @@ export default function Modal({
                       <button
                         type="button"
                         className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                        // onClick={() => setOpen(false)}
                       >
                         Deactivate
                       </button>
@@ -113,7 +113,6 @@ export default function Modal({
                         type="button"
                         className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-300 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                         onClick={onCancel}
-                        ref={cancelButtonRef}
                       >
                         Cancel
                       </button>

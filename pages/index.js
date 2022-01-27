@@ -1,13 +1,5 @@
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { BlobProvider } from '@react-pdf/renderer'
-import { MyDoc } from '@/components/Resume/Resume'
-import PDFViewer from '@/components/PDFViewer/PDFViewer'
-import Form from '@/components/Forms/ResumeForm/ResumeForm'
-import Backdrop from '@/components/Backdrop/Backdrop'
-import useResumeStore from '@/stores/useResumeStore'
-import { classNames } from '@/lib/helper'
-import ActionZone from '@/components/ActionZone/ActionZone'
-import { HiX } from 'react-icons/hi'
 
 function Home() {
   const [isClient, setIsClient] = useState(false)
@@ -23,60 +15,50 @@ function Home() {
   // const StateDebug = useResumeStore((state) => state.StateDebug)
 
   return (
-    <>
-      {showForm && (
-        <div className="fixed z-50 flex items-center space-x-4 bottom-5 right-5 lg:hidden">
-          <button
-            onClick={toggleForm}
-            className="z-50 p-1 transition-colors duration-200 rounded-md text-primary-lighter ring-primary-300 bg-primary-50 hover:text-primary hover:bg-primary-100 focus:outline-none focus:ring"
-          >
-            <HiX className="w-8 h-8" />
-          </button>
+    <div className="justify-center max-w-screen-xl px-8 ">
+      <div className="text-[2.0rem] font-bold text-center self-center mx-auto py-14 lg:text-5xl lg:w-2/3">
+        Einfach und Modern deine Bewerbung erstellen.
+      </div>
+
+      <div className="grid p-8 gap-y-20 lg:gap-auto lg:grid-cols-2 justify-items-center">
+        <div>
+          <h2 className="text-lg text-center">Lebenslauf</h2>
+          <Link href="/resume">
+            <a className="flex flex-col items-center justify-center">
+              <img
+                src="/img/resume.svg"
+                alt="resume-icon"
+                className="self-center w-32 my-4 transition duration-200 shadow-lg shadow-primary-200/40 hover:scale-110"
+              />
+              <button className="p-4 px-6 text-center rounded-lg shadow-lg cursor-pointer bg-primary-200 shadow-primary-100 hover:bg-primary-300">
+                Create!
+              </button>
+            </a>
+          </Link>
         </div>
-      )}
+        <div>
+          <h2 className="text-lg text-center">Motivationsschreiben</h2>
+          <Link href="/">
+            <a className="flex flex-col items-center justify-center">
+              <img
+                src="/img/motivation.svg"
+                alt="motivation-icon"
+                className="self-center w-32 my-4 transition duration-200 shadow-lg shadow-primary-200/40 hover:scale-110"
+              />
+              <button className="p-4 px-6 text-center rounded-lg shadow-lg cursor-pointer bg-primary-200 shadow-primary-100 hover:bg-primary-300">
+                Create!
+              </button>
+            </a>
+          </Link>
+        </div>
+      </div>
 
-      {isClient && (
-        <>
-          {/* <StateDebug className="fixed right-0 z-20 w-2/5 p-4 overflow-auto font-mono text-white bg-gray-500 rounded h-[1200px] top-20 opacity-80" /> */}
-          <Backdrop show={showForm} className="lg:hidden" />
-          <aside
-            className={classNames(
-              'flex-1 fixed lg:static ',
-              'z-10 lg:z-0 p-2',
-              'lg:w-1/2  lg:translate-y-0 duration-500 transition  ease-in-out  lg:animate-fade-in-up',
-              'inset-0 inset-y-0 top-0',
-              showForm
-                ? 'translate-y-0 '
-                : 'translate-y-full  lg:opacity-100 opacity-0',
-            )}
-          >
-            <div className="h-full p-4 overflow-auto bg-white rounded-md shadow">
-              <div className="pt-8 font-mono text-4xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg h-28 shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
-                Settings
-              </div>
-              <Form />
-            </div>
-          </aside>
-
-          <div className="flex flex-col justify-center w-full lg:w-1/2">
-            <BlobProvider document={<MyDoc />}>
-              {({ blob, url, loading, error }) => {
-                return (
-                  <>
-                    <PDFViewer
-                      file={url}
-                      loading={loading}
-                      className="w-full max-h-screen px-4 py-1 overflow-auto animate-fade-in-down no-scrollbar"
-                    />
-                  </>
-                )
-              }}
-            </BlobProvider>
-            <ActionZone toggleForm={toggleForm} />
-          </div>
-        </>
-      )}
-    </>
+      {/* <div className="flex flex-col p-4 my-8 border-2 rounded-lg border-primary-200">
+        <div className="text-xl ">coming soon features</div>
+        <div className="">- new templates</div>
+        <div className="">- new fonts</div>
+      </div> */}
+    </div>
   )
 }
 

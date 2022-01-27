@@ -58,7 +58,6 @@ export const MyDoc = ({}) => {
   const resumeDesign = useResumeStore((state) => state.resumeDesign)
   const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
   const styles = resumeStyle(resumeDesign.accentColor)
-  console.log('LOG', resumeDesign.accentColor)
   const resumeData = useResumeStore((state) => state.formValues)
   return (
     <Document
@@ -111,7 +110,7 @@ export const MyDoc = ({}) => {
                     key={i}
                   >
                     {Array.from(d).map((char, i) => (
-                      <Text style={styles.p} key={i}>
+                      <Text style={styles.detailsContact} key={i}>
                         {char}
                       </Text>
                     ))}
@@ -145,7 +144,7 @@ export const MyDoc = ({}) => {
                     <Text style={styles.h3}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
-                        <TextBlock item={value} styles={styles} key={index} />
+                        <CareerBlock item={value} styles={styles} key={index} />
                       )
                     })}
                   </View>
@@ -233,7 +232,7 @@ export const MyDoc = ({}) => {
                     <Text style={styles.h2}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
-                        <TextBlock item={value} styles={styles} key={index} />
+                        <CareerBlock item={value} styles={styles} key={index} />
                       )
                     })}
                   </View>
@@ -357,7 +356,7 @@ export const MultiLineText = ({ text, styles }) => {
   }
 }
 
-export const TextBlock = ({ item, styles }) => {
+export const CareerBlock = ({ item, styles }) => {
   return (
     <View wrap={false}>
       <Text style={styles.h4}>{item.title}</Text>

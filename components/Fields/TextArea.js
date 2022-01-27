@@ -20,7 +20,7 @@ const TextArea = forwardRef(
   ) => {
     const baseStyle = 'transition ease-in duration-150 ease-in'
     const styles = {
-      base: 'w-full rounded-md text-black shadow-bold',
+      base: 'w-full rounded-md text-black shadow-md',
       active:
         'focus:ring-primary-300 focus:border-primary-200 focus:shadow-primary-200',
       disabled:
