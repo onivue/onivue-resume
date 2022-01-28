@@ -8,10 +8,10 @@ const defaultTextSizes = {
   h2: '15px',
   h3: '12px',
   h4: '11px',
-  p: '10px',
+  p: '11px',
 }
 
-export const resumeStyle = (
+const style = (
   accentColor = 'rgba(255,193,7)',
   textSizes = defaultTextSizes,
 ) => {
@@ -122,6 +122,7 @@ export const resumeStyle = (
       fontFamily: 'Work Sans',
       fontSize: textSizes.p,
       marginBottom: '4px',
+      lineHeight: 1.4,
     },
     em: {
       fontFamily: 'Work Sans',
@@ -184,3 +185,5 @@ export const resumeStyle = (
     },
   }
 }
+
+export default style

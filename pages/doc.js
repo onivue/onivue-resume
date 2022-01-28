@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
 import { BlobProvider } from '@react-pdf/renderer'
-import { MyDoc } from '@/components/Resume/Resume'
 import PDFViewer from '@/components/PDFViewer/PDFViewer'
-import Form from '@/components/Forms/ResumeForm/ResumeForm'
+import Form from '@/components/Forms/DocForm/DocForm'
 import Backdrop from '@/components/Backdrop/Backdrop'
-import useResumeStore from '@/stores/useResumeStore'
 import { classNames } from '@/lib/helper'
 import ActionZone from '@/components/ActionZone/ActionZone'
 import { HiX } from 'react-icons/hi'
+import useResumeStore from '@/stores/useResumeStore'
+import TemplateChooser from '@/components/TemplateChooser/TemplateChooser'
 
-function Home() {
+function FileGeneration() {
   const [isClient, setIsClient] = useState(false)
   const [showForm, SetShowForm] = useState(false)
+
   useEffect(() => {
     setIsClient(true)
   }, [])
@@ -19,7 +20,6 @@ function Home() {
   const toggleForm = () => {
     SetShowForm(!showForm)
   }
-
   // const StateDebug = useResumeStore((state) => state.StateDebug)
 
   return (
@@ -34,7 +34,6 @@ function Home() {
           </button>
         </div>
       )}
-
       {isClient && (
         <>
           {/* <StateDebug className="fixed right-0 z-20 w-2/5 p-4 overflow-auto font-mono text-white bg-gray-500 rounded h-[1200px] top-20 opacity-80" /> */}
@@ -59,7 +58,7 @@ function Home() {
           </aside>
 
           <div className="flex flex-col justify-center w-full lg:w-1/2">
-            <BlobProvider document={<MyDoc />}>
+            <BlobProvider document={<TemplateChooser />}>
               {({ blob, url, loading, error }) => {
                 return (
                   <>
@@ -80,4 +79,4 @@ function Home() {
   )
 }
 
-export default Home
+export default FileGeneration

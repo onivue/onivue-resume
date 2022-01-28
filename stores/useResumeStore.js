@@ -158,14 +158,14 @@ const defaultDesign = {
 // ! --------------------------------------
 const useResumeStore = create(
   persist((set, get) => ({
-    defaultFormValues: defaultFormValues,
     formValues: defaultFormValues,
     setFormValues: (payload) => {
       set({ formValues: payload })
     },
-    resetFormValues: () => {
-      console.log(get().defaultFormValues)
-      set({ formValues: defaultFormValues })
+    // ! --------------------------------------
+    resetFormValues: () => {},
+    setResetFormValues: (payload) => {
+      set({ resetFormValues: () => payload(defaultFormValues) })
     },
     // ! --------------------------------------
     fileDownloadURL: '',
@@ -181,6 +181,23 @@ const useResumeStore = create(
     resumeDesign: defaultDesign,
     setResumeDesign: (payload) => {
       set({ resumeDesign: payload })
+    },
+    resetResumeDesign: () => {
+      set({ resumeDesign: defaultDesign })
+    },
+    // ! --------------------------------------
+    docTemplateName: 'zen',
+    docType: 'cover',
+    docTemplateResume: 'zen',
+    docTemplateCover: 'zen',
+    setDocType: (payload) => {
+      set({ docType: payload })
+      if (get().docType === 'cover') {
+        set({ docTemplateName: get().docTemplateCover })
+      }
+      if (get().docType === 'resume') {
+        set({ docTemplateName: get().docTemplateResume })
+      }
     },
     // ! --------------------------------------
     StateDebug: ({ className }) => {

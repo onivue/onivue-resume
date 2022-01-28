@@ -67,6 +67,33 @@ export const blocksObject = {
     ],
   },
   // ! -----------------------
+  cover: {
+    type: 'fields',
+    icon: <HiMenu className={iconStyle} />,
+    displayname: '',
+    fields: [
+      {
+        label: 'Überschrift',
+        id: 'title',
+        type: 'text',
+        required: true,
+      },
+      {
+        label: 'Untertitel',
+        id: 'subtitle',
+        type: 'text',
+        required: false,
+      },
+      {
+        label: 'Summary',
+        id: 'summary',
+        type: 'textarea',
+        required: false,
+        rows: 15,
+      },
+    ],
+  },
+  // ! -----------------------
   career: {
     type: 'fieldarray',
     icon: <HiMenuAlt1 className={iconStyle} />,

@@ -1,18 +1,9 @@
+import useResumeStore from '@/stores/useResumeStore'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 function Home() {
-  const [isClient, setIsClient] = useState(false)
-  const [showForm, SetShowForm] = useState(false)
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  const toggleForm = () => {
-    SetShowForm(!showForm)
-  }
-
-  // const StateDebug = useResumeStore((state) => state.StateDebug)
+  const setDocType = useResumeStore((state) => state.setDocType)
 
   return (
     <div className="justify-center max-w-screen-xl px-8 ">
@@ -23,8 +14,11 @@ function Home() {
       <div className="grid p-8 gap-y-20 lg:gap-auto lg:grid-cols-2 justify-items-center">
         <div>
           <h2 className="text-lg text-center">Lebenslauf</h2>
-          <Link href="/resume">
-            <a className="flex flex-col items-center justify-center">
+          <Link href="/doc">
+            <a
+              className="flex flex-col items-center justify-center"
+              onClick={() => setDocType('resume')}
+            >
               <img
                 src="/img/resume.svg"
                 alt="resume-icon"
@@ -38,8 +32,11 @@ function Home() {
         </div>
         <div>
           <h2 className="text-lg text-center">Motivationsschreiben</h2>
-          <Link href="/">
-            <a className="flex flex-col items-center justify-center">
+          <Link href="/doc">
+            <a
+              className="flex flex-col items-center justify-center"
+              onClick={() => setDocType('cover')}
+            >
               <img
                 src="/img/motivation.svg"
                 alt="motivation-icon"

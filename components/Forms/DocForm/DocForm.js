@@ -5,14 +5,13 @@ import Accordion from '@/components/Accordion/Accordion'
 import { blocksObject } from './Blocks'
 import FieldGenerator from './FieldGenerator'
 import FieldArrraySection from './FieldArraySection'
-import Button from '@/components/Button/Button'
-import { objectCompare } from '@/lib/helper'
 const blockTypes = ['career', 'tag', 'text', 'level', 'links']
 
 const Form = () => {
   const formValues = useResumeStore((state) => state.formValues)
   const setFormValues = useResumeStore((state) => state.setFormValues)
-  const defaultFormValues = useResumeStore((state) => state.defaultFormValues)
+  const setResetFormValues = useResumeStore((state) => state.setResetFormValues)
+  const docType = useResumeStore((state) => state.docType)
   const timeout = useRef(null)
 
   const {
@@ -38,8 +37,64 @@ const Form = () => {
   }, [watch, formValues])
 
   useEffect(() => {
-    // reset(formValues)
-  }, [formValues])
+    setResetFormValues((value) => {
+      reset(value)
+    })
+  }, [])
+
+  let blockForm
+
+  if (docType === 'resume') {
+    blockForm = formValues.sections.map((section, sectionIndex) => {
+      return (
+        <FieldArrraySection
+          name={`sections.${sectionIndex}.blocks`}
+          control={control}
+          register={register}
+          errors={errors}
+          key={sectionIndex}
+          getValues={getValues}
+          setValue={setValue}
+          section={section}
+          sectionIndex={sectionIndex}
+          formValues={formValues}
+          blockTypes={blockTypes}
+        />
+      )
+    })
+  }
+
+  if (docType === 'cover') {
+    blockForm = (
+      <Accordion
+        title={
+          <div className="flex">
+            <div className="self-center mr-2">
+              {blocksObject['cover']?.icon}
+            </div>
+            Details
+          </div>
+        }
+        style={'primary'}
+        className={'mb-10'}
+        defaultOpen={true}
+      >
+        {blocksObject['cover'].fields.map((field, i) => {
+          return (
+            <FieldGenerator
+              field={field}
+              register={register}
+              errors={errors}
+              getValues={getValues}
+              control={control}
+              fieldArrayData={`cover`}
+              key={i}
+            />
+          )
+        })}
+      </Accordion>
+    )
+  }
 
   return (
     <>
@@ -89,31 +144,7 @@ const Form = () => {
         </Accordion>
         {/* // !  --------BLOCKS-------- */}
 
-        {formValues.sections.map((section, sectionIndex) => {
-          return (
-            <FieldArrraySection
-              name={`sections.${sectionIndex}.blocks`}
-              control={control}
-              register={register}
-              errors={errors}
-              key={sectionIndex}
-              getValues={getValues}
-              setValue={setValue}
-              section={section}
-              sectionIndex={sectionIndex}
-              formValues={formValues}
-              blockTypes={blockTypes}
-            />
-          )
-        })}
-      </div>
-      {/* // !  --------FORM FUNCTIONS-------- */}
-      <div className="border-t-2 ">
-        <div className="grid grid-cols-1 my-12 gap-x-4">
-          <Button style="secondary" onClick={() => reset(defaultFormValues)}>
-            reset form
-          </Button>
-        </div>
+        {blockForm}
       </div>
     </>
   )

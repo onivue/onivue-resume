@@ -17,6 +17,8 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
   const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
   const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
   const formValues = useResumeStore((state) => state.formValues)
+  const resetFormValues = useResumeStore((state) => state.resetFormValues)
+  const resetResumeDesign = useResumeStore((state) => state.resetResumeDesign)
 
   const saveFile = () => {
     saveAs(fileDownloadURL, resumeMetadata.title)
@@ -47,15 +49,30 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
         >
           <div className="grid grid-cols-1 gap-4 ">
             <p className="text-center text-gray-500">
-              Hier können Sie die Dokumenteneigenschaften der PDF Datei
-              konfigurieren.
+              PDF Dokumenteneigenschaften anpassen.
             </p>
             <SettingsForm />
           </div>
-          <div className="mt-8 border-t-2">
-            <div className="grid grid-cols-1 my-12 gap-x-4">
+          <div className="pt-8 my-8 border-t-2">
+            <p className="mb-8 text-center text-gray-500">
+              Einstellungen zurücksetzen.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <Button style="secondary" onClick={() => resetFormValues()}>
+                Formular Zurücksetzen
+              </Button>
+              <Button style="secondary" onClick={() => resetResumeDesign()}>
+                Design Zurücksetzen
+              </Button>
+            </div>
+          </div>
+          <div className="pt-8 my-8 border-t-2">
+            <p className="mb-8 text-center text-gray-500">
+              Daten herunterladen.
+            </p>
+            <div className="grid grid-cols-1 gap-4">
               <Button style="secondary" onClick={() => exportJsonData()}>
-                download json data
+                Download (JSON)
               </Button>
             </div>
           </div>

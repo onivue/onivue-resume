@@ -9,7 +9,7 @@ import {
   Link,
 } from '@react-pdf/renderer'
 
-import { resumeStyle } from '@/components/Resume/style'
+import docStyle from './styleZen'
 import useResumeStore from '@/stores/useResumeStore'
 
 Font.register({
@@ -54,10 +54,10 @@ Font.registerEmojiSource({
 
 // const styles = StyleSheet.create(resumeStyle)
 
-export const MyDoc = ({}) => {
+export const ResumeZen = ({}) => {
   const resumeDesign = useResumeStore((state) => state.resumeDesign)
   const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
-  const styles = resumeStyle(resumeDesign.accentColor)
+  const styles = docStyle(resumeDesign.accentColor)
   const resumeData = useResumeStore((state) => state.formValues)
   return (
     <Document
