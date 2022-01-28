@@ -1,18 +1,18 @@
 import { useEffect, useRef } from 'react'
-import { useForm, useFieldArray } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import useResumeStore from '@/stores/useResumeStore'
 import Accordion from '@/components/Accordion/Accordion'
-import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
 import { blocksObject } from './Blocks'
 import FieldGenerator from './FieldGenerator'
 import FieldArrraySection from './FieldArraySection'
-import BlockSelector from './BlockSelector'
-
+import Button from '@/components/Button/Button'
+import { objectCompare } from '@/lib/helper'
 const blockTypes = ['career', 'tag', 'text', 'level', 'links']
 
 const Form = () => {
   const formValues = useResumeStore((state) => state.formValues)
   const setFormValues = useResumeStore((state) => state.setFormValues)
+  const defaultFormValues = useResumeStore((state) => state.defaultFormValues)
   const timeout = useRef(null)
 
   const {
@@ -21,6 +21,7 @@ const Form = () => {
     watch,
     getValues,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({ defaultValues: formValues, mode: 'onBlur' })
 
@@ -29,11 +30,16 @@ const Form = () => {
       clearTimeout(timeout.current)
       timeout.current = setTimeout(() => {
         console.log(value, name, type)
+        // console.log(formValues)
         setFormValues(value)
       }, 600)
     })
     return () => subscription.unsubscribe()
   }, [watch, formValues])
+
+  useEffect(() => {
+    // reset(formValues)
+  }, [formValues])
 
   return (
     <>
@@ -101,12 +107,14 @@ const Form = () => {
           )
         })}
       </div>
-      {/* // !  --------ADD BLOCKS-------- */}
-      {/* <BlockSelector
-        blockTypes={blockTypes}
-        setValue={setValue}
-        getValues={getValues}
-      /> */}
+      {/* // !  --------FORM FUNCTIONS-------- */}
+      <div className="border-t-2 ">
+        <div className="grid grid-cols-1 my-12 gap-x-4">
+          <Button style="secondary" onClick={() => reset(defaultFormValues)}>
+            reset form
+          </Button>
+        </div>
+      </div>
     </>
   )
 }

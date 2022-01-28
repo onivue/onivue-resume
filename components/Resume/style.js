@@ -31,9 +31,8 @@ export const resumeStyle = (
       position: 'absolute',
       textAlign: 'left',
       zIndex: '10',
-      top: '0',
+      top: '35',
       width: 220,
-      paddingTop: 35,
       paddingLeft: 20,
       paddingRight: 12,
       backgroundColor: 'white',
@@ -81,7 +80,7 @@ export const resumeStyle = (
     // ! VARIA COMPONENTS
     //
     blockWrapper: {
-      marginTop: 10,
+      marginVertical: 10,
     },
     separator: {
       height: '3px',

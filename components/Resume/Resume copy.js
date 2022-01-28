@@ -123,9 +123,9 @@ export const MyDoc = ({}) => {
 
           {resumeData.sections[0].blocks.map((block, index) => {
             return (
-              <View key={index}>
+              <View wrap={false} key={index}>
                 {block.type === 'text' && (
-                  <View style={styles.blockWrapper}>
+                  <View style={styles.blockWrapper} wrap={false}>
                     <Text style={styles.h3}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
@@ -140,20 +140,20 @@ export const MyDoc = ({}) => {
                 )}
 
                 {block.type === 'career' && (
-                  <>
+                  <View style={styles.blockWrapper}>
                     <Text style={styles.h3}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
                         <View
                           style={{ marginVertical: 5 }}
-                          key={index}
                           wrap={false}
+                          key={index}
                         >
                           <CareerBlock item={value} styles={styles} />
                         </View>
                       )
                     })}
-                  </>
+                  </View>
                 )}
 
                 {block.type === 'tag' && (
@@ -217,7 +217,7 @@ export const MyDoc = ({}) => {
           {/* // !  SECTION 1 */}
           {resumeData.sections[1].blocks.map((block, index) => {
             return (
-              <View key={index}>
+              <View wrap={false} key={index}>
                 {block.type === 'text' && (
                   <View style={styles.blockWrapper} wrap={false}>
                     <Text style={styles.h2}>{block.title}</Text>
@@ -234,14 +234,14 @@ export const MyDoc = ({}) => {
                 )}
 
                 {block.type === 'career' && (
-                  <View style={styles.blockWrapper}>
+                  <View style={styles.blockWrapper} wrap={false}>
                     <Text style={styles.h2}>{block.title}</Text>
                     {block.values.map((value, index) => {
                       return (
                         <View
                           style={{ marginVertical: 5 }}
-                          key={index}
                           wrap={false}
+                          key={index}
                         >
                           <CareerBlock item={value} styles={styles} />
                         </View>
@@ -370,12 +370,12 @@ export const TextBlock = ({ text, styles }) => {
 
 export const CareerBlock = ({ item, styles }) => {
   return (
-    <>
+    <View wrap={false}>
       <Text style={styles.h4}>{item.title}</Text>
       <Text style={styles.em}>
         {item.location} | {item.from} - {item.to}
       </Text>
       <TextBlock styles={styles} text={item.summary} />
-    </>
+    </View>
   )
 }

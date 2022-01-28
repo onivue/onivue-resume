@@ -10,13 +10,26 @@ import Modal from '@/components/Modal/Modal'
 import { useState } from 'react'
 import ColorPicker from '@/components/ColorPicker/ColorPicker'
 import SettingsForm from '@/components/Forms/SettingsForm/SettingsForm'
+import Button from '@/components/Button/Button'
 
 export default function ActionZone({ toggleForm, downloadFileUrl }) {
   const [modalOpen, setModalOpen] = useState(false)
   const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
   const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
+  const formValues = useResumeStore((state) => state.formValues)
+
   const saveFile = () => {
     saveAs(fileDownloadURL, resumeMetadata.title)
+  }
+  const exportJsonData = () => {
+    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+      JSON.stringify(formValues),
+    )}`
+    const link = document.createElement('a')
+    link.href = jsonString
+    link.download = 'data.json'
+
+    link.click()
   }
 
   const iconStyle = 'w-8 h-8 mx-auto center-self'
@@ -38,6 +51,13 @@ export default function ActionZone({ toggleForm, downloadFileUrl }) {
               konfigurieren.
             </p>
             <SettingsForm />
+          </div>
+          <div className="mt-8 border-t-2">
+            <div className="grid grid-cols-1 my-12 gap-x-4">
+              <Button style="secondary" onClick={() => exportJsonData()}>
+                download json data
+              </Button>
+            </div>
           </div>
         </Modal>
 

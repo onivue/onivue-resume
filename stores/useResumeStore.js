@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { persist } from 'zustand/middleware'
 
 const defaultFormValues = {
   details: {
@@ -91,6 +92,30 @@ const defaultFormValues = {
               summary:
                 '- Sed ut lorem viverra urna malesuada interdum in ut risus.\n- Duis at sem non justo aliquam iaculis.\n- Quisque lobortis nibh non turpis interdum ornare.\n- Sed et diam nec arcu tempor suscipit sit amet at tellus.\n- Duis quis diam imperdiet, pharetra lacus eget, fringilla odio.',
             },
+            {
+              title: 'Deputy Director Parks Department',
+              location: 'City of Pawnee, Indiana',
+              from: 'Feb 2009',
+              to: 'Jan 2012',
+              summary:
+                '- Sed ut lorem viverra urna malesuada interdum in ut risus.\n- Duis at sem non justo aliquam iaculis.\n- Quisque lobortis nibh non turpis interdum ornare.\n- Sed et diam nec arcu tempor suscipit sit amet at tellus.\n- Duis quis diam imperdiet, pharetra lacus eget, fringilla odio.',
+            },
+            {
+              title: 'Deputy Director Parks Department',
+              location: 'City of Pawnee, Indiana',
+              from: 'Feb 2009',
+              to: 'Jan 2012',
+              summary:
+                '- Sed ut lorem viverra urna malesuada interdum in ut risus.\n- Duis at sem non justo aliquam iaculis.\n- Quisque lobortis nibh non turpis interdum ornare.\n- Sed et diam nec arcu tempor suscipit sit amet at tellus.\n- Duis quis diam imperdiet, pharetra lacus eget, fringilla odio.',
+            },
+            {
+              title: 'Deputy Director Parks Department',
+              location: 'Deputy Director Parks Department',
+              from: 'Deputy Director Parks Department',
+              to: 'Deputy Director Parks Department',
+              summary:
+                '- Sed ut lorem viverra urna malesuada interdum in ut risus.\n- Duis at sem non justo aliquam iaculis.\n- Quisque lobortis nibh non turpis interdum ornare.\n- Sed et diam nec arcu tempor suscipit sit amet at tellus.\n- Duis quis diam imperdiet, pharetra lacus eget, fringilla odio.',
+            },
           ],
         },
         {
@@ -131,38 +156,45 @@ const defaultDesign = {
 // ! --------------------------------------
 // ! STORE
 // ! --------------------------------------
-const useResumeStore = create((set, get) => ({
-  formValues: defaultFormValues,
-  setFormValues: (payload) => {
-    set({ formValues: payload })
-  },
-  // ! --------------------------------------
-  fileDownloadURL: '',
-  setFileDownloadURL: (payload) => {
-    set({ fileDownloadURL: payload })
-  },
-  // ! --------------------------------------
-  resumeMetadata: defaultMetadata,
-  setResumeMetadata: (payload) => {
-    set({ resumeMetadata: payload })
-  },
-  // ! --------------------------------------
-  resumeDesign: defaultDesign,
-  setResumeDesign: (payload) => {
-    set({ resumeDesign: payload })
-  },
-  // ! --------------------------------------
-  StateDebug: ({ className }) => {
-    const formValues = useResumeStore((state) => state.formValues)
-    const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
-    return (
-      <div className={className}>
-        <p className="text-center">DEBUG FORM VALUES</p>
-        <pre className="text-xs">{JSON.stringify(formValues, null, 2)}</pre>
-        <div>URL:{fileDownloadURL}</div>
-      </div>
-    )
-  },
-}))
+const useResumeStore = create(
+  persist((set, get) => ({
+    defaultFormValues: defaultFormValues,
+    formValues: defaultFormValues,
+    setFormValues: (payload) => {
+      set({ formValues: payload })
+    },
+    resetFormValues: () => {
+      console.log(get().defaultFormValues)
+      set({ formValues: defaultFormValues })
+    },
+    // ! --------------------------------------
+    fileDownloadURL: '',
+    setFileDownloadURL: (payload) => {
+      set({ fileDownloadURL: payload })
+    },
+    // ! --------------------------------------
+    resumeMetadata: defaultMetadata,
+    setResumeMetadata: (payload) => {
+      set({ resumeMetadata: payload })
+    },
+    // ! --------------------------------------
+    resumeDesign: defaultDesign,
+    setResumeDesign: (payload) => {
+      set({ resumeDesign: payload })
+    },
+    // ! --------------------------------------
+    StateDebug: ({ className }) => {
+      const formValues = useResumeStore((state) => state.formValues)
+      const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
+      return (
+        <div className={className}>
+          <p className="text-center">DEBUG FORM VALUES</p>
+          <pre className="text-xs">{JSON.stringify(formValues, null, 2)}</pre>
+          <div>URL:{fileDownloadURL}</div>
+        </div>
+      )
+    },
+  })),
+)
 
 export default useResumeStore

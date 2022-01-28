@@ -3,6 +3,7 @@ import Input from '@/components/Fields/Input'
 import Button from '@/components/Button/Button'
 import { HiOutlineX } from 'react-icons/hi'
 import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
+import Compressor from 'compressorjs'
 
 const FileUpload = forwardRef(({ id, setValue, value, ...rest }, ref) => {
   const [input, setInput] = useState('')
@@ -11,8 +12,15 @@ const FileUpload = forwardRef(({ id, setValue, value, ...rest }, ref) => {
     setInput(e.target.value)
     const files = e.target.files
     const file = files[0]
+    const filesize = Math.round(file.size / 1024)
+    console.log('FILESIZE: ' + filesize + ' KB')
     if (file) {
-      getBase64(file)
+      new Compressor(file, {
+        quality: 0.7, // 0.6 can also be used, but its not recommended to go below.
+        success: (compressedResult) => {
+          getBase64(compressedResult)
+        },
+      })
     } else {
       setValue(null)
     }
