@@ -16,12 +16,6 @@ export const blocksObject = {
     icon: <HiOutlineUser className={iconStyle} />,
     displayname: '',
     fields: [
-      // {
-      //   label: 'Bild',
-      //   id: 'image',
-      //   type: 'file',
-      //   required: false,
-      // },
       {
         label: 'Vorname',
         id: 'firstName',
@@ -62,6 +56,12 @@ export const blocksObject = {
         label: 'Email',
         id: 'mail',
         type: 'text',
+        required: false,
+      },
+      {
+        label: 'Bild',
+        id: 'image',
+        type: 'file',
         required: false,
       },
     ],
@@ -129,8 +129,6 @@ export const blocksObject = {
         type: 'textarea',
         required: true,
       },
-      //   ],
-      // },
     ],
   },
   // ! -----------------------

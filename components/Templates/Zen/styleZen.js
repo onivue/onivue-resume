@@ -20,9 +20,11 @@ const style = (
     secondary: accentColor.replace(/[^,]+(?=\))/, '0.1'),
   }
   return {
+    colors,
     body: {
       paddingVertical: 35,
       fontFamily: 'Work Sans',
+      textAlign: 'justify',
     },
     //
     // !SECTION LAYOUT
@@ -33,7 +35,7 @@ const style = (
       zIndex: '10',
       top: '35',
       width: 220,
-      paddingLeft: 20,
+      paddingLeft: 35,
       paddingRight: 12,
       backgroundColor: 'white',
     },
@@ -49,7 +51,8 @@ const style = (
       display: 'flex',
       flexDirection: 'column',
       marginLeft: 220,
-      paddingHorizontal: 25,
+      paddingLeft: 25,
+      paddingRight: 35,
       fontSize: 10,
     },
 
@@ -57,8 +60,13 @@ const style = (
     // ! DETAILS BLOCKS
     //
     detailsImage: {
-      borderRadius: '10px',
+      borderRadius: '50%',
+      // borderRadius: '5px',
       objectFit: 'cover',
+      marginBottom: 15,
+      marginRight: 10,
+      width: 180,
+      height: 180,
     },
     detailsName: {
       fontFamily: 'Montserrat',
@@ -96,7 +104,7 @@ const style = (
       fontSize: textSizes.h1,
       color: colors.primary,
       fontWeight: '600',
-      marginBottom: '4px',
+      lineHeight: 1.4,
     },
 
     h2: {
@@ -104,36 +112,35 @@ const style = (
       fontSize: textSizes.h2,
       color: colors.primary,
       fontWeight: '600',
-      marginBottom: '4px',
+      lineHeight: 1.4,
     },
     h3: {
       fontFamily: 'Montserrat',
       fontSize: textSizes.h3,
       fontWeight: '600',
-      marginBottom: '4px',
+      lineHeight: 1.4,
     },
     h4: {
       fontFamily: 'Work Sans',
       fontSize: textSizes.h4,
       fontWeight: '600',
-      marginBottom: '4px',
+      lineHeight: 1.4,
     },
     p: {
       fontFamily: 'Work Sans',
       fontSize: textSizes.p,
-      marginBottom: '4px',
       lineHeight: 1.4,
     },
     em: {
       fontFamily: 'Work Sans',
       fontStyle: 'italic',
       fontSize: textSizes.p,
-      marginBottom: '4px',
+      lineHeight: 1.4,
     },
     link: {
       fontFamily: 'Work Sans',
       fontSize: textSizes.p,
-      marginBottom: '4px',
+      lineHeight: 1.4,
       textDecoration: 'none',
       color: 'black',
     },

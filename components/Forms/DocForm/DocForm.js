@@ -127,19 +127,6 @@ const Form = () => {
                 />
               )
             })}
-            <FieldGenerator
-              field={{
-                label: 'Bild',
-                id: 'image',
-                type: 'file',
-                required: false,
-              }}
-              register={register}
-              errors={errors}
-              getValues={getValues}
-              control={control}
-              fieldArrayData={`details`}
-            />
           </div>
         </Accordion>
         {/* // !  --------BLOCKS-------- */}

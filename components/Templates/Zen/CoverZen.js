@@ -45,11 +45,13 @@ Font.register({
     },
   ],
 })
-// Font.registerHyphenationCallback((word) => [word])
+
 Font.registerEmojiSource({
   format: 'png',
   url: 'https://twemoji.maxcdn.com/2/72x72/',
 })
+
+Font.registerHyphenationCallback((word) => [word])
 
 export const CoverZen = ({}) => {
   const resumeDesign = useResumeStore((state) => state.resumeDesign)
@@ -68,22 +70,82 @@ export const CoverZen = ({}) => {
       language={resumeMetadata.language}
     >
       <Page size="A4" style={{ padding: 35 }}>
-        <View style={{ height: 120, paddingTop: 20 }}>
-          <Text style={styles.p}>Empfänger</Text>
+        <View
+          style={{
+            textAlign: 'right',
+            borderRadius: 10,
+            // backgroundColor: styles.colors.secondary,
+            paddingHorizontal: 10,
+            paddingVertical: 5,
+            width: '100%',
+
+            // color: styles.colors.primary,
+          }}
+        >
+          <Text style={styles.h3}>
+            {resumeData.details.firstName} {resumeData.details.lastName}
+          </Text>
+          <View>
+            <Text style={styles.p}>
+              {[
+                resumeData.details.address,
+                resumeData.details.plz,
+                resumeData.details.phone,
+                resumeData.details.mail,
+              ].map((item, index, arr) => {
+                return (
+                  <Text key={index}>
+                    {item}
+                    {index !== arr.length - 1 && (
+                      <Text style={{ color: styles.colors.primary }}>
+                        {' | '}
+                      </Text>
+                    )}
+                  </Text>
+                )
+              })}
+              {/* Ringstrasse 8{' '}
+              <Text style={{ color: styles.colors.primary }}>|</Text> 9200
+              Gossau <Text style={{ color: styles.colors.primary }}>|</Text> 076
+              801 36 64 <Text style={{ color: styles.colors.primary }}>|</Text>{' '}
+              lknope@parksdept.com */}
+            </Text>
+          </View>
         </View>
-        <View style={{ marginTop: 60 }}>
+        <View style={styles.separator}></View>
+        <View
+          style={{
+            borderRadius: 10,
+            marginTop: 25,
+          }}
+        >
+          <Text style={styles.h3}>ABACUS</Text>
+          <Text style={styles.p}>Ringstrasse 8</Text>
+          <Text style={styles.p}>9200 Gossau</Text>
+        </View>
+
+        <View style={{ marginTop: 45 }}>
+          <View
+            style={{
+              textAlign: 'right',
+              marginBottom: 20,
+            }}
+          >
+            <Text style={styles.p}>Gossau, 16. Dezember 2019</Text>
+          </View>
           <Text style={styles.h2}>{resumeData.cover?.title}</Text>
           <Text style={styles.h3}>{resumeData.cover?.subtitle}</Text>
         </View>
-        <View style={{ marginTop: 10 }}>
+        <View style={{ marginTop: 15, textAlign: 'justify' }}>
           <Text style={styles.p}>{resumeData.cover?.summary}</Text>
         </View>
+
         {/* 
           // !  --------------------------------
           // !  PAGENUMBER
           // !  --------------------------------
         */}
-        <Text
+        {/* <Text
           style={{
             position: 'absolute',
             fontSize: 10,
@@ -97,7 +159,7 @@ export const CoverZen = ({}) => {
             `${pageNumber} / ${totalPages}`
           }
           fixed
-        />
+        /> */}
       </Page>
     </Document>
   )
