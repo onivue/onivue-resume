@@ -32,7 +32,7 @@ export const blocksObject = {
         label: 'Job Titel',
         id: 'jobTitle',
         type: 'text',
-        required: true,
+        required: false,
       },
       {
         label: 'Adresse',
@@ -41,8 +41,8 @@ export const blocksObject = {
         required: false,
       },
       {
-        label: 'PLZ',
-        id: 'plz',
+        label: 'Ort',
+        id: 'location',
         type: 'text',
         required: false,
       },
@@ -73,10 +73,29 @@ export const blocksObject = {
     displayname: '',
     fields: [
       {
+        label: 'Empfänger',
+        id: 'receiver',
+        type: 'text',
+        required: false,
+      },
+      {
+        label: 'Empfänger Adresse',
+        id: 'receiverAddress',
+        type: 'textarea',
+        required: false,
+        rows: 3,
+      },
+      {
+        label: 'Datumsangabe',
+        id: 'date',
+        type: 'text',
+        required: false,
+      },
+      {
         label: 'Überschrift',
         id: 'title',
         type: 'text',
-        required: true,
+        required: false,
       },
       {
         label: 'Untertitel',

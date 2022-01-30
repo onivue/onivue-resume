@@ -20,7 +20,7 @@ const TextArea = forwardRef(
   ) => {
     const baseStyle = 'transition ease-in duration-150 ease-in'
     const styles = {
-      base: 'w-full rounded-md text-black shadow-md',
+      base: 'w-full rounded-md text-black shadow-md block',
       active:
         'focus:ring-primary-300 focus:border-primary-200 focus:shadow-primary-200',
       disabled:
@@ -29,7 +29,7 @@ const TextArea = forwardRef(
         'focus:ring-red-500 border-red-500 focus:border-red-500 shadow-red-300',
     }
     return (
-      <div>
+      <div className="py-2">
         <label htmlFor={id} className="block text-sm font-semibold ">
           {label}
           {dot && <span className="text-red-500 pl-0.5">*</span>}
@@ -63,14 +63,16 @@ const TextArea = forwardRef(
             </div>
           )}
         </div>
-        <div className="p-1 pl-2">
-          {helperText !== '' && (
-            <div className="mb-2 text-xs text-gray-500">{helperText}</div>
-          )}
-          {errors[id] && (
-            <span className="text-sm text-red-500">{errors[id].message}</span>
-          )}
-        </div>
+        {(helperText !== '' || errors[id]?.message) && (
+          <div className="p-1 pl-2">
+            {helperText !== '' && (
+              <div className="mb-2 text-xs text-gray-500">{helperText}</div>
+            )}
+            {errors[id] && (
+              <span className="text-sm text-red-500">{errors[id].message}</span>
+            )}
+          </div>
+        )}
       </div>
     )
   },

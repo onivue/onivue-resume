@@ -99,7 +99,7 @@ export const ResumeZen = ({}) => {
             <Text style={styles.h3}>Kontakt</Text>
             {[
               resumeData.details.address,
-              resumeData.details.plz,
+              resumeData.details.location,
               resumeData.details.phone,
               resumeData.details.mail,
             ].map((d, i) => {
@@ -357,6 +357,7 @@ export const TextBlock = ({ text, styles }) => {
             return (
               <Text key={i} style={styles.p}>
                 {item}
+                {'\n'}
               </Text>
             )
           }

@@ -89,14 +89,14 @@ export const CoverZen = ({}) => {
             <Text style={styles.p}>
               {[
                 resumeData.details.address,
-                resumeData.details.plz,
+                resumeData.details.location,
                 resumeData.details.phone,
                 resumeData.details.mail,
               ].map((item, index, arr) => {
                 return (
                   <Text key={index}>
                     {item}
-                    {index !== arr.length - 1 && (
+                    {index !== arr.length - 1 && item !== '' && (
                       <Text style={{ color: styles.colors.primary }}>
                         {' | '}
                       </Text>
@@ -119,9 +119,8 @@ export const CoverZen = ({}) => {
             marginTop: 25,
           }}
         >
-          <Text style={styles.h3}>ABACUS</Text>
-          <Text style={styles.p}>Ringstrasse 8</Text>
-          <Text style={styles.p}>9200 Gossau</Text>
+          <Text style={styles.h3}>{resumeData.cover.receiver}</Text>
+          <Text style={styles.p}>{resumeData.cover.receiverAddress}</Text>
         </View>
 
         <View style={{ marginTop: 45 }}>
@@ -131,7 +130,7 @@ export const CoverZen = ({}) => {
               marginBottom: 20,
             }}
           >
-            <Text style={styles.p}>Gossau, 16. Dezember 2019</Text>
+            <Text style={styles.p}>{resumeData.cover.date}</Text>
           </View>
           <Text style={styles.h2}>{resumeData.cover?.title}</Text>
           <Text style={styles.h3}>{resumeData.cover?.subtitle}</Text>

@@ -37,15 +37,17 @@ const style = (
       width: 220,
       paddingLeft: 35,
       paddingRight: 12,
-      backgroundColor: 'white',
     },
     section0Overlay: {
       position: 'absolute',
-      height: '297mm',
+      // height: '297mm',
+      top: 35,
+      bottom: 35,
+      left: 225,
+      width: 3,
       zIndex: '20',
-      top: '0',
-      width: 220,
-      backgroundColor: 'white',
+      borderRadius: 10,
+      // backgroundColor: colors.secondary,
     },
     section1: {
       display: 'flex',
@@ -63,10 +65,11 @@ const style = (
       borderRadius: '50%',
       // borderRadius: '5px',
       objectFit: 'cover',
+      marginTop: 5,
       marginBottom: 15,
-      marginRight: 10,
-      width: 180,
-      height: 180,
+      marginHorizontal: 'auto',
+      width: 160,
+      height: 160,
     },
     detailsName: {
       fontFamily: 'Montserrat',
@@ -88,13 +91,14 @@ const style = (
     // ! VARIA COMPONENTS
     //
     blockWrapper: {
-      marginVertical: 10,
+      marginVertical: 5,
     },
     separator: {
       height: '3px',
       width: '100%',
       backgroundColor: colors.secondary,
       marginVertical: '6px',
+      borderRadius: 10,
     },
     //
     // ! TYPOGRAPHY
@@ -165,7 +169,7 @@ const style = (
       backgroundColor: colors.secondary,
       height: '5px',
       borderRadius: '50%',
-      marginBottom: 3,
+      marginBottom: 5,
     },
     progressBarValue: {
       backgroundColor: colors.primary,

@@ -90,22 +90,22 @@ const PageNavigator = ({
   if (numPages <= 1) return null
   return (
     <div className="absolute bottom-0 flex flex-col justify-center w-full my-2 transform -translate-x-1/2 opacity-25 hover:opacity-80 left-1/2">
-      <div className="flex justify-center w-full my-2 text-sm">
+      <div className="flex justify-center w-full text-xs">
         {currentPage !== 1 && (
           <button
-            className="flex items-center justify-center px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-primary-400 hover:text-white"
+            className="flex items-center justify-center px-3 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-primary-400 hover:text-white"
             onClick={onPreviousPage}
           >
             <HiChevronLeft />
           </button>
         )}
 
-        <div className="px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg ">
+        <div className="px-3 py-1 mx-1 text-gray-700 bg-gray-200 rounded-lg ">
           <div className="font-bold">{` ${currentPage} / ${numPages}`}</div>
         </div>
         {currentPage < numPages && (
           <div
-            className="flex items-center justify-center px-3 py-2 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-primary-400 hover:text-white"
+            className="flex items-center justify-center px-3 mx-1 text-gray-700 bg-gray-200 rounded-lg cursor-pointer hover:bg-primary-400 hover:text-white"
             onClick={onNextPage}
           >
             <HiChevronRight />
