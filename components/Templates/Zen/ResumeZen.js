@@ -376,7 +376,7 @@ export const CareerBlock = ({ item, styles }) => {
       <Text style={styles.em}>
         {item.location} | {item.from} - {item.to}
       </Text>
-      <TextBlock styles={styles} text={item.summary} />
+      {item.summary !== '' && <TextBlock styles={styles} text={item.summary} />}
     </>
   )
 }

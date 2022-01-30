@@ -24,7 +24,7 @@ const style = (
     body: {
       paddingVertical: 35,
       fontFamily: 'Work Sans',
-      textAlign: 'justify',
+      // textAlign: 'justify',
     },
     //
     // !SECTION LAYOUT
@@ -67,7 +67,7 @@ const style = (
       objectFit: 'cover',
       marginTop: 5,
       marginBottom: 15,
-      marginHorizontal: 'auto',
+      // marginHorizontal: 'auto',
       width: 160,
       height: 160,
     },
