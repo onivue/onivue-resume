@@ -47,7 +47,7 @@ const style = (
       width: 3,
       zIndex: '20',
       borderRadius: 10,
-      // backgroundColor: colors.secondary,
+      backgroundColor: colors.secondary,
     },
     section1: {
       display: 'flex',
