@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no ,height=device-height"
         />
+        <title>onivue-resume</title>
       </Head>
 
       <Navigation className="" />
