@@ -5,6 +5,7 @@ import Accordion from '@/components/Accordion/Accordion'
 import { blocksObject } from './Blocks'
 import FieldGenerator from './FieldGenerator'
 import FieldArrraySection from './FieldArraySection'
+
 const blockTypes = ['career', 'tag', 'text', 'level', 'links']
 
 const Form = () => {
@@ -28,7 +29,7 @@ const Form = () => {
     const subscription = watch((value, { name, type }) => {
       clearTimeout(timeout.current)
       timeout.current = setTimeout(() => {
-        console.log(value, name, type)
+        // console.log(value, name, type)
         // console.log(formValues)
         setFormValues(value)
       }, 600)

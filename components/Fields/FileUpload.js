@@ -13,7 +13,7 @@ const FileUpload = forwardRef(({ id, setValue, value, ...rest }, ref) => {
     const files = e.target.files
     const file = files[0]
     const filesize = Math.round(file.size / 1024)
-    console.log('FILESIZE: ' + filesize + ' KB')
+    // console.log('FILESIZE: ' + filesize + ' KB')
     if (file) {
       new Compressor(file, {
         quality: 0.7, // 0.6 can also be used, but its not recommended to go below.

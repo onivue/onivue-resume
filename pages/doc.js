@@ -6,7 +6,6 @@ import Backdrop from '@/components/Backdrop/Backdrop'
 import { classNames } from '@/lib/helper'
 import ActionZone from '@/components/ActionZone/ActionZone'
 import { HiX } from 'react-icons/hi'
-import useResumeStore from '@/stores/useResumeStore'
 import TemplateChooser from '@/components/TemplateChooser/TemplateChooser'
 
 function FileGeneration() {
