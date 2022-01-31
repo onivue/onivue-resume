@@ -8,16 +8,25 @@ import { RgbaStringColorPicker } from 'react-colorful'
 export default function ColorPicker({ icon }) {
   const resumeDesign = useResumeStore((state) => state.resumeDesign)
   const setResumeDesign = useResumeStore((state) => state.setResumeDesign)
+  const [didMount, setDidMount] = useState(false)
 
   const [color, setColor] = useState(resumeDesign.accentColor)
 
   const timeout = useRef(null)
+
+  // Setting didMount to true upon mounting
+  useEffect(() => {
+    setDidMount(true)
+  }, [])
+
   // DELAY FUNCTION
   useEffect(() => {
-    clearTimeout(timeout.current)
-    timeout.current = setTimeout(() => {
-      setResumeDesign({ ...resumeDesign, accentColor: color })
-    }, 600)
+    if (didMount) {
+      clearTimeout(timeout.current)
+      timeout.current = setTimeout(() => {
+        setResumeDesign({ ...resumeDesign, accentColor: color })
+      }, 600)
+    }
     return () => {
       clearTimeout(timeout.current)
     }
