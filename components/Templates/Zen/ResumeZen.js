@@ -58,7 +58,7 @@ export const ResumeZen = ({}) => {
   const resumeDesign = useResumeStore((state) => state.resumeDesign)
   const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
   const styles = docStyle(resumeDesign.accentColor)
-  const resumeData = useResumeStore((state) => state.formValues)
+  const formValues = useResumeStore((state) => state.formValues)
   return (
     <Document
       title={resumeMetadata.title}
@@ -77,10 +77,10 @@ export const ResumeZen = ({}) => {
         */}
         <View style={styles.section0}>
           {/* // !  DETAILS */}
-          {resumeData.details.image && (
+          {formValues.details.image && (
             <Image
               // source="https://source.unsplash.com/random/"
-              source={resumeData.details.image}
+              source={formValues.details.image}
               style={styles.detailsImage}
             />
           )}
@@ -88,20 +88,20 @@ export const ResumeZen = ({}) => {
             style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}
           >
             <Text style={styles.detailsName}>
-              {resumeData.details.firstName}{' '}
+              {formValues.details.firstName}{' '}
             </Text>
             <Text style={styles.detailsName}>
-              {resumeData.details.lastName}
+              {formValues.details.lastName}
             </Text>
           </View>
-          <Text style={styles.detailsTitle}>{resumeData.details.jobTitle}</Text>
+          <Text style={styles.detailsTitle}>{formValues.details.jobTitle}</Text>
           <View style={styles.blockWrapper} wrap={false}>
             <Text style={styles.h3}>Kontakt</Text>
             {[
-              resumeData.details.address,
-              resumeData.details.location,
-              resumeData.details.phone,
-              resumeData.details.mail,
+              formValues.details.address,
+              formValues.details.location,
+              formValues.details.phone,
+              formValues.details.mail,
             ].map((d, i) => {
               if (d) {
                 return (
@@ -121,7 +121,7 @@ export const ResumeZen = ({}) => {
           </View>
           {/*  // !  SECTION 0 */}
 
-          {resumeData.sections[0].blocks.map((block, index) => {
+          {formValues.sections[0].blocks.map((block, index) => {
             return (
               <View key={index}>
                 {block.type === 'text' && (
@@ -215,7 +215,7 @@ export const ResumeZen = ({}) => {
         */}
         <View style={styles.section1}>
           {/* // !  SECTION 1 */}
-          {resumeData.sections[1].blocks.map((block, index) => {
+          {formValues.sections[1].blocks.map((block, index) => {
             return (
               <View key={index}>
                 {block.type === 'text' && (
@@ -294,7 +294,7 @@ export const ResumeZen = ({}) => {
                   </View>
                 )}
 
-                {index !== resumeData.sections[1].blocks.length - 1 && (
+                {index !== formValues.sections[1].blocks.length - 1 && (
                   <View style={styles.separator} />
                 )}
               </View>

@@ -57,7 +57,7 @@ export const CoverZen = ({}) => {
   const resumeDesign = useResumeStore((state) => state.resumeDesign)
   const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
   const styles = docStyle(resumeDesign.accentColor)
-  const resumeData = useResumeStore((state) => state.formValues)
+  const formValues = useResumeStore((state) => state.formValues)
 
   return (
     <Document
@@ -83,15 +83,15 @@ export const CoverZen = ({}) => {
           }}
         >
           <Text style={styles.h3}>
-            {resumeData.details.firstName} {resumeData.details.lastName}
+            {formValues.details.firstName} {formValues.details.lastName}
           </Text>
           <View>
             <Text style={styles.p}>
               {[
-                resumeData.details.address,
-                resumeData.details.location,
-                resumeData.details.phone,
-                resumeData.details.mail,
+                formValues.details.address,
+                formValues.details.location,
+                formValues.details.phone,
+                formValues.details.mail,
               ].map((item, index, arr) => {
                 return (
                   <Text key={index}>
@@ -119,8 +119,8 @@ export const CoverZen = ({}) => {
             marginTop: 25,
           }}
         >
-          <Text style={styles.h3}>{resumeData.cover.receiver}</Text>
-          <Text style={styles.p}>{resumeData.cover.receiverAddress}</Text>
+          <Text style={styles.h3}>{formValues.cover.receiver}</Text>
+          <Text style={styles.p}>{formValues.cover.receiverAddress}</Text>
         </View>
 
         <View style={{ marginTop: 45 }}>
@@ -130,13 +130,13 @@ export const CoverZen = ({}) => {
               marginBottom: 20,
             }}
           >
-            <Text style={styles.p}>{resumeData.cover.date}</Text>
+            <Text style={styles.p}>{formValues.cover.date}</Text>
           </View>
-          <Text style={styles.h2}>{resumeData.cover?.title}</Text>
-          <Text style={styles.h3}>{resumeData.cover?.subtitle}</Text>
+          <Text style={styles.h2}>{formValues.cover?.title}</Text>
+          <Text style={styles.h3}>{formValues.cover?.subtitle}</Text>
         </View>
         <View style={{ marginTop: 15, textAlign: 'justify' }}>
-          <Text style={styles.p}>{resumeData.cover?.summary}</Text>
+          <Text style={styles.p}>{formValues.cover?.summary}</Text>
         </View>
 
         {/* 
