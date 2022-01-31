@@ -1,29 +1,64 @@
-# Next.js + Tailwind CSS Example
+<!-- markdownlint-disable MD014 -->
+<!-- markdownlint-disable MD026 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD041 -->
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+<h1 align="center">
+  onivue-resume
+</h1>
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
 
-## Preview
+<h3 align="center">
+ create easy and modern your CV!
+</h3>
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+---
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
 
-## Deploy your own
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
 
-## How to use
+## 🚀 [Website](https://resume.onivue.ch/)
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## 📖 Introduction
+
+This project was made for educational purposes.
+
+
+## 🌟 Features
+
+- client side PDF generation with react-pdf
+- create CV and cover letter
+- modular block system to build custom files
+- use image in document
+- use different templates (coming soon)
+
+
+### Framework
+
+- ⚛️ **[Next.js](https://nextjs.org)** – A complete React framework for hybrid and server rendering
+
+### Design System and Animations
+
+- 🎨 **[Tailwind](https://tailwindcss.com/)** – A utility-first CSS framework.
+- 🎨 **[Headless-UI](https://headlessui.dev/)** – Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.
+- ✨ **[React Icons](https://react-icons.github.io/react-icons)** – A collection of popular icons to React projects
+
+### Form Handling
+
+- 📃 **[React Hook Forms](https://react-hook-form.com/)** – Performant, flexible and extensible forms with easy-to-use validation.
+
+### Design Patterns
+
+- 🎀 **[Prettier](https://prettier.io)** – An opinionated code formatter, supporting multiple languages and code editors
+
+
+## 📜 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) page for details.
+
+---
+
+### ❤️ Thanks for your attention!
