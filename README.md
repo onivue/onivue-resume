@@ -3,9 +3,9 @@
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD041 -->
 
-<h1 align="center">
+<h2 align="center">
   onivue-resume
-</h1>
+</h2>
 
 
 <h3 align="center">
@@ -13,14 +13,7 @@
 </h3>
 
 ---
-
-
-
-
-
 ## 🚀 [Website](https://resume.onivue.ch/)
-
-
 
 ## 📖 Introduction
 
@@ -33,8 +26,9 @@ This project was made for educational purposes.
 - create CV and cover letter
 - modular block system to build custom files
 - use image in document
-- use different templates (coming soon)
 - dark mode
+  ### coming soon:
+- use different templates (coming soon)
 
 ### Framework
 
@@ -54,10 +48,6 @@ This project was made for educational purposes.
 
 - 🎀 **[Prettier](https://prettier.io)** – An opinionated code formatter, supporting multiple languages and code editors
 
-
-## 📜 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) page for details.
 
 ---
 

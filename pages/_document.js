@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 const APP_NAME = 'resume-onivue'
-const APP_DESCRIPTION = 'resume editor'
+const APP_DESCRIPTION = 'online resume editor'
 
 class MyDocument extends Document {
   render() {
@@ -12,7 +12,7 @@ class MyDocument extends Document {
           <meta name="description" content={APP_DESCRIPTION} />
           <meta name="apple-mobile-web-app-title" content={APP_NAME} />
           <meta name="application-name" content={APP_NAME} />
-          <meta name="theme-color" content="#a3e635" />
+          <meta name="theme-color" content="#f9e288" />
           <meta charSet="utf-8" />
           {/* <link rel="manifest" href="/manifest.json" /> */}
           <link
