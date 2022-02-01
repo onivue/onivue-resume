@@ -61,6 +61,7 @@ const FieldGenerator = ({
         {...register(fieldID, { required: field.required })}
         type="range"
         max="100"
+        step={10}
       />
     )
   }

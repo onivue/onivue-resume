@@ -44,7 +44,7 @@
   @apply ring-2 ring-primary-400;
 }
 .rangeiput-thumb {
-  @apply relative w-8 h-5 transition-all duration-150 ease-in-out border-none rounded-full top-[50%] bg-primary-300;
+  @apply relative w-6 h-6 transition-all duration-150 ease-in-out border-none rounded-full top-[50%] bg-primary-300;
 }
 input[type='range'] {
   @apply w-full bg-transparent focus:outline-none;
