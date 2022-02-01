@@ -76,7 +76,7 @@ export const CoverZen = ({}) => {
             borderRadius: 10,
             // backgroundColor: styles.colors.secondary,
             paddingHorizontal: 10,
-            paddingVertical: 5,
+            // paddingVertical: 5,
             width: '100%',
 
             // color: styles.colors.primary,
