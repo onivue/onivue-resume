@@ -12,7 +12,7 @@ import ColorPicker from '@/components/ColorPicker/ColorPicker'
 import SettingsForm from '@/components/Forms/SettingsForm/SettingsForm'
 import Button from '@/components/Button/Button'
 
-export default function ActionZone({ toggleForm, downloadFileUrl }) {
+export default function ActionZone({ toggleForm }) {
   const [modalOpen, setModalOpen] = useState(false)
   const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
   const resumeMetadata = useResumeStore((state) => state.resumeMetadata)

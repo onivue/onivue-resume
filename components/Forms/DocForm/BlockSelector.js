@@ -10,14 +10,6 @@ const BlockSelector = ({ blockTypes, setValue, append, getValues }) => {
             <div
               className="flex p-2 border-2 rounded-lg cursor-pointer hover:bg-primary-200"
               onClick={() => {
-                // setValue('sections.1.blocks', [
-                //   ...getValues('sections.1.blocks'),
-                //   {
-                //     title: 'BITTE TITEL EINGEBEN',
-                //     type: blockType,
-                //     values: [],
-                //   },
-                // ])
                 append({
                   title: block.displayName,
                   type: blockType,

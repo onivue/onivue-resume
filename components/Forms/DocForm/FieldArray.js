@@ -1,8 +1,14 @@
 import { useFieldArray } from 'react-hook-form'
 import Button from '@/components/Button/Button'
 import Accordion from '@/components/Accordion/Accordion'
-import { HiOutlineTrash, HiPlus } from 'react-icons/hi'
+
 import FieldGenerator from './FieldGenerator'
+import {
+  HiOutlineArrowSmDown,
+  HiOutlineArrowSmUp,
+  HiOutlineTrash,
+  HiPlus,
+} from 'react-icons/hi'
 
 const FieldArrray = ({
   fieldsArray,
@@ -12,14 +18,14 @@ const FieldArrray = ({
   name,
   getValues,
 }) => {
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove, move } = useFieldArray({
     control,
     name: name,
   })
 
   return (
     <div className="pl-2">
-      {fields.map((item, index) => {
+      {fields.map((item, index, arr) => {
         return (
           <div key={item.id}>
             <Accordion
@@ -27,10 +33,26 @@ const FieldArrray = ({
               style={'secondary'}
               className={'pt-2 relative'}
               menu={
-                <HiOutlineTrash
-                  className="w-5 h-5 mr-4 cursor-pointer hover:text-red-500"
-                  onClick={() => remove(index)}
-                />
+                <div className="flex self-center mr-2 text-primary-400">
+                  <HiOutlineTrash
+                    className="w-5 h-5 mr-2 cursor-pointer hover:text-red-500"
+                    onClick={() => remove(index)}
+                  />
+
+                  <HiOutlineArrowSmUp
+                    className="w-5 h-5 mr-2 cursor-pointer hover:text-primary-500"
+                    onClick={() =>
+                      index === 0 ? null : move(index, index - 1)
+                    }
+                  />
+
+                  <HiOutlineArrowSmDown
+                    className="w-5 h-5 cursor-pointer hover:text-primary-500"
+                    onClick={() =>
+                      index === arr.length - 1 ? null : move(index, index + 1)
+                    }
+                  />
+                </div>
               }
             >
               <div className="py-2">

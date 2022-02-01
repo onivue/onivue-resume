@@ -1,6 +1,6 @@
 import { classNames } from '@/lib/helper'
 import { Disclosure, Transition } from '@headlessui/react'
-import { HiChevronUp, HiDotsVertical, HiPencil } from 'react-icons/hi'
+import { HiChevronUp } from 'react-icons/hi'
 
 export default function Accordion({
   title,
@@ -25,7 +25,7 @@ export default function Accordion({
           <div
             className={classNames(
               styles[style],
-              'flex justify-between w-full px-4 py-2  text-left rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-opacity-75',
+              'flex justify-between w-full px-2 py-2  text-left rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-opacity-75',
             )}
           >
             {menu}

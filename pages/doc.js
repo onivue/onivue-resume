@@ -40,7 +40,7 @@ function FileGeneration() {
           <aside
             className={classNames(
               'flex-1 fixed lg:static ',
-              'z-10 lg:z-0 p-2',
+              'z-10 lg:z-0 lg:py-4 ',
               'lg:w-1/2  lg:translate-y-0 duration-500 transition  ease-in-out  lg:animate-fade-in-up',
               'inset-0 inset-y-0 top-0',
               showForm
@@ -48,7 +48,7 @@ function FileGeneration() {
                 : 'translate-y-full  lg:opacity-100 opacity-0',
             )}
           >
-            <div className="h-full p-4 overflow-auto bg-white rounded-md shadow">
+            <div className="h-full p-4 overflow-auto bg-white rounded-lg ">
               <div className="p-4 font-mono text-2xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
                 Formular
               </div>

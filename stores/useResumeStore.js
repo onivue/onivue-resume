@@ -9,7 +9,7 @@ const defaultMetadata = {
   creator: 'https://resume.onivue.ch',
   producer: 'https://resume.onivue.ch',
   subject: 'https://resume.onivue.ch',
-  keywords: 'resume;bewerbung',
+  keywords: 'resume;bewerbung;cv',
   language: 'Deutsch',
 }
 // ? --------------------------------------

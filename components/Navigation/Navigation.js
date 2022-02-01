@@ -41,9 +41,9 @@ const Navigation = ({ className }) => {
   return (
     <nav
       className={classNames(
-        'backdrop-filter backdrop-blur-sm bg-white bg-opacity-80 h-[60px] fixed inset-0 z-10  duration-300 border-primary-200  shadow  ',
+        'backdrop-filter backdrop-blur-sm bg-white bg-opacity-80 h-[60px] fixed inset-0 z-10  duration-300     ',
         visible
-          ? 'top-0 '
+          ? 'top-0 border-b border-primary-200'
           : '-top-[55px] border-primary-200 border-b-[5px] border-opacity-100 rounded-lg',
       )}
     >
@@ -60,8 +60,6 @@ const Navigation = ({ className }) => {
             </div>
             <div className="">
               <div className="flex items-center text-sm divide-x-2 divide-primary-200">
-                {/* <HiOutlineUserCircle className="w-8 h-8 " /> */}
-
                 <Link href="/">
                   <a
                     className={`px-2 hover:text-primary-500 ${

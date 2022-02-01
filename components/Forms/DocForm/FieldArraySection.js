@@ -4,9 +4,13 @@ import { blocksObject } from './Blocks'
 import FieldArrray from './FieldArray'
 import FieldGenerator from './FieldGenerator'
 import BlockMenu from '@/components/BlockMenu/BlockMenu'
-import { HiCheck } from 'react-icons/hi'
 import { useState } from 'react'
 import BlockSelector from './BlockSelector'
+import {
+  HiOutlineArrowSmDown,
+  HiOutlineArrowSmUp,
+  HiCheck,
+} from 'react-icons/hi'
 
 const FieldArrraySection = ({
   control,
@@ -29,7 +33,7 @@ const FieldArrraySection = ({
   return (
     <div className="border-t-2" key={sectionIndex}>
       <h3 className="mx-2 my-4 text-xl font-bold">{section.name}</h3>
-      {fields.map((block, blockIndex) => {
+      {fields.map((block, blockIndex, arr) => {
         return (
           <div key={block.id}>
             <Accordion
@@ -68,40 +72,42 @@ const FieldArrraySection = ({
                 </div>
               }
               menu={
-                <BlockMenu
-                  moveUpFunction={
-                    blockIndex === 0
-                      ? null
-                      : () => {
-                          move(blockIndex, blockIndex - 1)
-                        }
-                  }
-                  moveDownFunction={
-                    blockIndex === section.blocks.length - 1
-                      ? null
-                      : () => {
-                          move(blockIndex, blockIndex + 1)
-                        }
-                  }
-                  removeFunction={() => {
-                    remove(blockIndex)
-                  }}
-                  changeSectionFunction={() => {
-                    let indexnewSection
-                    if (sectionIndex === 0) {
-                      indexnewSection = 1
+                <div className="flex pr-1 border-r-2 border-primary-300">
+                  <BlockMenu
+                    removeFunction={() => {
+                      remove(blockIndex)
+                    }}
+                    changeSectionFunction={() => {
+                      let indexnewSection
+                      if (sectionIndex === 0) {
+                        indexnewSection = 1
+                      }
+                      if (sectionIndex === 1) {
+                        indexnewSection = 0
+                      }
+                      setValue(`sections.${indexnewSection}.blocks`, [
+                        ...formValues.sections[indexnewSection].blocks,
+                        formValues.sections[sectionIndex].blocks[blockIndex],
+                      ])
+                      remove(blockIndex)
+                    }}
+                    editFunction={() => setShowRename(!showRename)}
+                  />
+                  <HiOutlineArrowSmUp
+                    className="self-center w-5 h-5 mr-2 cursor-pointer hover:text-primary-500"
+                    onClick={() =>
+                      blockIndex === 0 ? null : move(blockIndex, blockIndex - 1)
                     }
-                    if (sectionIndex === 1) {
-                      indexnewSection = 0
+                  />
+                  <HiOutlineArrowSmDown
+                    className="self-center w-5 h-5 cursor-pointer hover:text-primary-500"
+                    onClick={() =>
+                      blockIndex === arr.length - 1
+                        ? null
+                        : move(blockIndex, blockIndex + 1)
                     }
-                    setValue(`sections.${indexnewSection}.blocks`, [
-                      ...formValues.sections[indexnewSection].blocks,
-                      formValues.sections[sectionIndex].blocks[blockIndex],
-                    ])
-                    remove(blockIndex)
-                  }}
-                  editFunction={() => setShowRename(!showRename)}
-                />
+                  />
+                </div>
               }
               style={'primary'}
               className={'mb-10'}

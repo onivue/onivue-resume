@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         <title>onivue-resume</title>
       </Head>
 
-      <Navigation className="" />
+      <Navigation />
       <div className="flex flex-col  min-h-screen pt-[60px]">
         <main className="flex flex-1 lg:flex-row  justify-center self-center max-w-[1900px] w-full ">
           <Component {...pageProps} />

@@ -70,7 +70,7 @@ const Form = () => {
       <Accordion
         title={
           <div className="flex">
-            <div className="self-center mr-2">
+            <div className="self-center ml-1 mr-2">
               {blocksObject['cover']?.icon}
             </div>
             Details
@@ -104,7 +104,7 @@ const Form = () => {
         <Accordion
           title={
             <div className="flex">
-              <div className="self-center mr-2">
+              <div className="self-center ml-1 mr-2">
                 {blocksObject['details']?.icon}
               </div>
               Persönliche Informationen
