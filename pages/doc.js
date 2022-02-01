@@ -27,7 +27,7 @@ function FileGeneration() {
         <div className="fixed z-50 flex items-center space-x-4 bottom-5 right-5 lg:hidden">
           <button
             onClick={toggleForm}
-            className="z-50 p-1 transition-colors duration-200 rounded-md text-primary-lighter ring-primary-300 bg-primary-50 hover:text-primary hover:bg-primary-100 focus:outline-none focus:ring"
+            className="z-50 p-1 transition-colors duration-200 rounded-md text-primary-lighter ring-primary-300 bg-primary-50 hover:text-primary dark:text-black hover:bg-primary-100 focus:outline-none focus:ring"
           >
             <HiX className="w-8 h-8" />
           </button>
