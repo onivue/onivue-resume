@@ -14,7 +14,6 @@
     "iconv-lite": "^0.6.3",
     "next": "^12.0.8",
     "react": "^17.0.2",
-    "react-color": "^2.19.3",
     "react-colorful": "^5.5.1",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.25.0",
@@ -28,7 +27,7 @@
     "tailwindcss": "^3.0.16"
   },
   "name": "onivue-resume",
-  "description": "This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).",
+  "description": "create easy and modern your CV!",
   "version": "1.0.0",
   "main": "\"\"",
   "author": "Albin Hoti",

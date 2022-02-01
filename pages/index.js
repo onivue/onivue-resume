@@ -13,7 +13,7 @@ function Home() {
       </div>
 
       <div className="grid p-8 gap-y-20 lg:gap-auto lg:grid-cols-2 justify-items-center lg:my-20">
-        <div className="animate-fade-in-up">
+        <div className="animate-fade-in">
           <h2 className="text-lg text-center">Lebenslauf</h2>
           <Link href="/doc">
             <a
@@ -31,7 +31,7 @@ function Home() {
             </a>
           </Link>
         </div>
-        <div className="animate-fade-in-up">
+        <div className="animate-fade-in">
           <h2 className="text-lg text-center">Motivationsschreiben</h2>
           <Link href="/doc">
             <a
