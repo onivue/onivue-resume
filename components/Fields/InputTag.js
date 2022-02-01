@@ -53,7 +53,7 @@ const InputTag = forwardRef(({ id, setValue, value = [], ...rest }, ref) => {
         {value.map((tag, i) => (
           <div
             key={i}
-            className="px-3 py-1 my-1 text-sm bg-primary-50 rounded-full min-w-[50px] text-center flex justify-between ring-2 ring-primary-200"
+            className="px-3 py-1 my-1 text-sm bg-primary-50 rounded-full min-w-[50px] text-center flex justify-between ring-2 ring-primary-200 text-black"
           >
             {tag}
 

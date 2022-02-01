@@ -23,9 +23,9 @@ function Home() {
               <img
                 src="/img/resume.svg"
                 alt="resume-icon"
-                className="self-center w-32 my-4 transition duration-200 border rounded-lg shadow-lg shadow-primary-200/40 hover:scale-110"
+                className="self-center w-32 my-4 transition duration-200 border rounded-lg shadow-lg shadow-primary-200/40 hover:scale-110 dark:shadow-none"
               />
-              <button className="p-4 px-6 text-center rounded-lg shadow-lg cursor-pointer bg-primary-200 shadow-primary-100 hover:bg-primary-300">
+              <button className="p-4 px-6 text-center text-black rounded-lg shadow-lg cursor-pointer bg-primary-200 shadow-primary-100 hover:bg-primary-300 dark:shadow-none">
                 Create!
               </button>
             </a>
@@ -41,9 +41,9 @@ function Home() {
               <img
                 src="/img/motivation.svg"
                 alt="motivation-icon"
-                className="self-center w-32 my-4 transition duration-200 border rounded-lg shadow-lg shadow-primary-200/40 hover:scale-110"
+                className="self-center w-32 my-4 transition duration-200 border rounded-lg shadow-lg shadow-primary-200/40 hover:scale-110 dark:shadow-none"
               />
-              <button className="p-4 px-6 text-center rounded-lg shadow-lg cursor-pointer bg-primary-200 shadow-primary-100 hover:bg-primary-300">
+              <button className="p-4 px-6 text-center text-black rounded-lg shadow-lg cursor-pointer bg-primary-200 shadow-primary-100 hover:bg-primary-300 dark:shadow-none">
                 Create!
               </button>
             </a>

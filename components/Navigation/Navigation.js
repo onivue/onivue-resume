@@ -4,6 +4,8 @@ import LogoIcon from '../LogoIcon/LogoIcon'
 import Link from 'next/link'
 import useResumeStore from '@/stores/useResumeStore'
 import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
+import { HiMoon, HiSun } from 'react-icons/hi'
 
 export const useHeaderVisible = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0)
@@ -26,9 +28,15 @@ export const useHeaderVisible = () => {
   return visible
 }
 
+const Themes = {
+  light: 'light',
+  dark: 'dark',
+}
+
 const Navigation = ({ className }) => {
   const visible = useHeaderVisible()
   const router = useRouter()
+  const { theme, setTheme } = useTheme()
   const setDocType = useResumeStore((state) => state.setDocType)
   const docType = useResumeStore((state) => state.docType)
 
@@ -37,11 +45,16 @@ const Navigation = ({ className }) => {
   useEffect(() => {
     setIsClient(true)
   }, [])
+  const toggleTheme = useCallback(() => {
+    console.log(theme)
+
+    setTheme(theme === Themes.light ? Themes.dark : Themes.light)
+  }, [setTheme, theme])
 
   return (
     <nav
       className={classNames(
-        'backdrop-filter backdrop-blur-sm bg-white bg-opacity-80 h-[60px] fixed inset-0 z-10  duration-300     ',
+        'backdrop-filter backdrop-blur-sm bg-white dark:bg-dark-100 bg-opacity-80 h-[60px] fixed inset-0 z-10  duration-300     ',
         visible
           ? 'top-0 border-b border-primary-200'
           : '-top-[55px] border-primary-200 border-b-[5px] border-opacity-100 rounded-lg',
@@ -58,7 +71,14 @@ const Navigation = ({ className }) => {
               </Link>
               {/* <div className="ml-4 font-mono text-xl ">ONIVUE-RESUME</div> */}
             </div>
-            <div className="">
+            <div className="flex">
+              <button onClick={toggleTheme} className="mx-4 opacity-50">
+                {theme === Themes.light ? (
+                  <HiMoon className="w-6 h-6 " />
+                ) : (
+                  <HiSun className="w-6 h-6" />
+                )}
+              </button>
               <div className="flex items-center text-sm divide-x-2 divide-primary-200">
                 <Link href="/">
                   <a

@@ -21,10 +21,11 @@ const Input = forwardRef(
     },
     ref,
   ) => {
-    const baseStyle = 'transition duration-150 ease-in focus:outline-none'
+    const baseStyle =
+      'transition duration-150 ease-in focus:outline-none dark:text-white dark:shadow-none'
     const styles = {
       text: {
-        base: 'w-full rounded-md text-black shadow-md',
+        base: 'w-full rounded-md text-black shadow-md dark:bg-dark-200',
         active:
           'focus:ring-primary-300 focus:border-primary-200 focus:shadow-primary-200',
         disabled:

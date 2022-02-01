@@ -13,6 +13,7 @@
     "file-saver": "^2.0.5",
     "iconv-lite": "^0.6.3",
     "next": "^12.0.8",
+    "next-themes": "^0.0.15",
     "react": "^17.0.2",
     "react-colorful": "^5.5.1",
     "react-dom": "^17.0.2",

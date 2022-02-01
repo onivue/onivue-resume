@@ -48,7 +48,7 @@ function FileGeneration() {
                 : 'translate-y-full  lg:opacity-100 opacity-0',
             )}
           >
-            <div className="h-full p-4 overflow-auto bg-white rounded-lg ">
+            <div className="h-full p-4 overflow-auto bg-white rounded-lg dark:bg-dark-100">
               <div className="p-4 font-mono text-2xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
                 Formular
               </div>

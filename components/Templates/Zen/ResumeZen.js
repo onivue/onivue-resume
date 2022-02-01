@@ -161,6 +161,9 @@ export const ResumeZen = ({}) => {
                     <Text style={styles.h3}>{block.title}</Text>
                     <View style={styles.tagWrapper}>
                       {block.values.map((value, index) => {
+                        if (!value.tags) {
+                          return null
+                        }
                         return value.tags.map((tag, index) => {
                           return (
                             <Text key={index} style={styles.tag}>
@@ -255,6 +258,9 @@ export const ResumeZen = ({}) => {
                     <Text style={styles.h2}>{block.title}</Text>
                     <View style={styles.tagWrapper}>
                       {block.values.map((value, index) => {
+                        if (!value.tags) {
+                          return null
+                        }
                         return value.tags.map((tag, index) => {
                           return (
                             <Text key={index} style={styles.tag}>

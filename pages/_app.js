@@ -2,7 +2,7 @@ import Footer from '@/components/Footer/Footer'
 import Navigation from '@/components/Navigation/Navigation'
 import '@/styles/globals.css'
 import Head from 'next/head'
-
+import { ThemeProvider } from 'next-themes'
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -13,14 +13,19 @@ function MyApp({ Component, pageProps }) {
         />
         <title>onivue-resume</title>
       </Head>
-
-      <Navigation />
-      <div className="flex flex-col  min-h-screen pt-[60px]">
-        <main className="flex flex-1 lg:flex-row  justify-center self-center max-w-[1900px] w-full ">
-          <Component {...pageProps} />
-        </main>
-        <Footer />
-      </div>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="light"
+        enableSystem={false}
+      >
+        <Navigation />
+        <div className="flex flex-col  min-h-screen pt-[60px]">
+          <main className="flex flex-1 lg:flex-row  justify-center self-center max-w-[1900px] w-full ">
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
     </>
   )
 }

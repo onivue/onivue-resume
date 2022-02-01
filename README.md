@@ -34,7 +34,7 @@ This project was made for educational purposes.
 - modular block system to build custom files
 - use image in document
 - use different templates (coming soon)
-
+- dark mode
 
 ### Framework
 

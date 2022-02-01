@@ -48,13 +48,13 @@ export default function ActionZone({ toggleForm }) {
           type="edit"
         >
           <div className="grid grid-cols-1 gap-4 ">
-            <p className="text-center text-gray-500">
+            <p className="text-center text-gray-500 dark:text-white">
               PDF Dokumenteneigenschaften anpassen.
             </p>
             <SettingsForm />
           </div>
           <div className="pt-8 my-8 border-t-2">
-            <p className="mb-8 text-center text-gray-500">
+            <p className="mb-8 text-center text-gray-500 dark:text-white">
               Einstellungen zurücksetzen.
             </p>
             <div className="grid grid-cols-2 gap-4">
@@ -67,7 +67,7 @@ export default function ActionZone({ toggleForm }) {
             </div>
           </div>
           <div className="pt-8 my-8 border-t-2">
-            <p className="mb-8 text-center text-gray-500">
+            <p className="mb-8 text-center text-gray-500 dark:text-white">
               Daten herunterladen.
             </p>
             <div className="grid grid-cols-1 gap-4">

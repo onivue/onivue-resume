@@ -56,7 +56,7 @@ export default function Modal({
               leaveTo="opacity-0 translate-y-6"
             >
               {/* //! -----------------------CONTENT--------------------------------- */}
-              <div className="inline-block w-11/12 overflow-hidden text-left align-middle transition-all transform bg-white rounded-lg shadow-xl lg:my-8 lg:max-w-2xl lg:w-full">
+              <div className="inline-block w-11/12 overflow-hidden text-left align-middle transition-all transform rounded-lg shadow-xl lg:my-8 lg:max-w-2xl lg:w-full">
                 {/* //! -----------------------CLOSE X BUTTON--------------------------------- */}
                 <button
                   className="absolute right-0 flex items-center justify-center p-2 cursor-pointer focus:outline-none"
@@ -66,7 +66,7 @@ export default function Modal({
                   <HiX className="w-5 h-5 text-gray-600" aria-hidden="true" />
                 </button>
                 {/* //! -----------------------HEADER--------------------------------- */}
-                <div className="p-6 bg-white">
+                <div className="p-6 bg-white dark:text-white dark:bg-dark-100">
                   <div className="items-center sm:flex">
                     {/* //! -----------------------ICON--------------------------------- */}
 
@@ -88,7 +88,7 @@ export default function Modal({
                     {/* //! -----------------------TITLE--------------------------------- */}
                     <Dialog.Title
                       as="h3"
-                      className="mt-4 text-xl font-medium leading-6 text-center text-gray-900 sm:mt-0 "
+                      className="mt-4 text-xl font-medium leading-6 text-center sm:mt-0 "
                     >
                       {title}
                     </Dialog.Title>
