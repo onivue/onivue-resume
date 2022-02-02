@@ -28,7 +28,10 @@ This project was made for educational purposes.
 - use image in document
 - dark mode
   ### coming soon:
-- use different templates (coming soon)
+- more templates 
+- more fonts
+- multi save function
+- login system
 
 ### Framework
 
