@@ -9,9 +9,9 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta name="apple-mobile-web-app-title" content={APP_NAME} />
-          <meta name="description" content={APP_DESCRIPTION} />
-          <meta name="apple-mobile-web-app-title" content={APP_NAME} />
           <meta name="application-name" content={APP_NAME} />
+          <meta name="description" content={APP_DESCRIPTION} />
+
           <meta name="theme-color" content="#f9e288" />
           <meta charSet="utf-8" />
           {/* <link rel="manifest" href="/manifest.json" /> */}

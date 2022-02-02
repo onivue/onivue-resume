@@ -38,6 +38,16 @@ export default function ActionZone({ toggleForm }) {
   return (
     <div className="self-center w-full max-w-3xl p-4">
       <div className="flex justify-between">
+        <Item onClick={() => toggleForm()} className="lg:hidden">
+          <HiOutlinePencilAlt className={iconStyle} />
+        </Item>
+        <ColorPicker
+          icon={
+            <Item>
+              <HiOutlineColorSwatch className={iconStyle} />
+            </Item>
+          }
+        />
         <Item onClick={() => setModalOpen((s) => !s)}>
           <HiOutlineCog className={iconStyle} />
         </Item>
@@ -77,21 +87,8 @@ export default function ActionZone({ toggleForm }) {
             </div>
           </div>
         </Modal>
-
-        <ColorPicker
-          icon={
-            <Item>
-              <HiOutlineColorSwatch className={iconStyle} />
-            </Item>
-          }
-        />
-
         <Item onClick={() => saveFile()}>
           <HiOutlineDownload className={iconStyle} />
-        </Item>
-
-        <Item onClick={() => toggleForm()} className="lg:hidden">
-          <HiOutlinePencilAlt className={iconStyle} />
         </Item>
       </div>
     </div>

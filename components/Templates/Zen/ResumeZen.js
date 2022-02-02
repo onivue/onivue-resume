@@ -11,6 +11,7 @@ import {
 
 import docStyle from './styleZen'
 import useResumeStore from '@/stores/useResumeStore'
+import { flex } from 'tailwindcss/defaultTheme'
 
 Font.register({
   family: 'Montserrat',
@@ -379,9 +380,13 @@ export const CareerBlock = ({ item, styles }) => {
   return (
     <>
       <Text style={styles.h4}>{item.title}</Text>
-      <Text style={styles.em}>
-        {item.location} | {item.from} - {item.to}
-      </Text>
+      <View>
+        <Text style={styles.em}>{item.location}</Text>
+        <Text style={{ ...styles.em, fontSize: 9 }}>
+          {item.from} - {item.to}
+        </Text>
+      </View>
+
       {item.summary !== '' && <TextBlock styles={styles} text={item.summary} />}
     </>
   )
