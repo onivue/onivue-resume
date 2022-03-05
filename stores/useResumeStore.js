@@ -3,7 +3,14 @@ import { persist } from 'zustand/middleware'
 import defaultFormValues from './defaultFormValues'
 
 // ? --------------------------------------
-const defaultMetadata = {
+const defaultDesign = {
+  color: '',
+  backgroundColor: '',
+  accentColor: 'rgba(255,193,7,1)',
+  roundedImage: true,
+}
+// ? --------------------------------------
+const resumeSettings = {
   title: 'resume',
   author: 'https://resume.onivue.ch',
   creator: 'https://resume.onivue.ch',
@@ -11,12 +18,7 @@ const defaultMetadata = {
   subject: 'https://resume.onivue.ch',
   keywords: 'resume;bewerbung;cv',
   language: 'Deutsch',
-}
-// ? --------------------------------------
-const defaultDesign = {
-  color: '',
-  backgroundColor: '',
-  accentColor: 'rgba(255,193,7,1)',
+  ...defaultDesign,
 }
 
 // ! --------------------------------------
@@ -39,17 +41,13 @@ const useResumeStore = create(
       set({ fileDownloadURL: payload })
     },
     // ! --------------------------------------
-    resumeMetadata: defaultMetadata,
-    setResumeMetadata: (payload) => {
-      set({ resumeMetadata: payload })
+    resumeSettings: resumeSettings,
+    setResumeSettings: (payload) => {
+      set({ resumeSettings: payload })
     },
     // ! --------------------------------------
-    resumeDesign: defaultDesign,
-    setResumeDesign: (payload) => {
-      set({ resumeDesign: payload })
-    },
     resetResumeDesign: () => {
-      set({ resumeDesign: defaultDesign })
+      set({ resumeSettings: { ...get().resumeSettings, ...defaultDesign } })
     },
     // ! --------------------------------------
     docTemplateName: 'zen',

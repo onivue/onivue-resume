@@ -6,11 +6,11 @@ import { RgbaStringColorPicker } from 'react-colorful'
 //TODO https://codesandbox.io/s/react-colorful-sketch-picker-ouz5t
 
 export default function ColorPicker({ icon }) {
-  const resumeDesign = useResumeStore((state) => state.resumeDesign)
-  const setResumeDesign = useResumeStore((state) => state.setResumeDesign)
+  const resumeSettings = useResumeStore((state) => state.resumeSettings)
+  const setResumeSettings = useResumeStore((state) => state.setResumeSettings)
   const [didMount, setDidMount] = useState(false)
 
-  const [color, setColor] = useState(resumeDesign.accentColor)
+  const [color, setColor] = useState(resumeSettings.accentColor)
 
   const timeout = useRef(null)
 
@@ -24,7 +24,7 @@ export default function ColorPicker({ icon }) {
     if (didMount) {
       clearTimeout(timeout.current)
       timeout.current = setTimeout(() => {
-        setResumeDesign({ ...resumeDesign, accentColor: color })
+        setResumeSettings({ ...resumeSettings, accentColor: color })
       }, 600)
     }
     return () => {
@@ -49,21 +49,13 @@ export default function ColorPicker({ icon }) {
             <Popover.Panel className="absolute z-10 mb-4 transform -translate-x-1/2 bg-white rounded-lg left-1/2 bottom-full">
               <div className="flex flex-col justify-center overflow-hidden rounded-lg shadow-lg ">
                 <RgbaStringColorPicker
-                  color={resumeDesign.accentColor}
+                  color={resumeSettings.accentColor}
                   onChange={(data) => {
-                    // console.log(data)
-                    // setResumeDesign({ ...resumeDesign, accentColor: data })
                     setColor(data)
                   }}
                 />
                 <div className="py-2 text-xs text-center text-black lg:text-sm">
                   {color}
-                  {/* <input
-                    value={color}
-                    onChange={(e) => {
-                      setColor(e.target.value)
-                    }}
-                  /> */}
                 </div>
               </div>
             </Popover.Panel>

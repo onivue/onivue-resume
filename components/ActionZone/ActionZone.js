@@ -15,13 +15,13 @@ import Button from '@/components/Button/Button'
 export default function ActionZone({ toggleForm }) {
   const [modalOpen, setModalOpen] = useState(false)
   const fileDownloadURL = useResumeStore((state) => state.fileDownloadURL)
-  const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
+  const resumeSettings = useResumeStore((state) => state.resumeSettings)
   const formValues = useResumeStore((state) => state.formValues)
   const resetFormValues = useResumeStore((state) => state.resetFormValues)
   const resetResumeDesign = useResumeStore((state) => state.resetResumeDesign)
 
   const saveFile = () => {
-    saveAs(fileDownloadURL, resumeMetadata.title)
+    saveAs(fileDownloadURL, resumeSettings.title)
   }
   const exportJsonData = () => {
     const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(

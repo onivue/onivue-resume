@@ -35,29 +35,35 @@ const fields = [
     type: 'text',
     required: false,
   },
+  {
+    label: 'Rundes Foto',
+    id: 'roundedImage',
+    type: 'checkbox',
+    required: false,
+  },
 ]
 
 const SettingsForm = () => {
-  const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
-  const setResumeMetadata = useResumeStore((state) => state.setResumeMetadata)
+  const resumeSettings = useResumeStore((state) => state.resumeSettings)
+  const setResumeSettings = useResumeStore((state) => state.setResumeSettings)
   const timeout = useRef(null)
 
   const {
     register,
     watch,
     formState: { errors },
-  } = useForm({ defaultValues: resumeMetadata, mode: 'onBlur' })
+  } = useForm({ defaultValues: resumeSettings, mode: 'onBlur' })
 
   useEffect(() => {
     const subscription = watch((value, { name, type }) => {
       clearTimeout(timeout.current)
       timeout.current = setTimeout(() => {
         console.log(value, name, type)
-        setResumeMetadata(value)
+        setResumeSettings(value)
       }, 600)
     })
     return () => subscription.unsubscribe()
-  }, [watch, resumeMetadata])
+  }, [watch, resumeSettings])
 
   return (
     <>

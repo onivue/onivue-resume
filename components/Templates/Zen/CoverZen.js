@@ -54,20 +54,19 @@ Font.registerEmojiSource({
 Font.registerHyphenationCallback((word) => [word])
 
 export const CoverZen = ({}) => {
-  const resumeDesign = useResumeStore((state) => state.resumeDesign)
-  const resumeMetadata = useResumeStore((state) => state.resumeMetadata)
-  const styles = docStyle(resumeDesign.accentColor)
+  const resumeSettings = useResumeStore((state) => state.resumeSettings)
+  const styles = docStyle(resumeSettings.accentColor)
   const formValues = useResumeStore((state) => state.formValues)
 
   return (
     <Document
-      title={resumeMetadata.title}
-      author={resumeMetadata.author}
-      subject={resumeMetadata.subject}
-      keywords={resumeMetadata.keywords}
-      creator={resumeMetadata.creator}
-      producer={resumeMetadata.producer}
-      language={resumeMetadata.language}
+      title={resumeSettings.title}
+      author={resumeSettings.author}
+      subject={resumeSettings.subject}
+      keywords={resumeSettings.keywords}
+      creator={resumeSettings.creator}
+      producer={resumeSettings.producer}
+      language={resumeSettings.language}
     >
       <Page size="A4" style={{ padding: 35 }}>
         <View

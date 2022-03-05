@@ -13,6 +13,7 @@ const defaultTextSizes = {
 
 const style = (
   accentColor = 'rgba(255,193,7)',
+  roundedImage = true,
   textSizes = defaultTextSizes,
 ) => {
   const colors = {
@@ -62,8 +63,7 @@ const style = (
     // ! DETAILS BLOCKS
     //
     detailsImage: {
-      borderRadius: '50%',
-      // borderRadius: '5px',
+      borderRadius: roundedImage ? '50%' : '5px',
       objectFit: 'cover',
       marginTop: 5,
       marginBottom: 15,
