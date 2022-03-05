@@ -68,8 +68,7 @@ const style = (
       marginTop: 5,
       marginBottom: 15,
       // marginHorizontal: 'auto',
-      width: 160,
-      height: 160,
+      ...(roundedImage ? { width: 160, height: 160 } : null),
     },
     detailsName: {
       fontFamily: 'Montserrat',
