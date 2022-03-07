@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import useResumeStore from '@/stores/useResumeStore'
 import Input from '@/components/Fields/Input'
 
@@ -35,12 +35,12 @@ const fields = [
     type: 'text',
     required: false,
   },
-  {
-    label: 'Rundes Foto',
-    id: 'roundedImage',
-    type: 'checkbox',
-    required: false,
-  },
+  // {
+  //   label: 'Rundes Foto',
+  //   id: 'roundedImage',
+  //   type: 'checkbox',
+  //   required: false,
+  // },
 ]
 
 const SettingsForm = () => {
@@ -52,8 +52,10 @@ const SettingsForm = () => {
     register,
     watch,
     formState: { errors },
+    control,
   } = useForm({ defaultValues: resumeSettings, mode: 'onBlur' })
 
+  console.log('R', resumeSettings)
   useEffect(() => {
     const subscription = watch((value, { name, type }) => {
       clearTimeout(timeout.current)
@@ -84,6 +86,29 @@ const SettingsForm = () => {
             </div>
           )
         })}
+        <div className="col-span-2">
+          <label>
+            <Controller
+              control={control}
+              name="roundedImage"
+              render={({
+                field: { onChange, onBlur, value, name, ref },
+                fieldState: { invalid, isTouched, isDirty, error },
+                formState,
+              }) => (
+                <Input
+                  label={'Rundes Foto?'}
+                  errors={errors}
+                  id="roundedImage"
+                  type="checkbox"
+                  {...register('roundedImage', { required: false })}
+                  checked={value}
+                  onChange={() => onChange(!value)}
+                />
+              )}
+            />
+          </label>
+        </div>
       </div>
     </>
   )
