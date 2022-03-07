@@ -69,10 +69,10 @@ const SettingsForm = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-x-4 lg:grid-cols-2">
+      <div className="flex flex-col">
         {fields.map((field, index) => {
           return (
-            <div key={field.id}>
+            <div key={field.id} className="w-full">
               <Input
                 {...register(field.id, { required: field.required })}
                 label={field.label}
