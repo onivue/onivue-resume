@@ -54,9 +54,9 @@ const Navigation = ({ className }) => {
   return (
     <nav
       className={classNames(
-        'backdrop-filter backdrop-blur-sm bg-white dark:bg-dark-100 bg-opacity-80 h-[60px] fixed inset-0 z-10  duration-300     ',
+        '  backdrop-filter backdrop-blur-sm h-[60px] fixed inset-0 z-10  duration-200  delay-200   border-primary-200 border-b-[5px] border-opacity-100 rounded-lg',
         visible
-          ? 'top-0 border-b border-primary-200'
+          ? 'top-0  '
           : '-top-[55px] border-primary-200 border-b-[5px] border-opacity-100 rounded-lg',
       )}
     >

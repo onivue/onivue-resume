@@ -1,5 +1,6 @@
 const colors = require('tailwindcss/colors')
 const animations = require('./tailwind/animations')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
@@ -10,6 +11,9 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         primary: {
           ...colors.amber,

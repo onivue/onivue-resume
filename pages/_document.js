@@ -33,9 +33,14 @@ class MyDocument extends Document {
             href="/icons/favicon-16x16.png"
           />
           <link rel="shortcut icon" href="/icons/favicon.ico" />
+
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+            rel="stylesheet"
+          />
         </Head>
 
-        <body className="font-mono antialiased text-gray-900 bg-gray-50 dark:bg-dark-200 dark:text-white selection:bg-primary-200 ">
+        <body className=" antialiased text-gray-900 bg-gray-50 dark:bg-dark-200 dark:text-white selection:bg-primary-200 ">
           <Main />
           <NextScript />
         </body>
