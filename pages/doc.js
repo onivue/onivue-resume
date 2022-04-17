@@ -64,7 +64,7 @@ function FileGeneration() {
                     <PDFViewer
                       file={url}
                       loading={loading}
-                      className="w-full max-h-screen px-4 py-1 overflow-auto animate-fade-in-down no-scrollbar"
+                      className="w-full max-h-screen px-4 py-4 overflow-auto animate-fade-in-down no-scrollbar"
                     />
                   </>
                 )
