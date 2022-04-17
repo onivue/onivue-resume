@@ -14,7 +14,7 @@
     "iconv-lite": "^0.6.3",
     "next": "^12.1.5",
     "next-themes": "^0.1.1",
-    "react": "^18.0.0",
+    "react": "^17.0.2",
     "react-colorful": "^5.5.1",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.30.0",
