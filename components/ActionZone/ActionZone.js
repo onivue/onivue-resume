@@ -19,9 +19,15 @@ export default function ActionZone({ toggleForm }) {
   const formValues = useResumeStore((state) => state.formValues)
   const resetFormValues = useResumeStore((state) => state.resetFormValues)
   const resetResumeDesign = useResumeStore((state) => state.resetResumeDesign)
+  const docType = useResumeStore((state) => state.docType)
 
   const saveFile = () => {
-    saveAs(fileDownloadURL, resumeSettings.title)
+    saveAs(
+      fileDownloadURL,
+      docType === 'cover'
+        ? resumeSettings.titleCover
+        : resumeSettings.titleResume,
+    )
   }
   const exportJsonData = () => {
     const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(

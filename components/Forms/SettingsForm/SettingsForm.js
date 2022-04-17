@@ -5,8 +5,14 @@ import Input from '@/components/Fields/Input'
 
 const fields = [
   {
-    label: 'Dokumenttitel',
-    id: 'title',
+    label: 'Dokumenttitel Resume',
+    id: 'titleResume',
+    type: 'text',
+    required: false,
+  },
+  {
+    label: 'Dokumenttitel Cover',
+    id: 'titleCover',
     type: 'text',
     required: false,
   },

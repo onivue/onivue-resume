@@ -36,10 +36,9 @@ const PDFViewer = ({ file, loading, className }) => {
           {!loading && (
             <Document
               loading={''}
-              className="relative"
               file={file}
-              onLoadSuccess={onDocumentLoad}
               className="animate-fade-in"
+              onLoadSuccess={onDocumentLoad}
             >
               <Page
                 scale={1.0}
@@ -50,12 +49,14 @@ const PDFViewer = ({ file, loading, className }) => {
                 pageNumber={currentPage}
                 loading={''}
               />
-              <PageNavigator
-                currentPage={currentPage}
-                numPages={numPages}
-                onNextPage={onNextPage}
-                onPreviousPage={onPreviousPage}
-              />
+              <div className="relative">
+                <PageNavigator
+                  currentPage={currentPage}
+                  numPages={numPages}
+                  onNextPage={onNextPage}
+                  onPreviousPage={onPreviousPage}
+                />
+              </div>
             </Document>
           )}
           <div className="h-1"></div>

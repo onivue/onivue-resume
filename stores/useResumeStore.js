@@ -11,7 +11,8 @@ const defaultDesign = {
 }
 // ? --------------------------------------
 const resumeSettings = {
-  title: 'resume',
+  titleResume: 'resume',
+  titleCover: 'resume',
   author: 'https://resume.onivue.ch',
   creator: 'https://resume.onivue.ch',
   producer: 'https://resume.onivue.ch',
