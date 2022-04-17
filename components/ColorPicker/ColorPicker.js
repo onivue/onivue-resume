@@ -54,9 +54,15 @@ export default function ColorPicker({ icon }) {
                     setColor(data)
                   }}
                 />
-                <div className="py-2 text-xs text-center text-black lg:text-sm">
-                  {color}
-                </div>
+
+                <input
+                  type="text"
+                  className="py-2 text-xs text-center text-black lg:text-sm border-none focus:ring-0"
+                  value={color}
+                  onChange={(e) => {
+                    setColor(e.target.value)
+                  }}
+                />
               </div>
             </Popover.Panel>
           </Transition>
