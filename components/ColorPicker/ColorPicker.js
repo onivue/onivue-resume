@@ -54,15 +54,16 @@ export default function ColorPicker({ icon }) {
                     setColor(data)
                   }}
                 />
-
-                <input
-                  type="text"
-                  className="py-2 text-xs text-center text-black lg:text-sm border-none focus:ring-0"
-                  value={color}
-                  onChange={(e) => {
-                    setColor(e.target.value)
-                  }}
-                />
+                <div className="flex">
+                  <input
+                    type="text"
+                    className="py-2 text-xs text-center text-black lg:text-sm border-none focus:ring-0 w-full"
+                    value={color}
+                    onChange={(e) => {
+                      setColor(e.target.value)
+                    }}
+                  />
+                </div>
               </div>
             </Popover.Panel>
           </Transition>
