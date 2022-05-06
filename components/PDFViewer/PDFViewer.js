@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import useElementSize from '@/hooks/useElementSize'
@@ -10,6 +10,22 @@ const PDFViewer = ({ file, loading, className }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const pdfRef = useRef(null)
   const { width: pdfWidth, height: pdfHeight } = useElementSize(pdfRef)
+  const [windowsDimension, detectHW] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+  const detectSize = () => {
+    detectHW({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
+  }
+  useEffect(() => {
+    window.addEventListener('resize', detectSize)
+    return () => {
+      window.removeEventListener('resize', detectSize)
+    }
+  }, [windowsDimension])
 
   const onPreviousPage = () => {
     setCurrentPage((prev) => prev - 1)
@@ -28,11 +44,19 @@ const PDFViewer = ({ file, loading, className }) => {
   return (
     <div className={className}>
       <div
-        className="relative grid items-center justify-center w-full h-full max-w-3xl grid-cols-1 mx-auto lg:max-w-3xl"
+        className={`relative grid items-center justify-center w-full h-full grid-cols-1 mx-auto md:max-w-xl ${
+          windowsDimension.height < 800
+            ? 'lg:max-w-xs'
+            : windowsDimension.height < 900
+            ? 'lg:max-w-md'
+            : windowsDimension.height < 1200
+            ? 'lg:max-w-lg'
+            : windowsDimension.height < 1400 && 'lg:max-w-2xl'
+        }`}
         ref={pdfRef}
         id="WRAPPER"
       >
-        <A4Page refWidth={pdfWidth}>
+        <A4Page refWidth={pdfWidth} refHeight={pdfHeight}>
           {!loading && (
             <Document
               loading={''}
@@ -49,18 +73,18 @@ const PDFViewer = ({ file, loading, className }) => {
                 pageNumber={currentPage}
                 loading={''}
               />
-              <div className="relative">
-                <PageNavigator
-                  currentPage={currentPage}
-                  numPages={numPages}
-                  onNextPage={onNextPage}
-                  onPreviousPage={onPreviousPage}
-                />
-              </div>
             </Document>
           )}
           <div className="h-1"></div>
         </A4Page>
+        <div className="relative">
+          <PageNavigator
+            currentPage={currentPage}
+            numPages={numPages}
+            onNextPage={onNextPage}
+            onPreviousPage={onPreviousPage}
+          />
+        </div>
         {/* TRICK FOR OVERFLOW */}
       </div>
       {/* <div className="text-red-600">{pdfWidth}</div> */}
@@ -68,7 +92,7 @@ const PDFViewer = ({ file, loading, className }) => {
   )
 }
 
-const A4Page = ({ refWidth, children }) => {
+const A4Page = ({ refWidth, refHeight, children }) => {
   return (
     <div
       style={{

@@ -6,15 +6,17 @@ function Home() {
   const setDocType = useResumeStore((state) => state.setDocType)
 
   return (
-    <div className="justify-center max-w-screen-xl px-8 ">
-      <div className="text-[2.0rem] font-bold text-center self-center mx-auto py-14 lg:text-5xl lg:w-2/3 animate-fade-in-down lg:mt-20">
+    <div className="justify-center max-w-screen-xl px-4 ">
+      <div className="text-[2.0rem] font-bold text-center self-center mx-auto py-6 lg:text-5xl lg:w-2/3 animate-fade-in-down">
         Einfach und modern deine Bewerbung erstellen
         <label className="text-primary-400">.</label>
       </div>
 
-      <div className="grid p-8 gap-y-20 lg:gap-auto lg:grid-cols-2 justify-items-center lg:my-20">
+      <div className="grid p-8 py-24 gap-y-20 lg:gap-auto lg:grid-cols-2 justify-items-center lg:my-8 bg-gradient-to-bl from-primary-100 via-primary-200 to-primary-300 rounded-xl shadow-2xl">
         <div className="animate-fade-in">
-          <h2 className="text-lg text-center">Lebenslauf</h2>
+          <h2 className="text-lg text-center font-semibold leading-loose">
+            Lebenslauf
+          </h2>
           <Link href="/doc">
             <a
               className="flex flex-col items-center justify-center"
@@ -23,16 +25,15 @@ function Home() {
               <img
                 src="/img/resume.svg"
                 alt="resume-icon"
-                className="self-center w-32 my-4 transition duration-200 border rounded-lg shadow-lg shadow-primary-200/40 hover:scale-110 dark:shadow-none"
+                className="self-center w-60 my-4 transition duration-200  rounded-lg shadow-2xl shadow-primary-200/40 hover:scale-110 dark:shadow-none animate-fade-in"
               />
-              <button className="p-4 px-6 text-center text-black rounded-lg shadow-lg cursor-pointer bg-primary-200 shadow-primary-100 hover:bg-primary-300 dark:shadow-none">
-                Create!
-              </button>
             </a>
           </Link>
         </div>
         <div className="animate-fade-in">
-          <h2 className="text-lg text-center">Motivationsschreiben</h2>
+          <h2 className="text-lg text-center font-semibold leading-loose">
+            Motivationsschreiben
+          </h2>
           <Link href="/doc">
             <a
               className="flex flex-col items-center justify-center"
@@ -41,11 +42,8 @@ function Home() {
               <img
                 src="/img/motivation.svg"
                 alt="motivation-icon"
-                className="self-center w-32 my-4 transition duration-200 border rounded-lg shadow-lg shadow-primary-200/40 hover:scale-110 dark:shadow-none"
+                className="self-center w-60 my-4 transition duration-200  rounded-lg shadow-2xl shadow-primary-200/40 hover:scale-110 dark:shadow-none animate-fade-in"
               />
-              <button className="p-4 px-6 text-center text-black rounded-lg shadow-lg cursor-pointer bg-primary-200 shadow-primary-100 hover:bg-primary-300 dark:shadow-none">
-                Create!
-              </button>
             </a>
           </Link>
         </div>

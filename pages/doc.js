@@ -40,7 +40,7 @@ function FileGeneration() {
           <aside
             className={classNames(
               'flex-1 fixed lg:static ',
-              'z-10 lg:z-0 lg:py-4 ',
+              'z-10 lg:z-0 pt-4 lg:py-0 ',
               'lg:w-1/2  lg:translate-y-0 duration-500 transition  ease-in-out  lg:animate-fade-in-up',
               'inset-0 inset-y-0 top-0',
               showForm
@@ -49,7 +49,7 @@ function FileGeneration() {
             )}
           >
             <div className="h-full p-4 overflow-auto bg-white rounded-lg dark:bg-dark-100">
-              <div className="p-4 font-mono text-2xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg shadow-bold hover:shadow-bolder hover:shadow-primary-200 shadow-primary-200">
+              <div className=" p-4 font-mono text-2xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg hover:shadow-bolder ">
                 Formular
               </div>
               <Form />
@@ -64,7 +64,7 @@ function FileGeneration() {
                     <PDFViewer
                       file={url}
                       loading={loading}
-                      className="w-full max-h-screen px-4 py-4 overflow-auto animate-fade-in-down no-scrollbar"
+                      className="w-full max-h-screen px-4 py-4  animate-fade-in-down no-scrollbar overflow-auto"
                     />
                   </>
                 )

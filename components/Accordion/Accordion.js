@@ -14,7 +14,7 @@ export default function Accordion({
 }) {
   const styles = {
     primary:
-      'focus-visible:ring-primary-500 text-primary-900 bg-primary-200 hover:bg-primary-300 text-lg border border-primary-400 shadow-lg shadow-primary-100 dark:shadow-none',
+      'focus-visible:ring-primary-200 text-primary-900 bg-white hover:bg-primary-200 border-2 border-primary-300 shadow-md shadow-primary-100 dark:shadow-none dark:bg-primary-200',
     secondary:
       'focus-visible:ring-primary-500 text-primary-900 bg-primary-100 hover:bg-primary-200 font-medium text-sm',
   }
