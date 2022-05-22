@@ -4,7 +4,7 @@ const defaultColors = {
 }
 
 const defaultTextSizes = {
-  h1: '26px',
+  h1: '22px',
   h2: '15px',
   h3: '12px',
   h4: '11px',
