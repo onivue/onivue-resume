@@ -18,7 +18,7 @@ module.exports = {
         primary: {
           ...colors.amber,
         },
-        dark: { 100: '#02030e', 200: '#0e1217' },
+        dark: { 200: '#161b22', 100: '#0d1117' },
       },
       ...animations,
       boxShadow: {

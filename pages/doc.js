@@ -22,7 +22,7 @@ function FileGeneration() {
   // const StateDebug = useResumeStore((state) => state.StateDebug)
 
   return (
-    <div className="flex w-full max-h-[calc(100vh-60px)] min-h-[calc(100vh-60px)]">
+    <div className="flex w-full max-h-[calc(100vh-60px)] min-h-[calc(100vh-60px)] max-w-[1900px]">
       {showForm && (
         <div className="fixed z-50 flex items-center space-x-4 bottom-5 right-5 lg:hidden">
           <button
@@ -49,7 +49,7 @@ function FileGeneration() {
             )}
           >
             <div className="h-full p-4 overflow-auto bg-white rounded-lg dark:bg-dark-100">
-              <div className=" p-4 font-mono text-2xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg hover:shadow-bolder ">
+              <div className=" p-4 font-mono text-2xl font-semibold text-center transition-all duration-75 ease-in transform border rounded-lg ">
                 Formular
               </div>
               <Form />

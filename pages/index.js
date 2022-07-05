@@ -1,37 +1,39 @@
 import useResumeStore from '@/stores/useResumeStore'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import ResumeIcon from '@/components/Icons/ResumeIcon'
+import MotivationIcon from '@/components/Icons/MotivationIcon'
 
 function Home() {
   const setDocType = useResumeStore((state) => state.setDocType)
 
   return (
-    <div className="justify-center max-w-screen-xl px-4 ">
-      <div className="text-[2.0rem] font-bold text-center self-center mx-auto py-6 lg:text-5xl lg:w-2/3 animate-fade-in-down">
-        Einfach und modern deine Bewerbung erstellen
-        <label className="text-primary-400">.</label>
+    <div className="w-full">
+      <div className="bg-gradient-to-tl from-orange-300 via-primary-400 to-orange-300  text-white w-full py-20 animate-fade-in-down ">
+        <div className="text-[2.0rem] font-bold text-center self-center mx-auto py-16 lg:text-5xl lg:w-2/3 ">
+          Einfach und modern deine Bewerbung erstellen
+          <label className="text-gray-600">.</label>
+        </div>
       </div>
-
-      <div className="grid p-8 py-24 gap-y-20 lg:gap-auto lg:grid-cols-2 justify-items-center lg:my-8 bg-gradient-to-bl from-primary-100 via-primary-200 to-primary-300 rounded-xl shadow-2xl">
-        <div className="animate-fade-in">
-          <h2 className="text-lg text-center font-semibold leading-loose">
-            Lebenslauf
-          </h2>
+      <div className="animate-fade-in-up grid p-8 py-24 gap-y-20 lg:gap-auto lg:grid-cols-2 justify-items-center lg:my-8 ">
+        <div className="">
+          <h2 className="text-xl text-center leading-loose">Lebenslauf</h2>
           <Link href="/doc">
             <a
               className="flex flex-col items-center justify-center"
               onClick={() => setDocType('resume')}
             >
-              <img
-                src="/img/resume.svg"
-                alt="resume-icon"
-                className="self-center w-60 my-4 transition duration-200  rounded-lg shadow-2xl shadow-primary-200/40 hover:scale-110 dark:shadow-none animate-fade-in"
+              <ResumeIcon
+                // src="/img/resume.svg"
+                // alt="resume-icon"
+                className="self-center w-60 my-4 transition duration-200  rounded-lg shadow-2xl shadow-primary-200/40 hover:scale-110 dark:shadow-none "
               />
             </a>
           </Link>
         </div>
-        <div className="animate-fade-in">
-          <h2 className="text-lg text-center font-semibold leading-loose">
+        <div className="">
+          <h2 className="text-xl text-center leading-loose">
             Motivationsschreiben
           </h2>
           <Link href="/doc">
@@ -39,10 +41,10 @@ function Home() {
               className="flex flex-col items-center justify-center"
               onClick={() => setDocType('cover')}
             >
-              <img
+              <MotivationIcon
                 src="/img/motivation.svg"
                 alt="motivation-icon"
-                className="self-center w-60 my-4 transition duration-200  rounded-lg shadow-2xl shadow-primary-200/40 hover:scale-110 dark:shadow-none animate-fade-in"
+                className="self-center w-60 my-4 transition duration-200  rounded-lg shadow-2xl shadow-primary-200/40 hover:scale-110 dark:shadow-none "
               />
             </a>
           </Link>
