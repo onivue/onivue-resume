@@ -8,7 +8,7 @@ function LogoIcon({ className, ...props }) {
     // >
 
     <svg
-      className={className || 'w-5 h-5'}
+      className={className || 'h-5 w-5'}
       viewBox="0 0 42 45"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -17,13 +17,13 @@ function LogoIcon({ className, ...props }) {
       <g filter="url(#filter0_d_816_6)">
         <path
           d="M11 14C11 12.3431 12.3431 11 14 11H31C32.6569 11 34 12.3431 34 14V17C34 18.6569 32.6569 20 31 20H14C12.3431 20 11 18.6569 11 17V14Z"
-          fill="#FEF3C7"
+          className="fill-primary-400"
         />
       </g>
       <g filter="url(#filter1_d_816_6)">
         <path
           d="M14 34C12.3431 34 11 32.6569 11 31V14C11 12.3431 12.3431 11 14 11H17C18.6569 11 20 12.3431 20 14V31C20 32.6569 18.6569 34 17 34H14Z"
-          fill="#F9E288"
+          className="fill-primary-200"
         />
       </g>
       <defs>

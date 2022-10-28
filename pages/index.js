@@ -10,15 +10,16 @@ function Home() {
 
   return (
     <div className="w-full">
-      <div className="bg-gradient-to-tl from-orange-300 via-primary-400 to-orange-300  text-white w-full py-20 animate-fade-in-down ">
-        <div className="text-[2.0rem] font-bold text-center self-center mx-auto py-16 lg:text-5xl lg:w-2/3 ">
+      <div className="w-full animate-fade-in-down ">
+        <div className="mx-auto self-center py-16 px-6 text-center text-4xl font-bold md:text-5xl lg:w-2/3 lg:text-5xl">
           Einfach und modern deine Bewerbung erstellen
-          <label className="text-gray-600">.</label>
         </div>
       </div>
-      <div className="animate-fade-in-up grid p-8 py-24 gap-y-20 lg:gap-auto lg:grid-cols-2 justify-items-center lg:my-8 ">
+      <div className="lg:gap-auto grid animate-fade-in-up justify-items-center gap-y-20 p-8 py-12 md:grid-cols-2 lg:my-8 ">
         <div className="">
-          <h2 className="text-xl text-center leading-loose">Lebenslauf</h2>
+          <h2 className="text-center text-2xl font-bold leading-loose">
+            Resume
+          </h2>
           <Link href="/doc">
             <a
               className="flex flex-col items-center justify-center"
@@ -27,14 +28,14 @@ function Home() {
               <ResumeIcon
                 // src="/img/resume.svg"
                 // alt="resume-icon"
-                className="self-center w-60 my-4 transition duration-200  rounded-lg shadow-2xl shadow-primary-200/40 hover:scale-110 dark:shadow-none "
+                className="mb-4 w-60 self-center rounded-lg shadow-2xl  shadow-primary-200/40 transition duration-200 hover:scale-105 dark:shadow-none "
               />
             </a>
           </Link>
         </div>
         <div className="">
-          <h2 className="text-xl text-center leading-loose">
-            Motivationsschreiben
+          <h2 className="text-center text-2xl font-bold leading-loose">
+            Cover
           </h2>
           <Link href="/doc">
             <a
@@ -44,7 +45,7 @@ function Home() {
               <MotivationIcon
                 src="/img/motivation.svg"
                 alt="motivation-icon"
-                className="self-center w-60 my-4 transition duration-200  rounded-lg shadow-2xl shadow-primary-200/40 hover:scale-110 dark:shadow-none "
+                className="mb-4 w-60 self-center rounded-lg shadow-2xl  shadow-primary-200/40 transition duration-200 hover:scale-105 dark:shadow-none "
               />
             </a>
           </Link>

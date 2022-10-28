@@ -25,8 +25,22 @@ const ResumeIcon = ({ className }) => {
         d="M47 104.308C47 103.033 48.1193 102 49.5 102H68H86.5C87.8807 102 89 103.033 89 104.308C89 105.582 87.8807 106.615 86.5 106.615H49.5C48.1193 106.615 47 105.582 47 104.308Z"
         fill="#EAEAEA"
       />
-      <rect x={44} y={73} width={47} height={7} rx="3.5" fill="#F9E288" />
-      <rect x={44} y={16} width={47} height={7} rx="3.5" fill="#F9E288" />
+      <rect
+        x={44}
+        y={73}
+        width={47}
+        height={7}
+        rx="3.5"
+        className="fill-primary-300"
+      />
+      <rect
+        x={44}
+        y={16}
+        width={47}
+        height={7}
+        rx="3.5"
+        className="fill-primary-300"
+      />
       <rect x={8} y={109} width={23} height={5} rx="2.5" fill="#EAEAEA" />
       <rect x={8} y={49} width={23} height={5} rx="2.5" fill="#EAEAEA" />
       <rect x={8} y={64} width={23} height={5} rx="2.5" fill="#EAEAEA" />

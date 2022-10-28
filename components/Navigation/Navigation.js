@@ -34,7 +34,7 @@ const Themes = {
 }
 
 const Navigation = ({ className }) => {
-  const visible = useHeaderVisible()
+  const visible = true //useHeaderVisible()
   const router = useRouter()
   const { theme, setTheme } = useTheme()
   const setDocType = useResumeStore((state) => state.setDocType)
@@ -54,19 +54,19 @@ const Navigation = ({ className }) => {
   return (
     <nav
       className={classNames(
-        '  backdrop-filter backdrop-blur-sm h-[60px] fixed inset-0 z-10  duration-200  delay-200   border-opacity-100 rounded-lg',
+        '  fixed inset-0 z-10 h-[60px] rounded-lg border-opacity-100  backdrop-blur-sm  backdrop-filter   delay-200 duration-200',
         visible
           ? 'top-0  '
-          : '-top-[55px] border-primary-200 border-b-[5px] border-opacity-100 rounded-lg',
+          : '-top-[55px] rounded-lg border-b-[5px] border-primary-200 border-opacity-100',
       )}
     >
       {isClient && (
-        <div className="flex items-center h-full mx-auto max-w-[1900px] flex-nowrap">
-          <div className="relative flex items-center justify-between w-full h-full px-3 py-2 lg:py-3">
+        <div className="mx-auto flex h-full max-w-[1900px] flex-nowrap items-center">
+          <div className="relative flex h-full w-full items-center justify-between px-3 py-2 lg:py-3">
             <div className="flex items-center">
               <Link href="/">
                 <a href="">
-                  <LogoIcon className="w-10 h-10" />
+                  <LogoIcon className="h-10 w-10" />
                 </a>
               </Link>
               {/* <div className="ml-4 font-mono text-xl ">ONIVUE-RESUME</div> */}
@@ -74,16 +74,18 @@ const Navigation = ({ className }) => {
             <div className="flex">
               <button onClick={toggleTheme} className="mx-4 opacity-50">
                 {theme === Themes.light ? (
-                  <HiMoon className="w-6 h-6 " />
+                  <HiMoon className="h-6 w-6 " />
                 ) : (
-                  <HiSun className="w-6 h-6" />
+                  <HiSun className="h-6 w-6" />
                 )}
               </button>
-              <div className="flex items-center text-sm divide-x-2 divide-primary-200">
+              <div className="flex items-center divide-x-2 divide-primary-200 text-sm">
                 <Link href="/">
                   <a
                     className={`px-2 hover:text-primary-500 ${
-                      router.pathname === '/' && 'text-primary-500'
+                      router.pathname === '/'
+                        ? 'font-bold text-primary-700'
+                        : 'opacity-30'
                     }`}
                   >
                     home
@@ -92,9 +94,9 @@ const Navigation = ({ className }) => {
                 <Link href="/doc">
                   <a
                     className={`px-2 hover:text-primary-500 ${
-                      router.pathname === '/doc' &&
-                      docType === 'resume' &&
-                      'text-primary-500'
+                      router.pathname === '/doc' && docType === 'resume'
+                        ? 'font-bold text-primary-700'
+                        : 'opacity-30'
                     }`}
                     onClick={() => setDocType('resume')}
                   >
@@ -104,9 +106,9 @@ const Navigation = ({ className }) => {
                 <Link href="/doc">
                   <a
                     className={`px-2 hover:text-primary-500 ${
-                      router.pathname === '/doc' &&
-                      docType === 'cover' &&
-                      'text-primary-500'
+                      router.pathname === '/doc' && docType === 'cover'
+                        ? 'font-bold text-primary-700'
+                        : 'opacity-30'
                     }`}
                     onClick={() => setDocType('cover')}
                   >
