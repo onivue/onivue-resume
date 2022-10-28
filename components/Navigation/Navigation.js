@@ -74,17 +74,17 @@ const Navigation = ({ className }) => {
             <div className="flex">
               <button onClick={toggleTheme} className="mx-4 opacity-50">
                 {theme === Themes.light ? (
-                  <HiMoon className="h-6 w-6 " />
+                  <HiMoon className="h-6 w-6 text-primary-400" />
                 ) : (
-                  <HiSun className="h-6 w-6" />
+                  <HiSun className="h-6 w-6 text-primary-400" />
                 )}
               </button>
-              <div className="flex items-center divide-x-2 divide-primary-200 text-sm">
+              <div className="flex items-center  divide-primary-200 text-sm">
                 <Link href="/">
                   <a
-                    className={`px-2 hover:text-primary-500 ${
+                    className={`px-2 text-primary-500 hover:text-primary-500 ${
                       router.pathname === '/'
-                        ? 'font-bold text-primary-700'
+                        ? 'font-bold text-primary-600'
                         : 'opacity-30'
                     }`}
                   >
@@ -93,9 +93,9 @@ const Navigation = ({ className }) => {
                 </Link>
                 <Link href="/doc">
                   <a
-                    className={`px-2 hover:text-primary-500 ${
+                    className={`px-2 text-primary-500 hover:text-primary-500 ${
                       router.pathname === '/doc' && docType === 'resume'
-                        ? 'font-bold text-primary-700'
+                        ? 'font-bold text-primary-600'
                         : 'opacity-30'
                     }`}
                     onClick={() => setDocType('resume')}
@@ -105,9 +105,9 @@ const Navigation = ({ className }) => {
                 </Link>
                 <Link href="/doc">
                   <a
-                    className={`px-2 hover:text-primary-500 ${
+                    className={`px-2 text-primary-500 hover:text-primary-500 ${
                       router.pathname === '/doc' && docType === 'cover'
-                        ? 'font-bold text-primary-700'
+                        ? 'font-bold text-primary-600'
                         : 'opacity-30'
                     }`}
                     onClick={() => setDocType('cover')}

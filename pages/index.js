@@ -9,7 +9,7 @@ function Home() {
   const setDocType = useResumeStore((state) => state.setDocType)
 
   return (
-    <div className="w-full">
+    <div className="container ">
       <div className="w-full animate-fade-in-down ">
         <div className="mx-auto self-center py-16 px-6 text-center text-4xl font-bold md:text-5xl lg:w-2/3 lg:text-5xl">
           Einfach und modern deine Bewerbung erstellen
