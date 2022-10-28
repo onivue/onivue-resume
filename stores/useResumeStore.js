@@ -6,7 +6,7 @@ import defaultFormValues from './defaultFormValues'
 const defaultDesign = {
   color: '',
   backgroundColor: '',
-  accentColor: 'rgba(255,193,7,1)',
+  accentColor: 'rgba(48, 106, 150, 1)',
   roundedImage: true,
 }
 // ? --------------------------------------
