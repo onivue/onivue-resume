@@ -32,7 +32,8 @@
 /* REACT-PDF */
 .react-pdf__Page__canvas,
 .react-pdf__Page__svg,
-.react-pdf__Document {
+.react-pdf__Document ,
+.react-pdf__Page{
   @apply rounded-lg;
 }
 

@@ -1,5 +1,5 @@
-import create from 'zustand'
-import { persist } from 'zustand/middleware'
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
 import defaultFormValues from './defaultFormValues'
 
 // ? --------------------------------------
@@ -76,7 +76,10 @@ const useResumeStore = create(
         </div>
       )
     },
-  })),
+  }), {
+    name: 'food-storage', // name of the item in the storage (must be unique)
+    storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+  },),
 )
 
 export default useResumeStore

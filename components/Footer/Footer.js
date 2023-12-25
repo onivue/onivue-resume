@@ -9,7 +9,7 @@ const Footer = () => {
         </div>
 
         <p className="block text-xs font-light text-center lg:block">
-          © 2022 •{' '}
+          © 2024 •{' '}
           <a
             href="https://www.onivue.ch"
             className="hover:underline decoration-primary-400 decoration-2"

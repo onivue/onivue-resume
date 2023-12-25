@@ -20,34 +20,34 @@ function Home() {
           <h2 className="text-center text-2xl font-bold leading-loose">
             Resume
           </h2>
-          <Link href="/doc">
-            <a
-              className="flex flex-col items-center justify-center"
-              onClick={() => setDocType('resume')}
-            >
-              <ResumeIcon
-                // src="/img/resume.svg"
-                // alt="resume-icon"
-                className="mb-4 w-60 self-center rounded-lg shadow-2xl  shadow-primary-200/40 transition duration-200 hover:scale-105 dark:shadow-none "
-              />
-            </a>
+          <Link
+            href="/doc"
+            className="flex flex-col items-center justify-center"
+            onClick={() => setDocType('resume')}>
+
+            <ResumeIcon
+              // src="/img/resume.svg"
+              // alt="resume-icon"
+              className="mb-4 w-60 self-center rounded-lg shadow-2xl  shadow-primary-200/40 transition duration-200 hover:scale-105 dark:shadow-none "
+            />
+
           </Link>
         </div>
         <div className="">
           <h2 className="text-center text-2xl font-bold leading-loose">
             Cover
           </h2>
-          <Link href="/doc">
-            <a
-              className="flex flex-col items-center justify-center"
-              onClick={() => setDocType('cover')}
-            >
-              <MotivationIcon
-                src="/img/motivation.svg"
-                alt="motivation-icon"
-                className="mb-4 w-60 self-center rounded-lg shadow-2xl  shadow-primary-200/40 transition duration-200 hover:scale-105 dark:shadow-none "
-              />
-            </a>
+          <Link
+            href="/doc"
+            className="flex flex-col items-center justify-center"
+            onClick={() => setDocType('cover')}>
+
+            <MotivationIcon
+              src="/img/motivation.svg"
+              alt="motivation-icon"
+              className="mb-4 w-60 self-center rounded-lg shadow-2xl  shadow-primary-200/40 transition duration-200 hover:scale-105 dark:shadow-none "
+            />
+
           </Link>
         </div>
       </div>
@@ -58,7 +58,7 @@ function Home() {
         <div className="">- new fonts</div>
       </div> */}
     </div>
-  )
+  );
 }
 
 export default Home

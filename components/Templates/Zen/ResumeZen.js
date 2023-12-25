@@ -1,17 +1,13 @@
 import {
-  Page,
-  Text,
-  View,
   Document,
-  StyleSheet,
   Font,
   Image,
   Link,
+  Page,
+  Text,
+  View
 } from '@react-pdf/renderer'
-
 import docStyle from './styleZen'
-import useResumeStore from '@/stores/useResumeStore'
-import { flex } from 'tailwindcss/defaultTheme'
 
 Font.register({
   family: 'Montserrat',
@@ -55,14 +51,12 @@ Font.registerEmojiSource({
 
 // const styles = StyleSheet.create(resumeStyle)
 
-export const ResumeZen = ({}) => {
-  const resumeSettings = useResumeStore((state) => state.resumeSettings)
+export const ResumeZen = ({resumeSettings, formValues}) => {
   console.log(resumeSettings)
   const styles = docStyle(
     resumeSettings.accentColor,
     resumeSettings.roundedImage,
   )
-  const formValues = useResumeStore((state) => state.formValues)
   return (
     <Document
       title={resumeSettings.title}
@@ -354,26 +348,24 @@ export const ListItem = ({ children, styles }) => (
 
 export const TextBlock = ({ text, styles }) => {
   if (typeof text === 'string') {
-    return (
-      <>
-        {text.split('\n').map((item, i) => {
-          if (item.match(/^-\s/)) {
-            return (
-              <ListItem key={i} styles={styles}>
-                {item.replace(/^-\s/, '')}
-              </ListItem>
-            )
-          } else {
-            return (
-              <Text key={i} style={styles.p}>
-                {item}
-                {'\n'}
-              </Text>
-            )
-          }
-        })}
-      </>
-    )
+    return <>
+      {text.split('\n').map((item, i) => {
+        if (item.match(/^-\s/)) {
+          return (
+            <ListItem key={i} styles={styles}>
+              {item.replace(/^-\s/, '')}
+            </ListItem>
+          );
+        } else {
+          return (
+            <Text key={i} style={styles.p}>
+              {item}
+              {'\n'}
+            </Text>
+          )
+        }
+      })}
+    </>;
   } else {
     return <></>
   }

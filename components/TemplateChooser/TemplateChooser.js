@@ -1,17 +1,15 @@
-import useResumeStore from '@/stores/useResumeStore'
-import { ResumeZen } from '@/components/Templates/Zen/ResumeZen'
 import { CoverZen } from '@/components/Templates/Zen/CoverZen'
+import { ResumeZen } from '@/components/Templates/Zen/ResumeZen'
 
-const TemplateChooser = () => {
-  const docTemplateName = useResumeStore((state) => state.docTemplateName)
-  const docType = useResumeStore((state) => state.docType)
+const TemplateChooser = ({docTemplateName, docType, resumeSettings, formValues}) => {
+
 
   if (docType === 'resume') {
-    if (docTemplateName === 'zen') return <ResumeZen />
+    if (docTemplateName === 'zen') return <ResumeZen resumeSettings={resumeSettings} formValues={formValues}/>
   }
 
   if (docType === 'cover') {
-    if (docTemplateName === 'zen') return <CoverZen />
+    if (docTemplateName === 'zen') return <CoverZen resumeSettings={resumeSettings} formValues={formValues}/>
   }
 
   return <></>

@@ -65,9 +65,9 @@ const Navigation = ({ className }) => {
           <div className="relative flex h-full w-full items-center justify-between px-3 py-2 lg:py-3">
             <div className="flex items-center">
               <Link href="/">
-                <a href="">
-                  <LogoIcon className="h-10 w-10" />
-                </a>
+
+                <LogoIcon className="h-10 w-10" />
+
               </Link>
               {/* <div className="ml-4 font-mono text-xl ">ONIVUE-RESUME</div> */}
             </div>
@@ -80,40 +80,40 @@ const Navigation = ({ className }) => {
                 )}
               </button>
               <div className="flex items-center  divide-primary-200 text-sm">
-                <Link href="/">
-                  <a
-                    className={`px-2 text-primary-500 hover:text-primary-500 ${
-                      router.pathname === '/'
-                        ? 'font-bold text-primary-600'
-                        : 'opacity-30'
-                    }`}
-                  >
+                <Link
+                  href="/"
+                  className={`px-2 text-primary-500 hover:text-primary-500 ${
+                    router.pathname === '/'
+                      ? 'font-bold text-primary-600'
+                      : 'opacity-30'
+                  }`}>
+                  
                     home
-                  </a>
+                  
                 </Link>
-                <Link href="/doc">
-                  <a
-                    className={`px-2 text-primary-500 hover:text-primary-500 ${
-                      router.pathname === '/doc' && docType === 'resume'
-                        ? 'font-bold text-primary-600'
-                        : 'opacity-30'
-                    }`}
-                    onClick={() => setDocType('resume')}
-                  >
+                <Link
+                  href="/doc"
+                  className={`px-2 text-primary-500 hover:text-primary-500 ${
+                    router.pathname === '/doc' && docType === 'resume'
+                      ? 'font-bold text-primary-600'
+                      : 'opacity-30'
+                  }`}
+                  onClick={() => setDocType('resume')}>
+                  
                     resume
-                  </a>
+                  
                 </Link>
-                <Link href="/doc">
-                  <a
-                    className={`px-2 text-primary-500 hover:text-primary-500 ${
-                      router.pathname === '/doc' && docType === 'cover'
-                        ? 'font-bold text-primary-600'
-                        : 'opacity-30'
-                    }`}
-                    onClick={() => setDocType('cover')}
-                  >
+                <Link
+                  href="/doc"
+                  className={`px-2 text-primary-500 hover:text-primary-500 ${
+                    router.pathname === '/doc' && docType === 'cover'
+                      ? 'font-bold text-primary-600'
+                      : 'opacity-30'
+                  }`}
+                  onClick={() => setDocType('cover')}>
+                  
                     cover
-                  </a>
+                  
                 </Link>
               </div>
             </div>
@@ -121,7 +121,7 @@ const Navigation = ({ className }) => {
         </div>
       )}
     </nav>
-  )
+  );
 }
 
 export default Navigation

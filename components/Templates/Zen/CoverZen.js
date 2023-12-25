@@ -1,15 +1,12 @@
 import {
-  Page,
-  Text,
-  View,
   Document,
   Font,
-  Image,
-  Link,
+  Page,
+  Text,
+  View
 } from '@react-pdf/renderer'
 
 import docStyle from './styleZen'
-import useResumeStore from '@/stores/useResumeStore'
 
 Font.register({
   family: 'Montserrat',
@@ -53,10 +50,8 @@ Font.registerEmojiSource({
 
 Font.registerHyphenationCallback((word) => [word])
 
-export const CoverZen = ({}) => {
-  const resumeSettings = useResumeStore((state) => state.resumeSettings)
+export const CoverZen = ({resumeSettings, formValues}) => {
   const styles = docStyle(resumeSettings.accentColor)
-  const formValues = useResumeStore((state) => state.formValues)
 
   return (
     <Document
@@ -181,25 +176,23 @@ export const ListItem = ({ children, styles }) => (
 
 export const TextBlock = ({ text, styles }) => {
   if (typeof text === 'string') {
-    return (
-      <>
-        {text.split('\n').map((item, i) => {
-          if (item.match(/^-\s/)) {
-            return (
-              <ListItem key={i} styles={styles}>
-                {item.replace(/^-\s/, '')}
-              </ListItem>
-            )
-          } else {
-            return (
-              <Text key={i} style={styles.p}>
-                {item}
-              </Text>
-            )
-          }
-        })}
-      </>
-    )
+    return <>
+      {text.split('\n').map((item, i) => {
+        if (item.match(/^-\s/)) {
+          return (
+            <ListItem key={i} styles={styles}>
+              {item.replace(/^-\s/, '')}
+            </ListItem>
+          );
+        } else {
+          return (
+            <Text key={i} style={styles.p}>
+              {item}
+            </Text>
+          )
+        }
+      })}
+    </>;
   } else {
     return <></>
   }

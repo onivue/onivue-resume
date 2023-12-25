@@ -67,7 +67,7 @@ const Input = forwardRef(
         .replace(/\[/g, '.')
         .replace(/\]/g, '')
         .split('.')
-        .reduce((o, k) => (o || {})[k], object)
+        .reduce((o, k) => (o || {})[k], object);
     }
 
     return (

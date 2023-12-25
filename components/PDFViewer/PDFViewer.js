@@ -1,11 +1,10 @@
-import { useState, useRef, useEffect } from 'react'
-import { Document, Page, pdfjs } from 'react-pdf'
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import useElementSize from '@/hooks/useElementSize'
-import useResumeStore from '@/stores/useResumeStore'
+import { useEffect, useRef, useState } from 'react'
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
+import { Document, Page, pdfjs } from 'react-pdf'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
-const PDFViewer = ({ file, loading, className }) => {
+const PDFViewer = ({ file, loading, className , setFileDownloadURL}) => {
   const [numPages, setNumPages] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
   const pdfRef = useRef(null)
@@ -39,7 +38,6 @@ const PDFViewer = ({ file, loading, className }) => {
     setFileDownloadURL(file)
   }
 
-  const setFileDownloadURL = useResumeStore((state) => state.setFileDownloadURL)
 
   return (
     <div className={className}>

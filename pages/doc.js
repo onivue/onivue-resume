@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
-import { BlobProvider } from '@react-pdf/renderer'
-import PDFViewer from '@/components/PDFViewer/PDFViewer'
-import Form from '@/components/Forms/DocForm/DocForm'
-import Backdrop from '@/components/Backdrop/Backdrop'
-import { classNames } from '@/lib/helper'
 import ActionZone from '@/components/ActionZone/ActionZone'
-import { HiX } from 'react-icons/hi'
+import Backdrop from '@/components/Backdrop/Backdrop'
+import Form from '@/components/Forms/DocForm/DocForm'
+import PDFViewer from '@/components/PDFViewer/PDFViewer'
 import TemplateChooser from '@/components/TemplateChooser/TemplateChooser'
+import { classNames } from '@/lib/helper'
+import useResumeStore from '@/stores/useResumeStore'
+import { BlobProvider } from '@react-pdf/renderer'
+import { useEffect, useState } from 'react'
+import { HiX } from 'react-icons/hi'
 
 function FileGeneration() {
   const [isClient, setIsClient] = useState(false)
@@ -20,6 +21,11 @@ function FileGeneration() {
     SetShowForm(!showForm)
   }
   // const StateDebug = useResumeStore((state) => state.StateDebug)
+  const setFileDownloadURL = useResumeStore((state) => state.setFileDownloadURL)
+  const docTemplateName = useResumeStore((state) => state.docTemplateName)
+  const docType = useResumeStore((state) => state.docType)
+  const formValues = useResumeStore((state) => state.formValues)
+  const resumeSettings = useResumeStore((state) => state.resumeSettings)
 
   return (
     <div className="flex w-full max-h-[calc(100vh-60px)] min-h-[calc(100vh-60px)] max-w-[1900px]">
@@ -57,7 +63,11 @@ function FileGeneration() {
           </aside>
 
           <div className="flex flex-col justify-center w-full lg:w-1/2">
-            <BlobProvider document={<TemplateChooser />}>
+            <BlobProvider document={<TemplateChooser docTemplateName={docTemplateName}
+            docType={docType}
+            formValues={formValues}
+            resumeSettings={resumeSettings}
+             />}>
               {({ blob, url, loading, error }) => {
                 return (
                   <>
@@ -65,6 +75,7 @@ function FileGeneration() {
                       file={url}
                       loading={loading}
                       className="w-full max-h-screen px-4 py-4  animate-fade-in-down no-scrollbar overflow-auto"
+                      setFileDownloadURL={setFileDownloadURL}
                     />
                   </>
                 )
