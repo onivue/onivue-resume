@@ -7,18 +7,17 @@
   onivue-resume
 </h2>
 
-
 <h3 align="center">
  create easy and modern your CV!
 </h3>
 
 ---
+
 ## 🚀 [Website](https://resume.onivue.ch/)
 
 ## 📖 Introduction
 
 This project was made for educational purposes.
-
 
 ## 🌟 Features
 
@@ -28,7 +27,7 @@ This project was made for educational purposes.
 - use image in document
 - dark mode
   ### coming soon:
-- more templates 
+- more templates
 - more fonts
 - multi save function
 - login system
@@ -50,7 +49,6 @@ This project was made for educational purposes.
 ### Design Patterns
 
 - 🎀 **[Prettier](https://prettier.io)** – An opinionated code formatter, supporting multiple languages and code editors
-
 
 ---
 

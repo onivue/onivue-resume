@@ -32,20 +32,20 @@
 /* REACT-PDF */
 .react-pdf__Page__canvas,
 .react-pdf__Page__svg,
-.react-pdf__Document ,
-.react-pdf__Page{
+.react-pdf__Document,
+.react-pdf__Page {
   @apply rounded-lg;
 }
 
 /* RANGE INPUT */
 .rangeiput-track {
-  @apply w-full h-2 rounded-full bg-primary-200;
+  @apply h-2 w-full rounded-full bg-primary-200;
 }
 .rangeiput-focus {
   @apply ring-2 ring-primary-400;
 }
 .rangeiput-thumb {
-  @apply relative w-6 h-6 transition-all duration-150 ease-in-out border-none rounded-full top-[50%] bg-primary-300;
+  @apply relative top-[50%] h-6 w-6 rounded-full border-none bg-primary-300 transition-all duration-150 ease-in-out;
 }
 input[type='range'] {
   @apply w-full bg-transparent focus:outline-none;

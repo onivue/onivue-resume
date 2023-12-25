@@ -72,4 +72,4 @@ module.exports = {
     'fade-out-up': 'fade-out-up 0.5s ease-out',
     tilt: 'tilt 10s infinite linear',
   },
-}
+};

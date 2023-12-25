@@ -17,9 +17,7 @@ const defaultFormValues = {
         {
           title: 'Skills',
           type: 'tag',
-          values: [
-            { tags: ['Microsoft', 'Word', 'Excel', 'SAP', 'PowerPoint'] },
-          ],
+          values: [{ tags: ['Microsoft', 'Word', 'Excel', 'SAP', 'PowerPoint'] }],
         },
         {
           title: 'Sprachen',
@@ -108,5 +106,5 @@ const defaultFormValues = {
     receiverAddress: 'Companystrasse 1\n9000 St. Gallen',
     date: 'Gossau, 16. Januar 2022',
   },
-}
-export default defaultFormValues
+};
+export default defaultFormValues;

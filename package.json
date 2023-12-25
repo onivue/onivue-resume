@@ -1,11 +1,17 @@
 {
+  "name": "onivue-resume",
+  "version": "1.0.0",
   "private": true,
+  "description": "create easy and modern your CV!",
+  "license": "ISC",
+  "author": "Albin Hoti",
+  "main": "\"\"",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
     "format": "prettier . --write",
     "lint": "eslint . --ext .js,.ts,.astro",
+    "start": "next start",
     "updates": "npx npm-check-updates --interactive --format group"
   },
   "dependencies": {
@@ -16,6 +22,8 @@
     "file-saver": "^2.0.5",
     "next": "^14.0.4",
     "next-themes": "^0.2.1",
+    "prettier": "^3.1.1",
+    "prettier-plugin-packagejson": "^2.4.7",
     "react": "^18.2.0",
     "react-colorful": "^5.6.1",
     "react-dom": "^18.2.0",
@@ -25,15 +33,12 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.4.0"
-  },
-  "name": "onivue-resume",
-  "description": "create easy and modern your CV!",
-  "version": "1.0.0",
-  "main": "\"\"",
-  "author": "Albin Hoti",
-  "license": "ISC"
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3"
+  }
 }
