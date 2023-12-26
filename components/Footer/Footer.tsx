@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className=" dark:bg-dark-200">
-      <div className="my-16 flex flex-col">
+      <div className="my-4 flex flex-col">
         <div className="mx-auto flex flex-col items-center ">
           <p className="leading-125 text-sm font-light lg:block">created by Albin Hoti</p>
         </div>

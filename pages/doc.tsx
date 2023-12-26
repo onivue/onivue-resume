@@ -6,12 +6,15 @@ import TemplateChooser from '@/components/TemplateChooser/TemplateChooser';
 import { classNames } from '@/lib/helper';
 import useResumeStore from '@/stores/useResumeStore';
 import { BlobProvider } from '@react-pdf/renderer';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { HiX } from 'react-icons/hi';
 
 function FileGeneration() {
   const [isClient, setIsClient] = useState(false);
   const [showForm, SetShowForm] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     setIsClient(true);
@@ -20,7 +23,7 @@ function FileGeneration() {
   const toggleForm = () => {
     SetShowForm(!showForm);
   };
-  // const StateDebug = useResumeStore((state) => state.StateDebug)
+  const StateDebug = useResumeStore((state) => state.StateDebug);
   const setFileDownloadURL = useResumeStore((state) => state.setFileDownloadURL);
   const docTemplateName = useResumeStore((state) => state.docTemplateName);
   const docType = useResumeStore((state) => state.docType);
@@ -41,12 +44,14 @@ function FileGeneration() {
       )}
       {isClient && (
         <>
-          {/* <StateDebug className="fixed right-0 z-20 w-2/5 p-4 overflow-auto font-mono text-white bg-gray-500 rounded h-[1200px] top-20 opacity-80" /> */}
+          {router.query.debug && (
+            <StateDebug className="fixed right-0 top-20 z-20 h-[1200px] w-2/5 overflow-auto rounded bg-gray-500 p-4 font-mono text-white opacity-80" />
+          )}
           <Backdrop show={showForm} className="lg:hidden" />
           <aside
             className={classNames(
-              'fixed flex-1 lg:static ',
-              'z-10 pt-4 lg:z-0 lg:py-0 ',
+              'fixed flex-1 lg:static',
+              'z-10 pt-4 lg:z-0 lg:py-0',
               'transition  duration-500 ease-in-out lg:w-1/2  lg:translate-y-0  lg:animate-fade-in-up',
               'inset-0 inset-y-0 top-0',
               showForm ? 'translate-y-0 ' : 'translate-y-full  opacity-0 lg:opacity-100',
@@ -73,14 +78,12 @@ function FileGeneration() {
             >
               {({ blob, url, loading, error }) => {
                 return (
-                  <>
-                    <PDFViewer
-                      file={url}
-                      loading={loading}
-                      className="no-scrollbar max-h-screen w-full animate-fade-in-down  overflow-auto px-4 py-4"
-                      setFileDownloadURL={setFileDownloadURL}
-                    />
-                  </>
+                  <PDFViewer
+                    file={url}
+                    loading={loading}
+                    className="no-scrollbar max-h-screen w-auto animate-fade-in-down  overflow-auto px-4 py-4"
+                    setFileDownloadURL={setFileDownloadURL}
+                  />
                 );
               }}
             </BlobProvider>

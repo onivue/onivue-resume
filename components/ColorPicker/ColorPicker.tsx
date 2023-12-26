@@ -47,7 +47,7 @@ export default function ColorPicker({ icon }) {
             leaveTo="opacity-0 translate-y-1"
           >
             <Popover.Panel className="absolute bottom-full left-1/2 z-10 mb-4 -translate-x-1/2 transform rounded-lg bg-white">
-              <div className="flex flex-col justify-center overflow-hidden rounded-lg shadow-lg ">
+              <div className="flex flex-col justify-center overflow-hidden rounded-lg ">
                 <RgbaStringColorPicker
                   color={resumeSettings.accentColor}
                   onChange={(data) => {

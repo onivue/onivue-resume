@@ -43,9 +43,9 @@ const PDFViewer = ({ file, loading, className, setFileDownloadURL }) => {
       <div
         className={`relative mx-auto grid h-full w-full grid-cols-1 items-center justify-center md:max-w-xl ${
           windowsDimension.height < 800
-            ? 'lg:max-w-xs'
+            ? 'lg:max-w-lg'
             : windowsDimension.height < 900
-              ? 'lg:max-w-md'
+              ? 'lg:max-w-lg'
               : windowsDimension.height < 1200
                 ? 'lg:max-w-lg'
                 : windowsDimension.height < 1400 && 'lg:max-w-2xl'

@@ -1,5 +1,4 @@
 // @ts-nocheck
-import Footer from '@/components/Footer/Footer';
 import Navigation from '@/components/Navigation/Navigation';
 import '@/styles/globals.css';
 import { ThemeProvider } from 'next-themes';
@@ -14,13 +13,12 @@ function MyApp({ Component, pageProps }) {
         />
         <title>onivue-resume</title>
       </Head>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
         <Navigation />
         <div className="flex min-h-screen  flex-col pt-[60px]">
           <main className="flex w-full flex-1  justify-center self-center lg:flex-row ">
             <Component {...pageProps} />
           </main>
-          <Footer />
         </div>
       </ThemeProvider>
     </>

@@ -11,10 +11,10 @@ const TextArea = forwardRef(
   ) => {
     const baseStyle = 'transition ease-in duration-150 ease-in';
     const styles = {
-      base: 'w-full rounded-md text-black shadow-md block dark:bg-dark-200 dark:text-white',
-      active: 'focus:ring-primary-300 focus:border-primary-200 focus:shadow-primary-200 dark:shadow-none',
+      base: 'w-full rounded-md text-black block dark:bg-dark-200 dark:text-white',
+      active: 'focus:ring-primary-300 focus:border-primary-200',
       disabled: 'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300  text-opacity-40',
-      error: 'focus:ring-red-500 border-red-500 focus:border-red-500 shadow-red-300',
+      error: 'focus:ring-red-500 border-red-500 focus:border-red-500',
     };
     return (
       <div className="py-2">

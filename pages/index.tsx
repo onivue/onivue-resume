@@ -1,4 +1,5 @@
 // @ts-nocheck
+import Footer from '@/components/Footer/Footer';
 import MotivationIcon from '@/components/Icons/MotivationIcon';
 import ResumeIcon from '@/components/Icons/ResumeIcon';
 import useResumeStore from '@/stores/useResumeStore';
@@ -42,6 +43,7 @@ function Home() {
         <div className="">- new templates</div>
         <div className="">- new fonts</div>
       </div> */}
+      <Footer />
     </div>
   );
 }

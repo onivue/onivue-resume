@@ -1,12 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useRef } from 'react';
-import {
-  HiOutlineExclamation,
-  HiOutlineInformationCircle,
-  HiOutlinePencil,
-  HiOutlinePencilAlt,
-  HiX,
-} from 'react-icons/hi';
+import { HiOutlineExclamation, HiOutlineInformationCircle, HiOutlinePencilAlt, HiX } from 'react-icons/hi';
 export default function Modal({ show, onClose, onCancel, onSubmit, title, children, type }) {
   const closeButtonRef = useRef(null);
   return (
@@ -45,7 +39,7 @@ export default function Modal({ show, onClose, onCancel, onSubmit, title, childr
               leaveTo="opacity-0 translate-y-6"
             >
               {/* //! -----------------------CONTENT--------------------------------- */}
-              <div className="inline-block w-11/12 transform overflow-hidden rounded-lg text-left align-middle shadow-xl transition-all lg:my-8 lg:w-full lg:max-w-2xl">
+              <div className="inline-block w-11/12 transform overflow-hidden rounded-lg text-left align-middle transition-all lg:my-8 lg:w-full lg:max-w-2xl">
                 {/* //! -----------------------CLOSE X BUTTON--------------------------------- */}
                 <button
                   className="absolute right-0 flex cursor-pointer items-center justify-center p-2 focus:outline-none"
@@ -88,7 +82,7 @@ export default function Modal({ show, onClose, onCancel, onSubmit, title, childr
                     {onSubmit && (
                       <button
                         type="button"
-                        className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                        className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                       >
                         Deactivate
                       </button>
@@ -97,7 +91,7 @@ export default function Modal({ show, onClose, onCancel, onSubmit, title, childr
                     {onCancel && (
                       <button
                         type="button"
-                        className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
+                        className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm"
                         onClick={onCancel}
                       >
                         Cancel

@@ -111,7 +111,7 @@ const Form = () => {
           className={'mb-10'}
           defaultOpen={true}
         >
-          <div className="grid w-full grid-cols-1 gap-x-4 lg:grid-cols-2">
+          <div className="grid w-full grid-cols-1 gap-x-4">
             {blocksObject['details'].fields.map((field, i) => {
               return (
                 <FieldGenerator
