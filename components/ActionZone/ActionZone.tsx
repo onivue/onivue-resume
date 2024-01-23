@@ -2,8 +2,9 @@ import Button from '@/components/Button/Button';
 import ColorPicker from '@/components/ColorPicker/ColorPicker';
 import SettingsForm from '@/components/Forms/SettingsForm/SettingsForm';
 import Modal from '@/components/Modal/Modal';
-import useResumeStore from '@/stores/useResumeStore';
+import useResumeStore, { STORE_NAME } from '@/stores/useResumeStore';
 import { saveAs } from 'file-saver';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { HiOutlineCog, HiOutlineColorSwatch, HiOutlineDownload, HiOutlinePencilAlt } from 'react-icons/hi';
 
@@ -15,17 +16,39 @@ export default function ActionZone({ toggleForm }) {
   const resetFormValues = useResumeStore((state) => state.resetFormValues);
   const resetResumeDesign = useResumeStore((state) => state.resetResumeDesign);
   const docType = useResumeStore((state) => state.docType);
+  const router = useRouter();
 
   const saveFile = () => {
     saveAs(fileDownloadURL, docType === 'cover' ? resumeSettings.titleCover : resumeSettings.titleResume);
   };
   const exportJsonData = () => {
-    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(JSON.stringify(formValues))}`;
-    const link = document.createElement('a');
-    link.href = jsonString;
-    link.download = 'data.json';
+    const storageData = localStorage.getItem(STORE_NAME);
+    if (storageData) {
+      const jsonString = `data:text/json;charset=utf-8,${encodeURIComponent(storageData)}`;
+      const link = document.createElement('a');
+      link.href = jsonString;
+      link.download = 'resume-storage.json';
+      link.click();
+    } else {
+      console.log('No data found in local storage with key "food-storage"');
+    }
+  };
 
-    link.click();
+  const handleFileUpload = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const json = JSON.parse(e.target?.result as string);
+          localStorage.setItem(STORE_NAME, JSON.stringify(json));
+          router.reload();
+        } catch (error) {
+          console.error('Error parsing JSON file:', error);
+        }
+      };
+      reader.readAsText(file);
+    }
   };
 
   const iconStyle = 'w-8 h-8 mx-auto center-self';
@@ -54,11 +77,11 @@ export default function ActionZone({ toggleForm }) {
           onSubmit={null}
         >
           <div className="grid grid-cols-1 gap-4 ">
-            <p className="text-center text-gray-500 dark:text-white">PDF Dokumenteneigenschaften anpassen.</p>
+            <p className="text-center text-gray-500 dark:text-white">PDF Dokumenteneigenschaften anpassen</p>
             <SettingsForm />
           </div>
           <div className="my-8 border-t-2 pt-8">
-            <p className="mb-8 text-center text-gray-500 dark:text-white">Einstellungen zurücksetzen.</p>
+            <p className="mb-8 text-center text-gray-500 dark:text-white">Einstellungen zurücksetzen</p>
             <div className="grid grid-cols-2 gap-4">
               {/* @ts-ignore */}
               <Button style="secondary" onClick={() => resetFormValues()}>
@@ -71,7 +94,13 @@ export default function ActionZone({ toggleForm }) {
             </div>
           </div>
           <div className="my-8 border-t-2 pt-8">
-            <p className="mb-8 text-center text-gray-500 dark:text-white">Daten herunterladen.</p>
+            <div className="grid grid-cols-1 gap-4">
+              <p className="mb-8 text-center text-gray-500 dark:text-white">Daten hochladen</p>
+              <input type="file" accept=".json" onChange={handleFileUpload} className="place-self-center" />
+            </div>
+          </div>
+          <div className="my-8 border-t-2 pt-8">
+            <p className="mb-8 text-center text-gray-500 dark:text-white">Daten herunterladen</p>
             <div className="grid grid-cols-1 gap-4">
               {/* @ts-ignore */}
               <Button style="secondary" onClick={() => exportJsonData()}>
@@ -80,6 +109,7 @@ export default function ActionZone({ toggleForm }) {
             </div>
           </div>
         </Modal>
+
         {/* @ts-ignore */}
         <Item onClick={() => saveFile()}>
           <HiOutlineDownload className={iconStyle} />

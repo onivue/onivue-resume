@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 import defaultFormValues from './defaultFormValues';
 
 // ? --------------------------------------
@@ -21,6 +21,8 @@ const resumeSettings = {
   language: 'Deutsch',
   ...defaultDesign,
 };
+
+export const STORE_NAME = 'resume-storage';
 
 // ! --------------------------------------
 // ! STORE
@@ -79,8 +81,7 @@ const useResumeStore = create(
       },
     }),
     {
-      name: 'food-storage', // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+      name: STORE_NAME, // name of the item in the storage (must be unique)
     },
   ),
 );

@@ -1,11 +1,11 @@
 import { classNames } from '@/lib/helper';
-import React, { useCallback, useEffect, useState } from 'react';
-import LogoIcon from '../LogoIcon/LogoIcon';
-import Link from 'next/link';
 import useResumeStore from '@/stores/useResumeStore';
-import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect, useState } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
+import LogoIcon from '../LogoIcon/LogoIcon';
 
 export const useHeaderVisible = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -46,8 +46,6 @@ const Navigation = ({ className }) => {
     setIsClient(true);
   }, []);
   const toggleTheme = useCallback(() => {
-    console.log(theme);
-
     setTheme(theme === Themes.light ? Themes.dark : Themes.light);
   }, [setTheme, theme]);
 
