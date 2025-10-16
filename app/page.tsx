@@ -41,11 +41,7 @@ export default function Home() {
                         className="flex flex-col items-center justify-center"
                         onClick={() => setDocType('cover')}
                     >
-                        <MotivationIcon
-                            src="/img/motivation.svg"
-                            alt="motivation-icon"
-                            className="mb-4 w-60 self-center rounded-lg shadow-2xl shadow-primary-200/40 transition duration-200 hover:scale-105 dark:shadow-none"
-                        />
+                        <MotivationIcon className="mb-4 w-60 self-center rounded-lg shadow-2xl shadow-primary-200/40 transition duration-200 hover:scale-105 dark:shadow-none" />
                     </Link>
                 </div>
             </div>

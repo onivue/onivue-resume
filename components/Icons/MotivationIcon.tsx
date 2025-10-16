@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MotivationIcon = ({ className }) => {
+const MotivationIcon = ({ className }: { className?: string }) => {
   return (
     <svg viewBox="0 0 103 134" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
       <rect width={103} height={134} rx={6} fill="white" />

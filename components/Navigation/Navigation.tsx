@@ -1,8 +1,10 @@
+'use client'
+
 import { classNames } from '@/lib/helper';
 import useResumeStore from '@/stores/useResumeStore';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import LogoIcon from '../LogoIcon/LogoIcon';
@@ -33,9 +35,9 @@ const Themes = {
   dark: 'dark',
 };
 
-const Navigation = ({ className }) => {
+const Navigation = ({ className }: { className?: string }) => {
   const visible = true; //useHeaderVisible()
-  const router = useRouter();
+  const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const setDocType = useResumeStore((state) => state.setDocType);
   const docType = useResumeStore((state) => state.docType);
@@ -77,7 +79,7 @@ const Navigation = ({ className }) => {
                 <Link
                   href="/"
                   className={`px-2 text-primary-500 hover:text-primary-500 ${
-                    router.pathname === '/' ? 'font-bold text-primary-600' : 'opacity-30'
+                    pathname === '/' ? 'font-bold text-primary-600' : 'opacity-30'
                   }`}
                 >
                   home
@@ -85,7 +87,7 @@ const Navigation = ({ className }) => {
                 <Link
                   href="/doc"
                   className={`px-2 text-primary-500 hover:text-primary-500 ${
-                    router.pathname === '/doc' && docType === 'resume' ? 'font-bold text-primary-600' : 'opacity-30'
+                    pathname === '/doc' && docType === 'resume' ? 'font-bold text-primary-600' : 'opacity-30'
                   }`}
                   onClick={() => setDocType('resume')}
                 >
@@ -94,7 +96,7 @@ const Navigation = ({ className }) => {
                 <Link
                   href="/doc"
                   className={`px-2 text-primary-500 hover:text-primary-500 ${
-                    router.pathname === '/doc' && docType === 'cover' ? 'font-bold text-primary-600' : 'opacity-30'
+                    pathname === '/doc' && docType === 'cover' ? 'font-bold text-primary-600' : 'opacity-30'
                   }`}
                   onClick={() => setDocType('cover')}
                 >

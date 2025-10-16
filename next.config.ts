@@ -2,16 +2,11 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
-    experimental: {
-        turbo: {
-            resolveAlias: {
-                canvas: './empty-module.ts',
-            },
-        },
-    },
+    transpilePackages: ['@react-pdf/renderer', 'react-pdf'],
     webpack: (config) => {
         config.resolve.alias.canvas = false
         config.resolve.alias.encoding = false
+        config.externals = [...(config.externals || []), { canvas: 'canvas' }]
         return config
     },
 }

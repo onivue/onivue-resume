@@ -22,7 +22,7 @@ export default function Modal({ show, onClose, onCancel, onSubmit, title, childr
               leaveTo="opacity-0"
             >
               {/* //! -----------------------BACKDROP--------------------------------- */}
-              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}

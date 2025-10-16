@@ -3,22 +3,40 @@
 import ActionZone from '@/components/ActionZone/ActionZone'
 import Backdrop from '@/components/Backdrop/Backdrop'
 import Form from '@/components/Forms/DocForm/DocForm'
-import PDFViewer from '@/components/PDFViewer/PDFViewer'
-import TemplateChooser from '@/components/TemplateChooser/TemplateChooser'
 import { classNames } from '@/lib/helper'
 import useResumeStore from '@/stores/useResumeStore'
-import { BlobProvider } from '@react-pdf/renderer'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { HiX } from 'react-icons/hi'
 
-export default function FileGeneration() {
+export const dynamic = 'force-dynamic'
+
+function FileGenerationContent() {
     const [isClient, setIsClient] = useState(false)
+    const [PDFComponents, setPDFComponents] = useState<any>(null)
     const [showForm, SetShowForm] = useState(false)
     const searchParams = useSearchParams()
 
     useEffect(() => {
         setIsClient(true)
+        // Load PDF components only on client side
+        import('@react-pdf/renderer').then((mod) => {
+            setPDFComponents({
+                BlobProvider: mod.BlobProvider,
+            })
+        })
+        import('@/components/PDFViewer/PDFViewer').then((mod) => {
+            setPDFComponents((prev: any) => ({
+                ...prev,
+                PDFViewer: mod.default,
+            }))
+        })
+        import('@/components/TemplateChooser/TemplateChooser').then((mod) => {
+            setPDFComponents((prev: any) => ({
+                ...prev,
+                TemplateChooser: mod.default,
+            }))
+        })
     }, [])
 
     const toggleForm = () => {
@@ -71,31 +89,43 @@ export default function FileGeneration() {
                     </aside>
 
                     <div className="flex w-full flex-col justify-center lg:w-1/2">
-                        <BlobProvider
-                            document={
-                                <TemplateChooser
-                                    docTemplateName={docTemplateName}
-                                    docType={docType}
-                                    formValues={formValues}
-                                    resumeSettings={resumeSettings}
-                                />
-                            }
-                        >
-                            {({ blob, url, loading, error }) => {
-                                return (
-                                    <PDFViewer
-                                        file={url}
-                                        loading={loading}
-                                        className="no-scrollbar max-h-screen w-auto animate-fade-in-down  overflow-auto px-4 py-4"
-                                        setFileDownloadURL={setFileDownloadURL}
-                                    />
-                                )
-                            }}
-                        </BlobProvider>
+                        {PDFComponents?.BlobProvider &&
+                            PDFComponents?.PDFViewer &&
+                            PDFComponents?.TemplateChooser && (
+                                <PDFComponents.BlobProvider
+                                    document={
+                                        <PDFComponents.TemplateChooser
+                                            docTemplateName={docTemplateName}
+                                            docType={docType}
+                                            formValues={formValues}
+                                            resumeSettings={resumeSettings}
+                                        />
+                                    }
+                                >
+                                    {({ blob, url, loading, error }: any) => {
+                                        return (
+                                            <PDFComponents.PDFViewer
+                                                file={url}
+                                                loading={loading}
+                                                className="no-scrollbar max-h-screen w-auto animate-fade-in-down  overflow-auto px-4 py-4"
+                                                setFileDownloadURL={setFileDownloadURL}
+                                            />
+                                        )
+                                    }}
+                                </PDFComponents.BlobProvider>
+                            )}
                         <ActionZone toggleForm={toggleForm} />
                     </div>
                 </>
             )}
         </div>
+    )
+}
+
+export default function FileGeneration() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <FileGenerationContent />
+        </Suspense>
     )
 }
