@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react'
 
 /**
  * custom React media query hook for more responsive apps
@@ -10,29 +10,29 @@ import { useState, useEffect } from 'react';
 
 // HELPER FOR MEDIA QUERY
 const screens = {
-  sm: '640px',
-  md: '768px',
-  lg: '1023px',
-  xl: '1280px',
-  '2xl': '1536px',
-};
+    sm: '640px',
+    md: '768px',
+    lg: '1023px',
+    xl: '1280px',
+    '2xl': '1536px',
+}
 
 const useMediaQuery = (query) => {
-  if (!query) throw new Error('Invalid or missing MediaQuery!');
-  const [matches, setMatches] = useState(false);
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
-    const listener = () => {
-      setMatches(media.matches);
-    };
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, [matches, query]);
+    if (!query) throw new Error('Invalid or missing MediaQuery!')
+    const [matches, setMatches] = useState(false)
+    useEffect(() => {
+        const media = window.matchMedia(query)
+        if (media.matches !== matches) {
+            setMatches(media.matches)
+        }
+        const listener = () => {
+            setMatches(media.matches)
+        }
+        media.addEventListener('change', listener)
+        return () => media.removeEventListener('change', listener)
+    }, [matches, query])
 
-  return matches;
-};
+    return matches
+}
 
-export default useMediaQuery;
+export default useMediaQuery

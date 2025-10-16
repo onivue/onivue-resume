@@ -1,6 +1,6 @@
-import Navigation from '@/components/Navigation/Navigation'
-import { ThemeProvider } from 'next-themes'
 import type { Metadata, Viewport } from 'next'
+import { ThemeProvider } from 'next-themes'
+import Navigation from '@/components/Navigation/Navigation'
 import './globals.css'
 
 export const viewport: Viewport = {

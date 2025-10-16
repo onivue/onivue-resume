@@ -1,11 +1,11 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
     --color-black: #000000;
     --color-white: #ffffff;
-    
+
     /* Retrobrutalist color palette */
     --color-retro-yellow: #ffff00;
     --color-retro-pink: #ff00ff;
@@ -13,7 +13,7 @@
     --color-retro-green: #00ff00;
     --color-retro-red: #ff0000;
     --color-retro-blue: #0000ff;
-    
+
     /* Primary slate colors for compatibility */
     --color-primary-50: #f8fafc;
     --color-primary-100: #f1f5f9;
@@ -25,12 +25,14 @@
     --color-primary-700: #334155;
     --color-primary-800: #1e293b;
     --color-primary-900: #0f172a;
-    
+
     /* Dark theme colors */
     --color-dark-100: #0d1117;
     --color-dark-200: #161b22;
-    
-    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+    --font-sans:
+        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
 }
 
 @layer base {
@@ -83,7 +85,8 @@
 }
 
 @utility dot-grid {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    background-image:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
         linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
     background-size: 20px 20px;
 }
@@ -114,31 +117,31 @@
 }
 
 /* Range input styling */
-input[type='range'] {
+input[type="range"] {
     width: 100%;
     background: transparent;
     -webkit-appearance: none;
 }
 
-input[type='range']:focus {
+input[type="range"]:focus {
     outline: none;
 }
 
-input[type='range']::-webkit-slider-runnable-track {
+input[type="range"]::-webkit-slider-runnable-track {
     height: 0.5rem;
     width: 100%;
     border-radius: 9999px;
     background-color: var(--color-primary-200);
 }
 
-input[type='range']::-moz-range-track {
+input[type="range"]::-moz-range-track {
     height: 0.5rem;
     width: 100%;
     border-radius: 9999px;
     background-color: var(--color-primary-200);
 }
 
-input[type='range']::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
     position: relative;
     top: 50%;
     height: 1.5rem;
@@ -151,7 +154,7 @@ input[type='range']::-webkit-slider-thumb {
     transform: translateY(-50%);
 }
 
-input[type='range']::-moz-range-thumb {
+input[type="range"]::-moz-range-thumb {
     position: relative;
     top: 50%;
     height: 1.5rem;
@@ -162,13 +165,13 @@ input[type='range']::-moz-range-thumb {
     transition: all 150ms ease-in-out;
 }
 
-input[type='range']:focus-visible::-webkit-slider-thumb,
-input[type='range']:active::-webkit-slider-thumb {
+input[type="range"]:focus-visible::-webkit-slider-thumb,
+input[type="range"]:active::-webkit-slider-thumb {
     outline: 2px solid var(--color-primary-400);
     outline-offset: 2px;
 }
 
-input[type='range']:focus-visible::-moz-range-thumb {
+input[type="range"]:focus-visible::-moz-range-thumb {
     outline: 2px solid var(--color-primary-400);
     outline-offset: 2px;
 }

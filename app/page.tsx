@@ -1,10 +1,10 @@
 'use client'
 
+import Link from 'next/link'
 import Footer from '@/components/Footer/Footer'
 import MotivationIcon from '@/components/Icons/MotivationIcon'
 import ResumeIcon from '@/components/Icons/ResumeIcon'
 import useResumeStore from '@/stores/useResumeStore'
-import Link from 'next/link'
 
 export default function Home() {
     const setDocType = useResumeStore((state) => state.setDocType)
@@ -23,9 +23,7 @@ export default function Home() {
             </div>
             <div className="grid animate-fade-in-up justify-items-center gap-y-20 p-8 py-12 md:grid-cols-2 lg:my-8 lg:gap-auto">
                 <div>
-                    <h2 className="text-center text-2xl font-bold leading-loose">
-                        Resume
-                    </h2>
+                    <h2 className="text-center text-2xl font-bold leading-loose">Resume</h2>
                     <Link
                         href="/doc"
                         className="flex flex-col items-center justify-center"

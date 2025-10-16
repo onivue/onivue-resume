@@ -1,13 +1,13 @@
 'use client'
 
+import { useSearchParams } from 'next/navigation'
+import { Suspense, useEffect, useState } from 'react'
+import { HiX } from 'react-icons/hi'
 import ActionZone from '@/components/ActionZone/ActionZone'
 import Backdrop from '@/components/Backdrop/Backdrop'
 import Form from '@/components/Forms/DocForm/DocForm'
 import { classNames } from '@/lib/helper'
 import useResumeStore from '@/stores/useResumeStore'
-import { useSearchParams } from 'next/navigation'
-import { Suspense, useEffect, useState } from 'react'
-import { HiX } from 'react-icons/hi'
 
 export const dynamic = 'force-dynamic'
 
