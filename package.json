@@ -1,44 +1,44 @@
 {
-  "name": "onivue-resume",
-  "version": "1.0.0",
-  "private": true,
-  "description": "create easy and modern your CV!",
-  "license": "ISC",
-  "author": "Albin Hoti",
-  "main": "\"\"",
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "format": "prettier . --write",
-    "lint": "eslint . --ext .js,.ts,.astro",
-    "start": "next start",
-    "updates": "npx npm-check-updates --interactive --format group"
-  },
-  "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@react-pdf/renderer": "^3.1.14",
-    "@tailwindcss/forms": "^0.5.7",
-    "compressorjs": "^1.2.1",
-    "file-saver": "^2.0.5",
-    "next": "^14.0.4",
-    "next-themes": "^0.2.1",
-    "prettier": "^3.1.1",
-    "prettier-plugin-packagejson": "^2.4.7",
-    "react": "^18.2.0",
-    "react-colorful": "^5.6.1",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.49.2",
-    "react-icons": "^4.12.0",
-    "react-pdf": "^7.6.0",
-    "zustand": "^4.4.7"
-  },
-  "devDependencies": {
-    "@types/node": "^20.10.5",
-    "@types/react": "^18.2.45",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32",
-    "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.3.3"
-  }
+    "name": "onivue-resume",
+    "version": "1.0.0",
+    "private": true,
+    "description": "create easy and modern your CV!",
+    "license": "ISC",
+    "author": "Albin Hoti",
+    "main": "\"\"",
+    "scripts": {
+        "build": "next build",
+        "dev": "next dev",
+        "format": "biome format --write .",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "start": "next start",
+        "updates": "npx npm-check-updates --interactive --format group"
+    },
+    "dependencies": {
+        "@headlessui/react": "^2.2.0",
+        "@react-pdf/renderer": "^4.3.1",
+        "@tailwindcss/postcss": "^4.1.14",
+        "compressorjs": "^1.2.1",
+        "file-saver": "^2.0.5",
+        "next": "^15.5.5",
+        "next-themes": "^0.4.6",
+        "react": "^19.2.0",
+        "react-colorful": "^5.6.1",
+        "react-dom": "^19.2.0",
+        "react-hook-form": "^7.54.2",
+        "react-icons": "^5.4.0",
+        "react-pdf": "^10.2.0",
+        "zustand": "^5.0.4"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.2.6",
+        "@types/file-saver": "^2.0.7",
+        "@types/node": "^24.7.2",
+        "@types/react": "^19.2.2",
+        "@types/react-dom": "^19.0.5",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^4.1.14",
+        "typescript": "^5.9.3"
+    }
 }

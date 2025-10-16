@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --color-black: #000000;
+    --color-white: #ffffff;
+
+    /* Retrobrutalist color palette */
+    --color-retro-yellow: #ffff00;
+    --color-retro-pink: #ff00ff;
+    --color-retro-cyan: #00ffff;
+    --color-retro-green: #00ff00;
+    --color-retro-red: #ff0000;
+    --color-retro-blue: #0000ff;
+
+    /* Primary slate colors for compatibility */
+    --color-primary-50: #f8fafc;
+    --color-primary-100: #f1f5f9;
+    --color-primary-200: #e2e8f0;
+    --color-primary-300: #cbd5e1;
+    --color-primary-400: #94a3b8;
+    --color-primary-500: #64748b;
+    --color-primary-600: #475569;
+    --color-primary-700: #334155;
+    --color-primary-800: #1e293b;
+    --color-primary-900: #0f172a;
+
+    /* Dark theme colors */
+    --color-dark-100: #0d1117;
+    --color-dark-200: #161b22;
+
+    --font-sans:
+        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-primary-200, currentcolor);
+    }
+}
+
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        @apply font-sans antialiased;
+    }
+}
+
+/* Utility classes */
+@utility no-scrollbar {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@utility shadow-bold {
+    box-shadow: 4px 4px 0 0 currentColor;
+}
+
+@utility shadow-bolder {
+    box-shadow: 8px 8px 0 0 currentColor;
+}
+
+@utility shadow-retro-sm {
+    box-shadow: 4px 4px 0 0 currentColor;
+}
+
+@utility shadow-retro-md {
+    box-shadow: 6px 6px 0 0 currentColor;
+}
+
+@utility shadow-retro-lg {
+    box-shadow: 12px 12px 0 0 currentColor;
+}
+
+@utility dot-grid {
+    background-image:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    @apply w-1 rounded lg:w-2;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply rounded-lg bg-neutral-300 hover:bg-neutral-400;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-700 hover:bg-neutral-600;
+}
+
+/* REACT-PDF */
+.react-pdf__Page__canvas,
+.react-pdf__Page__svg,
+.react-pdf__Document,
+.react-pdf__Page {
+    @apply rounded-lg;
+}
+
+/* Range input styling */
+input[type="range"] {
+    width: 100%;
+    background: transparent;
+    -webkit-appearance: none;
+}
+
+input[type="range"]:focus {
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 0.5rem;
+    width: 100%;
+    border-radius: 9999px;
+    background-color: var(--color-primary-200);
+}
+
+input[type="range"]::-moz-range-track {
+    height: 0.5rem;
+    width: 100%;
+    border-radius: 9999px;
+    background-color: var(--color-primary-200);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    position: relative;
+    top: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    background-color: var(--color-primary-300);
+    transition: all 150ms ease-in-out;
+    -webkit-appearance: none;
+    transform: translateY(-50%);
+}
+
+input[type="range"]::-moz-range-thumb {
+    position: relative;
+    top: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    background-color: var(--color-primary-300);
+    transition: all 150ms ease-in-out;
+}
+
+input[type="range"]:focus-visible::-webkit-slider-thumb,
+input[type="range"]:active::-webkit-slider-thumb {
+    outline: 2px solid var(--color-primary-400);
+    outline-offset: 2px;
+}
+
+input[type="range"]:focus-visible::-moz-range-thumb {
+    outline: 2px solid var(--color-primary-400);
+    outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in-down {
+    animation: fade-in-down 0.6s ease-out;
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+}
