@@ -15,30 +15,30 @@
     "updates": "npx npm-check-updates --interactive --format group"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@react-pdf/renderer": "^3.1.14",
-    "@tailwindcss/forms": "^0.5.7",
+    "@headlessui/react": "^1.7.19",
+    "@react-pdf/renderer": "^3.4.5",
+    "@tailwindcss/forms": "^0.5.11",
     "compressorjs": "^1.2.1",
     "file-saver": "^2.0.5",
-    "next": "^14.0.4",
-    "next-themes": "^0.2.1",
-    "prettier": "^3.1.1",
-    "prettier-plugin-packagejson": "^2.4.7",
-    "react": "^18.2.0",
+    "next": "^16.1.6",
+    "next-themes": "^0.4.6",
+    "prettier": "^3.8.1",
+    "prettier-plugin-packagejson": "^2.5.22",
+    "react": "^18.3.1",
     "react-colorful": "^5.6.1",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.49.2",
-    "react-icons": "^4.12.0",
-    "react-pdf": "^7.6.0",
-    "zustand": "^4.4.7"
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.71.1",
+    "react-icons": "^5.5.0",
+    "react-pdf": "^7.7.3",
+    "zustand": "^4.5.7"
   },
   "devDependencies": {
-    "@types/node": "^20.10.5",
-    "@types/react": "^18.2.45",
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32",
-    "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.3.3"
+    "@types/node": "^20.19.31",
+    "@types/react": "^18.3.27",
+    "autoprefixer": "^10.4.24",
+    "postcss": "^8.5.6",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   }
 }

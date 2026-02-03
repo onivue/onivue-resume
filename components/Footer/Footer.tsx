@@ -1,17 +1,19 @@
 const Footer = () => {
   return (
-    <footer className=" dark:bg-dark-200">
-      <div className="my-4 flex flex-col">
-        <div className="mx-auto flex flex-col items-center ">
-          <p className="leading-125 text-sm font-light lg:block">created by Albin Hoti</p>
+    <footer className="border-t border-primary-100 bg-white dark:border-primary-800 dark:bg-dark-200">
+      <div className="mx-auto max-w-5xl px-6 py-8">
+        <div className="flex flex-col items-center justify-center space-y-3">
+          <p className="text-sm font-medium text-primary-700 dark:text-primary-300">Created by Albin Hoti</p>
+          <p className="text-center text-xs text-primary-600 dark:text-primary-400">
+            © 2026 •{' '}
+            <a
+              href="https://www.onivue.ch"
+              className="font-semibold text-primary-700 transition-colors hover:text-primary-900 dark:text-primary-300 dark:hover:text-primary-100"
+            >
+              onivue
+            </a>
+          </p>
         </div>
-
-        <p className="block text-center text-xs font-light lg:block">
-          © 2024 •{' '}
-          <a href="https://www.onivue.ch" className="decoration-primary-400 decoration-2 hover:underline">
-            onivue
-          </a>
-        </p>
       </div>
     </footer>
   );
