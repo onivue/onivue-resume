@@ -31,7 +31,7 @@ function FileGeneration() {
   const resumeSettings = useResumeStore((state) => state.resumeSettings);
 
   return (
-    <div className="flex max-h-[calc(100vh-60px)] min-h-[calc(100vh-60px)] w-full max-w-[1900px]">
+    <div className="flex max-h-[calc(100dvh-60px)] min-h-[calc(100dvh-60px)] w-full max-w-[1900px]">
       {showForm && (
         <div className="fixed bottom-5 right-5 z-50 flex items-center space-x-4 lg:hidden">
           <button
